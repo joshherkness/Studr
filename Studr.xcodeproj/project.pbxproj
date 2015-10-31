@@ -104,6 +104,8 @@
 		03434EE91BE5653D001E34D5 /* Studr */ = {
 			isa = PBXGroup;
 			children = (
+				03B21EE21BE579BA0052B0AD /* User Interface */,
+				03B21EE11BE579A70052B0AD /* Database */,
 				03434EEA1BE5653D001E34D5 /* AppDelegate.swift */,
 				03434EEC1BE5653D001E34D5 /* ViewController.swift */,
 				03434EEE1BE5653D001E34D5 /* Main.storyboard */,
@@ -130,6 +132,20 @@
 				03434F0C1BE5653D001E34D5 /* Info.plist */,
 			);
 			path = StudrUITests;
+			sourceTree = "<group>";
+		};
+		03B21EE11BE579A70052B0AD /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
+		03B21EE21BE579BA0052B0AD /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "User Interface";
 			sourceTree = "<group>";
 		};
 		C7831B265682928FB6D34252 /* Frameworks */ = {
