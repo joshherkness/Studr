@@ -11,6 +11,8 @@ Begin by cloning the repository using the command `git clone https://github.com/
 > Note: If you would like to delete the branch simply use the command `git branch -d branch-name`.
 
 2. Regularly commit your changes, and push to your branch.
+  - `git commit -a -m 'Comment'`
+  - `git push origin branch-name`
 3. When you have a workng copy of your feature, simply open a pull request on the github website.  The **base** branch should always be *master*, and the **compare** branch should be your branch name, i.e. *branch-name*.
 4. Then (if you have editing capabilities on the repository) accept the pull request, and verify your changes.
 
