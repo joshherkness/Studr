@@ -6,7 +6,7 @@ Add description here.
 
 Begin by cloning the repository using the command `git clone https://github.com/joshherkness/Studr.git`
 
-1. Create a feature/hot-fix branch using the command `git branch branch-name`.  This name must be describe the feature/hot-fix you intend to work on.  Ex. `database-authentication`, `user-interface`, `st-view-controller`.  
+1. Create a feature/hot-fix branch using the command `git branch branch-name`, then switch to the branch using `git checkout branch-name`.  This name must be describe the feature/hot-fix you intend to work on.  Ex. `database-authentication`, `user-interface`, `st-view-controller`.  
 
 2. Regularly commit your changes, and push to your branch.
   - `git commit -a -m 'Comment'`
