@@ -87,4 +87,9 @@ class LogInViewController : UIViewController{
     @IBAction func signUpAction(sender: AnyObject) {
         self.performSegueWithIdentifier("signup", sender: self)
     }
+    
+    @IBAction func resetPasswordAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("password", sender: self)
+    }
+    
 }
