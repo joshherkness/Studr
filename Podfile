@@ -13,6 +13,7 @@ use_frameworks!
 
 target 'Studr' do
 pod 'Parse' # Dependencies include 'Bolts'
+pod 'ParseUI' # Parse User Interface Elements
 end
 
 target 'StudrTests' do
