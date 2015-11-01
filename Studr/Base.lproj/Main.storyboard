@@ -51,18 +51,18 @@
                                     <action selector="loginAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="Lh7-Qj-Z1O"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqY-4y-A2l">
-                                <rect key="frame" x="173.5" y="356" width="253.5" height="34"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZqY-4y-A2l">
+                                <rect key="frame" x="174" y="356" width="254" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dont have an account? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62G-yM-Tat">
-                                        <rect key="frame" x="0.0" y="0.0" width="189.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="34"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg">
-                                        <rect key="frame" x="189.5" y="0.0" width="64" height="34"/>
+                                        <rect key="frame" x="190" y="0.0" width="64" height="34"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="fRQ-Mx-zWJ"/>
@@ -184,7 +184,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4JT-Bt-hTN">
-                                <rect key="frame" x="171.5" y="420" width="257" height="30"/>
+                                <rect key="frame" x="172" y="420" width="257" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3F8-jP-kfZ">
                                         <rect key="frame" x="0.0" y="0.0" width="212" height="30"/>
@@ -257,11 +257,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="ic1-wh-cDf"/>
                                 <exclude reference="Th3-HG-QMf"/>
                                 <exclude reference="dv8-w6-KmI"/>
                                 <exclude reference="Apy-RC-1xW"/>
                                 <exclude reference="rey-Vl-FY9"/>
-                                <exclude reference="ic1-wh-cDf"/>
                                 <exclude reference="7wB-jJ-awl"/>
                                 <exclude reference="91W-mT-cyz"/>
                                 <exclude reference="A0Y-lu-4Q9"/>
