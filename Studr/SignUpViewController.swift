@@ -73,6 +73,7 @@ class SignUpViewController : UIViewController {
                 
                 if ((error) != nil) {
                     
+                    // Error notificaiton
                     let alertViewController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
                     let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
                         // ...
@@ -82,16 +83,19 @@ class SignUpViewController : UIViewController {
                     
                 } else {
                     
-                    let alertViewController = UIAlertController(title: "Success", message: "Signed Up", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                        // ...
-                    }
-                    alertViewController.addAction(OKAction)
-                    self.presentViewController(alertViewController, animated: true, completion: nil)
+                    // Launch user into main application
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let mainViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("main")
+                    
+                    self.presentViewController(mainViewController, animated: true, completion: nil)
                     
                 }
             })
         }
+    }
+    
+    @IBAction func backAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

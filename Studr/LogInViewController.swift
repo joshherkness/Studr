@@ -17,9 +17,8 @@ class LogInViewController : UIViewController{
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150))
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        self.navigationController?.navigationBarHidden = true
+        super.viewDidLoad()
         
         //Create activity indicator
         self.activityIndicator.center = self.view.center
@@ -64,18 +63,16 @@ class LogInViewController : UIViewController{
                 
                 if ((user) != nil) {
                     
-                    // Temp notification
-                    let alertViewController = UIAlertController(title: "Success", message: "Logged in", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                        //...
-                    }
-                    alertViewController.addAction(OKAction)
-                    self.presentViewController(alertViewController, animated: true, completion: nil)
+                    // Launch user into main application
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let mainViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("main")
+                    
+                    self.presentViewController(mainViewController, animated: true, completion: nil)
                     
                 } else {
                     
-                    // Temp notification
-                    let alertViewController = UIAlertController(title: "Eror", message: "\(error)", preferredStyle: .Alert)
+                    // Error notification
+                    let alertViewController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
                     let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
                         //...
                     }
@@ -89,15 +86,5 @@ class LogInViewController : UIViewController{
     
     @IBAction func signUpAction(sender: AnyObject) {
         self.performSegueWithIdentifier("signup", sender: self)
-    }
-    
-    
-    // Generates a UIColor from a HEX value
-    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
 }
