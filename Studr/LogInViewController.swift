@@ -8,13 +8,14 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
 class LogInViewController : UIViewController{
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150))
+    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallScaleMultiple, color: UIColorFromHex(0x63d297))
     
     override func viewDidLoad() {
         
@@ -22,8 +23,7 @@ class LogInViewController : UIViewController{
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.activityIndicatorViewStyle = .Gray
+        self.activityIndicator.userInteractionEnabled = false  // Otherwise you cant touch behind the view
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
@@ -48,13 +48,13 @@ class LogInViewController : UIViewController{
         } else {
             
             // Begin activity indicator
-            self.activityIndicator.startAnimating()
+            self.activityIndicator.startAnimation()
             
             // Login user
             PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
                 
                 // Stop activity indicator
-                self.activityIndicator.stopAnimating()
+                self.activityIndicator.stopAnimation()
                 
                 if ((user) != nil) {
                     
@@ -85,4 +85,13 @@ class LogInViewController : UIViewController{
         self.performSegueWithIdentifier("password", sender: self)
     }
     
+}
+
+// Generate UIColor from HEX value
+func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+    let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+    let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+    let blue = CGFloat(rgbValue & 0xFF)/256.0
+    
+    return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
 }

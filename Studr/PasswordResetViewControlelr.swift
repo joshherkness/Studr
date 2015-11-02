@@ -8,12 +8,13 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
 class PasswordResetViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150))
+    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallScaleMultiple, color: UIColorFromHex(0x63d297))
     
     override func viewDidLoad() {
         
@@ -21,8 +22,7 @@ class PasswordResetViewController: UIViewController {
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.activityIndicatorViewStyle = .Gray
+        self.activityIndicator.userInteractionEnabled = false
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
@@ -56,12 +56,12 @@ class PasswordResetViewController: UIViewController {
             email = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
             // Begin activity indicaor
-            self.activityIndicator.startAnimating()
+            self.activityIndicator.startAnimation()
             
             PFUser.requestPasswordResetForEmailInBackground(email) { (success, error) -> Void in
                 
                 // End activity indicator
-                self.activityIndicator.stopAnimating()
+                self.activityIndicator.startAnimation()
                 
                 if (error == nil) {
                     

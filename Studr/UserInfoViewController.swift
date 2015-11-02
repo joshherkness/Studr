@@ -9,10 +9,11 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
 class UserInfoViewController : UIViewController {
     
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150))
+    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallScaleMultiple, color: UIColorFromHex(0x63d297))
     
     override func viewDidLoad() {
         
@@ -20,8 +21,7 @@ class UserInfoViewController : UIViewController {
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.activityIndicatorViewStyle = .Gray
+        self.activityIndicator.userInteractionEnabled = false
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)

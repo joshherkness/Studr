@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
 class SignUpViewController : UIViewController {
     
@@ -15,7 +16,7 @@ class SignUpViewController : UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150))
+    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallScaleMultiple, color: UIColorFromHex(0x63d297))
     
     override func viewDidLoad() {
         
@@ -23,8 +24,7 @@ class SignUpViewController : UIViewController {
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.activityIndicatorViewStyle = .Gray
+        self.activityIndicator.userInteractionEnabled = false
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
@@ -62,7 +62,7 @@ class SignUpViewController : UIViewController {
         } else {
             
             // Begin activity indicator
-            self.activityIndicator.startAnimating()
+            self.activityIndicator.startAnimation()
             
             // Create a new parse user
             let newUser = PFUser()
@@ -72,7 +72,7 @@ class SignUpViewController : UIViewController {
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
                 
                 // Stop activity indicator
-                self.activityIndicator.stopAnimating()
+                self.activityIndicator.stopAnimation()
                 
                 if ((error) != nil) {
                     
