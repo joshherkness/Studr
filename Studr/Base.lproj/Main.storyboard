@@ -10,7 +10,7 @@
         <!--Log In View Controller-->
         <scene sceneID="FhG-JF-61m">
             <objects>
-                <viewController storyboardIdentifier="login" id="Z0i-tw-NaW" customClass="LogInViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="Z0i-tw-NaW" customClass="LogInViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MvF-GI-lhU"/>
                         <viewControllerLayoutGuide type="bottom" id="tIJ-HC-LA5"/>
@@ -149,8 +149,8 @@
                     <connections>
                         <outlet property="passwordField" destination="Rn2-jc-EGj" id="LQD-UN-poA"/>
                         <outlet property="usernameField" destination="Z8z-6E-qQl" id="OSo-rx-UwB"/>
-                        <segue destination="fPZ-K3-B28" kind="show" identifier="signup" id="hwj-zK-xEf"/>
-                        <segue destination="8QD-9B-BU1" kind="show" identifier="password" id="8oY-G9-iJD"/>
+                        <segue destination="fPZ-K3-B28" kind="show" identifier="SignUp" id="hwj-zK-xEf"/>
+                        <segue destination="8QD-9B-BU1" kind="show" identifier="PasswordReset" id="8oY-G9-iJD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdL-AX-0dY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,7 +160,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="M54-TD-p3A">
             <objects>
-                <viewController storyboardIdentifier="signup" id="fPZ-K3-B28" customClass="SignUpViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="fPZ-K3-B28" customClass="SignUpViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Md-rx-JCY"/>
                         <viewControllerLayoutGuide type="bottom" id="GiM-gs-cxg"/>
@@ -291,7 +291,7 @@
         <!--Password Reset View Controller-->
         <scene sceneID="a3w-pa-N3X">
             <objects>
-                <viewController id="8QD-9B-BU1" customClass="PasswordResetViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PasswordResetViewController" id="8QD-9B-BU1" customClass="PasswordResetViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fXe-7C-RqN"/>
                         <viewControllerLayoutGuide type="bottom" id="VIs-OZ-n0k"/>
@@ -400,7 +400,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="main" id="BYZ-38-t0r" customClass="ViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -454,7 +454,7 @@
         <!--Navigation Controller-->
         <scene sceneID="35f-K9-Hgh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kJj-Fy-BmD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EntryViewController" automaticallyAdjustsScrollViewInsets="NO" id="kJj-Fy-BmD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fba-Rw-miM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

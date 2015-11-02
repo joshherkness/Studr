@@ -18,17 +18,8 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         super.viewDidAppear(animated)
-        
-        if (PFUser.currentUser() == nil) {
-            
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-            let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
-            
-            self.presentViewController(logInViewController, animated: false, completion: nil)
-            
-        }
-        
         
     }
 
@@ -76,7 +67,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         PFUser.logOut()
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
+        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LogInViewController")
         
         self.presentViewController(logInViewController, animated: true, completion: nil)
     }
