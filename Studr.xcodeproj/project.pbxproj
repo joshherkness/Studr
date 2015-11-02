@@ -18,7 +18,7 @@
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
 		03EBCB331BE6B64500993FA4 /* PasswordResetViewControlelr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */; };
 		03EBCB351BE6EE0A00993FA4 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */; };
-		CCDB5C681BE6993C00ABA1E7 /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C671BE6993C00ABA1E7 /* DataBaseHelper.swift */; };
+		CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C691BE7D0C200ABA1E7 /* Database.swift */; };
 		DFA3AC6A2D6AB1EE1EDD9A1D /* Pods_Studr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,7 @@
 		03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		5BEFD51F893236256B903473 /* Pods-Studr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig"; sourceTree = "<group>"; };
 		7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCDB5C671BE6993C00ABA1E7 /* DataBaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseHelper.swift; sourceTree = "<group>"; };
+		CCDB5C691BE7D0C200ABA1E7 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E3B5FDF1BD1B74276DD453C4 /* Pods-Studr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +147,7 @@
 		03B21EE11BE579A70052B0AD /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				CCDB5C671BE6993C00ABA1E7 /* DataBaseHelper.swift */,
+				CCDB5C691BE7D0C200ABA1E7 /* Database.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -367,7 +367,7 @@
 				03434EED1BE5653D001E34D5 /* ViewController.swift in Sources */,
 				03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */,
 				03434EEB1BE5653D001E34D5 /* AppDelegate.swift in Sources */,
-				CCDB5C681BE6993C00ABA1E7 /* DataBaseHelper.swift in Sources */,
+				CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */,
 				03EBCB331BE6B64500993FA4 /* PasswordResetViewControlelr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
