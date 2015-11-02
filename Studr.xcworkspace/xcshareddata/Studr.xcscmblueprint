@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A20D501C5191CAA0203F8F89BF187B2B907412D2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A20D501C5191CAA0203F8F89BF187B2B907412D2" : 0,
+    "FD173E43330408136EC13196CB05B9F8E00AFCCB" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "68AA502D-08FF-48BD-9D71-61AF4505214F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A20D501C5191CAA0203F8F89BF187B2B907412D2" : "Studr\/",
+    "FD173E43330408136EC13196CB05B9F8E00AFCCB" : "Studr-1\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Studr",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Studr.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/joshherkness\/Studr.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A20D501C5191CAA0203F8F89BF187B2B907412D2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/robinonsay\/Studr.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FD173E43330408136EC13196CB05B9F8E00AFCCB"
+    }
+  ]
+}
