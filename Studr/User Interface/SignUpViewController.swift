@@ -86,7 +86,7 @@ class SignUpViewController : UIViewController {
                     
                     // Launch user into main application
                     let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                    let mainViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("main")
+                    let mainViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController")
                     
                     self.presentViewController(mainViewController, animated: true, completion: nil)
                     
