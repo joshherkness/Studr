@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-class Database: DataBaseHelper {
+class Database{
     static func createEventWithBlock(eventName: String, eventDate: NSDate, eventDuration: Int, blockSuccess: () -> Void, blockFail: () ->Void) -> Void{
         var event = PFObject(className:"Group")
         
@@ -26,38 +26,38 @@ class Database: DataBaseHelper {
         
         
     }
-    static func destroyEvent(eventName: String) -> Bool {
-        
-    }
-    static func findEventsWithName(eventName: String) -> [PFObject] {
-        
-    }
-    static func findEventsWithTag(eventTag: String) -> [PFObject] {
-        
-    }
-    static func getlocalEvents() -> [PFObject] {
-        
-    }
-    static func getlocalPrivateEvents() -> [PFObject] {
-        
-    }
-    static func getlocalPublicEvents() -> [PFObject] {
-        
-    }
-    static func getpendingEvents() -> [PFObject] {
-        
-    }
-    static func getuserEvents() -> [PFObject] {
-        
-    }
-    static func joinEvent(eventName: String) -> Bool {
-        
-    }
-    static func joinEventWithID(eventID: String) -> Bool {
-        
-    }
-    static func leaveEvent(eventName: String) -> Bool {
-        
-    }
+//    static func destroyEvent(eventName: String) -> Bool {
+//        
+//    }
+//    static func findEventsWithName(eventName: String) -> [PFObject] {
+//        
+//    }
+//    static func findEventsWithTag(eventTag: String) -> [PFObject] {
+//        
+//    }
+//    static func getlocalEvents() -> [PFObject] {
+//        
+//    }
+//    static func getlocalPrivateEvents() -> [PFObject] {
+//        
+//    }
+//    static func getlocalPublicEvents() -> [PFObject] {
+//        
+//    }
+//    static func getpendingEvents() -> [PFObject] {
+//        
+//    }
+//    static func getuserEvents() -> [PFObject] {
+//        
+//    }
+//    static func joinEvent(eventName: String) -> Bool {
+//        
+//    }
+//    static func joinEventWithID(eventID: String) -> Bool {
+//        
+//    }
+//    static func leaveEvent(eventName: String) -> Bool {
+//        
+//    }
     
 }

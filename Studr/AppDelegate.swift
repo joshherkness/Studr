@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import Database
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
