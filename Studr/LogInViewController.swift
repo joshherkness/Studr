@@ -20,20 +20,13 @@ class LogInViewController : UIViewController{
         
         super.viewDidLoad()
         
-        //Create activity indicator
+        // Create activity indicator
         self.activityIndicator.center = self.view.center
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.activityIndicatorViewStyle = .Gray
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
-        
-        // Change the logo
-        /*
-        let logoView = UIImageView(image: UIImage(named:"logo.png"))
-        logoView.contentMode = UIViewContentMode.ScaleAspectFit
-        self.logInView!.logo = logoView
-        */
         
     }
     
@@ -46,19 +39,21 @@ class LogInViewController : UIViewController{
         
         if username.utf16.count < 4 || password.utf16.count < 5 {
             
-            let alertViewController = UIAlertController(title: "Invalid", message: "Username must be greater than 4 and password must be greater than 5", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                // ...
-            }
-            alertViewController.addAction(OKAction)
-            self.presentViewController(alertViewController, animated: true, completion: nil)
+            // Invalid notification
+            let invalidAlert = UIAlertController(title: "Invalid", message: "Username must be greater than 4 and password must be greater than 5", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            invalidAlert.addAction(OKAction)
+            self.presentViewController(invalidAlert, animated: true, completion: nil)
     
         } else {
             
+            // Begin activity indicator
             self.activityIndicator.startAnimating()
             
+            // Login user
             PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
                 
+                // Stop activity indicator
                 self.activityIndicator.stopAnimating()
                 
                 if ((user) != nil) {
@@ -72,12 +67,10 @@ class LogInViewController : UIViewController{
                 } else {
                     
                     // Error notification
-                    let alertViewController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                        //...
-                    }
-                    alertViewController.addAction(OKAction)
-                    self.presentViewController(alertViewController, animated: true, completion: nil)
+                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    errorAlert.addAction(OKAction)
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
                     
                 }
             })

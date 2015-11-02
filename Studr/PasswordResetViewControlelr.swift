@@ -19,7 +19,7 @@ class PasswordResetViewController: UIViewController {
         
         super.viewDidLoad()
         
-        //Create activity indicator
+        // Create activity indicator
         self.activityIndicator.center = self.view.center
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.activityIndicatorViewStyle = .Gray
@@ -41,53 +41,53 @@ class PasswordResetViewController: UIViewController {
         
         if email.utf16.count < 8 {
             
-            let alertViewController = UIAlertController(title: "Invalid", message: "Enter a valid email", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                // ...
-            }
-            alertViewController.addAction(OKAction)
-            self.presentViewController(alertViewController, animated: true, completion: nil)
+            // Invalid notification
+            let invalidAlert = UIAlertController(title: "Invalid", message: "Please enter a valid email", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            invalidAlert.addAction(OKAction)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.presentViewController(invalidAlert, animated: true, completion: nil)
+            })
             
         } else {
             
+            // Transform email string
             email = email.lowercaseString
             email = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
+            // Begin activity indicaor
             self.activityIndicator.startAnimating()
             
             PFUser.requestPasswordResetForEmailInBackground(email) { (success, error) -> Void in
                 
+                // End activity indicator
                 self.activityIndicator.stopAnimating()
                 
                 if (error == nil) {
                     
-                    let alertViewController = UIAlertController(title: "Success", message: "Success! Check your email!", preferredStyle: .Alert)
+                    // Success notification
+                    let successAlert = UIAlertController(title: "Success", message: "Check your email to change your password", preferredStyle: .Alert)
                     let OKButton = UIAlertAction(title: "OK", style: .Default, handler: { (action) in
-                        // On OK action
+                        
                         self.dismissViewControllerAnimated(true, completion: nil)
                     })
-                    alertViewController.addAction(OKButton)
+                    successAlert.addAction(OKButton)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.presentViewController(alertViewController, animated: false, completion: nil)
+                        self.presentViewController(successAlert, animated: true, completion: nil)
                     })
                     
                 } else {
                     
                     // Error notificaiton
-                    let alertViewController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                        // ...
-                    }
-                    alertViewController.addAction(OKAction)
+                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    errorAlert.addAction(OKAction)
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.presentViewController(alertViewController, animated: false, completion: nil)
+                        self.presentViewController(errorAlert, animated: false, completion: nil)
                     })
-                    
                 }
             }
-            
         }
-        
     }
     
     @IBAction func backAction(sender: AnyObject) {

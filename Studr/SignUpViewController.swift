@@ -18,13 +18,15 @@ class SignUpViewController : UIViewController {
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150))
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        //Activity Indicator
+        // Create activity indicator
         self.activityIndicator.center = self.view.center
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.activityIndicatorViewStyle = .Gray
         
+        // Add activity indicator
         view.addSubview(self.activityIndicator)
         
     }
@@ -43,43 +45,42 @@ class SignUpViewController : UIViewController {
         
         if username.utf16.count < 4 || password.utf16.count < 5 {
             
-            let alertViewController = UIAlertController(title: "Invalid", message: "Username must be greater than 4 and password must be greater than 5", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                // ...
-            }
-            alertViewController.addAction(OKAction)
-            self.presentViewController(alertViewController, animated: true, completion: nil)
+            // Invalid noification
+            let invalidAlert = UIAlertController(title: "Invalid", message: "Your username must be greater than 4, and your password greater than 5", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            invalidAlert.addAction(OKAction)
+            self.presentViewController(invalidAlert, animated: true, completion: nil)
             
         } else if (email.utf16.count < 8) {
             
-            let alertViewController = UIAlertController(title: "Invalid", message: "Please enter a valid emal", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                // ...
-            }
-            alertViewController.addAction(OKAction)
-            self.presentViewController(alertViewController, animated: true, completion: nil)
+            // Invalid notification
+            let invalidAlert = UIAlertController(title: "Invalid", message: "Please enter a valid email", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            invalidAlert.addAction(OKAction)
+            self.presentViewController(invalidAlert, animated: true, completion: nil)
             
         } else {
             
+            // Begin activity indicator
             self.activityIndicator.startAnimating()
             
+            // Create a new parse user
             let newUser = PFUser()
             newUser.username = username
             newUser.password = password
             newUser.email = email
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
                 
+                // Stop activity indicator
                 self.activityIndicator.stopAnimating()
                 
                 if ((error) != nil) {
                     
-                    // Error notificaiton
-                    let alertViewController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default){ (action) in
-                        // ...
-                    }
-                    alertViewController.addAction(OKAction)
-                    self.presentViewController(alertViewController, animated: true, completion: nil)
+                    // Error notification
+                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    errorAlert.addAction(OKAction)
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
                     
                 } else {
                     

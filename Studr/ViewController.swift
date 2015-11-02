@@ -20,16 +20,16 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        PFUser.logOut()
         if (PFUser.currentUser() == nil) {
             
             let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
             
-            self.presentViewController(logInViewController, animated: true, completion: nil)
-            
+            self.presentViewController(logInViewController, animated: false, completion: nil)
             
         }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,6 +70,16 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         print("Failed to sign up")
     }
     
+    // Mark: Actions
+    
+    @IBAction func logOutAction(sender: AnyObject) {
+        PFUser.logOut()
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
+        
+        self.presentViewController(logInViewController, animated: true, completion: nil)
+    }
 
 }
 
