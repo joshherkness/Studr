@@ -9,13 +9,14 @@
 import Foundation
 import Parse
 
+
 class Database{
     static func createEventWithBlock(eventName: String, eventDate: NSDate, eventDuration: Int, blockSuccess: () -> Void, blockFail: (error: NSError) ->Void) -> Void{
         let event = PFObject(className:"Group")
-        
         event["title"] = eventName
         event["date"] = eventDate
         event["duration"] = eventDuration
+        event["public"] = false
         event.saveInBackgroundWithBlock { (success, error) -> Void in
             if(success){
                 blockSuccess()
@@ -67,31 +68,39 @@ class Database{
             }
         }
     }
-//    static func findEventsWithTag(eventTag: String) -> [PFObject] {
+//    static func findEventsWithTag(eventTag: String) -> Void {
 //        
 //    }
-//    static func getlocalEvents() -> [PFObject] {
+    static func getlocalEvents(location: PFGeoPoint, radius: Double,blockSuccess: (events: [PFObject])->Void, blockFail: (error: NSError) ->Void) -> Void {
+        let eventsQuery = PFQuery(className: "Group")
+        eventsQuery.whereKey("location", nearGeoPoint: location, withinMiles: radius)
+        eventsQuery.findObjectsInBackgroundWithBlock { (events, error) -> Void in
+            if(error == nil){
+                blockSuccess(events: events!)
+            }else{
+                blockFail(error: error!)
+            }
+        }
+    }
+//    static func getlocalPrivateEvents() -> Void {
 //        
 //    }
-//    static func getlocalPrivateEvents() -> [PFObject] {
+//    static func getlocalPublicEvents() -> Void {
 //        
 //    }
-//    static func getlocalPublicEvents() -> [PFObject] {
+//    static func getpendingEvents() -> Void {
 //        
 //    }
-//    static func getpendingEvents() -> [PFObject] {
+//    static func getuserEvents() -> Void {
 //        
 //    }
-//    static func getuserEvents() -> [PFObject] {
+//    static func joinEvent(eventName: String) -> Void {
 //        
 //    }
-//    static func joinEvent(eventName: String) -> Bool {
+//    static func joinEventWithID(eventID: String) -> Void {
 //        
 //    }
-//    static func joinEventWithID(eventID: String) -> Bool {
-//        
-//    }
-//    static func leaveEvent(eventName: String) -> Bool {
+//    static func leaveEvent(eventName: String) -> Void {
 //        
 //    }
     
