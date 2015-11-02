@@ -10,14 +10,20 @@ import Foundation
 import Parse
 
 class Database: DataBaseHelper {
-    let GROUPS = "Group"
-    let USERS_POINTER = "_User"
-    static func createEvent(eventName: String, eventDate: NSDate, eventDuration: Int) -> Bool {
-        var event = PFObject(className: GROUP)
+    static func createEventWithBlock(eventName: String, eventDate: NSDate, eventDuration: Int, blockSuccess: () -> Void, blockFail: () ->Void) -> Void{
+        var event = PFObject(className:"Group")
         
         event["title"] = eventName
         event["date"] = eventDate
         event["duration"] = eventDuration
+        event.saveInBackgroundWithBlock { (success, error) -> Void in
+            if(success){
+                blockSuccess()
+            }else{
+                blockFail()
+            }
+        }
+        
         
     }
     static func destroyEvent(eventName: String) -> Bool {

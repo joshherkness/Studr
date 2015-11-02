@@ -73,6 +73,7 @@ class LogInViewController : UIViewController{
                     self.presentViewController(errorAlert, animated: true, completion: nil)
                     
                 }
+                
             })
         }
     }
