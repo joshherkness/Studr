@@ -10,6 +10,7 @@ import Foundation
 import Parse
 
 protocol DataBaseHelper{
+    
     static var user:PFUser { get set }
     
     static func createEvent(eventName:String,eventDate:NSDate)-> Bool
