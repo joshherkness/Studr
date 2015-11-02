@@ -10,8 +10,8 @@ import Foundation
 import Parse
 
 class Database{
-    static func createEventWithBlock(eventName: String, eventDate: NSDate, eventDuration: Int, blockSuccess: () -> Void, blockFail: () ->Void) -> Void{
-        var event = PFObject(className:"Group")
+    static func createEventWithBlock(eventName: String, eventDate: NSDate, eventDuration: Int, blockSuccess: () -> Void, blockFail: (error: NSError) ->Void) -> Void{
+        let event = PFObject(className:"Group")
         
         event["title"] = eventName
         event["date"] = eventDate
@@ -20,15 +20,30 @@ class Database{
             if(success){
                 blockSuccess()
             }else{
-                blockFail()
+                blockFail(error: error!)
             }
         }
         
         
     }
-//    static func destroyEvent(eventName: String) -> Bool {
-//        
-//    }
+    static func destroyEvent(eventID: String, blockSuccess: ()->Void, blockFail: (error: NSError) ->Void) -> Void {
+        let eventQuery = PFQuery(className: "Group")
+        eventQuery.getObjectInBackgroundWithId(eventID) { (event: PFObject?, error: NSError?) -> Void in
+            if error == nil && event != nil{
+                event?.deleteInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                    if(success){
+                        blockSuccess()
+                    }else{
+                        blockFail(error: error!)
+                    }
+                })
+            }else{
+                blockFail(error: error!)
+            }
+        }
+        
+        
+    }
 //    static func findEventsWithName(eventName: String) -> [PFObject] {
 //        
 //    }
