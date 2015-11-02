@@ -78,14 +78,6 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="studr" translatesAutoresizingMaskIntoConstraints="NO" id="UAQ-9w-vbh">
-                                <rect key="frame" x="200" y="20" width="200" height="160"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="Wmj-Ng-cpu"/>
-                                    <constraint firstAttribute="width" constant="200" id="XDe-Jr-2wD"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeU-n0-H0H">
                                 <rect key="frame" x="161" y="404" width="278" height="34"/>
                                 <subviews>
@@ -119,6 +111,14 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brand" translatesAutoresizingMaskIntoConstraints="NO" id="UAQ-9w-vbh">
+                                <rect key="frame" x="200" y="20" width="200" height="160"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="Wmj-Ng-cpu"/>
+                                    <constraint firstAttribute="width" constant="200" id="XDe-Jr-2wD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -245,7 +245,7 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="studr" translatesAutoresizingMaskIntoConstraints="NO" id="SQe-TM-hLu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brand" translatesAutoresizingMaskIntoConstraints="NO" id="SQe-TM-hLu">
                                 <rect key="frame" x="200" y="20" width="200" height="170"/>
                                 <animations/>
                                 <constraints>
@@ -354,7 +354,7 @@
                                     <action selector="requestNewPasswordAction:" destination="8QD-9B-BU1" eventType="touchUpInside" id="mZ0-Rp-r0e"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="studr" translatesAutoresizingMaskIntoConstraints="NO" id="0L0-y2-hKK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brand" translatesAutoresizingMaskIntoConstraints="NO" id="0L0-y2-hKK">
                                 <rect key="frame" x="200" y="28" width="200" height="160"/>
                                 <animations/>
                                 <constraints>
@@ -462,6 +462,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="studr" width="1380" height="490"/>
+        <image name="brand" width="731" height="221"/>
     </resources>
 </document>
