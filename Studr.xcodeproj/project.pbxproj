@@ -16,6 +16,7 @@
 		03434F0B1BE5653D001E34D5 /* StudrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03434F0A1BE5653D001E34D5 /* StudrUITests.swift */; };
 		03B21EE41BE585F70052B0AD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE31BE585F70052B0AD /* LogInViewController.swift */; };
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
+		03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03DB962C1BE8215A00B64E0C /* FontAwesome.otf */; };
 		03EBCB331BE6B64500993FA4 /* PasswordResetViewControlelr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */; };
 		03EBCB351BE6EE0A00993FA4 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */; };
 		7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */; };
@@ -56,6 +57,7 @@
 		03434F0C1BE5653D001E34D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03B21EE31BE585F70052B0AD /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		03DB962C1BE8215A00B64E0C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewControlelr.swift; sourceTree = "<group>"; };
 		03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		5BEFD51F893236256B903473 /* Pods-Studr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,12 +96,12 @@
 		03434EDE1BE5653D001E34D5 = {
 			isa = PBXGroup;
 			children = (
+				C7831B265682928FB6D34252 /* Frameworks */,
+				F7F88BD524691B47B83004AA /* Pods */,
+				03434EE81BE5653D001E34D5 /* Products */,
 				03434EE91BE5653D001E34D5 /* Studr */,
 				03434EFE1BE5653D001E34D5 /* StudrTests */,
 				03434F091BE5653D001E34D5 /* StudrUITests */,
-				03434EE81BE5653D001E34D5 /* Products */,
-				F7F88BD524691B47B83004AA /* Pods */,
-				C7831B265682928FB6D34252 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,14 +118,15 @@
 		03434EE91BE5653D001E34D5 /* Studr */ = {
 			isa = PBXGroup;
 			children = (
-				03B21EE21BE579BA0052B0AD /* User Interface */,
 				03B21EE11BE579A70052B0AD /* Database */,
+				03DB962B1BE8213100B64E0C /* Fonts */,
+				03B21EE21BE579BA0052B0AD /* User Interface */,
 				03434EEA1BE5653D001E34D5 /* AppDelegate.swift */,
-				03434EEC1BE5653D001E34D5 /* ViewController.swift */,
-				03434EEE1BE5653D001E34D5 /* Main.storyboard */,
 				03434EF11BE5653D001E34D5 /* Assets.xcassets */,
-				03434EF31BE5653D001E34D5 /* LaunchScreen.storyboard */,
 				03434EF61BE5653D001E34D5 /* Info.plist */,
+				03434EF31BE5653D001E34D5 /* LaunchScreen.storyboard */,
+				03434EEE1BE5653D001E34D5 /* Main.storyboard */,
+				03434EEC1BE5653D001E34D5 /* ViewController.swift */,
 			);
 			path = Studr;
 			sourceTree = "<group>";
@@ -131,8 +134,8 @@
 		03434EFE1BE5653D001E34D5 /* StudrTests */ = {
 			isa = PBXGroup;
 			children = (
-				03434EFF1BE5653D001E34D5 /* StudrTests.swift */,
 				03434F011BE5653D001E34D5 /* Info.plist */,
+				03434EFF1BE5653D001E34D5 /* StudrTests.swift */,
 			);
 			path = StudrTests;
 			sourceTree = "<group>";
@@ -140,8 +143,8 @@
 		03434F091BE5653D001E34D5 /* StudrUITests */ = {
 			isa = PBXGroup;
 			children = (
-				03434F0A1BE5653D001E34D5 /* StudrUITests.swift */,
 				03434F0C1BE5653D001E34D5 /* Info.plist */,
+				03434F0A1BE5653D001E34D5 /* StudrUITests.swift */,
 			);
 			path = StudrUITests;
 			sourceTree = "<group>";
@@ -151,19 +154,27 @@
 			children = (
 				CCDB5C691BE7D0C200ABA1E7 /* Database.swift */,
 			);
-			name = Database;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		03B21EE21BE579BA0052B0AD /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
 				03B21EE31BE585F70052B0AD /* LogInViewController.swift */,
-				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
 				03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */,
-				03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */,
 				7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */,
+				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
+				03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */,
 			);
-			name = "User Interface";
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		03DB962B1BE8213100B64E0C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				03DB962C1BE8215A00B64E0C /* FontAwesome.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		C7831B265682928FB6D34252 /* Frameworks */ = {
@@ -290,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */,
 				03434EF51BE5653D001E34D5 /* LaunchScreen.storyboard in Resources */,
 				03434EF21BE5653D001E34D5 /* Assets.xcassets in Resources */,
 				03434EF01BE5653D001E34D5 /* Main.storyboard in Resources */,
@@ -414,6 +426,7 @@
 				03434EEF1BE5653D001E34D5 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		03434EF31BE5653D001E34D5 /* LaunchScreen.storyboard */ = {
@@ -422,6 +435,7 @@
 				03434EF41BE5653D001E34D5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
