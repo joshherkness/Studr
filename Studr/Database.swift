@@ -44,7 +44,19 @@ class Database{
         
         
     }
-//    static func findEventsWithName(eventName: String) -> [PFObject] {
+    static func getUsersEvents(blockSuccess: (events: [PFObject])->Void, blockFail: (error: NSError) ->Void) -> Void{
+        let eventsQuery = PFQuery(className: "Group")
+        eventsQuery.whereKey("owner", equalTo: PFObject(withoutDataWithClassName: "User", objectId: PFUser.currentUser()?.objectId))
+        eventsQuery.findObjectsInBackgroundWithBlock { (events, error) -> Void in
+            if(error == nil){
+                blockSuccess(events: events!)
+            }else{
+                blockFail(error: error!)
+            }
+        }
+
+    }
+//    static func getUsersEvents(user: PFUser) -> [PFObject] {
 //        
 //    }
 //    static func findEventsWithTag(eventTag: String) -> [PFObject] {
