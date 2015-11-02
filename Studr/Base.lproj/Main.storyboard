@@ -409,46 +409,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9c0-eH-6e6">
-                                <rect key="frame" x="20" y="250" width="560" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9c0-eH-6e6" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                <rect key="frame" x="20" y="72" width="560" height="40"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.83060233467482525" green="0.21461939767062943" blue="0.35131099174475527" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.89411997799999998" green="0.29804000260000002" blue="0.37255001069999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="sI5-tA-G07"/>
+                                    <constraint firstAttribute="height" constant="40" id="hGd-QS-coD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Log Out">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logOutAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fvK-9v-ucH"/>
                                     <action selector="signUpAction:" destination="fPZ-K3-B28" eventType="touchUpInside" id="CLU-is-wcV"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brand" translatesAutoresizingMaskIntoConstraints="NO" id="q5n-GV-nd9">
-                                <rect key="frame" x="200" y="72" width="200" height="170"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="97" id="A5C-jG-tEc"/>
-                                    <constraint firstAttribute="width" constant="200" id="GpP-02-9fM"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="A5C-jG-tEc"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9c0-eH-6e6" secondAttribute="bottom" constant="310" id="Gcb-4U-YUJ"/>
-                            <constraint firstItem="9c0-eH-6e6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hQZ-99-KdC"/>
-                            <constraint firstItem="q5n-GV-nd9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="o3j-Ym-QJY"/>
-                            <constraint firstItem="9c0-eH-6e6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ufO-RO-mEr"/>
-                            <constraint firstItem="9c0-eH-6e6" firstAttribute="top" secondItem="q5n-GV-nd9" secondAttribute="bottom" constant="8" symbolic="YES" id="zHU-p0-Oaw"/>
-                            <constraint firstItem="9c0-eH-6e6" firstAttribute="centerX" secondItem="q5n-GV-nd9" secondAttribute="centerX" id="zMB-3x-6xj"/>
+                            <constraint firstItem="9c0-eH-6e6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="5sC-JT-Iyp"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="9c0-eH-6e6" secondAttribute="leading" id="Xrr-QC-8GZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9c0-eH-6e6" secondAttribute="trailing" id="bLy-uX-5vc"/>
+                            <constraint firstItem="9c0-eH-6e6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="xa2-Ib-iDM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5sC-JT-Iyp"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9vu-vA-g5c"/>
                 </viewController>
