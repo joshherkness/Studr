@@ -10,7 +10,14 @@ import Foundation
 import Parse
 
 class Database: DataBaseHelper {
-    static func createEvent(eventName: String, eventDate: NSDate) -> Bool {
+    let GROUPS = "Group"
+    let USERS_POINTER = "_User"
+    static func createEvent(eventName: String, eventDate: NSDate, eventDuration: Int) -> Bool {
+        var event = PFObject(className: GROUP)
+        
+        event["title"] = eventName
+        event["date"] = eventDate
+        event["duration"] = eventDuration
         
     }
     static func destroyEvent(eventName: String) -> Bool {
