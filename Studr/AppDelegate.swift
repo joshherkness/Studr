@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import MMDrawerController
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
+        // Parse Application ID
         Parse.setApplicationId("SiUI7l8keFbkruaPeGJGFysV1QRvFh8doFEIDn46", clientKey: "uIRt8lWTeyYLRUXUoWdZHoIQEN289OripAM6ucRh")
+        
+        // Google Maps API Key
+        GMSServices.provideAPIKey("AIzaSyBNOeTdFtSuG1DjZ6j5WUv-a2KOD-elG_g")
         
         //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
         
