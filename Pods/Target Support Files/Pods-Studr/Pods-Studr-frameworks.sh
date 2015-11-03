@@ -85,12 +85,14 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Studr/Bolts.framework"
+  install_framework "Pods-Studr/MMDrawerController.framework"
   install_framework "Pods-Studr/NVActivityIndicatorView.framework"
   install_framework "Pods-Studr/Parse.framework"
   install_framework "Pods-Studr/ParseUI.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Studr/Bolts.framework"
+  install_framework "Pods-Studr/MMDrawerController.framework"
   install_framework "Pods-Studr/NVActivityIndicatorView.framework"
   install_framework "Pods-Studr/Parse.framework"
   install_framework "Pods-Studr/ParseUI.framework"

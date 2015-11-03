@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MMDrawerController
 import GoogleMaps
 
 @UIApplicationMain
@@ -26,10 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
         
         if (PFUser.currentUser() != nil){
+            
             self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
-        }
-        else
-        {
+            
+        } else {
+            
             self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("LogInViewController")
         }
         

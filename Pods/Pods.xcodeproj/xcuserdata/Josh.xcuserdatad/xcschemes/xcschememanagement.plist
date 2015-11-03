@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MMDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03EB9EF98BA00B166BA9326026FA2789</key>
+		<key>457317FE09557A8517A05A42F95A3949</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -43,6 +48,11 @@
 			<true/>
 		</dict>
 		<key>708E01B006A9F88B3C13711562282B5E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>96D3562E47E4792B0A6093A0323EB398</key>
 		<dict>
 			<key>primary</key>
 			<true/>

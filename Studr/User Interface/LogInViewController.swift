@@ -66,11 +66,10 @@ class LogInViewController : UIViewController{
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     
                     let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                    let viewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController")
-                    let navigationController: UINavigationController = UINavigationController(rootViewController: viewController)
+                    let drawerViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DrawerViewController")
                     
-                    self.presentViewController(navigationController, animated: true, completion: {
-                        appDelegate.window?.rootViewController = navigationController
+                    self.presentViewController(drawerViewController, animated: true, completion: {
+                        appDelegate.window?.rootViewController = drawerViewController
                     })
                     
                 } else {
