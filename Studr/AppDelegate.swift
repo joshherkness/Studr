@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("SiUI7l8keFbkruaPeGJGFysV1QRvFh8doFEIDn46", clientKey: "uIRt8lWTeyYLRUXUoWdZHoIQEN289OripAM6ucRh")
         
         // Google Maps API Key
-        GMSServices.provideAPIKey("AIzaSyC8Y3pCd9zstIsmIphf22Si6Oqc8oLKAp0")
+        GMSServices.provideAPIKey("AIzaSyBNOeTdFtSuG1DjZ6j5WUv-a2KOD-elG_g")
         
         //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
         
