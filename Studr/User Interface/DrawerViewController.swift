@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import MMDrawerController
+import MSDynamicsDrawerViewController
 
-class DrawerViewController: MMDrawerController {
+class DrawerViewController: MSDynamicsDrawerViewController {
     
     override func viewWillAppear(animated: Bool) {
         
@@ -23,18 +23,17 @@ class DrawerViewController: MMDrawerController {
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         
+        self.addStylersFromArray([MSDynamicsDrawerParallaxStyler.styler(), MSDynamicsDrawerFadeStyler
+            .styler()], forDirection: MSDynamicsDrawerDirection.Left)
+        
         let centerViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
         let centerNavigationController:UINavigationController = UINavigationController(rootViewController: centerViewController)
         let leftViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SideViewController") as! SideViewController
         
-        self.centerViewController = centerNavigationController
-        self.leftDrawerViewController = leftViewController
-        
-        self.openDrawerGestureModeMask = MMOpenDrawerGestureMode.All
-        self.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.All
-        self.setDrawerVisualStateBlock(MMDrawerVisualState.slideVisualStateBlock())
-        self.shouldStretchDrawer = true
-        self.showsShadow = false
+        self.setPaneViewController(centerNavigationController, animated: false, completion: nil)
+        self.setDrawerViewController(leftViewController, forDirection: .Left)
+        self.gravityMagnitude = 4
+    
         
     }
     

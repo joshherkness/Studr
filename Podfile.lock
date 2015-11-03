@@ -1,18 +1,7 @@
 PODS:
   - Bolts/Tasks (1.4.0)
   - GoogleMaps (1.10.5)
-  - MMDrawerController (0.6.0):
-    - MMDrawerController/Core (= 0.6.0)
-    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
-    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
-    - MMDrawerController/Subclass (= 0.6.0)
-  - MMDrawerController/Core (0.6.0)
-  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
-    - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.6.0):
-    - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.6.0):
-    - MMDrawerController/Core
+  - MSDynamicsDrawerViewController (1.5.1)
   - NVActivityIndicatorView (2.1)
   - Parse (1.9.1):
     - Bolts/Tasks (>= 1.4.0)
@@ -22,7 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - GoogleMaps
-  - MMDrawerController
+  - MSDynamicsDrawerViewController
   - NVActivityIndicatorView
   - Parse
   - ParseUI
@@ -30,7 +19,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
-  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  MSDynamicsDrawerViewController: 2874df90f5e9453dc7d4e32f8038b50615d4baa7
   NVActivityIndicatorView: 84aa48f7ec1efbfd0645e9f469097d94c6f65417
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
   ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3

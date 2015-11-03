@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SideViewController: UIViewController {
+class SideViewController: UITableViewController{
     
     override func viewDidLoad() {
         

@@ -16,7 +16,7 @@ pod 'Parse' # Dependencies include 'Bolts'
 pod 'ParseUI' # Parse User Interface Elements
 pod 'NVActivityIndicatorView' # Better activity indicator
 pod 'GoogleMaps' # Google Maps
-pod 'MMDrawerController' # Side menu framework
+pod 'MSDynamicsDrawerViewController', :inhibit_warnings => true
 end
 
 target 'StudrTests' do
