@@ -15,7 +15,7 @@ class LogInViewController : UIViewController{
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallScaleMultiple, color: UIColorFromHex(0x63d297))
+    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColorFromHex(0x63d297))
     
     override func viewDidLoad() {
         
@@ -28,6 +28,10 @@ class LogInViewController : UIViewController{
         // Add activity indicator
         view.addSubview(self.activityIndicator)
         
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // Mark: Actions
@@ -58,11 +62,16 @@ class LogInViewController : UIViewController{
                 
                 if ((user) != nil) {
                     
-                    // Launch user into main application
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                    let mainViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController")
+                    // Launch user into main view controller as a navigation view controller
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     
-                    self.presentViewController(mainViewController, animated: true, completion: nil)
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let viewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController")
+                    let navigationController: UINavigationController = UINavigationController(rootViewController: viewController)
+                    
+                    self.presentViewController(navigationController, animated: true, completion: {
+                        appDelegate.window?.rootViewController = navigationController
+                    })
                     
                 } else {
                     

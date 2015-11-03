@@ -13,7 +13,7 @@ import NVActivityIndicatorView
 
 class UserInfoViewController : UIViewController {
     
-    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallScaleMultiple, color: UIColorFromHex(0x63d297))
+    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColorFromHex(0x63d297))
     
     override func viewDidLoad() {
         
@@ -26,6 +26,10 @@ class UserInfoViewController : UIViewController {
         // Add activity indicator
         view.addSubview(self.activityIndicator)
         
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
