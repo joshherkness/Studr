@@ -75,7 +75,13 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         self.presentViewController(logInViewController, animated: true, completion: {
             appDelegate.window?.rootViewController = logInViewController
         })
-    }
+    }   
 
+    @IBAction func sideMenuToggleAction(sender: AnyObject) {
+        
+        let drawerViewController: DrawerViewController = self.view.window!.rootViewController as! DrawerViewController
+        drawerViewController.setPaneState(.Open, animated: true, allowUserInterruption: true, completion: nil)
+        
+    }
 }
 

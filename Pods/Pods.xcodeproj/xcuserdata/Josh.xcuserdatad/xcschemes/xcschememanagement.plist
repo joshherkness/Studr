@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>MMDrawerController.xcscheme</key>
+		<key>MSDynamicsDrawerViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,7 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>457317FE09557A8517A05A42F95A3949</key>
+		<key>4582F057A4F9BE49A5D06F1B59FB7A5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,12 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96D3562E47E4792B0A6093A0323EB398</key>
+		<key>B8A759F57254B6094CF99273E5ECEE8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8A759F57254B6094CF99273E5ECEE8B</key>
+		<key>E029B2ABE913DA4D38C8F3F4A320530D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
