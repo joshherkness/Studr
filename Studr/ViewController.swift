@@ -66,10 +66,15 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     @IBAction func logOutAction(sender: AnyObject) {
         PFUser.logOut()
         
+        // Return user to login view
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
         let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LogInViewController")
         
-        self.presentViewController(logInViewController, animated: true, completion: nil)
+        self.presentViewController(logInViewController, animated: true, completion: {
+            appDelegate.window?.rootViewController = logInViewController
+        })
     }
 
 }
