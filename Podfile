@@ -15,6 +15,7 @@ target 'Studr' do
 pod 'Parse' # Dependencies include 'Bolts'
 pod 'ParseUI' # Parse User Interface Elements
 pod 'NVActivityIndicatorView' # Better activity indicator
+pod 'GoogleMaps' # Google Maps
 end
 
 target 'StudrTests' do
