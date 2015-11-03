@@ -74,6 +74,7 @@ class Database{
     static func getlocalEvents(location: PFGeoPoint, radius: Double,blockSuccess: (events: [PFObject])->Void, blockFail: (error: NSError) ->Void) -> Void {
         let eventsQuery = PFQuery(className: "Group")
         eventsQuery.whereKey("location", nearGeoPoint: location, withinMiles: radius)
+        eventsQuery.whereKey("public", equalTo: true)
         eventsQuery.findObjectsInBackgroundWithBlock { (events, error) -> Void in
             if(error == nil){
                 blockSuccess(events: events!)
@@ -82,26 +83,51 @@ class Database{
             }
         }
     }
-//    static func getlocalPrivateEvents() -> Void {
-//        
-//    }
-//    static func getlocalPublicEvents() -> Void {
-//        
-//    }
-//    static func getpendingEvents() -> Void {
-//        
-//    }
-//    static func getuserEvents() -> Void {
-//        
-//    }
-//    static func joinEvent(eventName: String) -> Void {
-//        
-//    }
-//    static func joinEventWithID(eventID: String) -> Void {
-//        
-//    }
-//    static func leaveEvent(eventName: String) -> Void {
-//        
-//    }
+    static func getUserPendingEvents(blockSuccess: (events: [PFObject]?)->Void, blockFail: (error: NSError?) ->Void) -> Void {
+        let relation = PFUser.currentUser()?.relationForKey("pendingGroup")
+        let pendingEventsQuery = relation?.query()
+        pendingEventsQuery?.findObjectsInBackgroundWithBlock({ (pendingEvents, error) -> Void in
+            if(error == nil){
+                blockSuccess(events: pendingEvents)
+            }else{
+                blockFail(error: error)
+            }
+        })
+        
+    }
+    static func getUserEvents(blockSuccess: (events: [PFObject]?)->Void, blockFail: (error: NSError?) ->Void) -> Void {
+        let relation = PFUser.currentUser()?.relationForKey("acceptedGroup")
+        let acceptedEventsQuery = relation?.query()
+        acceptedEventsQuery?.findObjectsInBackgroundWithBlock({ (acceptedEvents, error) -> Void in
+            if(error == nil){
+                blockSuccess(events: acceptedEvents)
+            }else{
+                blockFail(error: error)
+            }
+        })
+        
+    }
+    static func joinEvent(event: PFObject!,blockSuccess: ()->Void, blockFail: (error: NSError?) -> Void){
+        let memberRelation = event.relationForKey("members")
+        memberRelation.addObject(PFUser.currentUser()!)
+        event.saveInBackgroundWithBlock { (success, error) -> Void in
+            if(success){
+                blockSuccess()
+            }else{
+                blockFail(error: error!)
+            }
+        }
+    }
+    static func leaveEvent(event: PFObject!,blockSuccess: ()->Void, blockFail: (error: NSError?) -> Void) -> Void {
+        let memberRelation = event.relationForKey("members")
+        memberRelation.removeObject(PFUser.currentUser()!)
+        event.saveInBackgroundWithBlock { (success, error) -> Void in
+            if(success){
+                blockSuccess()
+            }else{
+                blockFail(error: error!)
+            }
+        }
+    }
     
 }
