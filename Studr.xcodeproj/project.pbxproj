@@ -120,7 +120,6 @@
 			children = (
 				03B21EE11BE579A70052B0AD /* Database */,
 				03DB962B1BE8213100B64E0C /* Fonts */,
-				03B21EE21BE579BA0052B0AD /* User Interface */,
 				03434EEA1BE5653D001E34D5 /* AppDelegate.swift */,
 				03434EF11BE5653D001E34D5 /* Assets.xcassets */,
 				03434EF61BE5653D001E34D5 /* Info.plist */,
@@ -152,6 +151,7 @@
 		03B21EE11BE579A70052B0AD /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				03B21EE21BE579BA0052B0AD /* User Interface */,
 				CCDB5C691BE7D0C200ABA1E7 /* Database.swift */,
 			);
 			path = Database;
@@ -166,7 +166,8 @@
 				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
 				03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */,
 			);
-			path = "User Interface";
+			name = "User Interface";
+			path = "../User Interface";
 			sourceTree = "<group>";
 		};
 		03DB962B1BE8213100B64E0C /* Fonts */ = {
