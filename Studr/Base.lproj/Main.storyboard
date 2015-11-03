@@ -452,7 +452,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ueq-VU-t8Y">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="HCW-Pu-GOM">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="HCW-Pu-GOM">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rWh-uV-GLS">
                                 <rect key="frame" x="20" y="8" width="30" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
