@@ -1,5 +1,8 @@
 PODS:
   - Bolts/Tasks (1.4.0)
+  - ChameleonFramework/Default (2.0.4)
+  - ChameleonFramework/Swift (2.0.4):
+    - ChameleonFramework/Default
   - GoogleMaps (1.10.5)
   - MSDynamicsDrawerViewController (1.5.1)
   - NVActivityIndicatorView (2.1)
@@ -10,6 +13,7 @@ PODS:
     - Parse (~> 1.8)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift
   - GoogleMaps
   - MSDynamicsDrawerViewController
   - NVActivityIndicatorView
@@ -18,6 +22,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
+  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   MSDynamicsDrawerViewController: 2874df90f5e9453dc7d4e32f8038b50615d4baa7
   NVActivityIndicatorView: 84aa48f7ec1efbfd0645e9f469097d94c6f65417

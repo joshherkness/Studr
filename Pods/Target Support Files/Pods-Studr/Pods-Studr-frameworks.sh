@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Studr/Bolts.framework"
+  install_framework "Pods-Studr/ChameleonFramework.framework"
   install_framework "Pods-Studr/MSDynamicsDrawerViewController.framework"
   install_framework "Pods-Studr/NVActivityIndicatorView.framework"
   install_framework "Pods-Studr/Parse.framework"
@@ -92,6 +93,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Studr/Bolts.framework"
+  install_framework "Pods-Studr/ChameleonFramework.framework"
   install_framework "Pods-Studr/MSDynamicsDrawerViewController.framework"
   install_framework "Pods-Studr/NVActivityIndicatorView.framework"
   install_framework "Pods-Studr/Parse.framework"
