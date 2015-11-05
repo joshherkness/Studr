@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ChameleonFramework
 
 class SideTableViewController: UITableViewController{
     
@@ -17,14 +18,14 @@ class SideTableViewController: UITableViewController{
         super.viewDidLoad()
         
         // Create menu items
-        addMenuItem("New Event", color: UIColorFromHex(0x63D297), selector: nil, section: 0)
-        addMenuItem("View Events", color: UIColorFromHex(0x63D297), selector: nil, section: 0)
-        addMenuItem("QR", color: UIColorFromHex(0xf39c12), selector: nil, section: 0)
-        addMenuItem("Profile", color: UIColorFromHex(0x3498db), selector: nil, section: 1)
-        addMenuItem("Friends", color: UIColorFromHex(0x8e44ad), selector: nil, section: 1)
-        addMenuItem("Settings", color: UIColorFromHex(0x3498db), selector: nil, section: 1)
-        addMenuItem("About", color: UIColorFromHex(0x3498db), selector: nil, section: 1)
-        addMenuItem("Logout", color: UIColorFromHex(0xE44C5F), selector: "logOut", section: 2)
+        addMenuItem("Create Group", color: FlatMint(), selector: nil, section: 0)
+        addMenuItem("Groups", color: FlatMint(), selector: nil, section: 0)
+        addMenuItem("Scan QR", color: FlatYellow(), selector: nil, section: 0)
+        addMenuItem("Friends", color: FlatMagenta(), selector: nil, section: 1)
+        addMenuItem("Profile", color: FlatSkyBlue(), selector: nil, section: 1)
+        addMenuItem("Settings", color: FlatSkyBlue(), selector: nil, section: 1)
+        addMenuItem("About", color: FlatSkyBlue(), selector: nil, section: 1)
+        addMenuItem("Logout", color: FlatRed(), selector: "logOut", section: 2)
         
         // Hide all empty table view cells
         tableView.tableFooterView = UIView()
@@ -60,7 +61,7 @@ class SideTableViewController: UITableViewController{
             return 0
         }
         
-        return 64
+        return 30
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -139,12 +140,10 @@ class SideTableViewController: UITableViewController{
     }
     
     func addMenuItem(title: String, color: UIColor, selector: Selector, section: Int){
-        print(data.count)
         while(section >= data.count ){
             data.append([])
         }
         data[section].append(MenuItem(title: title, color: color, selector: selector))
-        print(data.count)
     }
 }
 
