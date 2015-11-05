@@ -17,9 +17,10 @@ class SideTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Get the drawer view controller
         // Create menu items
-        addMenuItem("Create Group", color: FlatMint(), selector: nil, section: 0)
-        addMenuItem("Groups", color: FlatMint(), selector: nil, section: 0)
+        addMenuItem("Create Group",color: UIColor(hexString: "#56D289"), selector: "showNewEventViewController", section: 0)
+        addMenuItem("Groups", color: UIColor(hexString: "#56D289"), selector: nil, section: 0)
         addMenuItem("Scan QR", color: FlatYellow(), selector: nil, section: 0)
         addMenuItem("Friends", color: FlatMagenta(), selector: nil, section: 1)
         addMenuItem("Profile", color: FlatSkyBlue(), selector: nil, section: 1)
@@ -137,6 +138,23 @@ class SideTableViewController: UITableViewController{
         self.presentViewController(logInViewController, animated: true, completion: {
             appDelegate.window?.rootViewController = logInViewController
         })
+    }
+    
+    func showNewEventViewController(){
+        
+        // Get the new event view controller
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let newEventViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NewEventViewController")
+        let newEventNavigationController:UINavigationController = UINavigationController(rootViewController: newEventViewController)
+        
+        // Set the color of the navigation bar
+        newEventNavigationController.navigationBar.barTintColor = UIColor(hexString: "#56D289")
+        newEventNavigationController.setStatusBarStyle(.LightContent)
+        
+        // Set the center panel to the new event view controller
+        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
+        drawerViewController.setPaneViewController(newEventNavigationController, animated: false, completion: nil)
+        
     }
     
     func addMenuItem(title: String, color: UIColor, selector: Selector, section: Int){

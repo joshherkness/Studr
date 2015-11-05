@@ -9,6 +9,7 @@
     <customFonts key="customFonts">
         <mutableArray key="FontAwesome.otf">
             <string>FontAwesome</string>
+            <string>FontAwesome</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -413,8 +414,21 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z98-5X-4sd">
+                                <rect key="frame" x="232" y="288" width="136.5" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Z98-5X-4sd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M4u-Bl-Jw1"/>
+                            <constraint firstItem="Z98-5X-4sd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N8m-Ja-qO1"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ueq-VU-t8Y">
@@ -424,9 +438,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
-                                <state key="normal" title="">
-                                    <color key="titleColor" red="0.38823529411764707" green="0.82352941176470584" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title=""/>
                                 <connections>
                                     <action selector="sideMenuToggleAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4AT-i8-k39"/>
                                 </connections>
@@ -441,6 +453,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1166" y="1528"/>
+        </scene>
+        <!--New Event View Controller-->
+        <scene sceneID="SJZ-ja-wbB">
+            <objects>
+                <viewController storyboardIdentifier="NewEventViewController" id="3es-Ea-ZjB" customClass="NewEventViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vd2-jm-xyw"/>
+                        <viewControllerLayoutGuide type="bottom" id="M6C-68-n0N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WCH-Wf-0bv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Event View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoB-O8-o01">
+                                <rect key="frame" x="181.5" y="288" width="237.5" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uoB-O8-o01" firstAttribute="centerX" secondItem="WCH-Wf-0bv" secondAttribute="centerX" id="c9N-nV-jQa"/>
+                            <constraint firstItem="uoB-O8-o01" firstAttribute="centerY" secondItem="WCH-Wf-0bv" secondAttribute="centerY" id="nTz-lI-UmE"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="qNS-Xu-Xfn">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="ZPp-Hg-t9x">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="94V-os-rfh">
+                                <rect key="frame" x="20" y="8" width="30" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
+                                <state key="normal" title="">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sideMenuToggleAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WId-7t-Jp8"/>
+                                    <action selector="sideMenuToggleAction:" destination="3es-Ea-ZjB" eventType="touchUpInside" id="iWU-Jt-XZq"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="sideMenuToggleAction:" destination="BYZ-38-t0r" id="k61-9X-tiq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2sk-Yl-IS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="2284"/>
         </scene>
         <!--Drawer View Controller-->
         <scene sceneID="Mpf-qn-kGg">
@@ -481,7 +547,7 @@
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s6p-cW-Zlx" userLabel="cellTagView">
                                             <rect key="frame" x="0.0" y="0.0" width="6" height="64"/>
                                             <animations/>
-                                            <color key="backgroundColor" red="0.38823529410000002" green="0.82352941180000006" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZo-Ur-x0D">
                                             <rect key="frame" x="35" y="17" width="115" height="29"/>
@@ -496,7 +562,7 @@
                                     <color key="backgroundColor" red="0.27999627810525907" green="0.27098330291448197" blue="0.28509615384615383" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.38823529410000002" green="0.82352941180000006" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="cellTagView" destination="s6p-cW-Zlx" id="4f6-FR-a7J"/>
@@ -518,7 +584,7 @@
         <!--Navigation Controller-->
         <scene sceneID="35f-K9-Hgh">
             <objects>
-                <navigationController storyboardIdentifier="EntryViewController" automaticallyAdjustsScrollViewInsets="NO" id="kJj-Fy-BmD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NewEventNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="kJj-Fy-BmD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fba-Rw-miM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -533,6 +599,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQr-9z-RNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="354" y="1528"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Og-xI-nYS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fBP-GF-Dfq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcY-c7-bxg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3es-Ea-ZjB" kind="relationship" relationship="rootViewController" id="0gS-md-KAA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f2K-8E-csf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="2284"/>
         </scene>
     </scenes>
     <resources>
