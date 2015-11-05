@@ -17,10 +17,11 @@
 		03B21EE41BE585F70052B0AD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE31BE585F70052B0AD /* LogInViewController.swift */; };
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
 		03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03DB962C1BE8215A00B64E0C /* FontAwesome.otf */; };
-		03DB962F1BE8493B00B64E0C /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB962E1BE8493B00B64E0C /* SideViewController.swift */; };
+		03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */; };
 		03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */; };
 		03EBCB331BE6B64500993FA4 /* PasswordResetViewControlelr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */; };
 		03EBCB351BE6EE0A00993FA4 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */; };
+		03FCE97D1BEAC08D000C08BF /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */; };
 		7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */; };
 		CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C691BE7D0C200ABA1E7 /* Database.swift */; };
 		DFA3AC6A2D6AB1EE1EDD9A1D /* Pods_Studr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */; };
@@ -60,10 +61,11 @@
 		03B21EE31BE585F70052B0AD /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		03DB962C1BE8215A00B64E0C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
-		03DB962E1BE8493B00B64E0C /* SideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
+		03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewController.swift; sourceTree = "<group>"; };
 		03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewControlelr.swift; sourceTree = "<group>"; };
 		03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewCell.swift; sourceTree = "<group>"; };
 		5BEFD51F893236256B903473 /* Pods-Studr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig"; sourceTree = "<group>"; };
 		7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -169,8 +171,9 @@
 				7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */,
 				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
 				03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */,
-				03DB962E1BE8493B00B64E0C /* SideViewController.swift */,
 				03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */,
+				03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */,
+				03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -389,9 +392,10 @@
 				7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */,
 				03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */,
 				03434EEB1BE5653D001E34D5 /* AppDelegate.swift in Sources */,
+				03FCE97D1BEAC08D000C08BF /* SideTableViewCell.swift in Sources */,
 				CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */,
 				03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */,
-				03DB962F1BE8493B00B64E0C /* SideViewController.swift in Sources */,
+				03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */,
 				03EBCB331BE6B64500993FA4 /* PasswordResetViewControlelr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

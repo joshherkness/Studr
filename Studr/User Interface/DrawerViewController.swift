@@ -11,29 +11,25 @@ import MSDynamicsDrawerViewController
 
 class DrawerViewController: MSDynamicsDrawerViewController {
     
-    override func viewWillAppear(animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         
-        self.addStylersFromArray([MSDynamicsDrawerParallaxStyler.styler(), MSDynamicsDrawerFadeStyler
-            .styler()], forDirection: MSDynamicsDrawerDirection.Left)
+        addStylersFromArray([MSDynamicsDrawerParallaxStyler.styler()], forDirection: MSDynamicsDrawerDirection.Left)
         
         let centerViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
         let centerNavigationController:UINavigationController = UINavigationController(rootViewController: centerViewController)
-        let leftViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SideViewController") as! SideViewController
+        let leftViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SideTableViewController") as! SideTableViewController
         
-        self.setPaneViewController(centerNavigationController, animated: false, completion: nil)
-        self.setDrawerViewController(leftViewController, forDirection: .Left)
-        self.gravityMagnitude = 4
-    
+        setPaneViewController(centerNavigationController, animated: false, completion: nil)
+        setDrawerViewController(leftViewController, forDirection: .Left)
+        gravityMagnitude = 6.0
+        elasticity = 0.0
+        bounceElasticity = 0.0
+        bounceMagnitude = 0.0
+        
         
     }
     
