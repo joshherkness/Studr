@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9FF9AB373FCA8AE60FD353B6'
-               BlueprintName = 'ParseUI'
+               BlueprintIdentifier = 'E23D8072F2689BD6FE063BE6'
+               BlueprintName = 'MSDynamicsDrawerViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ParseUI.framework'>
+               BuildableName = 'MSDynamicsDrawerViewController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

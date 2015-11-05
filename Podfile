@@ -17,6 +17,7 @@ pod 'ParseUI' # Parse User Interface Elements
 pod 'NVActivityIndicatorView' # Better activity indicator
 pod 'GoogleMaps' # Google Maps
 pod 'MSDynamicsDrawerViewController', :inhibit_warnings => true
+pod 'ChameleonFramework/Swift'
 end
 
 target 'StudrTests' do
