@@ -10,8 +10,10 @@ import UIKit
 import Parse
 import NVActivityIndicatorView
 
-class SignUpViewController : UIViewController {
+class SignUpViewController : UIViewController, UITextFieldDelegate{
     
+    @IBOutlet weak var firstNameField: TextField!
+    @IBOutlet weak var lastNameField: TextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -28,6 +30,12 @@ class SignUpViewController : UIViewController {
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
+        
+        firstNameField.delegate = self
+        lastNameField.delegate = self
+        emailField.delegate = self
+        usernameField.delegate = self
+        passwordField.delegate = self
         
     }
     
@@ -105,6 +113,21 @@ class SignUpViewController : UIViewController {
     
     @IBAction func backAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        let field = textField as! TextField
+        field.layer.borderColor = field.activeColor.CGColor
+        field.textColor = field.activeColor
+        field.backgroundColor = field.activeColor.colorWithAlphaComponent(0.05)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColor.CGColor
+        field.textColor = field.borderColor
+        field.backgroundColor = UIColor.whiteColor()
     }
     
 }

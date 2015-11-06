@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import NVActivityIndicatorView
 
-class LogInViewController : UIViewController{
+class LogInViewController : UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -27,6 +27,9 @@ class LogInViewController : UIViewController{
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
+        
+        usernameField.delegate = self
+        passwordField.delegate = self
         
     }
     
@@ -91,6 +94,21 @@ class LogInViewController : UIViewController{
     
     @IBAction func resetPasswordAction(sender: AnyObject) {
         self.performSegueWithIdentifier("PasswordReset", sender: self)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        let field = textField as! TextField
+        field.layer.borderColor = field.activeColor.CGColor
+        field.textColor = field.activeColor
+        field.backgroundColor = field.activeColor.colorWithAlphaComponent(0.05)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColor.CGColor
+        field.textColor = field.borderColor
+        field.backgroundColor = UIColor.whiteColor()
     }
     
 }
