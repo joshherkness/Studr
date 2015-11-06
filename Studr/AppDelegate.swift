@@ -17,10 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //Default application appearance
-        UINavigationBar.appearance().translucent = false
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
         // Parse Application ID
         Parse.setApplicationId("SiUI7l8keFbkruaPeGJGFysV1QRvFh8doFEIDn46", clientKey: "uIRt8lWTeyYLRUXUoWdZHoIQEN289OripAM6ucRh")
         

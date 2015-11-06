@@ -19,7 +19,7 @@ class SideTableViewController: UITableViewController{
         
         // Get the drawer view controller
         // Create menu items
-        addMenuItem("Create Group",color: UIColor(hexString: "#56D289"), selector: "showNewEventViewController", section: 0)
+        addMenuItem("Create Group",color: UIColor(hexString: "#56D289"), selector: "showCreateGroupViewController", section: 0)
         addMenuItem("Groups", color: UIColor(hexString: "#56D289"), selector: nil, section: 0)
         addMenuItem("Scan QR", color: FlatYellow(), selector: nil, section: 0)
         addMenuItem("Friends", color: FlatMagenta(), selector: nil, section: 1)
@@ -45,10 +45,6 @@ class SideTableViewController: UITableViewController{
         
         // Perform some action
         performSelector(menuItem.selector)
-        
-        // Close the drawer
-        let drawerViewController: DrawerViewController = self.view.window!.rootViewController as! DrawerViewController
-        drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: true, completion: nil)
         
     }
     
@@ -129,6 +125,10 @@ class SideTableViewController: UITableViewController{
         
         PFUser.logOut()
         
+        // Close the drawer
+        let drawerViewController: DrawerViewController = self.view.window!.rootViewController as! DrawerViewController
+        drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: true, completion: nil)
+        
         // Return user to login view
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -140,20 +140,19 @@ class SideTableViewController: UITableViewController{
         })
     }
     
-    func showNewEventViewController(){
+    func showCreateGroupViewController(){
         
         // Get the new event view controller
         let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let newEventViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("NewEventViewController")
-        let newEventNavigationController:UINavigationController = UINavigationController(rootViewController: newEventViewController)
+        let createGroupViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("CreateGroupViewController")
+        let createGroupNavigationController:UINavigationController = UINavigationController(rootViewController: createGroupViewController)
         
-        // Set the color of the navigation bar
-        newEventNavigationController.navigationBar.barTintColor = UIColor(hexString: "#56D289")
-        newEventNavigationController.setStatusBarStyle(.LightContent)
+        // Set the navigation bars tint color
+        createGroupNavigationController.navigationBar.tintColor = UIColor(hexString: "#56D289")
         
         // Set the center panel to the new event view controller
         let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
-        drawerViewController.setPaneViewController(newEventNavigationController, animated: false, completion: nil)
+        drawerViewController.setPaneViewController(createGroupNavigationController, animated: true, completion: nil)
         
     }
     

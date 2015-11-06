@@ -1,5 +1,5 @@
 //
-//  NewEventViewController.swift
+//  CreateGroupViewController.swift
 //  Studr
 //
 //  Created by Joseph Herkness on 11/5/15.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class NewEventViewController: UIViewController {
+class CreateGroupViewController: UIViewController {
     
     override func viewDidLoad() {
         
