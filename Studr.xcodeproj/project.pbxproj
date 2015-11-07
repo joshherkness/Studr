@@ -21,7 +21,6 @@
 		03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */; };
 		03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */; };
 		03EBCB331BE6B64500993FA4 /* PasswordResetViewControlelr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */; };
-		03EBCB351BE6EE0A00993FA4 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */; };
 		03FCE97D1BEAC08D000C08BF /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */; };
 		7C37BC6E1BEC02C80056BA12 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */; };
 		7C37BC701BEC35970056BA12 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37BC6F1BEC35970056BA12 /* TextField.swift */; };
@@ -68,11 +67,10 @@
 		03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewController.swift; sourceTree = "<group>"; };
 		03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewControlelr.swift; sourceTree = "<group>"; };
-		03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewCell.swift; sourceTree = "<group>"; };
 		5BEFD51F893236256B903473 /* Pods-Studr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig"; sourceTree = "<group>"; };
 		7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateGroupViewController.swift; path = ../../CreateGroupViewController.swift; sourceTree = "<group>"; };
+		7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		7C37BC6F1BEC35970056BA12 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		CCDB5C691BE7D0C200ABA1E7 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -130,9 +128,9 @@
 		03434EE91BE5653D001E34D5 /* Studr */ = {
 			isa = PBXGroup;
 			children = (
-				03B21EE21BE579BA0052B0AD /* User Interface */,
 				03B21EE11BE579A70052B0AD /* Database */,
 				03DB962B1BE8213100B64E0C /* Fonts */,
+				03B21EE21BE579BA0052B0AD /* User Interface */,
 				03434EEA1BE5653D001E34D5 /* AppDelegate.swift */,
 				03434EF11BE5653D001E34D5 /* Assets.xcassets */,
 				03434EF61BE5653D001E34D5 /* Info.plist */,
@@ -161,6 +159,35 @@
 			path = StudrUITests;
 			sourceTree = "<group>";
 		};
+		03927DE21BED9057004C35DD /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				03B21EE31BE585F70052B0AD /* LogInViewController.swift */,
+				03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */,
+				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		03927DE31BED9087004C35DD /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */,
+				03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */,
+			);
+			path = "Side Menu";
+			sourceTree = "<group>";
+		};
+		03927DE41BED90A4004C35DD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03927DE01BEBB321004C35DD /* NotificationLabel.swift */,
+				7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */,
+				7C37BC6F1BEC35970056BA12 /* TextField.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		03B21EE11BE579A70052B0AD /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,17 +199,11 @@
 		03B21EE21BE579BA0052B0AD /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				03927DE21BED9057004C35DD /* Authentication */,
+				03927DE41BED90A4004C35DD /* Helpers */,
+				03927DE31BED9087004C35DD /* Side Menu */,
 				7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */,
-				03B21EE31BE585F70052B0AD /* LogInViewController.swift */,
-				03EBCB321BE6B64500993FA4 /* PasswordResetViewControlelr.swift */,
-				7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */,
-				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
-				03EBCB341BE6EE0A00993FA4 /* UserInfoViewController.swift */,
 				03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */,
-				03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */,
-				03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */,
-				03927DE01BEBB321004C35DD /* NotificationLabel.swift */,
-				7C37BC6F1BEC35970056BA12 /* TextField.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -395,7 +416,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03EBCB351BE6EE0A00993FA4 /* UserInfoViewController.swift in Sources */,
 				03B21EE41BE585F70052B0AD /* LogInViewController.swift in Sources */,
 				03434EED1BE5653D001E34D5 /* ViewController.swift in Sources */,
 				7C37BC701BEC35970056BA12 /* TextField.swift in Sources */,
