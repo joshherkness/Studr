@@ -18,6 +18,7 @@ pod 'NVActivityIndicatorView' # Better activity indicator
 pod 'GoogleMaps' # Google Maps
 pod 'MSDynamicsDrawerViewController', :inhibit_warnings => true
 pod 'ChameleonFramework/Swift'
+pod 'XLForm'
 end
 
 target 'StudrTests' do

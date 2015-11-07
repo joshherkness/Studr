@@ -545,6 +545,7 @@
                                 <action selector="sideMenuToggleAction:" destination="BYZ-38-t0r" id="ezS-ue-q2E"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="r8e-Mk-ELL"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -552,7 +553,7 @@
             </objects>
             <point key="canvasLocation" x="1166" y="1528"/>
         </scene>
-        <!--New Event-->
+        <!--Create Group-->
         <scene sceneID="SJZ-ja-wbB">
             <objects>
                 <viewController storyboardIdentifier="CreateGroupViewController" id="3es-Ea-ZjB" customClass="CreateGroupViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
@@ -563,20 +564,11 @@
                     <view key="view" contentMode="scaleToFill" id="WCH-Wf-0bv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Event View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoB-O8-o01">
-                                <rect key="frame" x="182" y="288" width="237" height="24"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="New Event" id="qNS-Xu-Xfn">
+                    <navigationItem key="navigationItem" title="Create Group" id="qNS-Xu-Xfn">
                         <barButtonItem key="leftBarButtonItem" title="Item" style="done" id="ZPp-Hg-t9x">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="94V-os-rfh">
                                 <rect key="frame" x="20" y="8" width="30" height="27"/>
