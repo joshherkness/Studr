@@ -12,6 +12,7 @@
             <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
+            <string>FontAwesome</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -50,6 +51,27 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorUnFocused">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorUnFocused">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorUnFocused">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorFocused">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorFocused">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorFocused">
+                                                <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="backgroundAlphaUnFocused">
+                                                <real key="value" value="0.59999999999999998"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -103,7 +125,7 @@
                                         <animations/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-Fs-pcp">
-                                        <rect key="frame" x="182.5" y="192" width="195" height="35"/>
+                                        <rect key="frame" x="183" y="192" width="195" height="35"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="fhN-QM-OiM"/>
@@ -232,37 +254,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-hY-lME">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNy-3g-VOE" customClass="TextField" customModule="Studr" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
-                                                <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="KgI-O6-sQR"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                        <color key="value" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P7h-jf-U37" customClass="TextField" customModule="Studr" customModuleProvider="target">
-                                                <rect key="frame" x="285" y="0.0" width="275" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cov-SE-qZR"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="2"/>
@@ -275,6 +274,71 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorUnFocused">
+                                                        <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColorUnFocused">
+                                                        <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorUnFocused">
+                                                        <color key="value" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorFocused">
+                                                        <color key="value" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorFocused">
+                                                        <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColorFocused">
+                                                        <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="backgroundAlphaFocused">
+                                                        <real key="value" value="0.10000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNy-3g-VOE" customClass="TextField" customModule="Studr" customModuleProvider="target">
+                                                <rect key="frame" x="285" y="0.0" width="275" height="50"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="KgI-O6-sQR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                                        <color key="value" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorUnFocused">
+                                                        <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColorUnFocused">
+                                                        <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorUnFocused">
+                                                        <color key="value" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorFocused">
+                                                        <color key="value" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorFocused">
+                                                        <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="textColorFocused">
+                                                        <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="backgroundAlphaFocused">
+                                                        <real key="value" value="0.10000000000000001"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
@@ -291,7 +355,7 @@
                                             <constraint firstAttribute="height" constant="50" id="yeR-hY-kLv"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="2"/>
@@ -304,6 +368,27 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorUnFocused">
+                                                <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorUnFocused">
+                                                <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorUnFocused">
+                                                <color key="value" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorFocused">
+                                                <color key="value" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorFocused">
+                                                <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorFocused">
+                                                <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="backgroundAlphaFocused">
+                                                <real key="value" value="0.10000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -328,6 +413,27 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorUnFocused">
+                                                <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorUnFocused">
+                                                <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorUnFocused">
+                                                <color key="value" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorFocused">
+                                                <color key="value" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorFocused">
+                                                <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorFocused">
+                                                <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="backgroundAlphaFocused">
+                                                <real key="value" value="0.10000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPw-DJ-QxO" customClass="TextField" customModule="Studr" customModuleProvider="target">
@@ -337,7 +443,7 @@
                                             <constraint firstAttribute="height" constant="50" id="BMg-5q-zNG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="2"/>
@@ -350,6 +456,27 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorUnFocused">
+                                                <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorUnFocused">
+                                                <color key="value" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorUnFocused">
+                                                <color key="value" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorFocused">
+                                                <color key="value" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorFocused">
+                                                <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColorFocused">
+                                                <color key="value" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="backgroundAlphaFocused">
+                                                <real key="value" value="0.10000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -396,23 +523,23 @@
                                     <constraint firstItem="DPw-DJ-QxO" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="xCV-fe-n6P"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olq-wH-TzC">
-                                <rect key="frame" x="231" y="57" width="139" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIh-FL-rkK">
+                                <rect key="frame" x="254" y="-3" width="93" height="108"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Orp-HA-vOV" firstAttribute="top" secondItem="Olq-wH-TzC" secondAttribute="bottom" constant="30" id="2S3-vh-BBd"/>
                             <constraint firstItem="Orp-HA-vOV" firstAttribute="centerX" secondItem="Fgb-ig-jOK" secondAttribute="centerX" id="3oG-gh-fKq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Orp-HA-vOV" secondAttribute="trailing" id="Nve-eu-8mr"/>
                             <constraint firstItem="Orp-HA-vOV" firstAttribute="centerY" secondItem="Fgb-ig-jOK" secondAttribute="centerY" id="PDq-yC-RyP"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Orp-HA-vOV" secondAttribute="leading" id="Qeg-kV-xTo"/>
-                            <constraint firstItem="Olq-wH-TzC" firstAttribute="centerX" secondItem="Fgb-ig-jOK" secondAttribute="centerX" id="VK5-1r-kom"/>
+                            <constraint firstItem="dIh-FL-rkK" firstAttribute="centerX" secondItem="Fgb-ig-jOK" secondAttribute="centerX" id="U73-KR-lkQ"/>
+                            <constraint firstItem="Orp-HA-vOV" firstAttribute="top" secondItem="dIh-FL-rkK" secondAttribute="bottom" constant="30" id="Uz3-Me-6Vz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gE5-At-u1k"/>

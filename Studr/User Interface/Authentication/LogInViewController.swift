@@ -131,4 +131,19 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         return true
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColorFocused.CGColor
+        field.textColor = field.textColorFocused
+        field.backgroundColor = field.backgroundColorFocused.colorWithAlphaComponent(field.backgroundAlphaFocused)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColorUnFocused.CGColor
+        field.textColor = field.textColorUnFocused
+        field.backgroundColor = field.backgroundColorUnFocused
+    }
+    
 }

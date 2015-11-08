@@ -115,16 +115,16 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
     func textFieldDidBeginEditing(textField: UITextField) {
         
         let field = textField as! TextField
-        field.layer.borderColor = field.activeColor.CGColor
-        field.textColor = field.activeColor
-        field.backgroundColor = field.activeColor.colorWithAlphaComponent(0.05)
+        field.layer.borderColor = field.borderColorFocused.CGColor
+        field.textColor = field.textColorFocused
+        field.backgroundColor = field.backgroundColorFocused.colorWithAlphaComponent(field.backgroundAlphaFocused)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         let field = textField as! TextField
-        field.layer.borderColor = field.borderColor.CGColor
-        field.textColor = field.borderColor
-        field.backgroundColor = UIColor.whiteColor()
+        field.layer.borderColor = field.borderColorUnFocused.CGColor
+        field.textColor = field.textColorUnFocused
+        field.backgroundColor = field.backgroundColorUnFocused
     }
     
     override func prefersStatusBarHidden() -> Bool {
