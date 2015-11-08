@@ -133,7 +133,7 @@ class SideTableViewController: UITableViewController{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LogInViewController")
+        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SignInNavigationController")
         
         self.presentViewController(logInViewController, animated: true, completion: {
             appDelegate.window?.rootViewController = logInViewController
