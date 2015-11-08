@@ -57,6 +57,16 @@ class TextField: UITextField {
     
     @IBInspectable var textColorFocused : UIColor = UIColor.grayColor()
     
+    @IBInspectable var inset: CGFloat = 0
+    
+    override func textRectForBounds(bounds: CGRect) -> CGRect {
+        return CGRectInset(bounds, inset, inset)
+    }
+    
+    override func editingRectForBounds(bounds: CGRect) -> CGRect {
+        return textRectForBounds(bounds)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor(hexString: "#F8F8F8")
