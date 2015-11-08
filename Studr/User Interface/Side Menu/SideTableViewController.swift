@@ -20,7 +20,7 @@ class SideTableViewController: UITableViewController{
         // Get the drawer view controller
         // Create menu items
         addMenuItem("Create Group",color: UIColor(hexString: "#56D289"), selector: "showCreateGroupViewController", section: 0)
-        addMenuItem("Groups", color: UIColor(hexString: "#56D289"), selector: nil, section: 0)
+        addMenuItem("Groups", color: UIColor(hexString: "#56D289"), selector: "showGroupsViewController", section: 0)
         addMenuItem("Scan QR", color: FlatYellow(), selector: nil, section: 0)
         addMenuItem("Friends", color: FlatMagenta(), selector: nil, section: 1)
         addMenuItem("Profile", color: FlatSkyBlue(), selector: nil, section: 1)
