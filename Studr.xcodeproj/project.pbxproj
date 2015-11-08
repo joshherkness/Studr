@@ -30,6 +30,8 @@
 		7C557FEE1BEF05B700612EA8 /* PushDownSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C557FED1BEF05B700612EA8 /* PushDownSegueUnwind.swift */; };
 		7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */; };
 		CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C691BE7D0C200ABA1E7 /* Database.swift */; };
+		CCDB5C741BEFB7C900ABA1E7 /* AddMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */; };
+		CCDB5C761BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C751BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift */; };
 		DFA3AC6A2D6AB1EE1EDD9A1D /* Pods_Studr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		7C557FED1BEF05B700612EA8 /* PushDownSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDownSegueUnwind.swift; sourceTree = "<group>"; };
 		7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		CCDB5C691BE7D0C200ABA1E7 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersTableViewController.swift; sourceTree = "<group>"; };
+		CCDB5C751BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersTableViewCell.swift; sourceTree = "<group>"; };
 		E3B5FDF1BD1B74276DD453C4 /* Pods-Studr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +220,8 @@
 				03927DE31BED9087004C35DD /* Side Menu */,
 				7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */,
 				03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */,
+				CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */,
+				CCDB5C751BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -439,9 +445,11 @@
 				03FCE97D1BEAC08D000C08BF /* SideTableViewCell.swift in Sources */,
 				CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */,
 				7C557FEE1BEF05B700612EA8 /* PushDownSegueUnwind.swift in Sources */,
+				CCDB5C741BEFB7C900ABA1E7 /* AddMembersTableViewController.swift in Sources */,
 				03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */,
 				03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */,
 				7C557FE81BEEFC8500612EA8 /* PushUpSegue.swift in Sources */,
+				CCDB5C761BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift in Sources */,
 				7C37BC6E1BEC02C80056BA12 /* CreateGroupViewController.swift in Sources */,
 				03EBCB331BE6B64500993FA4 /* PasswordResetViewControlelr.swift in Sources */,
 				03927DE11BEBB321004C35DD /* NotificationLabel.swift in Sources */,
