@@ -157,25 +157,24 @@
                                     <action selector="authenticateTestUser:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="o33-Nt-xRB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-Fs-pcp">
+                                <rect key="frame" x="203" y="353" width="195" height="35"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.4431372549" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="jLu-pv-8CW"/>
+                                    <constraint firstAttribute="width" constant="64" id="fhN-QM-OiM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Forget Your Password?">
+                                    <color key="titleColor" red="0.89411764709999997" green="0.29803921570000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fhN-QM-OiM"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <action selector="signUpAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="LR1-0N-fHg"/>
-                                    <segue destination="gQR-3z-rlO" kind="custom" identifier="" customClass="PushUpSegue" customModule="Studr" id="qvW-qP-HBM"/>
+                                    <action selector="resetPasswordAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="9Ok-bM-y5u"/>
+                                    <segue destination="FFe-FC-idx" kind="custom" customClass="PushUpSegue" customModule="Studr" id="jRb-kc-ivI"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iYW-c8-8Wx">
@@ -206,7 +205,7 @@
                                     <constraint firstAttribute="height" constant="60" id="lCV-x9-7du"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Log in">
+                                <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -218,24 +217,25 @@
                                     <action selector="loginAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="Lh7-Qj-Z1O"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-Fs-pcp">
-                                <rect key="frame" x="203" y="353" width="195" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <animations/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.4431372549" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="fhN-QM-OiM"/>
+                                    <constraint firstAttribute="height" constant="60" id="jLu-pv-8CW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Forget Your Password?">
-                                    <color key="titleColor" red="0.89411764709999997" green="0.29803921570000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="fhN-QM-OiM"/>
-                                    </mask>
-                                </variation>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="resetPasswordAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="9Ok-bM-y5u"/>
-                                    <segue destination="FFe-FC-idx" kind="custom" customClass="PushUpSegue" customModule="Studr" id="jRb-kc-ivI"/>
+                                    <action selector="signUpAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="LR1-0N-fHg"/>
+                                    <segue destination="gQR-3z-rlO" kind="custom" identifier="" customClass="PushUpSegue" customModule="Studr" id="qvW-qP-HBM"/>
                                 </connections>
                             </button>
                         </subviews>
