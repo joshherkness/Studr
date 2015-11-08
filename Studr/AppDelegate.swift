@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
         
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
         if (PFUser.currentUser() != nil){
             
             self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateInitialViewController()

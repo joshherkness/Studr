@@ -82,13 +82,13 @@ class CreateGroupViewController: XLFormViewController {
         row = XLFormRowDescriptor(tag: Tags.Members, rowType: XLFormRowDescriptorTypeSelectorPush, title: "Add Members")
         row.required = false
         row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-        //row.action.viewControllerClass = FriendsTableViewController.self
+        row.action.viewControllerClass = AddMembersTableViewController.self
         section.addFormRow(row)
         
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
             // Selector PopOver
             row = XLFormRowDescriptor(tag: "selectorUserPopover", rowType:XLFormRowDescriptorTypeSelectorPopover, title:"Members")
-            //row.action.viewControllerClass = FriendsTableViewController.self
+            row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
             section.addFormRow(row)
         }
         
