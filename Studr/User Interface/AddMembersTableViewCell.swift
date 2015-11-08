@@ -9,7 +9,9 @@
 import UIKit
 
 class AddMembersTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var friendName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -758,16 +758,16 @@
             </objects>
             <point key="canvasLocation" x="1166" y="2284"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Add Members Table View Controller-->
         <scene sceneID="VJq-SE-Gc5">
             <objects>
-                <tableViewController id="NCT-ml-jKE" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddMembers" id="NCT-ml-jKE" customClass="AddMembersTableViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" id="qXO-XW-fRP">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="92" id="vff-GI-XYK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Friend" rowHeight="92" id="vff-GI-XYK" customClass="AddMembersTableViewCell" customModule="Studr" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vff-GI-XYK" id="MEi-dz-xoj">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -823,8 +823,13 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="friendName" destination="MMx-kN-4Dn" id="EDT-FA-f11"/>
+                                    <outlet property="profilePic" destination="HP7-UQ-IbS" id="JXN-rH-fHd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="NCT-ml-jKE" id="y7t-97-dGe"/>
                             <outlet property="delegate" destination="NCT-ml-jKE" id="iqT-HG-fkj"/>
