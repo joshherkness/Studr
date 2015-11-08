@@ -16,7 +16,7 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColorFromHex(0x63d297))
+    var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColor(hexString: "63d297"))
     
     override func viewDidLoad() {
         
@@ -34,10 +34,8 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         
         self.view.backgroundColor = GradientColor(.TopToBottom, self.view.frame,
             [UIColor(hexString: "#3471D7"), UIColor(hexString: "#255099")])
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+        
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -129,13 +127,8 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
     @IBAction func unwindToSignIn(unwindSegue: UIStoryboardSegue) {
     }
     
-}
-
-// Generate UIColor from HEX value
-func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
-    let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-    let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-    let blue = CGFloat(rgbValue & 0xFF)/256.0
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
-    return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
 }

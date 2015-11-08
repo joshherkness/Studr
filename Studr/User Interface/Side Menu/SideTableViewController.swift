@@ -30,7 +30,7 @@ class SideTableViewController: UITableViewController{
         
         // Hide all empty table view cells
         tableView.tableFooterView = UIView()
-        view.backgroundColor = UIColorFromHex(0x121212)
+        view.backgroundColor = UIColor(hexString: "121212")
         
     }
     
@@ -68,7 +68,7 @@ class SideTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView: UIView = UIView()
-        headerView.backgroundColor = UIColorFromHex(0x121212)
+        headerView.backgroundColor = UIColor(hexString: "121212")
         
         return headerView
     }

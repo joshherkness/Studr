@@ -103,7 +103,7 @@
                                         <animations/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-Fs-pcp">
-                                        <rect key="frame" x="183" y="192" width="195" height="35"/>
+                                        <rect key="frame" x="182.5" y="192" width="195" height="35"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="fhN-QM-OiM"/>
@@ -144,11 +144,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.24313725490196078" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="jLu-pv-8CW"/>
+                                    <constraint firstAttribute="height" constant="60" id="jLu-pv-8CW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Sign Up">
@@ -184,7 +184,9 @@
                         <constraints>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="centerY" secondItem="87f-8F-exf" secondAttribute="centerY" id="2FE-tG-eHo"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mWe-ao-lQg" secondAttribute="leading" constant="20" id="77g-Yr-5ot"/>
+                            <constraint firstItem="mWe-ao-lQg" firstAttribute="leading" secondItem="87f-8F-exf" secondAttribute="leadingMargin" constant="-20" id="E4l-fE-8Ct"/>
                             <constraint firstAttribute="leadingMargin" secondItem="tbE-At-rlV" secondAttribute="leading" id="FNX-Ue-Z7s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mWe-ao-lQg" secondAttribute="trailing" constant="-20" id="GI5-Wz-n2b"/>
                             <constraint firstAttribute="leadingMargin" secondItem="WFy-wZ-5AJ" secondAttribute="leading" id="IMd-3O-fsM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tbE-At-rlV" secondAttribute="trailing" id="OAV-cL-cNi"/>
                             <constraint firstItem="tIJ-HC-LA5" firstAttribute="top" secondItem="mWe-ao-lQg" secondAttribute="bottom" id="bcE-FT-aZJ"/>
@@ -194,6 +196,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="mWe-ao-lQg" secondAttribute="trailing" constant="-20" id="pPO-xP-CK3"/>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="top" secondItem="LPw-lB-KgP" secondAttribute="bottom" constant="30" id="sKz-nw-4v3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="77g-Yr-5ot"/>
+                                <exclude reference="pPO-xP-CK3"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="Rn2-jc-EGj" id="LQD-UN-poA"/>
@@ -375,7 +383,6 @@
                                         <color key="tintColor" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Already have an account?"/>
                                         <connections>
-                                            <action selector="backAction:" destination="fPZ-K3-B28" eventType="touchUpInside" id="7Zx-6T-UAG"/>
                                             <segue destination="PQm-bI-49X" kind="unwind" customClass="PushUpSegueUnwind" customModule="Studr" customModuleProvider="target" unwindAction="unwindToSignIn:" id="GJ3-4U-GHo"/>
                                         </connections>
                                     </button>

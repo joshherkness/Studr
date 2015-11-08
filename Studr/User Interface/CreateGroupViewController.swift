@@ -55,33 +55,33 @@ class CreateGroupViewController: XLFormViewController {
         row = XLFormRowDescriptor(tag: Tags.Title, rowType: XLFormRowDescriptorTypeText)
         row.required = true
         row.cellConfigAtConfigure["textField.placeholder"] = "Title"
-        row.cellConfig["self.tintColor"] = UIColorFromHex(0xF68E20, alpha: 1.0)
+        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
         section.addFormRow(row)
         
         // Description
         row = XLFormRowDescriptor(tag: Tags.Description, rowType: XLFormRowDescriptorTypeTextView)
         row.required = false
         row.cellConfigAtConfigure["textView.placeholder"] = "Description"
-        row.cellConfig["self.tintColor"] = UIColorFromHex(0xF68E20, alpha: 1.0)
+        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
         section.addFormRow(row)
         
         // Locaiton
         row = XLFormRowDescriptor(tag: Tags.Location, rowType: XLFormRowDescriptorTypeText)
         row.cellConfigAtConfigure["textField.placeholder"] = "Location"
         row.required = true
-        row.cellConfig["self.tintColor"] = UIColorFromHex(0xF68E20, alpha: 1.0)
+        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
         section.addFormRow(row)
         
         // Private
         row = XLFormRowDescriptor(tag: Tags.Private, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Private")
         row.required = false
-        row.cellConfig["self.tintColor"] = UIColorFromHex(0xF68E20, alpha: 1.0)
+        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
         section.addFormRow(row)
         
         // Members
         row = XLFormRowDescriptor(tag: Tags.Members, rowType: XLFormRowDescriptorTypeSelectorPush, title: "Add Members")
         row.required = false
-        row.cellConfig["self.tintColor"] = UIColorFromHex(0xF68E20, alpha: 1.0)
+        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
         //row.action.viewControllerClass = FriendsTableViewController.self
         section.addFormRow(row)
         
@@ -94,7 +94,7 @@ class CreateGroupViewController: XLFormViewController {
         
         //Submit
         row = XLFormRowDescriptor(tag: Tags.Submit, rowType: XLFormRowDescriptorTypeButton, title: "Submit")
-        row.cellConfig["backgroundColor"] = UIColorFromHex(0x13EB91, alpha: 1.0)
+        row.cellConfig["backgroundColor"] = UIColor(hexString: "13EB91")
         row.cellConfig["textLabel.textColor"] = UIColor.whiteColor()
         row.action.formSelector = "submitTapped:";
         section.addFormRow(row)
