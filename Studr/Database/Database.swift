@@ -129,7 +129,7 @@ class Database{
             }
         }
     }
-    static func getFriends(blockSuccess: (friends: [PFObject])->Void, blockFail: (error: NSError?) -> Void){
+    static func getCurrentUserFriends(blockSuccess: (friends: [PFObject])->Void, blockFail: (error: NSError?) -> Void){
         let friendsRelation = PFUser.currentUser()?.relationForKey("friend")
         let friendsQuery = friendsRelation?.query()
         friendsQuery?.findObjectsInBackgroundWithBlock({ (friendsFromBlock, errorFromBlock) -> Void in
