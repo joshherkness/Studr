@@ -30,6 +30,7 @@
 		7C557FEC1BEF057B00612EA8 /* PushUpSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C557FEB1BEF057B00612EA8 /* PushUpSegueUnwind.swift */; };
 		7C557FEE1BEF05B700612EA8 /* PushDownSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C557FED1BEF05B700612EA8 /* PushDownSegueUnwind.swift */; };
 		7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */; };
+		CC304E0D1BEFEF1F006D5E48 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC304E0C1BEFEF1F006D5E48 /* GroupsViewController.swift */; };
 		CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C691BE7D0C200ABA1E7 /* Database.swift */; };
 		CCDB5C741BEFB7C900ABA1E7 /* AddMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */; };
 		CCDB5C761BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C751BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift */; };
@@ -85,6 +86,7 @@
 		7C557FEB1BEF057B00612EA8 /* PushUpSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushUpSegueUnwind.swift; sourceTree = "<group>"; };
 		7C557FED1BEF05B700612EA8 /* PushDownSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDownSegueUnwind.swift; sourceTree = "<group>"; };
 		7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		CC304E0C1BEFEF1F006D5E48 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		CCDB5C691BE7D0C200ABA1E7 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersTableViewController.swift; sourceTree = "<group>"; };
 		CCDB5C751BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersTableViewCell.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */,
 				CCDB5C751BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift */,
 				03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */,
+				CC304E0C1BEFEF1F006D5E48 /* GroupsViewController.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				7C557FEE1BEF05B700612EA8 /* PushDownSegueUnwind.swift in Sources */,
 				CCDB5C741BEFB7C900ABA1E7 /* AddMembersTableViewController.swift in Sources */,
 				03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */,
+				CC304E0D1BEFEF1F006D5E48 /* GroupsViewController.swift in Sources */,
 				03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */,
 				7C557FE81BEEFC8500612EA8 /* PushUpSegue.swift in Sources */,
 				CCDB5C761BEFB9FD00ABA1E7 /* AddMembersTableViewCell.swift in Sources */,
