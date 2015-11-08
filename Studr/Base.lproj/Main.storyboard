@@ -34,8 +34,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-At-rlV">
-                                <rect key="frame" x="20" y="231" width="560" height="178"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-At-rlV">
+                                <rect key="frame" x="20" y="231" width="560" height="114"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z8z-6E-qQl" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
@@ -119,37 +119,10 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="lSt-2K-NcM">
-                                        <rect key="frame" x="0.0" y="128" width="560" height="50"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pET-pX-fBj" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
-                                                <animations/>
-                                                <color key="backgroundColor" red="0.38824000949999998" green="0.82353001830000006" blue="0.59215998650000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="lCV-x9-7du"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <state key="normal" title="Log in">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="loginAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="Lh7-Qj-Z1O"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <animations/>
-                                    </stackView>
                                 </subviews>
                                 <animations/>
                                 <constraints>
                                     <constraint firstItem="Z8z-6E-qQl" firstAttribute="width" secondItem="tbE-At-rlV" secondAttribute="width" id="5YQ-Mf-p14"/>
-                                    <constraint firstItem="lSt-2K-NcM" firstAttribute="width" secondItem="tbE-At-rlV" secondAttribute="width" id="FTq-kr-bCe"/>
                                     <constraint firstItem="Rn2-jc-EGj" firstAttribute="top" secondItem="Z8z-6E-qQl" secondAttribute="bottom" constant="8" symbolic="YES" id="J9A-FD-d0s"/>
                                     <constraint firstItem="Rn2-jc-EGj" firstAttribute="width" secondItem="tbE-At-rlV" secondAttribute="width" id="anN-dt-Yda"/>
                                 </constraints>
@@ -184,6 +157,66 @@
                                     <action selector="authenticateTestUser:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="o33-Nt-xRB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-Fs-pcp">
+                                <rect key="frame" x="203" y="353" width="195" height="35"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="fhN-QM-OiM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Forget Your Password?">
+                                    <color key="titleColor" red="0.89411764709999997" green="0.29803921570000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fhN-QM-OiM"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="resetPasswordAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="9Ok-bM-y5u"/>
+                                    <segue destination="FFe-FC-idx" kind="custom" customClass="PushUpSegue" customModule="Studr" id="jRb-kc-ivI"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iYW-c8-8Wx">
+                                <rect key="frame" x="211" y="84" width="179" height="140"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRT-Wx-bg5">
+                                        <rect key="frame" x="43" y="0.0" width="93" height="108"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
+                                        <color key="textColor" red="0.33333333329999998" green="0.80000000000000004" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUD-GW-MIa">
+                                        <rect key="frame" x="0.0" y="108" width="179" height="32"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pET-pX-fBj">
+                                <rect key="frame" x="0.0" y="480" width="600" height="60"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.38824000949999998" green="0.82353001830000006" blue="0.59215998650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="lCV-x9-7du"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="Lh7-Qj-Z1O"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <animations/>
@@ -205,65 +238,28 @@
                                     <segue destination="gQR-3z-rlO" kind="custom" identifier="" customClass="PushUpSegue" customModule="Studr" id="qvW-qP-HBM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-Fs-pcp">
-                                <rect key="frame" x="203" y="416" width="195" height="35"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="fhN-QM-OiM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Forget Your Password?">
-                                    <color key="titleColor" red="0.89411764709999997" green="0.29803921570000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="fhN-QM-OiM"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="resetPasswordAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="9Ok-bM-y5u"/>
-                                    <segue destination="FFe-FC-idx" kind="custom" customClass="PushUpSegue" customModule="Studr" id="jRb-kc-ivI"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iYW-c8-8Wx">
-                                <rect key="frame" x="211" y="84" width="179" height="158"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRT-Wx-bg5">
-                                        <rect key="frame" x="28" y="0.0" width="124" height="126"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
-                                        <color key="textColor" red="0.33333333329999998" green="0.80000000000000004" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUD-GW-MIa">
-                                        <rect key="frame" x="0.0" y="126" width="179" height="32"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <animations/>
-                            </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="centerY" secondItem="87f-8F-exf" secondAttribute="centerY" id="2FE-tG-eHo"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mWe-ao-lQg" secondAttribute="leading" constant="20" id="77g-Yr-5ot"/>
+                            <constraint firstItem="mWe-ao-lQg" firstAttribute="top" secondItem="pET-pX-fBj" secondAttribute="bottom" id="7yX-U8-1y0"/>
                             <constraint firstItem="iYW-c8-8Wx" firstAttribute="top" secondItem="MvF-GI-lhU" secondAttribute="bottom" constant="20" id="Ail-Zv-owN"/>
                             <constraint firstItem="mWe-ao-lQg" firstAttribute="leading" secondItem="87f-8F-exf" secondAttribute="leadingMargin" constant="-20" id="E4l-fE-8Ct"/>
                             <constraint firstAttribute="leadingMargin" secondItem="tbE-At-rlV" secondAttribute="leading" id="FNX-Ue-Z7s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mWe-ao-lQg" secondAttribute="trailing" constant="-20" id="GI5-Wz-n2b"/>
                             <constraint firstAttribute="leadingMargin" secondItem="WFy-wZ-5AJ" secondAttribute="leading" id="IMd-3O-fsM"/>
-                            <constraint firstItem="x9E-Fs-pcp" firstAttribute="top" secondItem="pET-pX-fBj" secondAttribute="bottom" constant="8" id="LZg-I9-ajV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tbE-At-rlV" secondAttribute="trailing" id="OAV-cL-cNi"/>
                             <constraint firstItem="iYW-c8-8Wx" firstAttribute="centerX" secondItem="87f-8F-exf" secondAttribute="centerX" id="Q63-d8-Yvg"/>
-                            <constraint firstItem="x9E-Fs-pcp" firstAttribute="centerX" secondItem="87f-8F-exf" secondAttribute="centerX" id="Ztv-Ev-BEj"/>
+                            <constraint firstItem="x9E-Fs-pcp" firstAttribute="top" secondItem="tbE-At-rlV" secondAttribute="bottom" constant="8" id="Wix-cK-BWy"/>
                             <constraint firstItem="tIJ-HC-LA5" firstAttribute="top" secondItem="mWe-ao-lQg" secondAttribute="bottom" id="bcE-FT-aZJ"/>
                             <constraint firstItem="WFy-wZ-5AJ" firstAttribute="top" secondItem="MvF-GI-lhU" secondAttribute="bottom" constant="20" id="cZo-Es-9tX"/>
+                            <constraint firstItem="x9E-Fs-pcp" firstAttribute="centerX" secondItem="tbE-At-rlV" secondAttribute="centerX" id="mbz-Kn-Bki"/>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="centerX" secondItem="87f-8F-exf" secondAttribute="centerX" id="ofo-GZ-vp9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mWe-ao-lQg" secondAttribute="trailing" constant="-20" id="pPO-xP-CK3"/>
+                            <constraint firstItem="pET-pX-fBj" firstAttribute="centerX" secondItem="87f-8F-exf" secondAttribute="centerX" id="rDF-9g-hgS"/>
+                            <constraint firstItem="pET-pX-fBj" firstAttribute="leading" secondItem="87f-8F-exf" secondAttribute="leadingMargin" constant="-20" id="wuN-fq-sga"/>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="top" secondItem="iYW-c8-8Wx" secondAttribute="bottom" constant="7" id="xPg-9F-e1R"/>
                         </constraints>
                         <variation key="default">
@@ -316,18 +312,18 @@
                                     <action selector="signUpAction:" destination="fPZ-K3-B28" eventType="touchUpInside" id="XLs-33-l5z"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rv3-dS-uu1">
-                                <rect key="frame" x="243" y="84" width="124" height="158"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rv3-dS-uu1">
+                                <rect key="frame" x="243" y="84" width="115" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcT-f3-LPd">
-                                        <rect key="frame" x="0.0" y="0.0" width="124" height="126"/>
+                                        <rect key="frame" x="11" y="0.0" width="93" height="108"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
                                         <color key="textColor" red="0.20392156859999999" green="0.4431372549" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akH-Mz-9He">
-                                        <rect key="frame" x="5" y="126" width="115" height="32"/>
+                                        <rect key="frame" x="0.0" y="108" width="115" height="32"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -339,7 +335,7 @@
                                     <rect key="frame" x="138" y="84" width="115" height="140"/>
                                 </variation>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Orp-HA-vOV">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Orp-HA-vOV">
                                 <rect key="frame" x="20" y="239" width="560" height="230"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-hY-lME">
@@ -627,7 +623,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-P7-8H9">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-P7-8H9">
                                 <rect key="frame" x="20" y="239" width="560" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoL-wk-Uvg" customClass="TextField" customModule="Studr" customModuleProvider="target">
@@ -681,17 +677,17 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G6l-2J-80g">
-                                <rect key="frame" x="168" y="84" width="264" height="158"/>
+                                <rect key="frame" x="168" y="84" width="264" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9O-fI-EoY">
-                                        <rect key="frame" x="70" y="0.0" width="124" height="126"/>
+                                        <rect key="frame" x="86" y="0.0" width="93" height="108"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
                                         <color key="textColor" red="0.89411997799999998" green="0.29804000260000002" blue="0.37255001069999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6k-3a-Jef">
-                                        <rect key="frame" x="0.0" y="126" width="264" height="32"/>
+                                        <rect key="frame" x="0.0" y="108" width="264" height="32"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -920,7 +916,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vff-GI-XYK" id="MEi-dz-xoj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMx-kN-4Dn">
