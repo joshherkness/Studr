@@ -25,6 +25,11 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         
         super.viewDidLoad()
         
+        // Navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "3471D7")
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        //self.navigationController?.navigationBar.titleTextAttributes =
+        
         // Create activity indicator
         self.activityIndicator.center = self.view.center
         self.activityIndicator.userInteractionEnabled = false
@@ -37,6 +42,9 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         emailField.delegate = self
         usernameField.delegate = self
         passwordField.delegate = self
+        
+        // Update the status bar
+        self.setNeedsStatusBarAppearanceUpdate()
         
     }
     
@@ -128,7 +136,11 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        return false
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
 }

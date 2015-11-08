@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import XLForm
 
-class AddMembersTableViewController: UITableViewController {
+class AddMembersTableViewController: UITableViewController, XLFormRowDescriptorViewController, XLFormRowDescriptorPopoverViewController {
+    
+    var rowDescriptor : XLFormRowDescriptor?
+    var popoverController : UIPopoverController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +33,12 @@ class AddMembersTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // returns the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return the number of rows
-        return 10
+        return 0
     }
 
     /*
