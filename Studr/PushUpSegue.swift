@@ -12,7 +12,7 @@ class PushUpSegue: UIStoryboardSegue {
     
     override func perform() {
         // Assign the source and destination views to local variables.
-        let firstVCView = self.sourceViewController.view as UIView!
+        let firstVCView = self.sourceViewController.navigationController!.view as UIView!
         let secondVCView = self.destinationViewController.view as UIView!
         
         // Get the screen width and height.
@@ -27,7 +27,7 @@ class PushUpSegue: UIStoryboardSegue {
         window?.insertSubview(secondVCView, aboveSubview: firstVCView)
         
         // Animate the transition.
-        UIView.animateWithDuration(0.4, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
             firstVCView.frame = CGRectOffset(firstVCView.frame, 0.0, -screenHeight)
             secondVCView.frame = CGRectOffset(secondVCView.frame, 0.0, -screenHeight)
             
