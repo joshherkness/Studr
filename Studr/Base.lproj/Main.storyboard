@@ -198,7 +198,7 @@
                     <connections>
                         <outlet property="passwordField" destination="Rn2-jc-EGj" id="LQD-UN-poA"/>
                         <outlet property="usernameField" destination="Z8z-6E-qQl" id="OSo-rx-UwB"/>
-                        <segue destination="fPZ-K3-B28" kind="push" identifier="SignUp" id="hwj-zK-xEf"/>
+                        <segue destination="fPZ-K3-B28" kind="show" identifier="SignUp" id="hwj-zK-xEf"/>
                         <segue destination="8QD-9B-BU1" kind="show" identifier="PasswordReset" id="8oY-G9-iJD"/>
                     </connections>
                 </viewController>
