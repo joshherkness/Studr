@@ -128,7 +128,11 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        return false
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
 }
