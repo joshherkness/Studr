@@ -155,6 +155,20 @@ class SideTableViewController: UITableViewController{
         drawerViewController.setPaneViewController(createGroupNavigationController, animated: true, completion: nil)
         
     }
+    func showGroupsViewController(){
+        // Get the new event view controller
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let groupsViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("GroupsViewController")
+        let groupsNavigationController:UINavigationController = UINavigationController(rootViewController: groupsViewController)
+        
+        // Set the navigation bars tint color
+        groupsNavigationController.navigationBar.tintColor = UIColor(hexString: "#56D289")
+        
+        // Set the center panel to the new event view controller
+        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
+        drawerViewController.setPaneViewController(groupsNavigationController, animated: true, completion: nil)
+
+    }
     
     func addMenuItem(title: String, color: UIColor, selector: Selector, section: Int){
         while(section >= data.count ){

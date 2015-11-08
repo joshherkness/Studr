@@ -168,6 +168,9 @@
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="138" y="31" width="124" height="126"/>
+                                </variation>
                             </label>
                             <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFy-wZ-5AJ">
                                 <rect key="frame" x="20" y="40" width="46" height="54"/>
@@ -281,9 +284,6 @@
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
                                         <color key="textColor" red="0.20392156859999999" green="0.4431372549" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="124" height="126"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akH-Mz-9He">
                                         <rect key="frame" x="5" y="126" width="115" height="32"/>
@@ -291,14 +291,11 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="5" y="126" width="115" height="32"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <animations/>
                                 <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="138" y="84" width="124" height="158"/>
+                                    <rect key="frame" x="138" y="84" width="115" height="140"/>
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Orp-HA-vOV">
@@ -526,6 +523,9 @@
                                     <constraint firstItem="xYU-VA-y3R" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="vx7-AB-NIC"/>
                                     <constraint firstItem="DPw-DJ-QxO" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="xCV-fe-n6P"/>
                                 </constraints>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="257" width="360" height="230"/>
+                                </variation>
                             </stackView>
                         </subviews>
                         <animations/>
@@ -657,6 +657,9 @@
                                     <constraint firstItem="uoL-wk-Uvg" firstAttribute="width" secondItem="qRb-P7-8H9" secondAttribute="width" id="Tzt-bv-2Mr"/>
                                     <constraint firstItem="etd-fn-rRe" firstAttribute="width" secondItem="qRb-P7-8H9" secondAttribute="width" id="oHQ-fl-eR0"/>
                                 </constraints>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="257" width="360" height="110"/>
+                                </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G6l-2J-80g">
                                 <rect key="frame" x="168" y="84" width="264" height="158"/>
@@ -667,9 +670,6 @@
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
                                         <color key="textColor" red="0.89411997799999998" green="0.29804000260000002" blue="0.37255001069999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="70" y="0.0" width="124" height="126"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6k-3a-Jef">
                                         <rect key="frame" x="0.0" y="126" width="264" height="32"/>
@@ -677,15 +677,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="126" width="264" height="32"/>
-                                        </variation>
                                     </label>
                                 </subviews>
                                 <animations/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="68" y="84" width="264" height="158"/>
-                                </variation>
                             </stackView>
                         </subviews>
                         <animations/>
@@ -839,7 +833,7 @@
         <!--Groups-->
         <scene sceneID="onq-4I-0xz">
             <objects>
-                <viewController id="ejF-Zl-0TH" customClass="GroupsViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupsViewController" id="ejF-Zl-0TH" customClass="GroupsViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eui-0d-RRP"/>
                         <viewControllerLayoutGuide type="bottom" id="bFT-Zg-FBh"/>
