@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -577,7 +576,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-P7-8H9">
-                                <rect key="frame" x="20" y="238.5" width="560" height="110"/>
+                                <rect key="frame" x="20" y="239" width="560" height="110"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoL-wk-Uvg" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
@@ -649,17 +648,17 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G6l-2J-80g">
-                                <rect key="frame" x="168" y="84" width="264" height="139.5"/>
+                                <rect key="frame" x="168" y="84" width="264" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9O-fI-EoY">
-                                        <rect key="frame" x="85.5" y="0.0" width="93" height="108"/>
+                                        <rect key="frame" x="86" y="0.0" width="93" height="108"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
                                         <color key="textColor" red="0.89411997799999998" green="0.29804000260000002" blue="0.37255001069999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6k-3a-Jef">
-                                        <rect key="frame" x="0.0" y="108" width="264" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="108" width="264" height="32"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -813,64 +812,38 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddMenuTableViewCell" rowHeight="92" id="vff-GI-XYK" customClass="AddMembersTableViewCell" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vff-GI-XYK" id="MEi-dz-xoj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="vff-GI-XYK" id="MEi-dz-xoj">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMx-kN-4Dn">
-                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uhu-Ux-Frh">
+                                            <rect key="frame" x="8" y="19" width="54" height="54"/>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.71570889260000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Friend Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHL-me-7Pc">
+                                            <rect key="frame" x="70" y="35" width="98" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HP7-UQ-IbS">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                            <animations/>
-                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="HP7-UQ-IbS" firstAttribute="leading" secondItem="MEi-dz-xoj" secondAttribute="leadingMargin" constant="282" id="0ik-mu-9rD"/>
-                                        <constraint firstItem="HP7-UQ-IbS" firstAttribute="leading" secondItem="MMx-kN-4Dn" secondAttribute="trailing" constant="228" id="Pao-E4-Wdg"/>
-                                        <constraint firstItem="HP7-UQ-IbS" firstAttribute="centerY" secondItem="MEi-dz-xoj" secondAttribute="centerY" id="ROe-LK-XtG"/>
-                                        <constraint firstItem="HP7-UQ-IbS" firstAttribute="height" secondItem="MEi-dz-xoj" secondAttribute="height" id="XJM-xI-PTH"/>
-                                        <constraint firstItem="MMx-kN-4Dn" firstAttribute="centerY" secondItem="MEi-dz-xoj" secondAttribute="centerY" id="f6q-iO-8IA"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="HP7-UQ-IbS" secondAttribute="trailing" constant="13" id="ujA-Tq-46k"/>
+                                        <constraint firstItem="Uhu-Ux-Frh" firstAttribute="top" secondItem="MEi-dz-xoj" secondAttribute="topMargin" constant="11" id="ImR-ZV-nVE"/>
+                                        <constraint firstItem="Uhu-Ux-Frh" firstAttribute="centerX" secondItem="MEi-dz-xoj" secondAttribute="centerX" id="WGn-Mn-eSh"/>
+                                        <constraint firstItem="iHL-me-7Pc" firstAttribute="leading" secondItem="MEi-dz-xoj" secondAttribute="leading" constant="70" id="WHp-aH-0ao"/>
+                                        <constraint firstItem="iHL-me-7Pc" firstAttribute="leading" secondItem="Uhu-Ux-Frh" secondAttribute="trailing" constant="8" symbolic="YES" id="bfN-6n-KGr"/>
+                                        <constraint firstItem="iHL-me-7Pc" firstAttribute="centerY" secondItem="Uhu-Ux-Frh" secondAttribute="centerY" id="d25-gU-Jc6"/>
+                                        <constraint firstItem="iHL-me-7Pc" firstAttribute="centerY" secondItem="MEi-dz-xoj" secondAttribute="centerY" id="kXi-xG-wxO"/>
+                                        <constraint firstItem="Uhu-Ux-Frh" firstAttribute="leading" secondItem="MEi-dz-xoj" secondAttribute="leadingMargin" id="l17-iR-Hdx"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="subviews">
-                                            <exclude reference="MMx-kN-4Dn"/>
-                                            <exclude reference="HP7-UQ-IbS"/>
-                                        </mask>
-                                        <mask key="constraints">
-                                            <exclude reference="f6q-iO-8IA"/>
-                                            <exclude reference="0ik-mu-9rD"/>
-                                            <exclude reference="Pao-E4-Wdg"/>
-                                            <exclude reference="ROe-LK-XtG"/>
-                                            <exclude reference="XJM-xI-PTH"/>
-                                            <exclude reference="ujA-Tq-46k"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="widthClass=compact">
-                                        <mask key="subviews">
-                                            <include reference="MMx-kN-4Dn"/>
-                                            <include reference="HP7-UQ-IbS"/>
-                                        </mask>
-                                        <mask key="constraints">
-                                            <include reference="f6q-iO-8IA"/>
-                                            <include reference="0ik-mu-9rD"/>
-                                            <include reference="Pao-E4-Wdg"/>
-                                            <include reference="ROe-LK-XtG"/>
-                                            <include reference="XJM-xI-PTH"/>
-                                            <include reference="ujA-Tq-46k"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="friendName" destination="MMx-kN-4Dn" id="EDT-FA-f11"/>
-                                    <outlet property="profilePic" destination="HP7-UQ-IbS" id="JXN-rH-fHd"/>
+                                    <outlet property="friendName" destination="iHL-me-7Pc" id="pMJ-cf-Kv3"/>
+                                    <outlet property="profilePic" destination="Uhu-Ux-Frh" id="iuw-1d-zZi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
