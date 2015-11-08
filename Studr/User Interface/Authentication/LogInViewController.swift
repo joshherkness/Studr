@@ -126,6 +126,9 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         self.performSegueWithIdentifier("PasswordReset", sender: self)
     }
     
+    @IBAction func unwindToSignIn(unwindSegue: UIStoryboardSegue) {
+    }
+    
 }
 
 // Generate UIColor from HEX value

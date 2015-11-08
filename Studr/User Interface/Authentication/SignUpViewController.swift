@@ -112,10 +112,6 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         }
     }
     
-    @IBAction func backAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func textFieldDidBeginEditing(textField: UITextField) {
         
         let field = textField as! TextField
