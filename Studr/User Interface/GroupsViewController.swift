@@ -21,10 +21,11 @@ class GroupsViewController: XLFormViewController {
     }
     
 
-    @IBAction func sideMenuToggleAction(sender: AnyObject){
+    @IBAction func sideMenuToggleAction(sender: AnyObject) {
         let drawerViewController: DrawerViewController = self.view.window!.rootViewController as! DrawerViewController
         drawerViewController.setPaneState(.Open, animated: true, allowUserInterruption: true, completion: nil)
     }
+    
     /*
     // MARK: - Navigation
 
