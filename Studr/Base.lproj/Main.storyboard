@@ -376,6 +376,7 @@
                                         <state key="normal" title="Already have an account?"/>
                                         <connections>
                                             <action selector="backAction:" destination="fPZ-K3-B28" eventType="touchUpInside" id="7Zx-6T-UAG"/>
+                                            <segue destination="PQm-bI-49X" kind="unwind" customClass="PushUpSegueUnwind" customModule="Studr" customModuleProvider="target" unwindAction="unwindToSignIn:" id="GJ3-4U-GHo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -417,6 +418,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oxZ-Fc-bi3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PQm-bI-49X" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1166" y="-25"/>
         </scene>
