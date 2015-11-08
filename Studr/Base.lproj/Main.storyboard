@@ -3,10 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="FontAwesome.otf">
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
         </mutableArray>
@@ -27,7 +30,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-At-rlV">
                                 <rect key="frame" x="20" y="187" width="560" height="227"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z8z-6E-qQl" customClass="TextField" customModule="Studr" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z8z-6E-qQl">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
                                         <animations/>
                                         <constraints>
@@ -50,7 +53,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-jc-EGj" customClass="TextField" customModule="Studr" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rn2-jc-EGj">
                                         <rect key="frame" x="0.0" y="64" width="560" height="50"/>
                                         <animations/>
                                         <constraints>
@@ -76,16 +79,16 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="lSt-2K-NcM">
                                         <rect key="frame" x="0.0" y="128" width="560" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pET-pX-fBj" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="273" height="50"/>
+                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pET-pX-fBj" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="lCV-x9-7du"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <state key="normal" title="Log in">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -96,37 +99,8 @@
                                                     <action selector="loginAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="Lh7-Qj-Z1O"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                                <rect key="frame" x="287" y="0.0" width="273" height="50"/>
-                                                <animations/>
-                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="jLu-pv-8CW"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                <state key="normal" title="Sign Up">
-                                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="signUpAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="LR1-0N-fHg"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstItem="mWe-ao-lQg" firstAttribute="leading" secondItem="pET-pX-fBj" secondAttribute="trailing" id="0cD-iu-Nhu"/>
-                                            <constraint firstItem="pET-pX-fBj" firstAttribute="width" secondItem="mWe-ao-lQg" secondAttribute="width" id="qYW-gQ-U7D"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="0cD-iu-Nhu"/>
-                                            </mask>
-                                        </variation>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-Fs-pcp">
                                         <rect key="frame" x="183" y="192" width="195" height="35"/>
@@ -136,7 +110,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="Forget Your Password?">
-                                            <color key="titleColor" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -162,29 +136,69 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPw-lB-KgP">
-                                <rect key="frame" x="240" y="109" width="120" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPw-lB-KgP">
+                                <rect key="frame" x="253.5" y="49" width="93" height="108"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.24313725490196078" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jLu-pv-8CW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpAction:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="LR1-0N-fHg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFy-wZ-5AJ">
+                                <rect key="frame" x="20" y="40" width="46" height="54"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="XKY-9l-vge"/>
+                                    <constraint firstAttribute="width" secondItem="WFy-wZ-5AJ" secondAttribute="height" multiplier="23:27" id="b7R-Os-NNT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="42"/>
+                                <state key="normal" title="">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="authenticateTestUser:" destination="Z0i-tw-NaW" eventType="touchUpInside" id="o33-Nt-xRB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.2039200068" green="0.44314000009999999" blue="0.84314000609999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="centerY" secondItem="87f-8F-exf" secondAttribute="centerY" id="2FE-tG-eHo"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="mWe-ao-lQg" secondAttribute="leading" constant="20" id="77g-Yr-5ot"/>
                             <constraint firstAttribute="leadingMargin" secondItem="tbE-At-rlV" secondAttribute="leading" id="FNX-Ue-Z7s"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="WFy-wZ-5AJ" secondAttribute="leading" id="IMd-3O-fsM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tbE-At-rlV" secondAttribute="trailing" id="OAV-cL-cNi"/>
+                            <constraint firstItem="tIJ-HC-LA5" firstAttribute="top" secondItem="mWe-ao-lQg" secondAttribute="bottom" id="bcE-FT-aZJ"/>
+                            <constraint firstItem="WFy-wZ-5AJ" firstAttribute="top" secondItem="MvF-GI-lhU" secondAttribute="bottom" constant="20" id="cZo-Es-9tX"/>
                             <constraint firstItem="LPw-lB-KgP" firstAttribute="centerX" secondItem="87f-8F-exf" secondAttribute="centerX" id="led-Kd-aX5"/>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="centerX" secondItem="87f-8F-exf" secondAttribute="centerX" id="ofo-GZ-vp9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mWe-ao-lQg" secondAttribute="trailing" constant="-20" id="pPO-xP-CK3"/>
                             <constraint firstItem="tbE-At-rlV" firstAttribute="top" secondItem="LPw-lB-KgP" secondAttribute="bottom" constant="30" id="sKz-nw-4v3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="Rn2-jc-EGj" id="LQD-UN-poA"/>
                         <outlet property="usernameField" destination="Z8z-6E-qQl" id="OSo-rx-UwB"/>
-                        <segue destination="fPZ-K3-B28" kind="show" identifier="SignUp" id="hwj-zK-xEf"/>
+                        <segue destination="fPZ-K3-B28" kind="push" identifier="SignUp" id="hwj-zK-xEf"/>
                         <segue destination="8QD-9B-BU1" kind="show" identifier="PasswordReset" id="8oY-G9-iJD"/>
                     </connections>
                 </viewController>
@@ -374,11 +388,11 @@
                                     <constraint firstItem="DPw-DJ-QxO" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="xCV-fe-n6P"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olq-wH-TzC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olq-wH-TzC">
                                 <rect key="frame" x="231" y="57" width="139" height="48"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -393,6 +407,7 @@
                             <constraint firstItem="Olq-wH-TzC" firstAttribute="centerX" secondItem="Fgb-ig-jOK" secondAttribute="centerX" id="VK5-1r-kom"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gE5-At-u1k"/>
                     <connections>
                         <outlet property="emailField" destination="bB2-7r-KIR" id="Cpb-Lv-zW3"/>
                         <outlet property="firstNameField" destination="NNy-3g-VOE" id="Vym-kh-Ndg"/>
