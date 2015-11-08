@@ -790,7 +790,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Friend" rowHeight="92" id="vff-GI-XYK" customClass="AddMembersTableViewCell" customModule="Studr" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddMenuTableViewCell" rowHeight="92" id="vff-GI-XYK" customClass="AddMembersTableViewCell" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vff-GI-XYK" id="MEi-dz-xoj">
