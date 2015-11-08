@@ -22,6 +22,10 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         
         super.viewDidLoad()
         
+        // Navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "#63D297")
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         // Create activity indicator
         self.activityIndicator.center = self.view.center
         self.activityIndicator.userInteractionEnabled = false  // Otherwise you cant touch behind the view
@@ -31,9 +35,6 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         
         usernameField.delegate = self
         passwordField.delegate = self
-        
-        self.view.backgroundColor = GradientColor(.TopToBottom, self.view.frame,
-            [UIColor(hexString: "#3471D7"), UIColor(hexString: "#255099")])
         
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -93,6 +94,21 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         }
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColorFocused.CGColor
+        field.textColor = field.textColorFocused
+        field.backgroundColor = field.backgroundColorFocused.colorWithAlphaComponent(field.backgroundAlphaFocused)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColorUnFocused.CGColor
+        field.textColor = field.textColorUnFocused
+        field.backgroundColor = field.backgroundColorUnFocused
+    }
+    
     @IBAction func authenticateTestUser(sender: AnyObject) {
         // Login user
         PFUser.logInWithUsernameInBackground("testUser", password: "password", block: { (user, error) -> Void in
@@ -117,11 +133,11 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
 
     }
     @IBAction func signUpAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("SignUp", sender: self)
+        //self.performSegueWithIdentifier("SignUp", sender: self)
     }
     
     @IBAction func resetPasswordAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("PasswordReset", sender: self)
+        //self.performSegueWithIdentifier("PasswordReset", sender: self)
     }
     
     @IBAction func unwindToSignIn(unwindSegue: UIStoryboardSegue) {
