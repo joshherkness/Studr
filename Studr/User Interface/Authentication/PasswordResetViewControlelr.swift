@@ -9,8 +9,9 @@
 import UIKit
 import Parse
 import NVActivityIndicatorView
+import ChameleonFramework
 
-class PasswordResetViewController: UIViewController {
+class PasswordResetViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: UITextField!
     
@@ -20,12 +21,18 @@ class PasswordResetViewController: UIViewController {
         
         super.viewDidLoad()
         
+        // Navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "#E44C5F")
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         // Create activity indicator
         self.activityIndicator.center = self.view.center
         self.activityIndicator.userInteractionEnabled = false
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
+        
+        emailField.delegate = self
         
     }
     
@@ -94,8 +101,19 @@ class PasswordResetViewController: UIViewController {
         }
     }
     
-    @IBAction func backAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColorFocused.CGColor
+        field.textColor = field.textColorFocused
+        field.backgroundColor = field.backgroundColorFocused.colorWithAlphaComponent(field.backgroundAlphaFocused)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        let field = textField as! TextField
+        field.layer.borderColor = field.borderColorUnFocused.CGColor
+        field.textColor = field.textColorUnFocused
+        field.backgroundColor = field.backgroundColorUnFocused
     }
     
     
