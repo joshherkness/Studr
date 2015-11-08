@@ -17,6 +17,8 @@
             <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -33,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-At-rlV">
-                                <rect key="frame" x="20" y="230.5" width="560" height="178"/>
+                                <rect key="frame" x="20" y="231" width="560" height="178"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z8z-6E-qQl" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
@@ -157,6 +159,16 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPw-lB-KgP">
+                                <rect key="frame" x="254" y="49" width="93" height="108"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="108"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="138" y="31" width="124" height="126"/>
+                                </variation>
+                            </label>
                             <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFy-wZ-5AJ">
                                 <rect key="frame" x="20" y="84" width="46" height="54"/>
                                 <animations/>
@@ -214,7 +226,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iYW-c8-8Wx">
-                                <rect key="frame" x="210.5" y="84" width="179" height="139.5"/>
+                                <rect key="frame" x="211" y="84" width="179" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRT-Wx-bg5">
                                         <rect key="frame" x="43" y="0.0" width="93" height="108"/>
@@ -224,7 +236,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUD-GW-MIa">
-                                        <rect key="frame" x="0.0" y="108" width="179" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="108" width="179" height="32"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -323,6 +335,9 @@
                                     </label>
                                 </subviews>
                                 <animations/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="138" y="84" width="115" height="140"/>
+                                </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Orp-HA-vOV">
                                 <rect key="frame" x="20" y="239" width="560" height="230"/>
@@ -549,6 +564,9 @@
                                     <constraint firstItem="xYU-VA-y3R" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="vx7-AB-NIC"/>
                                     <constraint firstItem="DPw-DJ-QxO" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="xCV-fe-n6P"/>
                                 </constraints>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="257" width="360" height="230"/>
+                                </variation>
                             </stackView>
                         </subviews>
                         <animations/>
@@ -658,6 +676,9 @@
                                 <constraints>
                                     <constraint firstItem="uoL-wk-Uvg" firstAttribute="width" secondItem="qRb-P7-8H9" secondAttribute="width" id="Tzt-bv-2Mr"/>
                                 </constraints>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="257" width="360" height="110"/>
+                                </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G6l-2J-80g">
                                 <rect key="frame" x="168" y="84" width="264" height="140"/>
@@ -834,6 +855,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sk-Yl-IS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1166" y="2284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Byg-mp-oeH">
+            <objects>
+                <navigationController id="ydu-8t-F4w" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hOE-g6-YxG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ejF-Zl-0TH" kind="relationship" relationship="rootViewController" id="6X3-8J-r1c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAO-Sj-Fj2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="3008"/>
+        </scene>
+        <!--Groups-->
+        <scene sceneID="onq-4I-0xz">
+            <objects>
+                <viewController storyboardIdentifier="GroupsViewController" id="ejF-Zl-0TH" customClass="GroupsViewController" customModule="Studr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eui-0d-RRP"/>
+                        <viewControllerLayoutGuide type="bottom" id="bFT-Zg-FBh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CSf-kB-XDv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Groups" id="Jo1-ze-vi8">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="UDW-fH-ZYi">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Av-ff-Q7F">
+                                <rect key="frame" x="20" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="20"/>
+                                <state key="normal" title=""/>
+                            </button>
+                            <connections>
+                                <action selector="sideMenuToggleAction:" destination="ejF-Zl-0TH" id="LKW-Kc-TJH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yIg-iW-NG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165.5" y="3008"/>
         </scene>
         <!--Add Members Table View Controller-->
         <scene sceneID="VJq-SE-Gc5">
