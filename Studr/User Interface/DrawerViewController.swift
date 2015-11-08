@@ -36,6 +36,11 @@ class DrawerViewController: MSDynamicsDrawerViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
 
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import NVActivityIndicatorView
+import ChameleonFramework
 
 class LogInViewController : UIViewController, UITextFieldDelegate{
     
@@ -31,6 +32,12 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         usernameField.delegate = self
         passwordField.delegate = self
         
+        self.view.backgroundColor = GradientColor(.TopToBottom, self.view.frame,
+            [UIColor(hexString: "#3471D7"), UIColor(hexString: "#255099")])
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -88,27 +95,35 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         }
     }
     
+    @IBAction func authenticateTestUser(sender: AnyObject) {
+        // Login user
+        PFUser.logInWithUsernameInBackground("testUser", password: "password", block: { (user, error) -> Void in
+            
+            // Stop activity indicator
+            self.activityIndicator.stopAnimation()
+            
+            if ((user) != nil) {
+                
+                // Launch user into main view controller as a navigation view controller
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                let drawerViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DrawerViewController")
+                
+                self.presentViewController(drawerViewController, animated: true, completion: {
+                    appDelegate.window?.rootViewController = drawerViewController
+                })
+                
+            }
+        })
+
+    }
     @IBAction func signUpAction(sender: AnyObject) {
         self.performSegueWithIdentifier("SignUp", sender: self)
     }
     
     @IBAction func resetPasswordAction(sender: AnyObject) {
         self.performSegueWithIdentifier("PasswordReset", sender: self)
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        
-        let field = textField as! TextField
-        field.layer.borderColor = field.activeColor.CGColor
-        field.textColor = field.activeColor
-        field.backgroundColor = field.activeColor.colorWithAlphaComponent(0.05)
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        let field = textField as! TextField
-        field.layer.borderColor = field.borderColor.CGColor
-        field.textColor = field.borderColor
-        field.backgroundColor = UIColor.whiteColor()
     }
     
 }

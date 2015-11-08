@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import NVActivityIndicatorView
+import ChameleonFramework
 
 class SignUpViewController : UIViewController, UITextFieldDelegate{
     
@@ -128,6 +129,10 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         field.layer.borderColor = field.borderColor.CGColor
         field.textColor = field.borderColor
         field.backgroundColor = UIColor.whiteColor()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
 }
