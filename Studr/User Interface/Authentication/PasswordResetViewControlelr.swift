@@ -22,7 +22,7 @@ class PasswordResetViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "#E44C5F")
+        self.navigationController?.navigationBar.barTintColor = UIColor.red()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Create activity indicator

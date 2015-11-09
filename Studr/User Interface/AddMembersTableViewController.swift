@@ -9,49 +9,92 @@
 import UIKit
 import Foundation
 import Parse
+import ParseUI
 import XLForm
 
-class AddMembersTableViewController: UITableViewController, XLFormRowDescriptorViewController, XLFormRowDescriptorPopoverViewController {
+class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, XLFormRowDescriptorViewController{
     
+    // Pointer to XLForm's row descriptor
     var rowDescriptor : XLFormRowDescriptor?
-    var popoverController : UIPopoverController?
-    
-    var userFriends = [PFObject]()
+  
+    // Array of current selected friends within the table
     var selectedFriends = [PFObject]()
     
-    // Current cell
-    var cell : UITableViewCell?
+    // Search Bar
+    var searchBar = UISearchBar()
     
-    // Array of selected cells ( Index Path )
-    var selectedCells = [NSIndexPath]()
+    // The current parse query
+    var query: PFQuery? {
+        didSet {
+            // whenever we assign a new query, cancel any previous requests
+            oldValue?.cancel()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+        clearsSelectionOnViewWillAppear = false
         
         // Allows selection of multiple cells in tableview
-        self.tableView.allowsMultipleSelection = true
+        tableView.allowsMultipleSelection = true
+        
+        // Create the search bar view
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Username"
+        searchBar.searchBarStyle = .Minimal
+        searchBar.showsCancelButton = true
+        
+        //Change the appearance of the search bar
+        searchBar.setImage(UIImage(named: "SearchIcon"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
+        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
+        textFieldInsideSearchBar?.textAlignment = .Left
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
         
         // Reload the data of the table
-        reloadTableData()
+        loadObjects()
         
     }
-    
+
     //MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // To be called when a cell is seclected
-        selectedFriends.append(userFriends[indexPath.row])
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? AddMembersTableViewCell
+        let object = self.objectAtIndexPath(indexPath)!
+        
+        selectedFriends.append(object)
+        cell?.accessoryType = .Checkmark
+        cell?.friendName.textColor = UIColor.blue()
     }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? AddMembersTableViewCell
+        let object = self.objectAtIndexPath(indexPath)!
+        
+        let filteredSelectedFriends: [PFObject] = selectedFriends.filter({ $0.objectId == object.objectId })
+        let filteredSelectedFriendsObject = filteredSelectedFriends.first
+        
+        selectedFriends.removeAtIndex(selectedFriends.indexOf(filteredSelectedFriendsObject!)!)
+        cell?.accessoryType = .None
+        cell?.friendName.textColor = UIColor.blackColor()
+        
+        print(selectedFriends)
+    }
+    
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 64
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 64
+        return 0
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -68,43 +111,78 @@ class AddMembersTableViewController: UITableViewController, XLFormRowDescriptorV
     
     //MARK: UITableViewDataSource
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userFriends.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AddMenuTableViewCell", forIndexPath: indexPath) as UITableViewCell
-        configureCell(cell, forRowAtIndexPath: indexPath)
-        return cell
-    }
-    
-    func configureCell(cell: UITableViewCell, forRowAtIndexPath: NSIndexPath) {
-        // Method to be called in configuring the cell, e.g setting the data atributes of the cell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
-        //var section = forRowAtIndexPath.section
-        let row = forRowAtIndexPath.row
+        let cell = tableView.dequeueReusableCellWithIdentifier("AddMembersTableViewCell", forIndexPath: indexPath) as! AddMembersTableViewCell
         
-        let friend: PFObject = userFriends[row]
-        
-        //friend.objectForKey("profileImage") as? String
-        cell.textLabel?.text = friend.objectForKey("userName") as? String
+        cell.friendName.text = object!["username"] as? String
         
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = UIColor.clearColor()
+        selectedBackgroundView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
         
         // Determine if the friend should be selected
-        cell.selected = selectedFriends.contains(friend)
+        let results: [PFObject] = selectedFriends.filter({ $0.objectId == object!.objectId })
         
+        if !results.isEmpty {
+            tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
+        }
+
         cell.accessoryType = cell.selected ? .Checkmark : .None
+        cell.friendName.textColor = cell.selected ? UIColor.blue() : UIColor.blackColor()
+        cell.tintColor = UIColor.blue()
         
+        return cell
     }
     
-    private func reloadTableData() {
-        // Fetch friend list from database, and store it in global variable friends
+
+    
+    // Mark: UISearchBarDelegate
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        loadObjects()
     }
+
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+        self.navigationItem.setHidesBackButton(false, animated: true)
+        self.navigationItem.titleView = nil
+        
+        let searchButton = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
+        self.navigationItem.setRightBarButtonItem(searchButton, animated: true)
+        loadObjects()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+        self.navigationItem.setHidesBackButton(false, animated: true)
+        self.navigationItem.titleView = nil
+        
+        let searchButton = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
+        self.navigationItem.setRightBarButtonItem(searchButton, animated: true)
+        loadObjects()
+    }
+    
+    func beganSearch(){
+        navigationItem.setHidesBackButton(true, animated: true)
+        navigationItem.titleView = searchBar
+        self.navigationItem.setRightBarButtonItem(nil, animated: true)
+        searchBar.becomeFirstResponder()
+    }
+    
+    
+    // Mark - PFQueryTableViewController
+    
+    override func queryForTable() -> PFQuery {
+        
+        let friendsRelation = PFUser.currentUser()?.relationForKey("friend")
+        query = friendsRelation?.query()
+        if (self.searchBar.text?.characters.count > 0){
+            query?.whereKey("username", containsString: searchBar.text!.lowercaseString)
+        }
+        query?.orderByAscending("username")
+        
+        return query!
+    }
+
 }

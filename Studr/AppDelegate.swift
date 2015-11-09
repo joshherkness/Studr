@@ -27,8 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UITextField.appearance().keyboardAppearance = .Light
+        UILabel.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).textColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         
         if (PFUser.currentUser() != nil){
             
