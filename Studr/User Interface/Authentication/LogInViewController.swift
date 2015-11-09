@@ -23,7 +23,7 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "#63D297")
+        self.navigationController?.navigationBar.barTintColor = UIColor.green()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Create activity indicator

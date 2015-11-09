@@ -7,20 +7,19 @@
 //
 
 import UIKit
+import ParseUI
 
-class AddMembersTableViewCell: UITableViewCell {
+class AddMembersTableViewCell: PFTableViewCell {
     
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var friendName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

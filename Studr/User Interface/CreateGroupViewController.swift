@@ -35,6 +35,10 @@ class CreateGroupViewController: XLFormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Navigation bar color
+        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "3471D7")
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     private func initializeForm() {
@@ -82,7 +86,7 @@ class CreateGroupViewController: XLFormViewController {
         row = XLFormRowDescriptor(tag: Tags.Members, rowType: XLFormRowDescriptorTypeSelectorPush, title: "Add Members")
         row.required = false
         row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-        row.action.viewControllerClass = AddMembersTableViewController.self
+        row.action.viewControllerStoryboardId = "AddMembersTableViewController"
         section.addFormRow(row)
         
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {

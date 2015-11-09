@@ -26,7 +26,7 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "3471D7")
+        self.navigationController?.navigationBar.barTintColor = UIColor.blue()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         //self.navigationController?.navigationBar.titleTextAttributes =
         
