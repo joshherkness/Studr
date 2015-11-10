@@ -1,5 +1,5 @@
 //
-//  PasswordResetViewControlelr.swift
+//  ResetPasswordViewController.swift
 //  Studr
 //
 //  Created by Joshua Herkness on 11/1/15.
@@ -11,7 +11,7 @@ import Parse
 import NVActivityIndicatorView
 import ChameleonFramework
 
-class PasswordResetViewController: UIViewController, UITextFieldDelegate {
+class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: UITextField!
     
@@ -22,7 +22,7 @@ class PasswordResetViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = UIColor.red()
+        self.navigationController?.navigationBar.barTintColor = STColor.red()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Create activity indicator
