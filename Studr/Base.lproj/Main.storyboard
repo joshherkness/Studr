@@ -945,11 +945,17 @@
                                     <color key="backgroundColor" red="0.27999627810525907" green="0.27098330291448197" blue="0.28509615384615383" alpha="0.0" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="aZo-Ur-x0D" firstAttribute="leading" secondItem="32n-wT-Ouc" secondAttribute="leadingMargin" constant="27" id="6yL-xo-VNl"/>
+                                        <constraint firstItem="s6p-cW-Zlx" firstAttribute="leading" secondItem="32n-wT-Ouc" secondAttribute="leadingMargin" constant="-8" id="7aW-Ag-EC5"/>
                                         <constraint firstItem="s6p-cW-Zlx" firstAttribute="centerY" secondItem="32n-wT-Ouc" secondAttribute="centerY" id="GaA-Xy-Joy"/>
                                         <constraint firstItem="aZo-Ur-x0D" firstAttribute="centerY" secondItem="32n-wT-Ouc" secondAttribute="centerY" id="QEb-dc-BQw"/>
                                         <constraint firstItem="s6p-cW-Zlx" firstAttribute="height" secondItem="32n-wT-Ouc" secondAttribute="height" id="Qoh-eI-VGU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="s6p-cW-Zlx" secondAttribute="trailing" constant="586" id="vZo-uM-kbA"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="vZo-uM-kbA"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
