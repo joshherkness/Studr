@@ -1,5 +1,5 @@
 //
-//  AddMembersTableViewCell.swift
+//  FriendTableViewCell.swift
 //  Studr
 //
 //  Created by Robin Onsay on 11/8/15.
@@ -9,7 +9,7 @@
 import UIKit
 import ParseUI
 
-class AddMembersTableViewCell: PFTableViewCell {
+class FriendTableViewCell: PFTableViewCell {
     
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var friendName: UILabel!

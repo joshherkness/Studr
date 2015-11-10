@@ -65,17 +65,17 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // To be called when a cell is seclected
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as? AddMembersTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
         let object = self.objectAtIndexPath(indexPath)!
         
         selectedFriends.append(object)
         cell?.accessoryType = .Checkmark
-        cell?.friendName.textColor = UIColor.blue()
+        cell?.friendName.textColor = STColor.blue()
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as? AddMembersTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
         let object = self.objectAtIndexPath(indexPath)!
         
         let filteredSelectedFriends: [PFObject] = selectedFriends.filter({ $0.objectId == object.objectId })
@@ -113,7 +113,7 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("AddMembersTableViewCell", forIndexPath: indexPath) as! AddMembersTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
         
         cell.friendName.text = object!["username"] as? String
         
@@ -129,8 +129,8 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         }
 
         cell.accessoryType = cell.selected ? .Checkmark : .None
-        cell.friendName.textColor = cell.selected ? UIColor.blue() : UIColor.blackColor()
-        cell.tintColor = UIColor.blue()
+        cell.friendName.textColor = cell.selected ? STColor.blue() : UIColor.blackColor()
+        cell.tintColor = STColor.blue()
         
         return cell
     }

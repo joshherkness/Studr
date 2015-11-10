@@ -1,9 +1,9 @@
 //
-//  LogInViewController.swift
+//  SignUpViewController.swift
 //  Studr
 //
 //  Created by Joshua Herkness on 10/31/15.
-//  Copyright (c) 2015 Joshua Herkness. All rights reserved.
+//  Copyright © 2015 JJR. All rights reserved.
 //
 
 import UIKit
@@ -11,8 +11,11 @@ import Parse
 import NVActivityIndicatorView
 import ChameleonFramework
 
-class LogInViewController : UIViewController, UITextFieldDelegate{
+class SignUpViewController : UIViewController, UITextFieldDelegate{
     
+    @IBOutlet weak var firstNameField: TextField!
+    @IBOutlet weak var lastNameField: TextField!
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
@@ -23,53 +26,84 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = UIColor.green()
+        self.navigationController?.navigationBar.barTintColor = STColor.blue()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        //self.navigationController?.navigationBar.titleTextAttributes =
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
-        self.activityIndicator.userInteractionEnabled = false  // Otherwise you cant touch behind the view
+        self.activityIndicator.userInteractionEnabled = false
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
         
+        firstNameField.delegate = self
+        lastNameField.delegate = self
+        emailField.delegate = self
         usernameField.delegate = self
         passwordField.delegate = self
         
-        setNeedsStatusBarAppearanceUpdate()
+        // Update the status bar
+        self.setNeedsStatusBarAppearanceUpdate()
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     // Mark: Actions
-
-    @IBAction func loginAction(sender: AnyObject) {
+    
+    @IBAction func signUpAction(sender: AnyObject) {
         
         let username = self.usernameField.text!
         let password = self.passwordField.text!
+        let email = self.emailField.text!
         
         if username.utf16.count < 4 || password.utf16.count < 5 {
             
-            // Invalid notification
-            let invalidAlert = UIAlertController(title: "Invalid", message: "Username must be greater than 4 and password must be greater than 5", preferredStyle: .Alert)
+            // Invalid noification
+            let invalidAlert = UIAlertController(title: "Invalid", message: "Your username must be greater than 4, and your password greater than 5", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             invalidAlert.addAction(OKAction)
             self.presentViewController(invalidAlert, animated: true, completion: nil)
-    
+            
+        } else if (email.utf16.count < 8) {
+            
+            // Invalid notification
+            let invalidAlert = UIAlertController(title: "Invalid", message: "Please enter a valid email", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            invalidAlert.addAction(OKAction)
+            self.presentViewController(invalidAlert, animated: true, completion: nil)
+            
         } else {
             
             // Begin activity indicator
             self.activityIndicator.startAnimation()
             
-            // Login user
-            PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
+            // Create a new parse user
+            let newUser = PFUser()
+            newUser.username = username
+            newUser.password = password
+            newUser.email = email
+            newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
                 
                 // Stop activity indicator
                 self.activityIndicator.stopAnimation()
                 
-                if ((user) != nil) {
+                if ((error) != nil) {
+                    
+                    // Error notification
+                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    errorAlert.addAction(OKAction)
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
+                    
+                } else {
                     
                     // Launch user into main view controller as a navigation view controller
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -80,14 +114,6 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
                     self.presentViewController(drawerViewController, animated: true, completion: {
                         appDelegate.window?.rootViewController = drawerViewController
                     })
-                    
-                } else {
-                    
-                    // Error notification
-                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    errorAlert.addAction(OKAction)
-                    self.presentViewController(errorAlert, animated: true, completion: nil)
                     
                 }
             })
@@ -109,46 +135,12 @@ class LogInViewController : UIViewController, UITextFieldDelegate{
         field.backgroundColor = field.backgroundColorUnFocused
     }
     
-    @IBAction func authenticateTestUser(sender: AnyObject) {
-        // Login user
-        PFUser.logInWithUsernameInBackground("testUser", password: "password", block: { (user, error) -> Void in
-            
-            // Stop activity indicator
-            self.activityIndicator.stopAnimation()
-            
-            if ((user) != nil) {
-                
-                // Launch user into main view controller as a navigation view controller
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let drawerViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DrawerViewController")
-                
-                self.presentViewController(drawerViewController, animated: true, completion: {
-                    appDelegate.window?.rootViewController = drawerViewController
-                })
-                
-            }
-        })
-
-    }
-    @IBAction func signUpAction(sender: AnyObject) {
-        //self.performSegueWithIdentifier("SignUp", sender: self)
-    }
-    
-    @IBAction func resetPasswordAction(sender: AnyObject) {
-        //self.performSegueWithIdentifier("PasswordReset", sender: self)
-    }
-    
-    @IBAction func unwindToSignIn(unwindSegue: UIStoryboardSegue) {
-    }
-    
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        return UIStatusBarStyle.LightContent
     }
     
 }

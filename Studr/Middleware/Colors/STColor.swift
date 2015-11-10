@@ -7,7 +7,9 @@
 //
 
 import UIKit
-extension UIColor {
+
+class STColor: UIColor {
+    
     static func blue() -> UIColor{
         return UIColor(hexString: "#3471D7")
     }

@@ -13,13 +13,4 @@ class SideTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTagView: UIView!
     @IBOutlet weak var mainLabel: UILabel!
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
 }
