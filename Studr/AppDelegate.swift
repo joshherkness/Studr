@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             
-            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("SignInNavigationController")
+            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
             
         }
         
