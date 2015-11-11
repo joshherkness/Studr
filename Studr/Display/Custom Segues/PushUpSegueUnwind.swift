@@ -12,8 +12,19 @@ class PushUpSegueUnwind: UIStoryboardSegue {
 
     override func perform() {
         // Assign the source and destination views to local variables.
-        let secondVCView = self.sourceViewController.navigationController!.view as UIView!
-        let firstVCView = self.destinationViewController.navigationController!.view as UIView!
+    
+        let secondVCView : UIView
+        if(self.sourceViewController.navigationController != nil){
+            secondVCView = self.sourceViewController.navigationController!.view as UIView!
+        }else{
+            secondVCView = self.sourceViewController.view as UIView!
+        }
+        let firstVCView : UIView
+        if(self.destinationViewController.navigationController != nil){
+            firstVCView = self.destinationViewController.navigationController!.view as UIView!
+        }else{
+            firstVCView = self.destinationViewController.view as UIView!
+        }
         
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height

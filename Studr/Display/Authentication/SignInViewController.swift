@@ -23,7 +23,7 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = STColor.green()
+        self.navigationController?.navigationBar.barTintColor = STColor.blue()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Create activity indicator
@@ -131,13 +131,6 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
             }
         })
 
-    }
-    @IBAction func signUpAction(sender: AnyObject) {
-        //self.performSegueWithIdentifier("SignUp", sender: self)
-    }
-    
-    @IBAction func resetPasswordAction(sender: AnyObject) {
-        //self.performSegueWithIdentifier("PasswordReset", sender: self)
     }
     
     @IBAction func unwindToSignIn(unwindSegue: UIStoryboardSegue) {

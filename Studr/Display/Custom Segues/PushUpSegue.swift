@@ -12,7 +12,12 @@ class PushUpSegue: UIStoryboardSegue {
     
     override func perform() {
         // Assign the source and destination views to local variables.
-        let firstVCView = self.sourceViewController.navigationController!.view as UIView!
+        let firstVCView : UIView
+        if(self.sourceViewController.navigationController != nil){
+            firstVCView = self.sourceViewController.navigationController!.view as UIView!
+        }else{
+            firstVCView = self.sourceViewController.view as UIView!
+        }
         let secondVCView = self.destinationViewController.view as UIView!
         
         // Get the screen width and height.
