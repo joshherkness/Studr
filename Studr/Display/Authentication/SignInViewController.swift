@@ -140,8 +140,5 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
         return false
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
     
 }
