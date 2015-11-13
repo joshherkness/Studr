@@ -30,6 +30,7 @@
 		7C557FEC1BEF057B00612EA8 /* PushUpSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C557FEB1BEF057B00612EA8 /* PushUpSegueUnwind.swift */; };
 		7C557FEE1BEF05B700612EA8 /* PushDownSegueUnwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C557FED1BEF05B700612EA8 /* PushDownSegueUnwind.swift */; };
 		7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */; };
+		7C8AFE601BF65EFA00EBE224 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */; };
 		7CECFD8E1BF1C99000F81D47 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CECFD8D1BF1C99000F81D47 /* OnboardingViewController.swift */; };
 		CC304E0D1BEFEF1F006D5E48 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC304E0C1BEFEF1F006D5E48 /* GroupsViewController.swift */; };
 		CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C691BE7D0C200ABA1E7 /* Database.swift */; };
@@ -87,6 +88,7 @@
 		7C557FEB1BEF057B00612EA8 /* PushUpSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushUpSegueUnwind.swift; sourceTree = "<group>"; };
 		7C557FED1BEF05B700612EA8 /* PushDownSegueUnwind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushDownSegueUnwind.swift; sourceTree = "<group>"; };
 		7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7CECFD8D1BF1C99000F81D47 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		CC304E0C1BEFEF1F006D5E48 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		CCDB5C691BE7D0C200ABA1E7 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				03B21EE31BE585F70052B0AD /* SignInViewController.swift */,
 				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
 				7CECFD8D1BF1C99000F81D47 /* OnboardingViewController.swift */,
+				7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 			files = (
 				03B21EE41BE585F70052B0AD /* SignInViewController.swift in Sources */,
 				7C37BC701BEC35970056BA12 /* TextField.swift in Sources */,
+				7C8AFE601BF65EFA00EBE224 /* ContentViewController.swift in Sources */,
 				7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */,
 				03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */,
 				7C557FEC1BEF057B00612EA8 /* PushUpSegueUnwind.swift in Sources */,

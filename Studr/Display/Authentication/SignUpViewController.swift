@@ -138,9 +138,4 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
-    
 }

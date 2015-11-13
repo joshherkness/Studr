@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
         
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         UIApplication.sharedApplication().statusBarStyle = .LightContent
