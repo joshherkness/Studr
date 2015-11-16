@@ -27,7 +27,7 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
     var query: PFQuery? {
         didSet {
             // whenever we assign a new query, cancel any previous requests
-            oldValue?.cancel()
+            //oldValue?.cancel()
         }
     }
 
@@ -177,7 +177,9 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         
         let friendsRelation = PFUser.currentUser()?.relationForKey("friend")
         query = friendsRelation?.query()
+        
         if (self.searchBar.text?.characters.count > 0){
+            query?.cachePolicy = .CacheOnly
             query?.whereKey("username", containsString: searchBar.text!.lowercaseString)
         }
         query?.orderByAscending("username")

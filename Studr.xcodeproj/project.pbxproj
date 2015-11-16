@@ -18,6 +18,7 @@
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
 		03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */; };
 		03CB77731BF1326A007C21AA /* STColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB77721BF1326A007C21AA /* STColor.swift */; };
+		03CB77801BF92249007C21AA /* MembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB777F1BF92249007C21AA /* MembersCell.swift */; };
 		03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03DB962C1BE8215A00B64E0C /* FontAwesome.otf */; };
 		03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */; };
 		03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */; };
@@ -74,6 +75,7 @@
 		03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ne-UINavigationControllerExtension.swift"; sourceTree = "<group>"; };
 		03CB77721BF1326A007C21AA /* STColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STColor.swift; sourceTree = "<group>"; };
+		03CB777F1BF92249007C21AA /* MembersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersCell.swift; sourceTree = "<group>"; };
 		03DB962C1BE8215A00B64E0C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewController.swift; sourceTree = "<group>"; };
 		03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */,
 				7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */,
+				03CB777F1BF92249007C21AA /* MembersCell.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */,
 				7C557FEC1BEF057B00612EA8 /* PushUpSegueUnwind.swift in Sources */,
 				03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */,
+				03CB77801BF92249007C21AA /* MembersCell.swift in Sources */,
 				7C557FEA1BEF037C00612EA8 /* PushDownSegue.swift in Sources */,
 				03434EEB1BE5653D001E34D5 /* AppDelegate.swift in Sources */,
 				03FCE97D1BEAC08D000C08BF /* SideTableViewCell.swift in Sources */,

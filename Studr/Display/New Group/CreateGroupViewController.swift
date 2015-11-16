@@ -8,132 +8,41 @@
 
 import Foundation
 import UIKit
-import XLForm
+import Eureka
+import Parse
 
-class CreateGroupViewController: XLFormViewController {
-    
-    // Items to be created in form
-    private struct Tags {
-        static let Title        = "title"
-        static let Description  = "description"
-        static let Location     = "location"
-        static let Access       = "access"
-        static let Private      = "private"
-        static let Members      = "members"
-        static let Submit       = "submit"
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.initializeForm()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        self.initializeForm()
-    }
+class CreateGroupViewController : FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = UIColor(hexString: "3471D7")
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-    }
-    
-    private func initializeForm() {
-        
-        let form : XLFormDescriptor
-        var section : XLFormSectionDescriptor
-        var row : XLFormRowDescriptor
-        
-        form = XLFormDescriptor(title: "Create Group")
-        form.assignFirstResponderOnShow = false
-        
-        section = XLFormSectionDescriptor.formSection()
-        section.sectionOptions
-        form.addFormSection(section)
-        
-        
-        // Title
-        row = XLFormRowDescriptor(tag: Tags.Title, rowType: XLFormRowDescriptorTypeText)
-        row.required = true
-        row.cellConfigAtConfigure["textField.placeholder"] = "Title"
-        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-        section.addFormRow(row)
-        
-        // Description
-        row = XLFormRowDescriptor(tag: Tags.Description, rowType: XLFormRowDescriptorTypeTextView)
-        row.required = false
-        row.cellConfigAtConfigure["textView.placeholder"] = "Description"
-        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-        section.addFormRow(row)
-        
-        // Locaiton
-        row = XLFormRowDescriptor(tag: Tags.Location, rowType: XLFormRowDescriptorTypeText)
-        row.cellConfigAtConfigure["textField.placeholder"] = "Location"
-        row.required = true
-        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-        section.addFormRow(row)
-        
-        // Private
-        row = XLFormRowDescriptor(tag: Tags.Private, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Private")
-        row.required = false
-        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-        section.addFormRow(row)
-        
-        // Members
-        row = XLFormRowDescriptor(tag: Tags.Members, rowType: XLFormRowDescriptorTypeSelectorPush, title: "Add Members")
-        row.required = false
-        row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-        row.action.viewControllerStoryboardId = "AddMembersTableViewController"
-        section.addFormRow(row)
-        
-        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
-            // Selector PopOver
-            row = XLFormRowDescriptor(tag: "selectorUserPopover", rowType:XLFormRowDescriptorTypeSelectorPopover, title:"Members")
-            row.cellConfig["self.tintColor"] = UIColor(hexString: "F68E20")
-            section.addFormRow(row)
+        TextRow.defaultCellUpdate = {cell, row in
+            cell.tintColor = STColor.red()
+            cell.textField.textAlignment = .Left
         }
         
-        //Submit
-        row = XLFormRowDescriptor(tag: Tags.Submit, rowType: XLFormRowDescriptorTypeButton, title: "Submit")
-        row.cellConfig["backgroundColor"] = UIColor(hexString: "13EB91")
-        row.cellConfig["textLabel.textColor"] = UIColor.whiteColor()
-        row.action.formSelector = "submitTapped:";
-        section.addFormRow(row)
-        
-        self.form = form
-        
-    }
-    
-    private func submitTapped(sender: UIButton){
-        
-        // Dictionary of results
-        // var dictionary:Dictionary = self.formValues()
-        
-        
-        // Store in database here
-        
-        // Move on
-        
-    }
-    
-    // MARK: Actions
-    
-    @IBAction func sideMenuToggleAction(sender: AnyObject) {
-        let drawerViewController: DrawerViewController = self.view.window!.rootViewController as! DrawerViewController
-        drawerViewController.setPaneState(.Open, animated: true, allowUserInterruption: true, completion: nil)
-        
-    }
-    
-    // MARK: UITableViewDelegate
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // Override row height here
-        if (form.formRowAtIndex(indexPath)?.tag != "description"){
-            return 64
-        }
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        form +++ Section("What should we call it?")
+            <<< TextRow("title"){
+                $0.placeholder = "Title"}
+            <<< MembersRow("m"){
+                let set = Set<PFUser>(arrayLiteral: PFUser.currentUser()!)
+                $0.value = set
+                $0.title = "Add some friends"}
+        form +++ Section(""){
+                $0.hidden = "$title == nil"
+            }
+            <<< TextAreaRow("description"){
+                $0.placeholder = "Description"
+                $0.hidden = .Function(["title"], { form -> Bool in
+                    let row: RowOf<String>! = form.rowByTag("title")
+                    return row.value == nil
+                })}
+            <<< ButtonRow("members"){
+                $0.title = "Members"
+                $0.presentationMode = .SegueName(segueName: "AddMembersTableViewController", completionCallback:{  vc in vc.dismissViewControllerAnimated(true, completion: nil) })
+            }
+            <<< SwitchRow("access"){
+                $0.title = "Private"
+                $0.value = false}
     }
 }

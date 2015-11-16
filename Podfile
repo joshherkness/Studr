@@ -18,7 +18,7 @@ pod 'NVActivityIndicatorView' # Better activity indicator
 pod 'GoogleMaps' # Google Maps
 pod 'MSDynamicsDrawerViewController', :inhibit_warnings => true
 pod 'ChameleonFramework/Swift'
-pod 'XLForm'
+pod 'Eureka', '~> 1.2'
 end
 
 target 'StudrTests' do
