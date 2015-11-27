@@ -24,10 +24,12 @@ class CreateGroupViewController : FormViewController {
         form +++ Section("What should we call it?")
             <<< TextRow("title"){
                 $0.placeholder = "Title"}
-            <<< MembersRow("m"){
+            <<< PFUserMultipleSelectorRow("inviteFriends"){
                 let set = Set<PFUser>(arrayLiteral: PFUser.currentUser()!)
-                $0.value = set
-                $0.title = "Add some friends"}
+                $0.options = [PFUser.currentUser()!]
+                $0.value = [PFUser.currentUser()!]
+                $0.title = "Invite Friends"
+            }
         form +++ Section(""){
                 $0.hidden = "$title == nil"
             }

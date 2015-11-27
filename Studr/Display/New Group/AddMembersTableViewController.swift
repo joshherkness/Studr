@@ -10,12 +10,12 @@ import UIKit
 import Foundation
 import Parse
 import ParseUI
-import XLForm
+import Eureka
 
-class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, XLFormRowDescriptorViewController{
+class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, TypedRowControllerType {
     
-    // Pointer to XLForm's row descriptor
-    var rowDescriptor : XLFormRowDescriptor?
+    var row: RowOf<Set<PFUser>>!
+    var completionCallback : ((UIViewController) -> ())?
   
     // Array of current selected friends within the table
     var selectedFriends = [PFObject]()
@@ -55,9 +55,29 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
         
+        // Add completion button
+        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "tappedDone:")
+        button.title = "Done"
+        navigationItem.rightBarButtonItem = button
+        
+        // Load the existing selected users into the array
+        for v in row.value! {
+            selectedFriends.append(v)
+        }
+        
         // Reload the data of the table
         loadObjects()
         
+    }
+    
+    func tappedDone(sender: UIButton){
+        
+        // Set the new value of selected friends
+        var selectedFriendsSet = Set<PFUser>()
+        for s in selectedFriends {
+            selectedFriendsSet.insert(s as! PFUser)
+        }
+        row.value = selectedFriendsSet
     }
 
     //MARK: UITableViewDelegate
