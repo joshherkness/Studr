@@ -69,6 +69,7 @@ public class PFUserMultipleSelectorCell: PushSelectorCell<Set<PFUser>> {
 }
 */
 
+/*
 public class PFUserMultipleSelectorRow: GenericMultipleSelectorRow<PFUser, MultipleSelectorViewController<PFUser>> {
     
     public required init(tag: String?) {
@@ -80,5 +81,19 @@ public class PFUserMultipleSelectorRow: GenericMultipleSelectorRow<PFUser, Multi
             return nil
         }
 
+    }
+}
+*/
+
+public final class PFUserSelectorRow : SelectorRow<Set<PFUser>, AddMembersTableViewController >, RowType {
+    public required init(tag: String?) {
+        super.init(tag: tag)
+        presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return AddMembersTableViewController(){ _ in } }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
+        self.displayValueFor = {
+            if let t = $0 {
+                return t.count > 0 ? "\(t.count)" : "I'm Lonely"
+            }
+            return nil
+        }
     }
 }

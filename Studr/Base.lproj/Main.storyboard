@@ -655,45 +655,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendTableViewCell" rowHeight="64" id="vff-GI-XYK" customClass="FriendTableViewCell" customModule="Studr" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="64"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vff-GI-XYK" id="MEi-dz-xoj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue6-AP-7kY">
-                                            <rect key="frame" x="69" y="21" width="49" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EZ9-yB-z5d">
-                                            <rect key="frame" x="8" y="8" width="53" height="47"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="53" id="Qds-Ox-PbD"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <animations/>
-                                    <constraints>
-                                        <constraint firstItem="Ue6-AP-7kY" firstAttribute="leading" secondItem="EZ9-yB-z5d" secondAttribute="trailing" constant="8" symbolic="YES" id="1Nx-sh-Grl"/>
-                                        <constraint firstItem="EZ9-yB-z5d" firstAttribute="bottom" secondItem="MEi-dz-xoj" secondAttribute="bottomMargin" id="4E7-fS-7YK"/>
-                                        <constraint firstItem="EZ9-yB-z5d" firstAttribute="centerY" secondItem="Ue6-AP-7kY" secondAttribute="centerY" id="CCL-hf-LKE"/>
-                                        <constraint firstItem="EZ9-yB-z5d" firstAttribute="top" secondItem="MEi-dz-xoj" secondAttribute="topMargin" id="G04-Ig-jwu"/>
-                                        <constraint firstItem="EZ9-yB-z5d" firstAttribute="leading" secondItem="MEi-dz-xoj" secondAttribute="leadingMargin" id="pCk-WN-hcY"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <outlet property="friendName" destination="Ue6-AP-7kY" id="sgU-ZE-hYb"/>
-                                    <outlet property="profilePic" destination="EZ9-yB-z5d" id="JwU-9k-Xko"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="NCT-ml-jKE" id="y7t-97-dGe"/>

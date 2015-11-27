@@ -12,16 +12,19 @@ import Parse
 import ParseUI
 import Eureka
 
-class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, TypedRowControllerType {
+public class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, TypedRowControllerType {
     
-    var row: RowOf<Set<PFUser>>!
-    var completionCallback : ((UIViewController) -> ())?
+    // Variables used for eureka row reference and callback
+    public var row: RowOf<Set<PFUser>>!
+    public var completionCallback : ((UIViewController) -> ())?
+    
+    public var parseRelationName: String?
   
     // Array of current selected friends within the table
-    var selectedFriends = [PFObject]()
+    public var selectedFriends = [PFObject]()
     
     // Search Bar
-    var searchBar = UISearchBar()
+    private var searchBar = UISearchBar()
     
     // The current parse query
     var query: PFQuery? {
@@ -30,9 +33,21 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
             //oldValue?.cancel()
         }
     }
+    
+    convenience public init(_ callback: (UIViewController) -> ()){
+        self.init(nibName: nil, bundle: nil)
+        completionCallback = callback
+    }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Register cell for table
+        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
+        
+        placeholderImage = UIImage(named: "PlaceholderProfile")
+        imageKey = "profileImage"
+        textKey = "username"
 
         // Preserve selection between presentations
         clearsSelectionOnViewWillAppear = false
@@ -58,12 +73,10 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         // Add completion button
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "tappedDone:")
         button.title = "Done"
-        navigationItem.rightBarButtonItem = button
+        navigationItem.leftBarButtonItem = button
         
         // Load the existing selected users into the array
-        for v in row.value! {
-            selectedFriends.append(v)
-        }
+        selectedFriends = Array(row.value!)
         
         // Reload the data of the table
         loadObjects()
@@ -82,7 +95,7 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
 
     //MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // To be called when a cell is seclected
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
@@ -93,7 +106,7 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         cell?.friendName.textColor = STColor.blue()
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    public override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
         let object = self.objectAtIndexPath(indexPath)!
@@ -109,33 +122,34 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 64
+    public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return super.tableView(tableView, viewForHeaderInSection: section)
     }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return super.tableView(tableView, viewForFooterInSection: section)
     }
     
     //MARK: UITableViewDataSource
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
         
-        cell.friendName.text = object!["username"] as? String
+        cell.friendName.text = object![textKey!] as? String
+        cell.profilePic.image = object![imageKey!] != nil ? object![imageKey!] as? UIImage : placeholderImage
         
         let selectedBackgroundView: UIView = UIView()
         selectedBackgroundView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.03)
@@ -159,11 +173,11 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
     
     // Mark: UISearchBarDelegate
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         loadObjects()
     }
 
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    public func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
         self.navigationItem.setHidesBackButton(false, animated: true)
         self.navigationItem.titleView = nil
@@ -173,7 +187,7 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         loadObjects()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    public func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
         self.navigationItem.setHidesBackButton(false, animated: true)
         self.navigationItem.titleView = nil
@@ -193,7 +207,7 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
     
     // Mark - PFQueryTableViewController
     
-    override func queryForTable() -> PFQuery {
+    public override func queryForTable() -> PFQuery {
         
         let friendsRelation = PFUser.currentUser()?.relationForKey("friend")
         query = friendsRelation?.query()
