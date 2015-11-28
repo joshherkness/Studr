@@ -108,7 +108,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     
     
     public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 55
     }
     
     public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -150,6 +150,12 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         cell.accessoryType = cell.selected ? .Checkmark : .None
         cell.friendName.textColor = cell.selected ? STColor.blue() : UIColor.blackColor()
         cell.tintColor = STColor.blue()
+        
+        // Users Profile Image
+        let user = object as? PFUser
+        cell.profilePic.image = getGravitarImageForEmail((user?.email)!)
+        cell.profilePic.layer.cornerRadius = 4.0
+        cell.profilePic.clipsToBounds = true
         
         return cell
     }

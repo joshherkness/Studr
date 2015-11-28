@@ -19,6 +19,7 @@ pod 'GoogleMaps' # Google Maps
 pod 'MSDynamicsDrawerViewController', :inhibit_warnings => true
 pod 'ChameleonFramework/Swift'
 pod 'Eureka', '~> 1.2'
+pod 'CryptoSwift' #Used for MD5/Gravitar
 end
 
 target 'StudrTests' do
