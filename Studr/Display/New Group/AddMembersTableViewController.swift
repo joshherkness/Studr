@@ -11,6 +11,7 @@ import Foundation
 import Parse
 import ParseUI
 import Eureka
+import CryptoSwift
 
 public class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, TypedRowControllerType {
     
@@ -88,7 +89,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         
         selectedFriends.append(object)
         cell?.accessoryType = .Checkmark
-        cell?.friendName.textColor = STColor.blue()
+        cell?.nameLabel.textColor = STColor.green()
     }
     
     public override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -101,14 +102,12 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         
         selectedFriends.removeAtIndex(selectedFriends.indexOf(filteredSelectedFriendsObject!)!)
         cell?.accessoryType = .None
-        cell?.friendName.textColor = UIColor.blackColor()
-        
-        print(selectedFriends)
+        cell?.nameLabel.textColor = UIColor.blackColor()
     }
     
     
     public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 55
+        return 60
     }
     
     public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -133,11 +132,11 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
         
-        cell.friendName.text = object![textKey!] as? String
-        cell.profilePic.image = object![imageKey!] != nil ? object![imageKey!] as? UIImage : placeholderImage
+        cell.nameLabel.text = object![textKey!] as? String
+        cell.profileImageView.image = object![imageKey!] != nil ? object![imageKey!] as? UIImage : placeholderImage
         
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.03)
+        selectedBackgroundView.backgroundColor = STColor.green().colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
         
         // Determine if the friend should be selected
@@ -148,15 +147,20 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         }
 
         cell.accessoryType = cell.selected ? .Checkmark : .None
-        cell.friendName.textColor = cell.selected ? STColor.blue() : UIColor.blackColor()
-        cell.tintColor = STColor.blue()
+        cell.nameLabel.textColor = cell.selected ? STColor.green() : UIColor.blackColor()
+        cell.tintColor = STColor.green()
         
         // Users Profile Image
         let user = object as? PFUser
-        cell.profilePic.image = getGravitarImageForEmail((user?.email)!)
-        cell.profilePic.layer.cornerRadius = 4.0
-        cell.profilePic.clipsToBounds = true
+        cell.profileImageView.image = imageFromString((user?.email)!, size: CGSizeMake(80, 80))
+        cell.profileImageView.layer.cornerRadius = 4.0
+        cell.profileImageView.clipsToBounds = true
         
+        cell.usernameLabel.text = user?.username
+        
+        let firstName = user!["firstName"] as? String
+        let lastName = user!["lastName"] as? String
+        cell.nameLabel.text = firstName! + " " + lastName!
         return cell
     }
     

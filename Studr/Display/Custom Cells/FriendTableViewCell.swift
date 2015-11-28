@@ -11,8 +11,9 @@ import ParseUI
 
 class FriendTableViewCell: PFTableViewCell {
     
-    @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var friendName: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
