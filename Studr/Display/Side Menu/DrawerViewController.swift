@@ -14,27 +14,17 @@ class DrawerViewController: MSDynamicsDrawerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    /**
-     Method used to create view controller in storyboard
-    */
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        addStylersFromArray([MSDynamicsDrawerScaleStyler.styler() ], forDirection: MSDynamicsDrawerDirection.Left)
         
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        
-        addStylersFromArray([MSDynamicsDrawerParallaxStyler.styler()], forDirection: MSDynamicsDrawerDirection.Left)
-        
-        let centerViewController = mainStoryboard.instantiateViewControllerWithIdentifier("GroupsViewController") as! GroupsViewController
+        let centerViewController = GroupsViewController()
         let centerNavigationController:UINavigationController = UINavigationController(rootViewController: centerViewController)
-        let leftViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SideTableViewController") as! SideTableViewController
+        let leftViewController = SideTableViewController()
         
         setPaneViewController(centerNavigationController, animated: false, completion: nil)
         setDrawerViewController(leftViewController, forDirection: .Left)
+        setRevealWidth(200, forDirection: MSDynamicsDrawerDirection.Left)
         
         setup()
-        
     }
     
     func setup(){
@@ -48,7 +38,4 @@ class DrawerViewController: MSDynamicsDrawerViewController {
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
-    
-
-    
 }

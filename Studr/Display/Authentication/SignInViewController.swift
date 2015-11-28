@@ -121,8 +121,7 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
                 // Launch user into main view controller as a navigation view controller
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let drawerViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DrawerViewController")
+                let drawerViewController: UIViewController = DrawerViewController()
                 
                 self.presentViewController(drawerViewController, animated: true, completion: {
                     appDelegate.window?.rootViewController = drawerViewController

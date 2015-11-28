@@ -8,9 +8,11 @@
 
 import UIKit
 
-class SideTableViewCell: UITableViewCell {
+
+public class SideTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cellTagView: UIView!
-    @IBOutlet weak var mainLabel: UILabel!
+    // Cell Elements
+    @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet weak var iconView: UIImageView!
     
 }

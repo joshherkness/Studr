@@ -17,20 +17,23 @@ class SideTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get the drawer view controller
+        // Register cell for table
+        tableView.registerNib(UINib(nibName: "SideTableViewCell", bundle: nil), forCellReuseIdentifier: "SideTableViewCell")
+        
         // Create menu items
-        addMenuItem("Create Group",color: UIColor(hexString: "#56D289"), selector: "showCreateGroupViewController", section: 0)
-        addMenuItem("Groups", color: UIColor(hexString: "#56D289"), selector: "showGroupsViewController", section: 0)
-        addMenuItem("Scan QR", color: FlatYellow(), selector: nil, section: 0)
-        addMenuItem("Friends", color: FlatMagenta(), selector: nil, section: 1)
-        addMenuItem("Profile", color: FlatSkyBlue(), selector: nil, section: 1)
-        addMenuItem("Settings", color: FlatSkyBlue(), selector: nil, section: 1)
-        addMenuItem("About", color: FlatSkyBlue(), selector: nil, section: 1)
-        addMenuItem("Logout", color: FlatRed(), selector: "logOut", section: 2)
+        addMenuItem("My Groups", iconName: "ic_event", color: UIColor(hexString: "#56D289"), selector: "showGroupsViewController", section: 0)
+        addMenuItem("Scan QR", iconName: "ic_qrcode", color: FlatYellow(), selector: nil, section: 0)
+        addMenuItem("Friends", iconName: "ic_group", color: FlatMagenta(), selector: nil, section: 0)
+        addMenuItem("Profile", iconName: "ic_person", color: FlatSkyBlue(), selector: nil, section: 0)
+        addMenuItem("Settings", iconName: "ic_settings", color: FlatSkyBlue(), selector: nil, section: 0)
+        addMenuItem("About", iconName: "ic_info_outline", color: FlatSkyBlue(), selector: nil, section: 0)
+        addMenuItem("Logout", iconName: "ic_clear", color: FlatRed(), selector: "logOut", section: 0)
         
         // Hide all empty table view cells
         tableView.tableFooterView = UIView()
-        view.backgroundColor = UIColor(hexString: "121212")
+        
+        view.backgroundColor = UIColor(hexString: "302F32")
+        tableView.separatorColor = view.backgroundColor?.darkenByPercentage(0.05)
         
     }
     
@@ -49,6 +52,7 @@ class SideTableViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
         return 64
     }
     
@@ -76,6 +80,7 @@ class SideTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
+    
     
     //MARK: UITableViewDataSource
     
@@ -107,14 +112,17 @@ class SideTableViewController: UITableViewController{
         
         let menuItem: MenuItem = data[section][row]
         
-        cell.mainLabel?.text = menuItem.title
-        cell.cellTagView.backgroundColor = menuItem.color
+        // Update the attributes of the cell
+        cell.tagLabel?.text = menuItem.title
+        cell.iconView?.image = UIImage(named: menuItem.iconName)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        cell.iconView?.tintColor = menuItem.color
         
+        // Create the selected background color
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = menuItem.color
-        selectedBackgroundView.backgroundColor = menuItem.color
+        selectedBackgroundView.backgroundColor = cell.backgroundColor?.darkenByPercentage(0.10)
         cell.selectedBackgroundView = selectedBackgroundView
         
+        // Disable the cell if no selector is specified
         if (menuItem.selector == nil) {
             cell.userInteractionEnabled = false
         }
@@ -143,8 +151,7 @@ class SideTableViewController: UITableViewController{
     func showCreateGroupViewController(){
         
         // Get the new event view controller
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let createGroupViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("CreateGroupViewController")
+        let createGroupViewController: UIViewController = CreateGroupViewController()
         let createGroupNavigationController:UINavigationController = UINavigationController(rootViewController: createGroupViewController)
         
         // Set the navigation bars tint color
@@ -152,41 +159,48 @@ class SideTableViewController: UITableViewController{
         
         // Set the center panel to the new event view controller
         let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
-        drawerViewController.setPaneViewController(createGroupNavigationController, animated: true, completion: nil)
+        drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
+        drawerViewController.presentViewController(createGroupNavigationController, animated: true, completion: nil)
         
     }
     func showGroupsViewController(){
-        // Get the new event view controller
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let groupsViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("GroupsViewController")
-        let groupsNavigationController:UINavigationController = UINavigationController(rootViewController: groupsViewController)
         
-        // Set the navigation bars tint color
-        groupsNavigationController.navigationBar.tintColor = UIColor(hexString: "#56D289")
+        // Get the new event view controller
+        let groupsViewController: UIViewController = GroupsViewController()
+        let groupsNavigationController:UINavigationController = UINavigationController(rootViewController: groupsViewController)
         
         // Set the center panel to the new event view controller
         let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
-        drawerViewController.setPaneViewController(groupsNavigationController, animated: true, completion: nil)
+        let currentPaneNavigationController:UINavigationController = drawerViewController.paneViewController as! UINavigationController
+        let currentPaneViewController = currentPaneNavigationController.viewControllers.first
+        
+        if currentPaneViewController!.isKindOfClass(GroupsViewController.self) {
+            drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
+        } else {
+            drawerViewController.setPaneViewController(groupsNavigationController, animated: true, completion: nil)
+        }
 
     }
     
-    func addMenuItem(title: String, color: UIColor, selector: Selector, section: Int){
+    func addMenuItem(title: String, iconName: String, color: UIColor, selector: Selector, section: Int){
         while(section >= data.count ){
             data.append([])
         }
-        data[section].append(MenuItem(title: title, color: color, selector: selector))
+        data[section].append(MenuItem(title: title, iconName: iconName, color: color, selector: selector))
     }
 }
 
-class MenuItem {
+struct MenuItem {
     
     var title: String
     var color: UIColor
+    var iconName: String
     var selector: Selector
     
-    init(title: String, color: UIColor, selector: Selector){
+    init(title: String, iconName: String, color: UIColor, selector: Selector){
         
         self.title = title
+        self.iconName = iconName
         self.color = color
         self.selector = selector
     }

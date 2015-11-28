@@ -10,29 +10,41 @@ import UIKit
 import Foundation
 import Parse
 import ParseUI
-import XLForm
+import Eureka
 
-class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, XLFormRowDescriptorViewController{
+public class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDelegate, TypedRowControllerType {
     
-    // Pointer to XLForm's row descriptor
-    var rowDescriptor : XLFormRowDescriptor?
+    // Variables used for eureka row reference and callback
+    public var row: RowOf<Set<PFUser>>!
+    public var completionCallback : ((UIViewController) -> ())?
+    
+    public var parseRelationName: String?
   
     // Array of current selected friends within the table
-    var selectedFriends = [PFObject]()
-    
-    // Search Bar
-    var searchBar = UISearchBar()
+    public var selectedFriends = [PFObject]()
     
     // The current parse query
     var query: PFQuery? {
         didSet {
             // whenever we assign a new query, cancel any previous requests
-            oldValue?.cancel()
+            //oldValue?.cancel()
         }
     }
+    
+    convenience public init(_ callback: (UIViewController) -> ()){
+        self.init(nibName: nil, bundle: nil)
+        completionCallback = callback
+    }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Register cell for table
+        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
+        
+        placeholderImage = UIImage(named: "placeholder_profile_male")
+        imageKey = "profileImage"
+        textKey = "username"
 
         // Preserve selection between presentations
         clearsSelectionOnViewWillAppear = false
@@ -40,29 +52,35 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         // Allows selection of multiple cells in tableview
         tableView.allowsMultipleSelection = true
         
-        // Create the search bar view
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Username"
-        searchBar.searchBarStyle = .Minimal
-        searchBar.showsCancelButton = true
+        // Add completion button
+        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "tappedDone:")
+        button.title = "Done"
+        navigationItem.leftBarButtonItem = button
         
-        //Change the appearance of the search bar
-        searchBar.setImage(UIImage(named: "SearchIcon"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
-        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
-        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
-        textFieldInsideSearchBar?.textAlignment = .Left
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
+        // Load the existing selected users into the array
+        selectedFriends = Array(row.value!)
         
         // Reload the data of the table
         loadObjects()
         
     }
+    
+    func tappedDone(sender: UIButton){
+        
+        // Set the new value of selected friends
+        var selectedFriendsSet = Set<PFUser>()
+        for s in selectedFriends {
+            selectedFriendsSet.insert(s as! PFUser)
+        }
+        row.value = selectedFriendsSet
+        
+        // Return to previouse view controller
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
     //MARK: UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // To be called when a cell is seclected
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
@@ -73,7 +91,7 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         cell?.friendName.textColor = STColor.blue()
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    public override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
         let object = self.objectAtIndexPath(indexPath)!
@@ -89,33 +107,34 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 64
+    public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return super.tableView(tableView, viewForHeaderInSection: section)
     }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return super.tableView(tableView, viewForFooterInSection: section)
     }
     
     //MARK: UITableViewDataSource
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
         
-        cell.friendName.text = object!["username"] as? String
+        cell.friendName.text = object![textKey!] as? String
+        cell.profilePic.image = object![imageKey!] != nil ? object![imageKey!] as? UIImage : placeholderImage
         
         let selectedBackgroundView: UIView = UIView()
         selectedBackgroundView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.03)
@@ -135,51 +154,13 @@ class AddMembersTableViewController: PFQueryTableViewController , UISearchBarDel
         return cell
     }
     
-
-    
-    // Mark: UISearchBarDelegate
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        loadObjects()
-    }
-
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
-        self.navigationItem.setHidesBackButton(false, animated: true)
-        self.navigationItem.titleView = nil
-        
-        let searchButton = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
-        self.navigationItem.setRightBarButtonItem(searchButton, animated: true)
-        loadObjects()
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
-        self.navigationItem.setHidesBackButton(false, animated: true)
-        self.navigationItem.titleView = nil
-        
-        let searchButton = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
-        self.navigationItem.setRightBarButtonItem(searchButton, animated: true)
-        loadObjects()
-    }
-    
-    func beganSearch(){
-        navigationItem.setHidesBackButton(true, animated: true)
-        navigationItem.titleView = searchBar
-        self.navigationItem.setRightBarButtonItem(nil, animated: true)
-        searchBar.becomeFirstResponder()
-    }
-    
     
     // Mark - PFQueryTableViewController
     
-    override func queryForTable() -> PFQuery {
+    public override func queryForTable() -> PFQuery {
         
         let friendsRelation = PFUser.currentUser()?.relationForKey("friend")
         query = friendsRelation?.query()
-        if (self.searchBar.text?.characters.count > 0){
-            query?.whereKey("username", containsString: searchBar.text!.lowercaseString)
-        }
         query?.orderByAscending("username")
         
         return query!
