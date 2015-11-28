@@ -16,13 +16,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="403" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umz-wK-pTl">
-                        <rect key="frame" x="69" y="21" width="49" height="21"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-7c-h4r">
+                        <rect key="frame" x="65" y="13.5" width="74" height="37.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umz-wK-pTl">
+                                <rect key="frame" x="0.0" y="0.0" width="74" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-q9-Upl">
+                                <rect key="frame" x="0.0" y="20.5" width="64" height="17"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </stackView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yme-2j-wuS">
                         <rect key="frame" x="8" y="9" width="45" height="45"/>
                         <animations/>
@@ -39,16 +52,15 @@
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="Umz-wK-pTl" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="58P-GR-IEp"/>
+                    <constraint firstItem="Xdj-7c-h4r" firstAttribute="leading" secondItem="yme-2j-wuS" secondAttribute="trailing" constant="12" id="CAZ-Qw-ZyS"/>
+                    <constraint firstItem="Xdj-7c-h4r" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="Ji2-j5-lHd"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" constant="1" id="QeL-D9-rkN"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" constant="1" id="Rih-qu-qD9"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" id="Ucb-Ll-Tax"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yme-2j-wuS" secondAttribute="bottom" constant="1" id="Voq-qC-d6E"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="oMt-LX-bP1"/>
-                    <constraint firstItem="Umz-wK-pTl" firstAttribute="leading" secondItem="yme-2j-wuS" secondAttribute="trailing" constant="16" id="rVu-Be-ePz"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="bottom" secondItem="mj6-q4-zXb" secondAttribute="bottomMargin" id="sxb-P5-qU1"/>
                     <constraint firstAttribute="leadingMargin" secondItem="yme-2j-wuS" secondAttribute="leading" id="u39-Bp-kz3"/>
-                    <constraint firstItem="Umz-wK-pTl" firstAttribute="leading" secondItem="yme-2j-wuS" secondAttribute="trailing" constant="8" symbolic="YES" id="xXn-Y4-iAB"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="leading" secondItem="mj6-q4-zXb" secondAttribute="leadingMargin" id="yvB-nL-CBN"/>
                 </constraints>
                 <variation key="default">
@@ -57,14 +69,14 @@
                         <exclude reference="Ucb-Ll-Tax"/>
                         <exclude reference="sxb-P5-qU1"/>
                         <exclude reference="u39-Bp-kz3"/>
-                        <exclude reference="xXn-Y4-iAB"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <animations/>
             <connections>
-                <outlet property="friendName" destination="Umz-wK-pTl" id="3sa-a2-McV"/>
-                <outlet property="profilePic" destination="yme-2j-wuS" id="AHl-cD-S9X"/>
+                <outlet property="nameLabel" destination="Umz-wK-pTl" id="2bY-ZM-wE9"/>
+                <outlet property="profileImageView" destination="yme-2j-wuS" id="tmg-IJ-VW2"/>
+                <outlet property="usernameLabel" destination="vvF-q9-Upl" id="XEo-uS-0C7"/>
             </connections>
             <point key="canvasLocation" x="281.5" y="167"/>
         </tableViewCell>
