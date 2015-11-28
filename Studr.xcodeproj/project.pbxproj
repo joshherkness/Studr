@@ -15,6 +15,7 @@
 		03434F0B1BE5653D001E34D5 /* StudrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03434F0A1BE5653D001E34D5 /* StudrUITests.swift */; };
 		03927DE11BEBB321004C35DD /* NotificationLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03927DE01BEBB321004C35DD /* NotificationLabel.swift */; };
 		039D82FD1C08D97E00C9D46A /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039D82FC1C08D97E00C9D46A /* FriendTableViewCell.xib */; };
+		039D82FF1C08FB5800C9D46A /* SideTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039D82FE1C08FB5800C9D46A /* SideTableViewCell.xib */; };
 		03B21EE41BE585F70052B0AD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE31BE585F70052B0AD /* SignInViewController.swift */; };
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
 		03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */; };
@@ -73,6 +74,7 @@
 		03434F0C1BE5653D001E34D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03927DE01BEBB321004C35DD /* NotificationLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLabel.swift; sourceTree = "<group>"; };
 		039D82FC1C08D97E00C9D46A /* FriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		039D82FE1C08FB5800C9D46A /* SideTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideTableViewCell.xib; sourceTree = "<group>"; };
 		03B21EE31BE585F70052B0AD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ne-UINavigationControllerExtension.swift"; sourceTree = "<group>"; };
@@ -261,8 +263,9 @@
 			isa = PBXGroup;
 			children = (
 				CCDB5C751BEFB9FD00ABA1E7 /* FriendTableViewCell.swift */,
-				03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */,
 				039D82FC1C08D97E00C9D46A /* FriendTableViewCell.xib */,
+				03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */,
+				039D82FE1C08FB5800C9D46A /* SideTableViewCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */,
 				03434EF51BE5653D001E34D5 /* LaunchScreen.storyboard in Resources */,
 				03434EF21BE5653D001E34D5 /* Assets.xcassets in Resources */,
+				039D82FF1C08FB5800C9D46A /* SideTableViewCell.xib in Resources */,
 				03434EF01BE5653D001E34D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

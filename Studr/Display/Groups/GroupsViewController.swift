@@ -8,32 +8,43 @@
 import Foundation
 import UIKit
 import XLForm
+
 class GroupsViewController: XLFormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Edit navigation bar apearence
+        self.navigationController?.navigationBar.barTintColor = STColor.green()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.topItem?.title = "Groups"
+        
+        // Add menu button
+        let menuImage = UIImage(named: "ic_menu")
+        let menuButton = UIBarButtonItem(image: menuImage, style: .Plain, target: self, action: "menu:")
+        navigationItem.leftBarButtonItem = menuButton
+        
+        // Add create button
+        let createImage = UIImage(named: "ic_add")
+        let createButton = UIBarButtonItem(image: createImage, style: .Plain, target: self, action: "create:")
+        navigationItem.rightBarButtonItem = createButton
     }
     
-
-    @IBAction func sideMenuToggleAction(sender: AnyObject) {
-        let drawerViewController: DrawerViewController = self.view.window!.rootViewController as! DrawerViewController
+    func create(sender: UIBarButtonItem){
+        
+        // Make the create event view controller
+        let createGroupViewController: UIViewController = CreateGroupViewController()
+        let createGroupNavigationController:UINavigationController = UINavigationController(rootViewController: createGroupViewController)
+        
+        // Present the create event view controller
+        self.presentViewController(createGroupNavigationController, animated: true, completion: nil)
+    }
+    
+    func menu(sender: UIBarButtonItem){
+        
+        // Present the side menu of the drawer view controller
+        let drawerViewController: DrawerViewController = self.navigationController?.parentViewController as! DrawerViewController
         drawerViewController.setPaneState(.Open, animated: true, allowUserInterruption: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -23,9 +23,6 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     // Array of current selected friends within the table
     public var selectedFriends = [PFObject]()
     
-    // Search Bar
-    private var searchBar = UISearchBar()
-    
     // The current parse query
     var query: PFQuery? {
         didSet {
@@ -45,7 +42,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         // Register cell for table
         tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
         
-        placeholderImage = UIImage(named: "PlaceholderProfile")
+        placeholderImage = UIImage(named: "placeholder_profile_male")
         imageKey = "profileImage"
         textKey = "username"
 
@@ -54,21 +51,6 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         
         // Allows selection of multiple cells in tableview
         tableView.allowsMultipleSelection = true
-        
-        // Create the search bar view
-        searchBar.delegate = self
-        searchBar.sizeToFit()
-        searchBar.placeholder = "Username"
-        searchBar.searchBarStyle = .Minimal
-        searchBar.showsCancelButton = true
-        
-        //Change the appearance of the search bar
-        searchBar.setImage(UIImage(named: "SearchIcon"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
-        let textFieldInsideSearchBar = searchBar.valueForKey("searchField") as? UITextField
-        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
-        textFieldInsideSearchBar?.textAlignment = .Left
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
         
         // Add completion button
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "tappedDone:")
@@ -91,6 +73,9 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
             selectedFriendsSet.insert(s as! PFUser)
         }
         row.value = selectedFriendsSet
+        
+        // Return to previouse view controller
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     //MARK: UITableViewDelegate
@@ -123,7 +108,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     
     
     public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 44
+        return 50
     }
     
     public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -169,41 +154,6 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         return cell
     }
     
-
-    
-    // Mark: UISearchBarDelegate
-    
-    public func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        loadObjects()
-    }
-
-    public func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
-        self.navigationItem.setHidesBackButton(false, animated: true)
-        self.navigationItem.titleView = nil
-        
-        let searchButton = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
-        self.navigationItem.setRightBarButtonItem(searchButton, animated: true)
-        loadObjects()
-    }
-    
-    public func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
-        self.navigationItem.setHidesBackButton(false, animated: true)
-        self.navigationItem.titleView = nil
-        
-        let searchButton = UIBarButtonItem.init(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "beganSearch")
-        self.navigationItem.setRightBarButtonItem(searchButton, animated: true)
-        loadObjects()
-    }
-    
-    func beganSearch(){
-        navigationItem.setHidesBackButton(true, animated: true)
-        navigationItem.titleView = searchBar
-        self.navigationItem.setRightBarButtonItem(nil, animated: true)
-        searchBar.becomeFirstResponder()
-    }
-    
     
     // Mark - PFQueryTableViewController
     
@@ -211,11 +161,6 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         
         let friendsRelation = PFUser.currentUser()?.relationForKey("friend")
         query = friendsRelation?.query()
-        
-        if (self.searchBar.text?.characters.count > 0){
-            query?.cachePolicy = .CacheOnly
-            query?.whereKey("username", containsString: searchBar.text!.lowercaseString)
-        }
         query?.orderByAscending("username")
         
         return query!
