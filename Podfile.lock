@@ -3,6 +3,7 @@ PODS:
   - ChameleonFramework/Default (2.0.4)
   - ChameleonFramework/Swift (2.0.4):
     - ChameleonFramework/Default
+  - CryptoSwift (0.1.1)
   - Eureka (1.2.0)
   - GoogleMaps (1.10.5)
   - MSDynamicsDrawerViewController (1.5.1)
@@ -15,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
+  - CryptoSwift
   - Eureka (~> 1.2)
   - GoogleMaps
   - MSDynamicsDrawerViewController
@@ -25,6 +27,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  CryptoSwift: c11640d3d66107efc8333e4131a5173f072b1d61
   Eureka: aa7059d2a30e1b206a581f0aabfcf903ece6beae
   GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   MSDynamicsDrawerViewController: 2874df90f5e9453dc7d4e32f8038b50615d4baa7

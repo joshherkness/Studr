@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import XLForm
 
-class GroupsViewController: XLFormViewController {
+class GroupsViewController : XLFormViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CryptoSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Eureka.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MSDynamicsDrawerViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +52,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0831D6B4A4C0C669C15A44AA199079A8</key>
+		<key>31EF08F3444DCD2B169D92269C5BCD3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,17 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6978C13BA4AFBDFFC9518263D7DBDA2B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>708E01B006A9F88B3C13711562282B5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B24C80E6D228069634354E22044D581</key>
+		<key>952FE1EB61CA49FEC151B1763B93E741</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -73,6 +78,11 @@
 			<true/>
 		</dict>
 		<key>B8A759F57254B6094CF99273E5ECEE8B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE7CE2D3B048241DF7DF962A5274B92A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
