@@ -19,7 +19,7 @@ class CreateGroupViewController : FormViewController {
         // Edit navigation bar apearence
         self.navigationController?.navigationBar.barTintColor = STColor.green()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.topItem?.title = "Create"
+        self.title = "Create"
         
         // Add dismiss button
         let closeImage = UIImage(named: "ic_clear")

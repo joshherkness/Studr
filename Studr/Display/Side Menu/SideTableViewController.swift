@@ -24,10 +24,7 @@ class SideTableViewController: UITableViewController{
         addMenuItem("My Groups", iconName: "ic_event", color: UIColor(hexString: "#56D289"), selector: "showGroupsViewController", section: 0)
         addMenuItem("Scan QR", iconName: "ic_qrcode", color: FlatYellow(), selector: nil, section: 0)
         addMenuItem("Friends", iconName: "ic_group", color: FlatMagenta(), selector: nil, section: 0)
-        addMenuItem("Profile", iconName: "ic_person", color: FlatSkyBlue(), selector: nil, section: 0)
-        addMenuItem("Settings", iconName: "ic_settings", color: FlatSkyBlue(), selector: nil, section: 0)
-        addMenuItem("About", iconName: "ic_info_outline", color: FlatSkyBlue(), selector: nil, section: 0)
-        addMenuItem("Logout", iconName: "ic_clear", color: FlatRed(), selector: "logOut", section: 0)
+        addMenuItem("Settings", iconName: "ic_settings", color: FlatSkyBlue(), selector: "showSettingsViewController", section: 0)
         
         // Hide all empty table view cells
         tableView.tableFooterView = UIView()
@@ -98,13 +95,6 @@ class SideTableViewController: UITableViewController{
         return cell
     }
     
-    
-    /**
-     Configures the apearence of a table view cell at a give index in the table
-     
-     - parameter cell:              <#cell description#>
-     - parameter forRowAtIndexPath: <#forRowAtIndexPath description#>
-     */
     func configureCell(cell: SideTableViewCell, forRowAtIndexPath: NSIndexPath) {
         
         let section = forRowAtIndexPath.section
@@ -127,25 +117,6 @@ class SideTableViewController: UITableViewController{
             cell.userInteractionEnabled = false
         }
 
-    }
-    
-    func logOut(){
-        
-        PFUser.logOut()
-        
-        // Close the drawer
-        let drawerViewController: DrawerViewController = self.view.window!.rootViewController as! DrawerViewController
-        drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: true, completion: nil)
-        
-        // Return user to login view
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("OnboardingViewController")
-        
-        self.presentViewController(logInViewController, animated: true, completion: {
-            appDelegate.window?.rootViewController = logInViewController
-        })
     }
     
     func showCreateGroupViewController(){
@@ -180,6 +151,25 @@ class SideTableViewController: UITableViewController{
             drawerViewController.setPaneViewController(groupsNavigationController, animated: true, completion: nil)
         }
 
+    }
+    
+    func showSettingsViewController(){
+        
+        // Create the new settings view controller
+        let settingsViewController: UIViewController = SettingsViewController()
+        let settingsNavigationController:UINavigationController = UINavigationController(rootViewController: settingsViewController)
+        
+        // Set the center panel to the settings view controller
+        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
+        let currentPaneNavigationController:UINavigationController = drawerViewController.paneViewController as! UINavigationController
+        let currentPaneViewController = currentPaneNavigationController.viewControllers.first
+        
+        if currentPaneViewController!.isKindOfClass(SettingsViewController.self) {
+            drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
+        } else {
+            drawerViewController.setPaneViewController(settingsNavigationController, animated: true, completion: nil)
+        }
+        
     }
     
     func addMenuItem(title: String, iconName: String, color: UIColor, selector: Selector, section: Int){
