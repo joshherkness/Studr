@@ -2,17 +2,19 @@
 //  GroupsViewController.swift
 //  Studr
 //
-//  Created by Robin Onsay on 11/8/15.
+//  Created by Joshua Herkness on 11/28/15.
 //  Copyright © 2015 JJR. All rights reserved.
 //
+
 import Foundation
 import UIKit
-import XLForm
 
-class GroupsViewController : XLFormViewController{
-
+class GroupsViewController : UIViewController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.whiteColor()
         
         // Edit navigation bar apearence
         self.navigationController?.navigationBar.barTintColor = STColor.green()
@@ -46,5 +48,5 @@ class GroupsViewController : XLFormViewController{
         let drawerViewController: DrawerViewController = self.navigationController?.parentViewController as! DrawerViewController
         drawerViewController.setPaneState(.Open, animated: true, allowUserInterruption: true, completion: nil)
     }
-
+    
 }

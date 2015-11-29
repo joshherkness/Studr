@@ -33,6 +33,7 @@ class DrawerViewController: MSDynamicsDrawerViewController {
         elasticity = 0.0
         bounceElasticity = 0.0
         bounceMagnitude = 0.0
+        paneViewSlideOffAnimationEnabled = false
     }
     
     override func prefersStatusBarHidden() -> Bool {

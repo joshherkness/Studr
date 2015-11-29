@@ -25,21 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
         
-        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+        //UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         UITextField.appearance().keyboardAppearance = .Light
         UILabel.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).textColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         
-        if (PFUser.currentUser() != nil){
-            
-            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
-            
-        } else {
-            
-            self.window?.rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
-            
+        let rootViewController: UIViewController = PFUser.currentUser() != nil ? DrawerViewController() : UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
+        if let window = self.window {
+            window.rootViewController? = rootViewController
+            window.makeKeyAndVisible()
         }
         
         return true
