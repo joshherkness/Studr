@@ -9,25 +9,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendTableViewCell" rowHeight="64" id="fGc-0L-CmO" customClass="FriendTableViewCell" customModule="Studr" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="403" height="64"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendTableViewCell" rowHeight="63" id="fGc-0L-CmO" customClass="FriendTableViewCell" customModule="Studr" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="403" height="63"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fGc-0L-CmO" id="mj6-q4-zXb">
-                <rect key="frame" x="0.0" y="0.0" width="403" height="63.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="403" height="62.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-7c-h4r">
-                        <rect key="frame" x="65" y="13.5" width="74" height="37.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-7c-h4r">
+                        <rect key="frame" x="65" y="14" width="74" height="38"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umz-wK-pTl">
-                                <rect key="frame" x="0.0" y="0.0" width="74" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="74" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-q9-Upl">
-                                <rect key="frame" x="0.0" y="20.5" width="64" height="17"/>
+                                <rect key="frame" x="0.0" y="21" width="64" height="17"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +78,7 @@
                 <outlet property="profileImageView" destination="yme-2j-wuS" id="tmg-IJ-VW2"/>
                 <outlet property="usernameLabel" destination="vvF-q9-Upl" id="XEo-uS-0C7"/>
             </connections>
-            <point key="canvasLocation" x="281.5" y="167"/>
+            <point key="canvasLocation" x="281.5" y="167.5"/>
         </tableViewCell>
     </objects>
 </document>

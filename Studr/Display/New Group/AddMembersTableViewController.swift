@@ -107,7 +107,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     
     
     public override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
+        return 50
     }
     
     public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

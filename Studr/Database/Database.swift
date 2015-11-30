@@ -167,4 +167,59 @@ class Database{
         
     }
     
+    
+    
+    /**
+     This function retrieves a list of All FriendFrequest objects that relate to a specific user
+     
+     - parameter user:            The user of interest
+     - parameter completionBlock: The completion block for the query
+     */
+    static func getFriendRequestsForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let predicate = NSPredicate(format: "from = %@ OR to = %@", user, user)
+        let query = PFQuery(className: "FriendRequest", predicate: predicate)
+        query.includeKey("from")
+        query.includeKey("to")
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    /**
+     This function retrieves a list of Accepted FriendFrequest objects that relate to a specific user
+     
+     - parameter user:            The user of interest
+     - parameter completionBlock: The completion block for the query
+     */
+    static func getAcceptedFriendRequestsForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let predicate = NSPredicate(format: "status = 'accepted' AND from = %@ OR status = 'accepted' AND to = %@", user, user)
+        let query = PFQuery(className: "FriendRequest", predicate: predicate)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    /**
+     This function retrieves a list of Pending FriendFrequest objects that relate to a specific user
+     
+     - parameter user:            The user of interest
+     - parameter completionBlock: The completion block for the query
+     */
+    static func getPendingFriendRequestsForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let predicate = NSPredicate(format: "status = 'pending' AND from = %@ OR status = 'pending' AND to = %@", user, user)
+        let query = PFQuery(className: "FriendRequest", predicate: predicate)
+        query.whereKey("from", equalTo:user)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    /**
+     Creates a friend request from the current user to another user
+     
+     - parameter user: The target user for the friend request
+     */
+    static func sendFriendRequestToUser(user: PFUser){
+        // create an entry in the FriendRequest table
+        let friendRequest = PFObject(className: "FriendRequest")
+        friendRequest.setObject(PFUser.currentUser()!, forKey: "from")
+        friendRequest.setObject(user, forKey: "to")
+        friendRequest.setObject("pending", forKey: "status")
+        friendRequest.saveInBackground()
+    }
 }
