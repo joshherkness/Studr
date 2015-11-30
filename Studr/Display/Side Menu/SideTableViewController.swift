@@ -23,14 +23,15 @@ class SideTableViewController: UITableViewController{
         // Create menu items
         addMenuItem("My Groups", iconName: "ic_event", color: UIColor(hexString: "#56D289"), selector: "showGroupsViewController", section: 0)
         addMenuItem("Scan QR", iconName: "ic_qrcode", color: FlatYellow(), selector: nil, section: 0)
-        addMenuItem("Friends", iconName: "ic_group", color: FlatMagenta(), selector: nil, section: 0)
+        addMenuItem("Friends", iconName: "ic_group", color: FlatMagenta(), selector: "showFriendsViewController", section: 0)
         addMenuItem("Settings", iconName: "ic_settings", color: FlatSkyBlue(), selector: "showSettingsViewController", section: 0)
         
         // Hide all empty table view cells
         tableView.tableFooterView = UIView()
         
         view.backgroundColor = UIColor(hexString: "302F32")
-        tableView.separatorColor = view.backgroundColor?.darkenByPercentage(0.05)
+        tableView.separatorColor = view.backgroundColor?.lightenByPercentage(0.05)
+        tableView.separatorInset = UIEdgeInsetsZero
         
     }
     
@@ -179,8 +180,7 @@ class SideTableViewController: UITableViewController{
         data[section].append(MenuItem(title: title, iconName: iconName, color: color, selector: selector))
     }
     
-    func showFriends(){
-        print("Hello")
+    func showFriendsViewController(){
         // Get the new event view controller
         let friendViewController: FriendsTableViewController = FriendsTableViewController()
         let friendNavigationController:UINavigationController = UINavigationController(rootViewController: friendViewController)

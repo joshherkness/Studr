@@ -10,32 +10,69 @@ import UIKit
 import Parse
 
 class FriendsTableViewController : UITableViewController {
-    private var friends : [[PFObject]] = [[]]
+    private let sections = ["Invites", "My Friends"]
+    private var friends : [[PFUser]] = [[], []]
     
     override func viewDidLoad() {
-        let friendsRelation = PFUser.currentUser()?.relationForKey("friendRequests")
-        let query = friendsRelation?.query()
-        query?.whereKey("status", equalTo: "accepted")
-        query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-            self.friends.append(objects!)
-            self.tableView.reloadData()
-        })
+        super.viewDidLoad()
         
-        let query2 = friendsRelation?.query()
-        query2?.whereKey("status", equalTo: "pending")
-        query2?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-            self.friends.append(objects!)
+        // Edit navigation bar apearence
+        self.navigationController?.navigationBar.barTintColor = STColor.blue()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.title = "Friends"
+        
+        // Add dismiss button
+        let menuImage = UIImage(named: "ic_menu")
+        let menuButton = UIBarButtonItem(image: menuImage, style: .Plain, target: self, action: "menu:")
+        navigationItem.leftBarButtonItem = menuButton
+
+        
+        // Remove the hairline between the cells
+        self.tableView.separatorStyle = .None
+        
+        // Register cell for table
+        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
+    
+        loadFriends()
+    }
+    
+    /**
+     Populates the friends array with the current users pending friends and accepted friends
+     */
+    func loadFriends(){
+        Database.getFriendRequestsForUser(PFUser.currentUser()!) { (friendRequests, error) -> Void in
+            for request in friendRequests! {
+                
+                // Determine the friend
+                let fromUser = request["from"] as! PFUser
+                let toUser = request["to"] as! PFUser
+                var friend: PFUser
+                if(fromUser.objectId == PFUser.currentUser()?.objectId){
+                    friend = toUser
+                }else{
+                    friend = fromUser
+                }
+                
+                // Determine the status
+                let status: String = request["status"] as! String
+                if (status == "accepted") {
+                    self.friends[1].append(friend)
+                } else if (status == "pending") {
+                    self.friends[0].append(friend)
+                }
+            }
             self.tableView.reloadData()
-        })
+        }
     }
     
     // Mark - TableViewDelegate
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 30
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,18 +81,19 @@ class FriendsTableViewController : UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return friends.count
     }
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let user : PFUser = friends[indexPath.section][indexPath.row] as! PFUser
+        let user : PFUser = friends[indexPath.section][indexPath.row] 
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
         
         // Users Profile Image
-        cell.profileImageView.image = imageFromString((user.email)!, size: CGSizeMake(80, 80))
+        cell.profileImageView.image = imageFromString(user.email!, size: CGSizeMake(80, 80))
         cell.profileImageView.layer.cornerRadius = 4.0
         cell.profileImageView.clipsToBounds = true
         
@@ -69,7 +107,10 @@ class FriendsTableViewController : UITableViewController {
         return UITableViewCell()
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func menu(sender: UIBarButtonItem){
         
+        // Present the side menu of the drawer view controller
+        let drawerViewController: DrawerViewController = self.navigationController?.parentViewController as! DrawerViewController
+        drawerViewController.setPaneState(.Open, animated: true, allowUserInterruption: true, completion: nil)
     }
 }
