@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Studr": {
+      "applicationId": "SiUI7l8keFbkruaPeGJGFysV1QRvFh8doFEIDn46"
+    },
+    "_default": {
+      "link": "Studr"
+    }
+  }
+}

@@ -178,6 +178,24 @@ class SideTableViewController: UITableViewController{
         }
         data[section].append(MenuItem(title: title, iconName: iconName, color: color, selector: selector))
     }
+    
+    func showFriends(){
+        print("Hello")
+        // Get the new event view controller
+        let friendViewController: FriendsTableViewController = FriendsTableViewController()
+        let friendNavigationController:UINavigationController = UINavigationController(rootViewController: friendViewController)
+        
+        // Set the center panel to the new event view controller
+        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
+        let currentPaneNavigationController:UINavigationController = drawerViewController.paneViewController as! UINavigationController
+        let currentPaneViewController = currentPaneNavigationController.viewControllers.first
+        
+        if currentPaneViewController!.isKindOfClass(FriendsTableViewController.self) {
+            drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
+        } else {
+            drawerViewController.setPaneViewController(friendNavigationController, animated: true, completion: nil)
+        }
+    }
 }
 
 struct MenuItem {
