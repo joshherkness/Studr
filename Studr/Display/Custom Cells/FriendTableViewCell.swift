@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import ParseUI
 
 class FriendTableViewCell: PFTableViewCell {
@@ -15,8 +16,26 @@ class FriendTableViewCell: PFTableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
+    private var user : PFUser!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    func setUser(user: PFUser){
+        self.user = user
+        
+        // Set the profile image
+        profileImageView.image = imageFromString(user.email!, size: CGSizeMake(80, 80))
+        profileImageView.layer.cornerRadius = 4.0
+        profileImageView.clipsToBounds = true
+        
+        // Set the name label
+        let firstName = user["firstName"] as? String
+        let lastName = user["lastName"] as? String
+        nameLabel.text = firstName! + " " + lastName!
+        
+        // Set the username label
+        usernameLabel.text = user.username
+    }
 }
