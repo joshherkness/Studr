@@ -99,12 +99,16 @@ class FriendsTableViewController : UITableViewController {
         
         cell.usernameLabel.text = user.username
         
+        let selectedBackgroundView: UIView = UIView()
+        selectedBackgroundView.backgroundColor = STColor.green().colorWithAlphaComponent(0.03)
+        cell.selectedBackgroundView = selectedBackgroundView
+        
         let firstName = user["firstName"] as? String
         let lastName = user["lastName"] as? String
         cell.nameLabel.text = firstName! + " " + lastName!
 
         
-        return UITableViewCell()
+        return cell
     }
     
     func menu(sender: UIBarButtonItem){
