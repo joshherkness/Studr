@@ -92,21 +92,13 @@ class FriendsTableViewController : UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
         
-        // Users Profile Image
-        cell.profileImageView.image = imageFromString(user.email!, size: CGSizeMake(80, 80))
-        cell.profileImageView.layer.cornerRadius = 4.0
-        cell.profileImageView.clipsToBounds = true
+        // Set the cell's user
+        cell.setUser(user)
         
-        cell.usernameLabel.text = user.username
-        
+        // Change the selected background view
         let selectedBackgroundView: UIView = UIView()
         selectedBackgroundView.backgroundColor = STColor.green().colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
-        
-        let firstName = user["firstName"] as? String
-        let lastName = user["lastName"] as? String
-        cell.nameLabel.text = firstName! + " " + lastName!
-
         
         return cell
     }

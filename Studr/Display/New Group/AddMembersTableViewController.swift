@@ -129,11 +129,16 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     //MARK: UITableViewDataSource
     
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
+        let user = object as? PFUser
         
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
         
-        cell.nameLabel.text = object![textKey!] as? String
-        cell.profileImageView.image = object![imageKey!] != nil ? object![imageKey!] as? UIImage : placeholderImage
+        // If the user exists, set the cell's user
+        if let user = user{
+            cell.setUser(user)
+        }else{
+            cell.profileImageView.image = object![imageKey!] != nil ? object![imageKey!] as? UIImage : placeholderImage
+        }
         
         let selectedBackgroundView: UIView = UIView()
         selectedBackgroundView.backgroundColor = STColor.green().colorWithAlphaComponent(0.03)
@@ -150,17 +155,6 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         cell.nameLabel.textColor = cell.selected ? STColor.green() : UIColor.blackColor()
         cell.tintColor = STColor.green()
         
-        // Users Profile Image
-        let user = object as? PFUser
-        cell.profileImageView.image = imageFromString((user?.email)!, size: CGSizeMake(80, 80))
-        cell.profileImageView.layer.cornerRadius = 4.0
-        cell.profileImageView.clipsToBounds = true
-        
-        cell.usernameLabel.text = user?.username
-        
-        let firstName = user!["firstName"] as? String
-        let lastName = user!["lastName"] as? String
-        cell.nameLabel.text = firstName! + " " + lastName!
         return cell
     }
     
