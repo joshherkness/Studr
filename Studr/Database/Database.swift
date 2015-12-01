@@ -208,18 +208,4 @@ class Database{
         query.whereKey("from", equalTo:user)
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
-    
-    /**
-     Creates a friend request from the current user to another user
-     
-     - parameter user: The target user for the friend request
-     */
-    static func sendFriendRequestToUser(user: PFUser){
-        // create an entry in the FriendRequest table
-        let friendRequest = PFObject(className: "FriendRequest")
-        friendRequest.setObject(PFUser.currentUser()!, forKey: "from")
-        friendRequest.setObject(user, forKey: "to")
-        friendRequest.setObject("pending", forKey: "status")
-        friendRequest.saveInBackground()
-    }
 }
