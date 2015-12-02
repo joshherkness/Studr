@@ -40,12 +40,12 @@ class FriendsTableViewController : UITableViewController {
      Populates the friends array with the current users pending friends and accepted friends
      */
     func loadFriends(){
-        Database.getFriendRequestsForUser(PFUser.currentUser()!) { (friendRequests, error) -> Void in
-            for request in friendRequests! {
+        Database.getFriendshipsForUser(PFUser.currentUser()!) { (friendships, error) -> Void in
+            for friendship in friendships! {
                 
                 // Determine the friend
-                let fromUser = request["from"] as! PFUser
-                let toUser = request["to"] as! PFUser
+                let fromUser = friendship["from"] as! PFUser
+                let toUser = friendship["to"] as! PFUser
                 var friend: PFUser
                 if(fromUser.objectId == PFUser.currentUser()?.objectId){
                     friend = toUser
@@ -54,7 +54,7 @@ class FriendsTableViewController : UITableViewController {
                 }
                 
                 // Determine the status
-                let status: String = request["status"] as! String
+                let status: String = friendship["status"] as! String
                 if (status == "accepted") {
                     self.friends[1].append(friend)
                 } else if (status == "pending") {

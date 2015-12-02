@@ -11,6 +11,10 @@ import Parse
 
 
 class Database{
+    /* 
+    
+    MOVED TO CLOUD CODE!
+    
     static func createEventWithBlock(eventName: String, eventDate: NSDate, eventDuration: Int, blockSuccess: () -> Void, blockFail: (error: NSError) ->Void) -> Void{
         let event = PFObject(className:"Group")
         event["title"] = eventName
@@ -24,9 +28,8 @@ class Database{
                 blockFail(error: error!)
             }
         }
-        
-        
     }
+
     static func destroyEvent(eventID: String, blockSuccess: ()->Void, blockFail: (error: NSError) ->Void) -> Void {
         let eventQuery = PFQuery(className: "Group")
         eventQuery.getObjectInBackgroundWithId(eventID) { (event: PFObject?, error: NSError?) -> Void in
@@ -42,9 +45,10 @@ class Database{
                 blockFail(error: error!)
             }
         }
-        
-        
     }
+
+    */
+    
     static func getUsersEvents(blockSuccess: (events: [PFObject])->Void, blockFail: (error: NSError) ->Void) -> Void{
         let eventsQuery = PFQuery(className: "Group")
         eventsQuery.whereKey("members", equalTo: PFUser.currentUser()!)
@@ -175,9 +179,9 @@ class Database{
      - parameter user:            The user of interest
      - parameter completionBlock: The completion block for the query
      */
-    static func getFriendRequestsForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
+    static func getFriendshipsForUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
         let predicate = NSPredicate(format: "from = %@ OR to = %@", user, user)
-        let query = PFQuery(className: "FriendRequest", predicate: predicate)
+        let query = PFQuery(className: "Friendship", predicate: predicate)
         query.includeKey("from")
         query.includeKey("to")
         
