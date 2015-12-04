@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import NVActivityIndicatorView
 import ChameleonFramework
+import MMDrawerController
 
 class SignInViewController : UIViewController, UITextFieldDelegate {
     
@@ -17,6 +18,8 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     
     var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColor(hexString: "63d297"))
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         
@@ -41,6 +44,10 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
     }
     
     // Mark: Actions
@@ -74,11 +81,12 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
                     // Launch user into main view controller as a navigation view controller
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                    let drawerViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("DrawerViewController")
+                    let sideViewController = SideTableViewController()
+                    let centerViewController = UINavigationController(rootViewController: GroupsViewController())
+                    let drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: sideViewController)
                     
-                    self.presentViewController(drawerViewController, animated: true, completion: {
-                        appDelegate.window?.rootViewController = drawerViewController
+                    self.presentViewController(drawerController, animated: true, completion: {
+                        appDelegate.window?.rootViewController = drawerController
                     })
                     
                 } else {
@@ -121,10 +129,12 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
                 // Launch user into main view controller as a navigation view controller
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 
-                let drawerViewController: UIViewController = DrawerViewController()
+                let sideViewController = SideTableViewController()
+                let centerViewController = UINavigationController(rootViewController: GroupsViewController())
+                let drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: sideViewController)
                 
-                self.presentViewController(drawerViewController, animated: true, completion: {
-                    appDelegate.window?.rootViewController = drawerViewController
+                self.presentViewController(drawerController, animated: true, completion: {
+                    appDelegate.window?.rootViewController = drawerController
                 })
                 
             }
@@ -134,10 +144,5 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
     
     @IBAction func unwindToSignIn(unwindSegue: UIStoryboardSegue) {
     }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return false
-    }
-    
     
 }

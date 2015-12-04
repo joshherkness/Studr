@@ -17,6 +17,8 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColor(hexString: "63d297"))
     
+    // MARK: UIViewController
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -34,14 +36,16 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         
         emailField.delegate = self
         
+        setNeedsStatusBarAppearanceUpdate()
+        
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func prefersStatusBarHidden() -> Bool {
+        return false
     }
     
     // Mark: Actions

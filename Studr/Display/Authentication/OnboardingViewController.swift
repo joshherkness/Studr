@@ -13,6 +13,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
     var pageViewController : UIPageViewController!
     var pageTitles : [String]!
     
+    // MARK: UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,12 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
         pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageControl.currentPageIndicatorTintColor = STColor.blue()
         
+        setNeedsStatusBarAppearanceUpdate()
+        
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func viewControllerAtIndex(index:Int) -> ContentViewController{
@@ -91,11 +99,6 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
-    }
-    
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
     }
     
     @IBAction func unwindToOnboarding(unwindSegue: UIStoryboardSegue) {}

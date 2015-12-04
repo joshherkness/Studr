@@ -21,6 +21,7 @@
 		03A73B2D1C0A7E5F0033C779 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A73B2C1C0A7E5F0033C779 /* EditProfileViewController.swift */; };
 		03A73B311C0A7F070033C779 /* LibrariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A73B301C0A7F070033C779 /* LibrariesViewController.swift */; };
 		03A73B331C0A8D080033C779 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A73B321C0A8D080033C779 /* GroupsViewController.swift */; };
+		03A8D3E01C115F3500F0EFE8 /* DrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8D3DF1C115F3500F0EFE8 /* DrawerController.swift */; };
 		03B21EE41BE585F70052B0AD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE31BE585F70052B0AD /* SignInViewController.swift */; };
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
 		03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */; };
@@ -28,7 +29,6 @@
 		03CB77801BF92249007C21AA /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB777F1BF92249007C21AA /* CustomCells.swift */; };
 		03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03DB962C1BE8215A00B64E0C /* FontAwesome.otf */; };
 		03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */; };
-		03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */; };
 		03EBCB331BE6B64500993FA4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */; };
 		03FCE97D1BEAC08D000C08BF /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */; };
 		7C37BC6E1BEC02C80056BA12 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */; };
@@ -86,6 +86,7 @@
 		03A73B2C1C0A7E5F0033C779 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		03A73B301C0A7F070033C779 /* LibrariesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrariesViewController.swift; sourceTree = "<group>"; };
 		03A73B321C0A8D080033C779 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		03A8D3DF1C115F3500F0EFE8 /* DrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerController.swift; sourceTree = "<group>"; };
 		03B21EE31BE585F70052B0AD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ne-UINavigationControllerExtension.swift"; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		03CB777F1BF92249007C21AA /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		03DB962C1BE8215A00B64E0C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewController.swift; sourceTree = "<group>"; };
-		03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		03FCE97C1BEAC08D000C08BF /* SideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewCell.swift; sourceTree = "<group>"; };
 		5BEFD51F893236256B903473 /* Pods-Studr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,8 +223,8 @@
 		03927DE31BED9087004C35DD /* Side Menu */ = {
 			isa = PBXGroup;
 			children = (
-				03DB96311BE85E8E00B64E0C /* DrawerViewController.swift */,
 				03DB962E1BE8493B00B64E0C /* SideTableViewController.swift */,
+				03A8D3DF1C115F3500F0EFE8 /* DrawerController.swift */,
 			);
 			path = "Side Menu";
 			sourceTree = "<group>";
@@ -580,7 +580,6 @@
 				7C557FEE1BEF05B700612EA8 /* PushDownSegueUnwind.swift in Sources */,
 				CCDB5C741BEFB7C900ABA1E7 /* AddMembersTableViewController.swift in Sources */,
 				03CB77731BF1326A007C21AA /* STColor.swift in Sources */,
-				03DB96321BE85E8E00B64E0C /* DrawerViewController.swift in Sources */,
 				03DB962F1BE8493B00B64E0C /* SideTableViewController.swift in Sources */,
 				03A73B2D1C0A7E5F0033C779 /* EditProfileViewController.swift in Sources */,
 				7C557FE81BEEFC8500612EA8 /* PushUpSegue.swift in Sources */,
@@ -588,6 +587,7 @@
 				CCDB5C761BEFB9FD00ABA1E7 /* FriendTableViewCell.swift in Sources */,
 				03A73B311C0A7F070033C779 /* LibrariesViewController.swift in Sources */,
 				7C37BC6E1BEC02C80056BA12 /* CreateGroupViewController.swift in Sources */,
+				03A8D3E01C115F3500F0EFE8 /* DrawerController.swift in Sources */,
 				0314ED881C0A3D50007F6342 /* SettingsViewController.swift in Sources */,
 				03EBCB331BE6B64500993FA4 /* ResetPasswordViewController.swift in Sources */,
 				03927DE11BEBB321004C35DD /* NotificationLabel.swift in Sources */,

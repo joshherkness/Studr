@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import GoogleMaps
+import MMDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -55,8 +56,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         UITextField.appearance().keyboardAppearance = .Light
         UILabel.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).textColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+
+        // Determine wether to authenticate the user
+        var rootViewController = UIViewController()
+        if let _ = PFUser.currentUser() {
+            let sideViewController = SideTableViewController()
+            let centerViewController = UINavigationController(rootViewController: GroupsViewController())
+            let drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: sideViewController)
+            
+            rootViewController = drawerController
+            
+        } else {
+            // Authenticate the user
+            rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
+        }
         
-        let rootViewController: UIViewController = PFUser.currentUser() != nil ? DrawerViewController() : UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
+        // Display the root view controller
         if let window = self.window {
             window.rootViewController? = rootViewController
             window.makeKeyAndVisible()

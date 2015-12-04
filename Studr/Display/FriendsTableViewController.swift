@@ -21,10 +21,17 @@ class FriendsTableViewController : UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.title = "Friends"
         
-        // Add dismiss button
-        let menuImage = UIImage(named: "ic_menu")
-        let menuButton = UIBarButtonItem(image: menuImage, style: .Plain, target: self, action: "menu:")
-        navigationItem.leftBarButtonItem = menuButton
+        if let _ = self.mm_drawerController {
+            // Add menu button
+            let image = UIImage(named: "ic_menu")
+            let button = UIBarButtonItem(image: image, style: .Plain, target: self, action: "toggleSideMenu:")
+            navigationItem.leftBarButtonItem = button
+        } else {
+            // Add dismiss button
+            let image = UIImage(named: "ic_clear")
+            let button = UIBarButtonItem(image: image, style: .Plain, target: self, action: "dismiss:")
+            navigationItem.leftBarButtonItem = button
+        }
 
         
         // Remove the hairline between the cells
@@ -103,10 +110,16 @@ class FriendsTableViewController : UITableViewController {
         return cell
     }
     
-    func menu(sender: UIBarButtonItem){
-        
-        // Present the side menu of the drawer view controller
-        let drawerViewController: DrawerViewController = self.navigationController?.parentViewController as! DrawerViewController
-        drawerViewController.setPaneState(.Open, animated: true, allowUserInterruption: true, completion: nil)
+    // MARK: Actions
+    
+    func toggleSideMenu(sender: UIBarButtonItem) {
+        if let drawerController = self.mm_drawerController {
+            drawerController.toggleDrawerSide(.Left, animated: true, completion: nil)
+        }
+    }
+    
+    func dismiss(sender: UIBarButtonItem){
+        // Dismiss view controller
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

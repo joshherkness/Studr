@@ -9,10 +9,13 @@
 import UIKit
 import Parse
 import ChameleonFramework
+import MMDrawerController
 
 class SideTableViewController: UITableViewController{
     
     var data: [[MenuItem]] = []
+    
+    // MARK: UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,18 @@ class SideTableViewController: UITableViewController{
         view.backgroundColor = UIColor(hexString: "302F32")
         tableView.separatorColor = view.backgroundColor?.lightenByPercentage(0.05)
         tableView.separatorInset = UIEdgeInsetsZero
+        tableView.autoresizingMask = .FlexibleWidth
         
+        self.setNeedsStatusBarAppearanceUpdate()
+        
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     //MARK: UITableViewDelegate
@@ -96,6 +110,8 @@ class SideTableViewController: UITableViewController{
         return cell
     }
     
+    // MARK: Methods
+    
     func configureCell(cell: SideTableViewCell, forRowAtIndexPath: NSIndexPath) {
         
         let section = forRowAtIndexPath.section
@@ -121,37 +137,15 @@ class SideTableViewController: UITableViewController{
     }
     
     func showCreateGroupViewController(){
-        
-        // Get the new event view controller
-        let createGroupViewController: UIViewController = CreateGroupViewController()
-        let createGroupNavigationController:UINavigationController = UINavigationController(rootViewController: createGroupViewController)
-        
-        // Set the navigation bars tint color
-        createGroupNavigationController.navigationBar.tintColor = UIColor(hexString: "#56D289")
-        
-        // Set the center panel to the new event view controller
-        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
-        drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
-        drawerViewController.presentViewController(createGroupNavigationController, animated: true, completion: nil)
-        
+        moveToViewController(CreateGroupViewController())
     }
+    
     func showGroupsViewController(){
-        
-        // Get the new event view controller
-        let groupsViewController: UIViewController = GroupsViewController()
-        let groupsNavigationController:UINavigationController = UINavigationController(rootViewController: groupsViewController)
-        
-        // Set the center panel to the new event view controller
-        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
-        let currentPaneNavigationController:UINavigationController = drawerViewController.paneViewController as! UINavigationController
-        let currentPaneViewController = currentPaneNavigationController.viewControllers.first
-        
-        if currentPaneViewController!.isKindOfClass(GroupsViewController.self) {
-            drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
-        } else {
-            drawerViewController.setPaneViewController(groupsNavigationController, animated: true, completion: nil)
-        }
-
+        moveToViewController(GroupsViewController())
+    }
+    
+    func showFriendsViewController(){
+        moveToViewController(FriendsTableViewController())
     }
     
     func showSettingsViewController(){
@@ -160,17 +154,28 @@ class SideTableViewController: UITableViewController{
         let settingsViewController: UIViewController = SettingsViewController()
         let settingsNavigationController:UINavigationController = UINavigationController(rootViewController: settingsViewController)
         
-        // Set the center panel to the settings view controller
-        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
-        let currentPaneNavigationController:UINavigationController = drawerViewController.paneViewController as! UINavigationController
-        let currentPaneViewController = currentPaneNavigationController.viewControllers.first
-        
-        if currentPaneViewController!.isKindOfClass(SettingsViewController.self) {
-            drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
+        // Determine wether a drawer controller should close
+        if let drawerController = self.mm_drawerController {
+            // Close the drawer controller
+            drawerController.closeDrawerAnimated(true, completion: { (bool) -> Void in
+                drawerController.centerViewController.presentViewController(settingsNavigationController, animated: true, completion: nil)
+            })
         } else {
-            drawerViewController.setPaneViewController(settingsNavigationController, animated: true, completion: nil)
+            self.presentViewController(settingsNavigationController, animated: true, completion: nil)
         }
+    }
+    
+    func moveToViewController(viewController: UIViewController) {
         
+        // Set the center panel to the new event view controller
+        if let drawerController = self.mm_drawerController {
+            // Center view controller as navigation controller
+            drawerController.setCenterViewController(UINavigationController(rootViewController: viewController), withCloseAnimation: true, completion: nil)
+        } else {
+            // Create the drawer controller, and present it
+            let drawerController = MMDrawerController(centerViewController: viewController, leftDrawerViewController: SideTableViewController())
+            presentViewController(drawerController, animated: false, completion: nil)
+        }
     }
     
     func addMenuItem(title: String, iconName: String, color: UIColor, selector: Selector, section: Int){
@@ -178,23 +183,6 @@ class SideTableViewController: UITableViewController{
             data.append([])
         }
         data[section].append(MenuItem(title: title, iconName: iconName, color: color, selector: selector))
-    }
-    
-    func showFriendsViewController(){
-        // Get the new event view controller
-        let friendViewController: FriendsTableViewController = FriendsTableViewController()
-        let friendNavigationController:UINavigationController = UINavigationController(rootViewController: friendViewController)
-        
-        // Set the center panel to the new event view controller
-        let drawerViewController: DrawerViewController = self.parentViewController as! DrawerViewController
-        let currentPaneNavigationController:UINavigationController = drawerViewController.paneViewController as! UINavigationController
-        let currentPaneViewController = currentPaneNavigationController.viewControllers.first
-        
-        if currentPaneViewController!.isKindOfClass(FriendsTableViewController.self) {
-            drawerViewController.setPaneState(.Closed, animated: true, allowUserInterruption: false, completion: nil)
-        } else {
-            drawerViewController.setPaneViewController(friendNavigationController, animated: true, completion: nil)
-        }
     }
 }
 
