@@ -26,7 +26,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
         
         let viewControllers = [startVC]
         self.pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
-        self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.size.height - 60)
+        self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.size.height - 80)
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
@@ -34,8 +34,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
         
         // Change the appearance of the UIPageControl
         let pageControl = UIPageControl.appearance()
-        pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageControl.currentPageIndicatorTintColor = STColor.blue()
+        pageControl.pageIndicatorTintColor = UIColor.whiteColor().colorWithAlphaComponent(0.1)
+        pageControl.currentPageIndicatorTintColor = UIColor.whiteColor()
         
     }
     
@@ -95,8 +95,11 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
     
     
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        return false
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
     @IBAction func unwindToOnboarding(unwindSegue: UIStoryboardSegue) {}
 }
