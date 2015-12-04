@@ -21,6 +21,8 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
     
     var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColor(hexString: "63d297"))
     
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -44,7 +46,7 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         view.addSubview(self.activityIndicator)
         
         // Update the status bar
-        self.setNeedsStatusBarAppearanceUpdate()
+        setNeedsStatusBarAppearanceUpdate()
         
     }
     
@@ -52,8 +54,8 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         self.view.endEditing(true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func prefersStatusBarHidden() -> Bool {
+        return false
     }
     
     // Mark: Actions
@@ -108,18 +110,16 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
                     // Launch user into main view controller as a navigation view controller
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     
-                    let drawerViewController: UIViewController = DrawerViewController()
+                    let sideViewController = SideTableViewController()
+                    let centerViewController = UINavigationController(rootViewController: GroupsViewController())
+                    let drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: sideViewController)
                     
-                    self.presentViewController(drawerViewController, animated: true, completion: {
-                        appDelegate.window?.rootViewController = drawerViewController
+                    self.presentViewController(drawerController, animated: true, completion: {
+                        appDelegate.window?.rootViewController = drawerController
                     })
                     
                 }
             })
         }
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return false
     }
 }
