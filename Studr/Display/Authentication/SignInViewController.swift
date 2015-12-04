@@ -23,8 +23,12 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = STColor.blue()
+        self.navigationController?.navigationBar.barTintColor = STColor.primary()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        // Text view tint colors
+        usernameField.tintColor = STColor.primary()
+        passwordField.tintColor = STColor.primary()
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
@@ -32,9 +36,6 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
-        
-        usernameField.delegate = self
-        passwordField.delegate = self
         
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -92,21 +93,6 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
                 }
             })
         }
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        
-        let field = textField as! TextField
-        field.layer.borderColor = field.borderColorFocused.CGColor
-        field.textColor = field.textColorFocused
-        field.backgroundColor = field.backgroundColorFocused.colorWithAlphaComponent(field.backgroundAlphaFocused)
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        let field = textField as! TextField
-        field.layer.borderColor = field.borderColorUnFocused.CGColor
-        field.textColor = field.textColorUnFocused
-        field.backgroundColor = field.backgroundColorUnFocused
     }
     
     @IBAction func authenticateTestUser(sender: AnyObject) {

@@ -11,52 +11,12 @@ import UIKit
 
 @IBDesignable
 class TextField: UITextField {
-
-    @IBInspectable var borderWidth : CGFloat = 2.0 {
-        didSet{
-            self.layer.borderWidth = borderWidth
-        }
-    }
     
     @IBInspectable var cornerRadius : CGFloat = 5.0 {
         didSet{
             self.layer.cornerRadius = cornerRadius
         }
     }
-    
-    @IBInspectable var borderColorUnFocused : UIColor = UIColor.grayColor(){
-        didSet{
-            self.layer.borderColor = borderColorUnFocused.CGColor
-        }
-    }
-    
-    @IBInspectable var backgroundColorUnFocused : UIColor = UIColor.grayColor(){
-        didSet{
-            self.backgroundColor = backgroundColorUnFocused
-        }
-    }
-    
-    @IBInspectable var backgroundAlphaUnFocused : CGFloat = 1.0{
-        didSet{
-            self.backgroundColor = self.backgroundColor?.colorWithAlphaComponent(backgroundAlphaUnFocused)
-        }
-    }
-    
-    @IBInspectable var textColorUnFocused : UIColor = UIColor.grayColor(){
-        didSet{
-            self.textColor = textColorUnFocused
-        }
-    }
-    
-    @IBInspectable var borderColorFocused : UIColor = UIColor.grayColor()
-    
-    @IBInspectable var backgroundColorFocused : UIColor = UIColor.grayColor()
-    
-    @IBInspectable var backgroundAlphaFocused : CGFloat = 1.0
-    
-    
-    @IBInspectable var textColorFocused : UIColor = UIColor.grayColor()
-    
     @IBInspectable var inset: CGFloat = 0
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
@@ -75,5 +35,52 @@ class TextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor(hexString: "#F8F8F8")
+    }
+}
+
+class PasswordTextField : TextField {
+    
+    var passwordButton : UIButton = UIButton()
+    
+    @IBInspectable var showPasswordImage: UIImage? {
+        didSet{
+            passwordButton.setImage(showPasswordImage, forState: UIControlState.Normal)
+        }
+    }
+    
+    @IBInspectable var hidePasswordImage: UIImage?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupPasswordButton()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupPasswordButton()
+    }
+    
+    func setupPasswordButton(){
+        passwordButton = UIButton(frame: CGRectMake(0, 0, self.frame.size.height, self.frame.size.height))
+        showPasswordImage = UIImage(named: "ic_visibility")
+        passwordButton.addTarget(self, action: "togglePasswordVisible", forControlEvents: .TouchUpInside)
+        self.rightView = passwordButton
+        passwordButton.tintColor = UIColor(hexString: "C7C7CD")
+        self.rightViewMode = .Always
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setupPasswordButton()
+    }
+    
+    func togglePasswordVisible(){
+        if(self.secureTextEntry){
+            self.secureTextEntry = false
+            passwordButton.setImage(hidePasswordImage, forState: UIControlState.Normal)
+        }else{
+            self.secureTextEntry = true
+            passwordButton.setImage(showPasswordImage, forState: UIControlState.Normal)
+        }
     }
 }
