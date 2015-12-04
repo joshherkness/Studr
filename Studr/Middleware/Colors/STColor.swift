@@ -15,7 +15,7 @@ class STColor: UIColor {
     }
     
     static func secondary() -> UIColor {
-        return UIColor(hexString: "#FBC73D")
+        return UIColor(hexString: "#3599DC")
     }
     
 }
