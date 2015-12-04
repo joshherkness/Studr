@@ -184,6 +184,8 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="showPasswordImage" value="ic_visibility"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="hidePasswordImage" value="ic_visibility_off"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjq-et-uag" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
