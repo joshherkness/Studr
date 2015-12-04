@@ -17,7 +17,7 @@ class SettingsViewController: FormViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = STColor.green()
+        self.navigationController?.navigationBar.barTintColor = STColor.primary()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.title = "Settings"
         
@@ -46,7 +46,7 @@ class SettingsViewController: FormViewController {
             <<< ButtonRow("signOut") {
                 $0.title = "Sign Out"
                 }.cellSetup { cell, row in
-                    cell.tintColor = STColor.red()
+                    cell.tintColor = STColor.primary()
                     cell.textLabel?.textAlignment = .Left
                 }.onCellSelection { cell, row in
                     self.signOut(true)

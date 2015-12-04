@@ -17,7 +17,7 @@ class FriendsTableViewController : UITableViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = STColor.blue()
+        self.navigationController?.navigationBar.barTintColor = STColor.primary()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.title = "Friends"
         
@@ -104,7 +104,7 @@ class FriendsTableViewController : UITableViewController {
         
         // Change the selected background view
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = STColor.green().colorWithAlphaComponent(0.03)
+        selectedBackgroundView.backgroundColor = STColor.primary().colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
         
         return cell

@@ -9,16 +9,13 @@
 import UIKit
 
 class STColor: UIColor {
-    
-    static func blue() -> UIColor{
-        return UIColor(hexString: "#3471D7")
+
+    static func primary() -> UIColor {
+        return UIColor(hexString: "#2D3D52")
     }
     
-    static func red() -> UIColor{
-        return UIColor(hexString: "#E44C5F")
+    static func secondary() -> UIColor {
+        return UIColor(hexString: "#3599DC")
     }
     
-    static func green() -> UIColor{
-        return UIColor(hexString: "#63D297")
-    }
 }

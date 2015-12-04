@@ -24,7 +24,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = STColor.red()
+        self.navigationController?.navigationBar.barTintColor = STColor.primary()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Create activity indicator
@@ -37,7 +37,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         emailField.delegate = self
         
         setNeedsStatusBarAppearanceUpdate()
-        
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -104,22 +104,4 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        
-        let field = textField as! TextField
-        field.layer.borderColor = field.borderColorFocused.CGColor
-        field.textColor = field.textColorFocused
-        field.backgroundColor = field.backgroundColorFocused.colorWithAlphaComponent(field.backgroundAlphaFocused)
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        let field = textField as! TextField
-        field.layer.borderColor = field.borderColorUnFocused.CGColor
-        field.textColor = field.textColorUnFocused
-        field.backgroundColor = field.backgroundColorUnFocused
-    }
-    
-    
-    
 }

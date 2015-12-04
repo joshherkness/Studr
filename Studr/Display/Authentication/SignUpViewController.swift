@@ -28,9 +28,15 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = STColor.blue()
+        self.navigationController?.navigationBar.barTintColor = STColor.secondary()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        //self.navigationController?.navigationBar.titleTextAttributes =
+        
+        // Text view tint colors
+        firstNameField.tintColor = STColor.secondary()
+        lastNameField.tintColor = STColor.secondary()
+        emailField.tintColor = STColor.secondary()
+        usernameField.tintColor = STColor.secondary()
+        passwordField.tintColor = STColor.secondary()
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
@@ -38,12 +44,6 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
-        
-        firstNameField.delegate = self
-        lastNameField.delegate = self
-        emailField.delegate = self
-        usernameField.delegate = self
-        passwordField.delegate = self
         
         // Update the status bar
         setNeedsStatusBarAppearanceUpdate()
@@ -121,20 +121,5 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
                 }
             })
         }
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        
-        let field = textField as! TextField
-        field.layer.borderColor = field.borderColorFocused.CGColor
-        field.textColor = field.textColorFocused
-        field.backgroundColor = field.backgroundColorFocused.colorWithAlphaComponent(field.backgroundAlphaFocused)
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        let field = textField as! TextField
-        field.layer.borderColor = field.borderColorUnFocused.CGColor
-        field.textColor = field.textColorUnFocused
-        field.backgroundColor = field.backgroundColorUnFocused
     }
 }
