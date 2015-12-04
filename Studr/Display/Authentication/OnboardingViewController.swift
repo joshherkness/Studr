@@ -44,7 +44,7 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        return false
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
