@@ -15,10 +15,11 @@ public class DrawerController: MMDrawerController {
         super.viewDidLoad()
         
         // Set some defaults for every drawer controller
-        self.shouldStretchDrawer = false
-        self.showsShadow = false
-        self.centerHiddenInteractionMode = .Full
-        self.closeDrawerGestureModeMask = .All
-        self.openDrawerGestureModeMask = .All
+        shouldStretchDrawer = false
+        showsShadow = false
+        centerHiddenInteractionMode = .Full
+        closeDrawerGestureModeMask = .All
+        openDrawerGestureModeMask = .All
+        animationVelocity = 2000.0
     }
 }

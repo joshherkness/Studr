@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="406" height="64"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0fX-X1-Ib6" id="ubk-4I-L2l">
-                <rect key="frame" x="0.0" y="0.0" width="406" height="63.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="406" height="63"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiD-LH-krl">
@@ -21,7 +21,6 @@
                         <animations/>
                         <color key="tintColor" red="0.38823529410000002" green="0.82352941180000006" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                        <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SOp-8t-vIo">
@@ -50,7 +49,6 @@
                 </variation>
             </tableViewCellContentView>
             <animations/>
-            <color key="backgroundColor" red="0.18823529411764706" green="0.18431372549019609" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" red="0.38823529410000002" green="0.82352941180000006" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="iconView" destination="SOp-8t-vIo" id="zaF-DT-djC"/>

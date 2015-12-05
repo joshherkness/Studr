@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Determine wether to authenticate the user
         var rootViewController = UIViewController()
         if let _ = PFUser.currentUser() {
-            let sideViewController = SideTableViewController()
+            let sideViewController = SideMenuViewController()
             let centerViewController = UINavigationController(rootViewController: GroupsViewController())
             let drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: sideViewController)
             
