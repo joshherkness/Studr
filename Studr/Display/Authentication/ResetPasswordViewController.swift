@@ -24,7 +24,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = STColor.primary()
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Create activity indicator

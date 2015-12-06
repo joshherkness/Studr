@@ -21,7 +21,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pET-pX-fBj" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="308.5" y="530" width="271.5" height="50"/>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.029999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lCV-x9-7du"/>
                                 </constraints>
@@ -33,15 +33,18 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="2H4-pV-H2r" kind="custom" customClass="PushUpSegue" customModule="Studr" id="fWT-uJ-sWM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="20" y="530" width="271.5" height="50"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.20784313725490194" green="0.59999999999999998" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.20783999559999999" green="0.25097998980000003" blue="0.52941000459999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Hj0-kB-dXU"/>
                                 </constraints>
@@ -60,7 +63,7 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.1764705882352941" green="0.23921568627450979" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509803921567" green="0.12156862745098039" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="pET-pX-fBj" secondAttribute="trailing" id="SZz-Hh-nOS"/>
                             <constraint firstItem="tIJ-HC-LA5" firstAttribute="top" secondItem="pET-pX-fBj" secondAttribute="bottom" constant="20" id="fFI-yy-MwH"/>
@@ -191,7 +194,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjq-et-uag" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="240" width="560" height="50"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.20784313725490194" green="0.59999999999999998" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.20784313725490194" green="0.25098039215686274" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7GJ-Pa-aHH"/>
                                         </constraints>
@@ -211,11 +214,11 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="zjq-et-uag" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="J1R-p3-DXb"/>
-                                    <constraint firstItem="bB2-7r-KIR" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="LBx-c1-3Do"/>
-                                    <constraint firstItem="dZX-hY-lME" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="tjz-Cd-kV0"/>
-                                    <constraint firstItem="xYU-VA-y3R" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="vx7-AB-NIC"/>
-                                    <constraint firstItem="DPw-DJ-QxO" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="xCV-fe-n6P"/>
+                                    <constraint firstItem="xYU-VA-y3R" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="Gb6-yt-S2b"/>
+                                    <constraint firstItem="zjq-et-uag" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="ObL-Hi-Fkf"/>
+                                    <constraint firstItem="DPw-DJ-QxO" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="OxO-QT-GKr"/>
+                                    <constraint firstItem="bB2-7r-KIR" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="YrU-LX-rNn"/>
+                                    <constraint firstItem="dZX-hY-lME" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="zKt-6Z-p5O"/>
                                 </constraints>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="20" y="257" width="360" height="230"/>
@@ -225,11 +228,16 @@
                         <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Orp-HA-vOV" firstAttribute="centerX" secondItem="Fgb-ig-jOK" secondAttribute="centerX" id="3oG-gh-fKq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Orp-HA-vOV" secondAttribute="trailing" id="Nve-eu-8mr"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Orp-HA-vOV" secondAttribute="leading" id="Qeg-kV-xTo"/>
-                            <constraint firstItem="Orp-HA-vOV" firstAttribute="top" secondItem="2Md-rx-JCY" secondAttribute="bottom" constant="20" id="WZJ-2t-lta"/>
+                            <constraint firstItem="Orp-HA-vOV" firstAttribute="top" secondItem="2Md-rx-JCY" secondAttribute="bottom" constant="20" id="Cnj-Pk-0VR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Orp-HA-vOV" secondAttribute="trailing" id="EMZ-iL-bQb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Orp-HA-vOV" secondAttribute="leading" id="dxo-fK-ObX"/>
+                            <constraint firstItem="Orp-HA-vOV" firstAttribute="width" secondItem="Fgb-ig-jOK" secondAttribute="width" id="wfo-UL-sK5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wfo-UL-sK5"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Create an Account" id="gE5-At-u1k">
                         <barButtonItem key="leftBarButtonItem" image="ic_chevron_down" id="kFE-Tk-kWz">
@@ -433,7 +441,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dF9-Kd-S3Y" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="560" height="50"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.1764705882352941" green="0.23921568627450979" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.20784313725490194" green="0.25098039215686274" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vSH-sW-Kwu"/>
                                         </constraints>
@@ -479,6 +487,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="SfI-wm-i4c"/>
                                 <exclude reference="bqf-IL-lLN"/>
                             </mask>
                         </variation>
