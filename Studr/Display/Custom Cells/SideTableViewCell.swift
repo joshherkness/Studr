@@ -6,8 +6,8 @@
 //  Copyright © 2015 JJR. All rights reserved.
 //
 
+import Foundation
 import UIKit
-
 
 public class SideTableViewCell: UITableViewCell {
     
