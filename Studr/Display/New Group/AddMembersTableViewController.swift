@@ -89,7 +89,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         
         selectedFriends.append(object)
         cell?.accessoryType = .Checkmark
-        cell?.nameLabel.textColor = STColor.primary()
+        cell?.nameLabel.textColor = Constants.Color.primary
     }
     
     public override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -141,7 +141,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         }
         
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = STColor.primary().colorWithAlphaComponent(0.03)
+        selectedBackgroundView.backgroundColor = Constants.Color.primary.colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
         
         // Determine if the friend should be selected
@@ -152,8 +152,8 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         }
 
         cell.accessoryType = cell.selected ? .Checkmark : .None
-        cell.nameLabel.textColor = cell.selected ? STColor.primary() : UIColor.blackColor()
-        cell.tintColor = STColor.primary()
+        cell.nameLabel.textColor = cell.selected ? Constants.Color.primary : UIColor.blackColor()
+        cell.tintColor = Constants.Color.primary
         
         return cell
     }

@@ -17,7 +17,7 @@ class CreateGroupViewController : FormViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = STColor.primary()
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.title = "Create"
         
@@ -33,7 +33,7 @@ class CreateGroupViewController : FormViewController {
         
         // Create Form
         TextRow.defaultCellUpdate = {cell, row in
-            cell.tintColor = STColor.primary()
+            cell.tintColor = Constants.Color.primary
             cell.textField.textAlignment = .Left
         }
         

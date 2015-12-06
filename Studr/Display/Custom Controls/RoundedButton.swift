@@ -18,6 +18,18 @@ class RoundedButton : UIButton{
         }
     }
     
+    @IBInspectable var borderWidth : CGFloat = 0.0 {
+        didSet {
+            self.layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var borderColor : UIColor = UIColor.whiteColor(){
+        didSet {
+            self.layer.borderColor = borderColor.CGColor
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
