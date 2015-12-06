@@ -35,6 +35,9 @@ class TextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor(hexString: "#F8F8F8")
+        
+        self.layer.borderColor = UIColor(hexString: "#DDDDDD").CGColor
+        self.layer.borderWidth = 1.0
     }
 }
 

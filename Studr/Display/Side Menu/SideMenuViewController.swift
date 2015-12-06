@@ -49,7 +49,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
         view.addSubview(statusBarView)
         
         // Modify apearence of view
-        view.backgroundColor = STColor.primaryDark()
+        view.backgroundColor = Constants.Color.primary
         view.autoresizingMask = .FlexibleWidth
         
         // Table view properties

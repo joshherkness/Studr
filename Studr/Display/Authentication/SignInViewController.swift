@@ -26,12 +26,12 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = STColor.primary()
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Text view tint colors
-        usernameField.tintColor = STColor.primary()
-        passwordField.tintColor = STColor.primary()
+        usernameField.tintColor = Constants.Color.secondary
+        passwordField.tintColor = Constants.Color.secondary
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center

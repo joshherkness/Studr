@@ -28,15 +28,15 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = STColor.secondary()
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Text view tint colors
-        firstNameField.tintColor = STColor.secondary()
-        lastNameField.tintColor = STColor.secondary()
-        emailField.tintColor = STColor.secondary()
-        usernameField.tintColor = STColor.secondary()
-        passwordField.tintColor = STColor.secondary()
+        firstNameField.tintColor = Constants.Color.secondary
+        lastNameField.tintColor = Constants.Color.secondary
+        emailField.tintColor = Constants.Color.secondary
+        usernameField.tintColor = Constants.Color.secondary
+        passwordField.tintColor = Constants.Color.secondary
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
