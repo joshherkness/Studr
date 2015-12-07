@@ -110,12 +110,9 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
                     // Launch user into main view controller as a navigation view controller
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     
-                    let sideViewController = SideMenuViewController()
-                    let centerViewController = UINavigationController(rootViewController: GroupsViewController())
-                    let drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: sideViewController)
-                    
-                    self.presentViewController(drawerController, animated: true, completion: {
-                        appDelegate.window?.rootViewController = drawerController
+                    let mainTabBarController = MainTabBarController()
+                    self.presentViewController(mainTabBarController, animated: true, completion: {
+                        appDelegate.window?.rootViewController = mainTabBarController
                     })
                     
                 }

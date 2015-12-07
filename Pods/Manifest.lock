@@ -5,18 +5,6 @@ PODS:
     - ChameleonFramework/Default
   - CryptoSwift (0.1.1)
   - Eureka (1.2.0)
-  - MMDrawerController (0.5.7):
-    - MMDrawerController/Core (= 0.5.7)
-    - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
-    - MMDrawerController/MMDrawerVisualStates (= 0.5.7)
-    - MMDrawerController/Subclass (= 0.5.7)
-  - MMDrawerController/Core (0.5.7)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
-    - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.7):
-    - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.7):
-    - MMDrawerController/Core
   - NVActivityIndicatorView (2.1)
   - Parse (1.9.1):
     - Bolts/Tasks (>= 1.4.0)
@@ -28,7 +16,6 @@ DEPENDENCIES:
   - ChameleonFramework/Swift
   - CryptoSwift
   - Eureka (~> 1.2)
-  - MMDrawerController (~> 0.5.7)
   - NVActivityIndicatorView
   - Parse
   - ParseUI
@@ -38,7 +25,6 @@ SPEC CHECKSUMS:
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   CryptoSwift: c11640d3d66107efc8333e4131a5173f072b1d61
   Eureka: aa7059d2a30e1b206a581f0aabfcf903ece6beae
-  MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
   NVActivityIndicatorView: 84aa48f7ec1efbfd0645e9f469097d94c6f65417
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b
   ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3

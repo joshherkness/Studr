@@ -53,5 +53,5 @@ class FriendViewController : UIViewController {
         // Add the page menu as a subview of the base view controller's view
         self.view.addSubview(pageMenu!.view)
     }
-
+    
 }
