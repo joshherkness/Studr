@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import GoogleMaps
 import MMDrawerController
 
 @UIApplicationMain
@@ -46,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Google Maps API Key
-        GMSServices.provideAPIKey("AIzaSyBNOeTdFtSuG1DjZ6j5WUv-a2KOD-elG_g")
+        //GMSServices.provideAPIKey("AIzaSyBNOeTdFtSuG1DjZ6j5WUv-a2KOD-elG_g")
         
         //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
         

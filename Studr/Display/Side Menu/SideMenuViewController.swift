@@ -74,7 +74,7 @@ class SideMenuViewController: UIViewController, UITableViewDelegate, UITableView
             destinationViewControllerType: GroupsViewController.self))
         data.append(SideMenuItem(text: "Friends",
             icon: UIImage(named: "ic_group"),
-            destinationViewControllerType: FriendsTableViewController.self))
+            destinationViewControllerType: FriendViewController.self))
         data.append(SideMenuItem(text: "Settings",
             icon: UIImage(named: "ic_settings"),
             destinationViewControllerType: SettingsViewController.self))

@@ -19,7 +19,6 @@ class FriendsTableViewController : UITableViewController {
         // Edit navigation bar apearence
         self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.title = "Friends"
         
         if let _ = self.mm_drawerController {
             // Add menu button

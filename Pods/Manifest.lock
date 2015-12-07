@@ -5,7 +5,6 @@ PODS:
     - ChameleonFramework/Default
   - CryptoSwift (0.1.1)
   - Eureka (1.2.0)
-  - GoogleMaps (1.10.5)
   - MMDrawerController (0.5.7):
     - MMDrawerController/Core (= 0.5.7)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
@@ -29,7 +28,6 @@ DEPENDENCIES:
   - ChameleonFramework/Swift
   - CryptoSwift
   - Eureka (~> 1.2)
-  - GoogleMaps
   - MMDrawerController (~> 0.5.7)
   - NVActivityIndicatorView
   - Parse
@@ -40,7 +38,6 @@ SPEC CHECKSUMS:
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   CryptoSwift: c11640d3d66107efc8333e4131a5173f072b1d61
   Eureka: aa7059d2a30e1b206a581f0aabfcf903ece6beae
-  GoogleMaps: da51c62c338c2d9c47cdad470a0d1e0e4b8544e4
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
   NVActivityIndicatorView: 84aa48f7ec1efbfd0645e9f469097d94c6f65417
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b

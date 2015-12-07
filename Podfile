@@ -15,7 +15,6 @@ target 'Studr' do
 pod 'Parse' # Dependencies include 'Bolts'
 pod 'ParseUI' # Parse User Interface Elements
 pod 'NVActivityIndicatorView' # Better activity indicator
-pod 'GoogleMaps' # Google Maps
 pod 'ChameleonFramework/Swift'
 pod 'Eureka', '~> 1.2'
 pod 'CryptoSwift' #Used for MD5/Gravitar
