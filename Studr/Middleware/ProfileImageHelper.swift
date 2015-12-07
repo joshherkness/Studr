@@ -8,16 +8,47 @@
 
 import UIKit
 import CryptoSwift
+import Parse
+import Haneke
 
-func getGravitarImageForEmail(email : String) -> UIImage {
-    var urlString : String = "https://gravatar.com/avatar/" + email.md5() + "?d=retro"
-    urlString = "https://github.com/identicons/" + email.md5() + ".png"
+/**
+ The purpose of this function is to retrieve a users profile image
+ 
+ - parameter user:      The user we want the image for
+ - parameter onSuccess: The completion block that is called when we have the image
+ */
+func getProfileImageForUser(user: PFUser, onSuccess: (image: UIImage) -> ()){
+    // Reference to the cache where the profile images are stored
+    let cache = Shared.imageCache
+    
+    // Check the cache
+    cache.fetch(key: user.objectId!, failure: { (error) -> () in
+        let gravitar: UIImage? = getGravitarImageForEmail(user.email!)
+        if(gravitar != nil){
+            cache.set(value: gravitar!, key: user.objectId!)
+            print("Image was NOT in cache")
+            onSuccess(image: gravitar!)
+            
+        }else{
+            let image = imageFromString(user.email!, size: CGSizeMake(80, 80))
+            cache.set(value: image, key: user.objectId!)
+            print("Image was NOT in cache")
+            onSuccess(image: image)
+        }
+        }) { (image) -> () in
+            print("Image was in cache")
+            onSuccess(image: image)
+    }
+}
+func getGravitarImageForEmail(email : String) -> UIImage? {
+    //var urlString : String = "https://gravatar.com/avatar/" + email.md5() + "?d=retro"
+    //urlString = "https://github.com/identicons/" + email.md5() + ".png"
     //urlString = "https://robohash.org/" + email.md5()
+    let urlString : String = "https://gravatar.com/avatar/" + email.md5() + "?d=404"
     if let imageURL = NSURL(string: urlString), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data) {
         return image
     }
-    
-    return UIImage(named: "placeholder_profile_male")!
+    return nil
 }
 
 func imageFromString(string : String, size : CGSize) -> UIImage{

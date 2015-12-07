@@ -18,6 +18,7 @@ pod 'NVActivityIndicatorView' # Better activity indicator
 pod 'ChameleonFramework/Swift'
 pod 'Eureka', '~> 1.2'
 pod 'CryptoSwift' #Used for MD5/Gravitar
+pod 'HanekeSwift' #caching
 end
 
 target 'StudrTests' do

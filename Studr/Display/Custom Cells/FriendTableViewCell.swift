@@ -26,7 +26,10 @@ class FriendTableViewCell: PFTableViewCell {
         self.user = user
         
         // Set the profile image
-        profileImageView.image = imageFromString(user.email!, size: CGSizeMake(80, 80))
+        getProfileImageForUser(user) { (image) -> () in
+            self.profileImageView.image = image
+        }
+        //profileImageView.image = imageFromString(user.email!, size: CGSizeMake(80, 80))
         profileImageView.layer.cornerRadius = 4.0
         profileImageView.clipsToBounds = true
         
