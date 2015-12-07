@@ -19,19 +19,7 @@ class SettingsViewController: FormViewController {
         // Edit navigation bar apearence
         self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.title = "Settings"
-        
-        if let _ = self.mm_drawerController {
-            // Add menu button
-            let image = UIImage(named: "ic_menu")
-            let button = UIBarButtonItem(image: image, style: .Plain, target: self, action: "toggleSideMenu:")
-            navigationItem.leftBarButtonItem = button
-        } else {
-            // Add dismiss button
-            let image = UIImage(named: "ic_clear")
-            let button = UIBarButtonItem(image: image, style: .Plain, target: self, action: "dismiss:")
-            navigationItem.leftBarButtonItem = button
-        }
+        self.navigationItem.title = "Settings"
         
         // Create Form
         form +++ Section("")
@@ -52,19 +40,6 @@ class SettingsViewController: FormViewController {
                     self.signOut(true)
         }
         
-    }
-    
-    // MARK: Actions
-    
-    func toggleSideMenu(sender: UIBarButtonItem) {
-        if let drawerController = self.mm_drawerController {
-            drawerController.toggleDrawerSide(.Left, animated: true, completion: nil)
-        }
-    }
-    
-    func dismiss(sender: UIBarButtonItem){
-        // Dismiss view controller
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: Functions

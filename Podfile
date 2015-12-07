@@ -19,7 +19,6 @@ pod 'GoogleMaps' # Google Maps
 pod 'ChameleonFramework/Swift'
 pod 'Eureka', '~> 1.2'
 pod 'CryptoSwift' #Used for MD5/Gravitar
-pod 'MMDrawerController', '~> 0.5.7'
 end
 
 target 'StudrTests' do
