@@ -26,24 +26,18 @@ func getProfileImageForUser(user: PFUser, onSuccess: (image: UIImage) -> ()){
         let gravitar: UIImage? = getGravitarImageForEmail(user.email!)
         if(gravitar != nil){
             cache.set(value: gravitar!, key: user.objectId!)
-            print("Image was NOT in cache")
             onSuccess(image: gravitar!)
             
         }else{
             let image = imageFromString(user.email!, size: CGSizeMake(80, 80))
             cache.set(value: image, key: user.objectId!)
-            print("Image was NOT in cache")
             onSuccess(image: image)
         }
         }) { (image) -> () in
-            print("Image was in cache")
             onSuccess(image: image)
     }
 }
 func getGravitarImageForEmail(email : String) -> UIImage? {
-    //var urlString : String = "https://gravatar.com/avatar/" + email.md5() + "?d=retro"
-    //urlString = "https://github.com/identicons/" + email.md5() + ".png"
-    //urlString = "https://robohash.org/" + email.md5()
     let urlString : String = "https://gravatar.com/avatar/" + email.md5() + "?d=404"
     if let imageURL = NSURL(string: urlString), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data) {
         return image

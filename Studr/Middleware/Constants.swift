@@ -13,7 +13,7 @@ struct Constants {
     struct Color {
         
         static let primary = UIColor(hexString: "#14124C")
-        static let secondary = UIColor(hexString: "#354087")
+        static let secondary = UIColor(hexString: "#FD5B47")
     
     }
     

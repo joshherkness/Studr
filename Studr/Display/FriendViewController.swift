@@ -19,18 +19,18 @@ class FriendViewController : UIViewController {
         self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.hidesNavigationBarHairline = true;
-        self.title = "Friends"
+        self.navigationController?.navigationBar.topItem?.title = "Friends"
         
         // Create an array to keep track of the controllers in the page menu
         var controllerArray : [UIViewController] = []
         
         // Initialize the view controllers and add them to the controller array
-        let controller: UIViewController = FriendsTableViewController()
+        let controller: UIViewController = MyFriendsTableViewController()
         controller.title = "My Friends"
         controllerArray.append(controller)
         
-        let controller3: UIViewController = UIViewController()
-        controller3.title = "Find Friends"
+        let controller3: UIViewController = AddFriendsTableViewController()
+        controller3.title = "Add Friends"
         controllerArray.append(controller3)
         
         // Customize the page menu

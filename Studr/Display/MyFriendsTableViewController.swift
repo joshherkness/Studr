@@ -9,9 +9,9 @@
 import UIKit
 import Parse
 
-class FriendsTableViewController : UITableViewController {
-    private let sections = ["Invites", "My Friends"]
-    private var friends : [[PFUser]] = [[], []]
+class MyFriendsTableViewController : UITableViewController {
+    private let sections = ["Added Me", "My Friends"]
+    private var friends: [[PFUser]] = [[], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class FriendsTableViewController : UITableViewController {
         Database.getFriendshipsForUser(PFUser.currentUser()!) { (friendships, error) -> Void in
             for friendship in friendships! {
                 
-                // Determine the friend
+                // Determine who the other user in the relationship is
                 let fromUser = friendship["from"] as! PFUser
                 let toUser = friendship["to"] as! PFUser
                 var friend: PFUser
@@ -47,12 +47,16 @@ class FriendsTableViewController : UITableViewController {
                     friend = fromUser
                 }
                 
-                // Determine the status
-                let status: String = friendship["status"] as! String
-                if (status == "accepted") {
+                // Determine the status of the friendship
+                switch friendship["status"] as! String {
+                case FriendshipStatus.Accepted.rawValue:
                     self.friends[1].append(friend)
-                } else if (status == "pending") {
+                    break
+                case FriendshipStatus.Pending.rawValue:
                     self.friends[0].append(friend)
+                    break
+                default: break
+                    
                 }
             }
             self.tableView.reloadData()
@@ -66,7 +70,7 @@ class FriendsTableViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return (friends[section].count > 0) ? 30 : 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
