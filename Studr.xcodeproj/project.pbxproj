@@ -43,6 +43,7 @@
 		7C8AFE601BF65EFA00EBE224 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */; };
 		7C96BC9D1C096EB700D4D83F /* ProfileImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */; };
 		7CECFD8E1BF1C99000F81D47 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CECFD8D1BF1C99000F81D47 /* OnboardingViewController.swift */; };
+		CC9D43801C18C6E1009D99C2 /* SetAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9D437F1C18C6E1009D99C2 /* SetAvailabilityViewController.swift */; };
 		CCDB5C6A1BE7D0C200ABA1E7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C691BE7D0C200ABA1E7 /* Database.swift */; };
 		CCDB5C741BEFB7C900ABA1E7 /* AddMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */; };
 		CCDB5C761BEFB9FD00ABA1E7 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB5C751BEFB9FD00ABA1E7 /* FriendTableViewCell.swift */; };
@@ -111,6 +112,7 @@
 		7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageHelper.swift; sourceTree = "<group>"; };
 		7CECFD8D1BF1C99000F81D47 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		CC9D437F1C18C6E1009D99C2 /* SetAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAvailabilityViewController.swift; sourceTree = "<group>"; };
 		CCDB5C691BE7D0C200ABA1E7 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMembersTableViewController.swift; sourceTree = "<group>"; };
 		CCDB5C751BEFB9FD00ABA1E7 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */,
 				7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */,
 				03CB777F1BF92249007C21AA /* CustomCells.swift */,
+				CC9D437F1C18C6E1009D99C2 /* SetAvailabilityViewController.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				7C5142A41C0A496200954937 /* MyFriendsTableViewController.swift in Sources */,
 				7C8AFE601BF65EFA00EBE224 /* ContentViewController.swift in Sources */,
 				7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */,
+				CC9D43801C18C6E1009D99C2 /* SetAvailabilityViewController.swift in Sources */,
 				7C13158B1C15063B00C45854 /* CAPSPageMenu.swift in Sources */,
 				03A73B331C0A8D080033C779 /* GroupsViewController.swift in Sources */,
 				03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */,
