@@ -60,7 +60,7 @@ class CreateGroupViewController : FormViewController {
             }
             <<< AvailabilitySelctorRow("setAvailability"){
                 $0.value = ""
-                $0.title = "Set Availability"
+                $0.title = "When are we available?"
             }
     }
     
