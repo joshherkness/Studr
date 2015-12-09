@@ -48,13 +48,20 @@ class CreateGroupViewController : FormViewController {
                 $0.hidden = .Function(["title"], { form -> Bool in
                     let row: RowOf<String>! = form.rowByTag("title")
                     return row.value == nil
-                })}
+                })
+            }
             <<< PFUserSelectorRow("inviteFriends"){
                 $0.value = []
-                $0.title = "Invite Friends"}
+                $0.title = "Invite Friends"
+            }
             <<< SwitchRow("shareOnFacebook"){
                 $0.title = "Share on Facebook"
-                $0.value = false}
+                $0.value = false
+            }
+            <<< AvailabilitySelctorRow("setAvailability"){
+                $0.value = ""
+                $0.title = "Set Availability"
+            }
     }
     
     func dismiss(sender: UIBarButtonItem){

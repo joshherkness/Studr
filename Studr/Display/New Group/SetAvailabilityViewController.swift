@@ -58,6 +58,17 @@ public class SetAvailabilityViewController: FormViewController,TypedRowControlle
         // Dispose of any resources that can be recreated.
     }
     
+    func dismiss(sender: UIBarButtonItem){
+        // Dismiss view controller
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func complete(sender: UIBarButtonItem){
+        // Perform database storage here
+        
+        // Dismiss view controller
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation
