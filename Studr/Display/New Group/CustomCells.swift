@@ -97,3 +97,15 @@ public final class PFUserSelectorRow : SelectorRow<Set<PFUser>, AddMembersTableV
         }
     }
 }
+
+public final class AvailabilitySelctorRow : SelectorRow<String, SetAvailabilityViewController>, RowType {
+    
+    public required init(tag: String?) {
+        super.init(tag: tag)
+        presentationMode = .Show(controllerProvider: ControllerProvider.Callback {
+            return SetAvailabilityViewController(){ _ in }
+            }, completionCallback: { vc in
+                vc.navigationController?.popViewControllerAnimated(true)
+        })
+    }
+}

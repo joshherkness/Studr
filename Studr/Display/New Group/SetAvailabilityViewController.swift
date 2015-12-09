@@ -11,9 +11,20 @@ import UIKit
 import Eureka
 import Parse
 
-class SetAvailabilityViewController: FormViewController {
+public class SetAvailabilityViewController: FormViewController,TypedRowControllerType {
     
-    override func viewDidLoad() {
+    // Variables used for eureka row reference and callback
+    public var row: RowOf<String>!
+    public var completionCallback : ((UIViewController) -> ())?
+    
+    public var parseRelationName: String?
+
+    convenience public init(_ callback: (UIViewController) -> ()){
+        self.init(nibName: nil, bundle: nil)
+        completionCallback = callback
+    }
+    
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
@@ -42,7 +53,7 @@ class SetAvailabilityViewController: FormViewController {
                 $0.placeholder = "Title"}
     }
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
