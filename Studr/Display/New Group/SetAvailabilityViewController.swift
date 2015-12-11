@@ -27,30 +27,7 @@ public class SetAvailabilityViewController: FormViewController,TypedRowControlle
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.title = "Create"
         
-        // Add dismiss button
-        let closeImage = UIImage(named: "ic_clear")
-        let dismissButton = UIBarButtonItem(image: closeImage, style: .Plain, target: self, action: "dismiss:")
-        navigationItem.leftBarButtonItem = dismissButton
-        
-        // Add completion button
-        let doneImage = UIImage(named: "ic_done")
-        let completeButton = UIBarButtonItem(image: doneImage, style: .Plain, target: self, action: "complete:")
-        navigationItem.rightBarButtonItem = completeButton
-        
-        // Create Form
-        TextRow.defaultCellUpdate = {cell, row in
-            cell.tintColor = Constants.Color.primary
-            cell.textField.textAlignment = .Left
-        }
-        
-        form +++ Section("What should we call it?")
-            <<< TextRow("title"){
-                $0.placeholder = "Title"}
     }
     
     override public func didReceiveMemoryWarning() {
@@ -58,17 +35,6 @@ public class SetAvailabilityViewController: FormViewController,TypedRowControlle
         // Dispose of any resources that can be recreated.
     }
     
-    func dismiss(sender: UIBarButtonItem){
-        // Dismiss view controller
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func complete(sender: UIBarButtonItem){
-        // Perform database storage here
-        
-        // Dismiss view controller
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
     /*
     // MARK: - Navigation
