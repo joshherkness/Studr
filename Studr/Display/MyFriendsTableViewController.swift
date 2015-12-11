@@ -17,7 +17,7 @@ class MyFriendsTableViewController : UITableViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationItem.title = "Friends"
         
@@ -66,7 +66,7 @@ class MyFriendsTableViewController : UITableViewController {
     // Mark - TableViewDelegate
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return Constants.friendTableViewCellHeight
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -95,7 +95,7 @@ class MyFriendsTableViewController : UITableViewController {
         
         // Change the selected background view
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = Constants.Color.secondary.colorWithAlphaComponent(0.03)
+        selectedBackgroundView.backgroundColor = Constants.Color.primary.colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
         
         return cell

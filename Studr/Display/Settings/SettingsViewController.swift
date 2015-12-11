@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Eureka
 import Parse
+import Haneke
 
 class SettingsViewController: FormViewController {
     
@@ -17,7 +18,7 @@ class SettingsViewController: FormViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationItem.title = "Settings"
         
@@ -34,10 +35,21 @@ class SettingsViewController: FormViewController {
             <<< ButtonRow("signOut") {
                 $0.title = "Sign Out"
                 }.cellSetup { cell, row in
-                    cell.tintColor = Constants.Color.secondary
+                    cell.tintColor = UIColor.redColor()
                     cell.textLabel?.textAlignment = .Left
                 }.onCellSelection { cell, row in
                     self.signOut(true)
+        }
+        form +++ Section("Advanced")
+            <<< ButtonRow("clearCache") {
+                $0.title = "Clear Cache"
+                }.cellSetup { cell, row in
+                    cell.textLabel?.textAlignment = .Left
+                }.onCellSelection { cell, row in
+                    Shared.imageCache.removeAll()
+                    Shared.dataCache.removeAll()
+                    Shared.JSONCache.removeAll()
+                    Shared.stringCache.removeAll()
         }
         
     }

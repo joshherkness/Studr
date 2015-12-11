@@ -25,13 +25,13 @@ class FriendTableViewCell: PFTableViewCell {
     func setUser(user: PFUser){
         self.user = user
         
+        //Sets the dafault image
+        profileImageView.image = faceImageFromString("3", size: CGSize(width: 80,height: 80))
+            
         // Set the profile image
         getProfileImageForUser(user) { (image) -> () in
             self.profileImageView.image = image
         }
-        //profileImageView.image = imageFromString(user.email!, size: CGSizeMake(80, 80))
-        profileImageView.layer.cornerRadius = 4.0
-        profileImageView.clipsToBounds = true
         
         // Set the name label
         let firstName = user["firstName"] as? String
@@ -40,5 +40,14 @@ class FriendTableViewCell: PFTableViewCell {
         
         // Set the username label
         usernameLabel.text = user.username
+    }
+}
+
+
+class CircularImageView: UIImageView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = bounds.size.width / 2.0
     }
 }

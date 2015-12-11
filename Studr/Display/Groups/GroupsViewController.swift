@@ -8,10 +8,13 @@
 
 import Foundation
 import UIKit
+import MapKit
+import CoreLocation
 
-class GroupsViewController : UIViewController{
+class GroupsViewController : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
-    // MARK: UIViewController
+    var mapView: MKMapView = MKMapView()
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,26 +22,45 @@ class GroupsViewController : UIViewController{
         self.view.backgroundColor = UIColor.whiteColor()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.topItem?.title = "Groups"
         
-        self.setNeedsStatusBarAppearanceUpdate()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        mapView = MKMapView(frame: self.view.frame)
+        mapView.showsUserLocation = true
+        mapView.tintColor = Constants.Color.primary
+        mapView.showsBuildings = true
+        mapView.showsScale = false
+        self.view.addSubview(mapView)
+    
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
     
-    // MARK: Actions
-
-    func create(sender: UIBarButtonItem){
-
-        // Make the create event view controller
-        let createGroupViewController: UIViewController = CreateGroupViewController()
-        let createGroupNavigationController:UINavigationController = UINavigationController(rootViewController: createGroupViewController)
-
-        // Present the create event view controller
-        self.presentViewController(createGroupNavigationController, animated: true, completion: nil)
+    // Mark: - Location Manager Delegate
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last
+        
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        
+        mapView.setRegion(region, animated: false)
+        
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    {
+        print("Errors: " + error.localizedDescription)
     }
 }

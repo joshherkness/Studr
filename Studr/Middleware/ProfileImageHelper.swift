@@ -29,7 +29,7 @@ func getProfileImageForUser(user: PFUser, onSuccess: (image: UIImage) -> ()){
             onSuccess(image: gravitar!)
             
         }else{
-            let image = imageFromString(user.email!, size: CGSizeMake(80, 80))
+            let image = faceImageFromString(user.email!, size: CGSizeMake(80, 80))
             cache.set(value: image, key: user.objectId!)
             onSuccess(image: image)
         }
@@ -45,7 +45,7 @@ func getGravitarImageForEmail(email : String) -> UIImage? {
     return nil
 }
 
-func imageFromString(string : String, size : CGSize) -> UIImage{
+func identiconFromString(string : String, size : CGSize) -> UIImage{
     let hash = string.md5()
     var pixels = [[false,false,false,false,false],
                 [false,false,false,false,false],
@@ -90,6 +90,50 @@ func imageFromString(string : String, size : CGSize) -> UIImage{
     }
     
     
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return image;
+}
+
+func faceImageFromString(string : String, size : CGSize) -> UIImage{
+    let hash = string.md5()
+    
+    // Find the color based on the first six letters of the hash
+    //var color = UIColor(hexString: hash.substringWithRange(Range<String.Index>(start: hash.startIndex, end: hash.startIndex.advancedBy(6))))
+    var color = UIColor(hexString: "#D4D4D4")
+    //color = color.flatten()
+    
+    UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
+    let context = UIGraphicsGetCurrentContext()
+    CGContextSetShouldAntialias(context, false)
+    
+    color.setFill()
+    CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height))
+    
+    let face = hash.substringWithRange(Range<String.Index>(start: hash.startIndex.advancedBy(6), end: hash.startIndex.advancedBy(7)))
+    var faceImage = UIImage()
+    switch(face){
+    case "0": faceImage = UIImage(named: "face_01")! ; break
+    case "1": faceImage = UIImage(named: "face_02")! ; break
+    case "2": faceImage = UIImage(named: "face_03")! ; break
+    case "3": faceImage = UIImage(named: "face_04")! ; break
+    case "4": faceImage = UIImage(named: "face_05")! ; break
+    case "5": faceImage = UIImage(named: "face_06")! ; break
+    case "6": faceImage = UIImage(named: "face_07")! ; break
+    case "7": faceImage = UIImage(named: "face_08")! ; break
+    case "8": faceImage = UIImage(named: "face_09")! ; break
+    case "9": faceImage = UIImage(named: "face_10")! ; break
+    case "a": faceImage = UIImage(named: "face_11")! ; break
+    case "b": faceImage = UIImage(named: "face_01")! ; break
+    case "c": faceImage = UIImage(named: "face_06")! ; break
+    case "d": faceImage = UIImage(named: "face_09")! ; break
+    case "e": faceImage = UIImage(named: "face_10")! ; break
+    case "f": faceImage = UIImage(named: "face_11")! ; break
+    default: break
+    }
+    faceImage.drawInRect(CGRectMake(0, 0, size.width, size.height))
+   
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     
