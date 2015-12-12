@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class FriendTableViewCell: PFTableViewCell {
+class UserCell: PFTableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,15 +18,11 @@ class FriendTableViewCell: PFTableViewCell {
     
     private var user : PFUser!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func setUser(user: PFUser){
         self.user = user
         
         //Sets the dafault image
-        profileImageView.image = faceImageFromString("3", size: CGSize(width: 80,height: 80))
+        profileImageView.image = placeholderImageForUser(user)
             
         // Set the profile image
         getProfileImageForUser(user) { (image) -> () in
@@ -40,14 +36,5 @@ class FriendTableViewCell: PFTableViewCell {
         
         // Set the username label
         usernameLabel.text = user.username
-    }
-}
-
-
-class CircularImageView: UIImageView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        layer.cornerRadius = bounds.size.width / 2.0
     }
 }

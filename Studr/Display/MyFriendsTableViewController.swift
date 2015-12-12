@@ -24,9 +24,11 @@ class MyFriendsTableViewController : UITableViewController {
         // Remove the hairline between the cells
         self.tableView.separatorStyle = .None
         
-        // Register cell for table
-        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
-    
+        // Register the table view's cells
+        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        tableView.registerClass(FriendshipCell.self, forCellReuseIdentifier: "FriendshipCell")
+        
+        // Finally we load the dataset
         loadFriends()
     }
     
@@ -88,7 +90,7 @@ class MyFriendsTableViewController : UITableViewController {
         
         let user : PFUser = friends[indexPath.section][indexPath.row] 
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         
         // Set the cell's user
         cell.setUser(user)

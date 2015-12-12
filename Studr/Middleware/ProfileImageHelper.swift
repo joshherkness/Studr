@@ -29,7 +29,7 @@ func getProfileImageForUser(user: PFUser, onSuccess: (image: UIImage) -> ()){
             onSuccess(image: gravitar!)
             
         }else{
-            let image = faceImageFromString(user.email!, size: CGSizeMake(80, 80))
+            let image = placeholderImageForUser(user)
             cache.set(value: image, key: user.objectId!)
             onSuccess(image: image)
         }
@@ -37,6 +37,7 @@ func getProfileImageForUser(user: PFUser, onSuccess: (image: UIImage) -> ()){
             onSuccess(image: image)
     }
 }
+
 func getGravitarImageForEmail(email : String) -> UIImage? {
     let urlString : String = "https://gravatar.com/avatar/" + email.md5() + "?d=404"
     if let imageURL = NSURL(string: urlString), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data) {
@@ -96,13 +97,10 @@ func identiconFromString(string : String, size : CGSize) -> UIImage{
     return image;
 }
 
-func faceImageFromString(string : String, size : CGSize) -> UIImage{
-    let hash = string.md5()
-    
-    // Find the color based on the first six letters of the hash
-    //var color = UIColor(hexString: hash.substringWithRange(Range<String.Index>(start: hash.startIndex, end: hash.startIndex.advancedBy(6))))
-    var color = UIColor(hexString: "#D4D4D4")
-    //color = color.flatten()
+func placeholderImageForUser(user : PFUser) -> UIImage{
+    let hash = user.email?.md5()
+    let size = CGSize(width: 80, height: 80)
+    let color = UIColor(hexString: "#DEDEDE")
     
     UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
     let context = UIGraphicsGetCurrentContext()
@@ -111,9 +109,9 @@ func faceImageFromString(string : String, size : CGSize) -> UIImage{
     color.setFill()
     CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height))
     
-    let face = hash.substringWithRange(Range<String.Index>(start: hash.startIndex.advancedBy(6), end: hash.startIndex.advancedBy(7)))
+    // Now we decide which face to use for the given user
     var faceImage = UIImage()
-    switch(face){
+    switch(String(hash!.characters.first!)){
     case "0": faceImage = UIImage(named: "face_01")! ; break
     case "1": faceImage = UIImage(named: "face_02")! ; break
     case "2": faceImage = UIImage(named: "face_03")! ; break
@@ -130,7 +128,7 @@ func faceImageFromString(string : String, size : CGSize) -> UIImage{
     case "d": faceImage = UIImage(named: "face_09")! ; break
     case "e": faceImage = UIImage(named: "face_10")! ; break
     case "f": faceImage = UIImage(named: "face_11")! ; break
-    default: break
+    default:  faceImage = UIImage(named: "face_01")! ; break
     }
     faceImage.drawInRect(CGRectMake(0, 0, size.width, size.height))
    

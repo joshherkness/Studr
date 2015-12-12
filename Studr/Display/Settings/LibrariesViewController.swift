@@ -14,7 +14,7 @@ import Parse
 class LibrarriesViewController: FormViewController {
     
     // List of libraries
-    var libraries = ["Parse","ParseUI", "Eureka", "..."]
+    var libraries = ["Parse", "Eureka", "Heneke", "Crypto Swift", "Chameleon Framework", "CAPSPageMenu"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

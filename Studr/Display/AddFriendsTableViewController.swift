@@ -37,7 +37,7 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         tableView.separatorStyle = .None
         
         // Register cell for table
-        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
+        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
         // Dismisses the keyboard when the user taps the view
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -72,7 +72,7 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         
         let user = users[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         
         // Set the cell's user
         cell.setUser(user)

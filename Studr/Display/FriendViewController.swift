@@ -37,7 +37,7 @@ class FriendViewController : UIViewController, CAPSPageMenuDelegate {
         let parameters: [CAPSPageMenuOption] = [
             .ScrollMenuBackgroundColor(Constants.Color.primaryDark),
             .ViewBackgroundColor(UIColor.whiteColor()),
-            .UnselectedMenuItemLabelColor(UIColor.whiteColor().colorWithAlphaComponent(0.2)),
+            .UnselectedMenuItemLabelColor(UIColor.whiteColor().colorWithAlphaComponent(0.5)),
             .MenuItemSeparatorWidth(0),
             .UseMenuLikeSegmentedControl(true),
             .AddBottomMenuHairline(false),
