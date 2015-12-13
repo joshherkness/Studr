@@ -13,7 +13,7 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     private var query: PFQuery?
     
     private var users: [PFUser] = []
-    private var searchBar = UISearchBar()
+    var searchBar = UISearchBar()
     
     private var friends: [PFUser] = []
     private var pendingFriends: [PFUser] = []
@@ -23,11 +23,11 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        navigationController?.navigationBar.barTintColor = Constants.Color.primary
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationItem.title = "Add Friends"
         
-        // Setup search bar controller
+        // Setup the search bar
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
         searchBar.delegate = self
         tableView.tableHeaderView = searchBar
@@ -37,14 +37,27 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         tableView.separatorStyle = .None
         
         // Register cell for table
-        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
+        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
+        // Dismisses the keyboard when the user taps the view
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+        // Load all the friendships
         loadFriendships()
     }
-    // Mark - TableViewDelegate
     
+    /**
+     This function is called when taps are detected on the view
+     */
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // Mark: - TableViewDelegate
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return Constants.friendTableViewCellHeight
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -59,17 +72,55 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         
         let user = users[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         
         // Set the cell's user
         cell.setUser(user)
         
         // Change the selected background view
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = Constants.Color.secondary.colorWithAlphaComponent(0.03)
+        selectedBackgroundView.backgroundColor = Constants.Color.primary.colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
         
         return cell
+    }
+    
+    // Mark: - SearchBarDelegate
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        // First we start by canceling the previous query
+        query?.cancel()
+        
+        // Next we empty the array of users if no text has been entered
+        if(searchText.isEmpty){
+            self.users.removeAll()
+            self.tableView.reloadData()
+            return
+        }
+        
+        // If there is to much text, we are not going to bother querying for users
+        if(searchText.characters.count > 25){
+            return
+        }
+        
+        //We then begin our query for the users that match the entered text
+        let searchTextArray = searchText.componentsSeparatedByString(" ")
+        var predicate: NSPredicate?
+        if(searchTextArray.count > 1){
+            predicate = NSPredicate(format: "objectId != %@ AND (username BEGINSWITH %@ OR firstName BEGINSWITH %@ OR lastName BEGINSWITH %@ OR lastname BEGINSWITH %@)", PFUser.currentUser()!.objectId!, searchText.lowercaseString, searchTextArray[0], searchTextArray[0], searchTextArray[1])
+        }else{
+            predicate = NSPredicate(format: "objectId != %@ AND (username BEGINSWITH %@ OR username BEGINSWITH %@ OR firstName BEGINSWITH %@ OR lastName BEGINSWITH %@)", PFUser.currentUser()!.objectId!, searchText.lowercaseString, searchTextArray[0], searchTextArray[0], searchTextArray[0])
+        }
+        query = PFUser.queryWithPredicate(predicate)!
+        query?.findObjectsInBackgroundWithBlock { (users, error) -> Void in
+            if(error == nil){
+                self.users = users as! [PFUser]
+                self.tableView.reloadData()
+            }else{
+                print(error)
+            }
+        }
     }
     
     func loadFriendships(){
@@ -103,31 +154,5 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
             }
             self.tableView.reloadData()
         }
-    }
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        query?.cancel()
-        if(searchText == ""){
-            self.users.removeAll()
-            self.tableView.reloadData()
-            return
-        }
-        let searchTextArray = searchText.componentsSeparatedByString(" ")
-        var predicate: NSPredicate?
-        if(searchTextArray.count > 1){
-            predicate = NSPredicate(format: "objectId != %@ AND (username BEGINSWITH %@ OR firstName BEGINSWITH %@ OR lastName BEGINSWITH %@ OR lastname BEGINSWITH %@)", PFUser.currentUser()!.objectId!, searchText.lowercaseString, searchTextArray[0], searchTextArray[0], searchTextArray[1])
-        }else{
-            predicate = NSPredicate(format: "objectId != %@ AND (username BEGINSWITH %@ OR username BEGINSWITH %@ OR firstName BEGINSWITH %@ OR lastName BEGINSWITH %@)", PFUser.currentUser()!.objectId!, searchText.lowercaseString, searchTextArray[0], searchTextArray[0], searchTextArray[0])
-        }
-        query = PFUser.queryWithPredicate(predicate)!
-        query?.findObjectsInBackgroundWithBlock { (users, error) -> Void in
-            if(error == nil){
-                self.users = users as! [PFUser]
-                self.tableView.reloadData()
-            }else{
-                print(error)
-            }
-        }
-        
     }
 }

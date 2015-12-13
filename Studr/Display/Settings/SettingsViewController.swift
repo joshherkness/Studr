@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Eureka
 import Parse
+import Haneke
 
 class SettingsViewController: FormViewController {
     
@@ -17,27 +18,40 @@ class SettingsViewController: FormViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationItem.title = "Settings"
         
         // Create Form
         form +++ Section("")
-            <<< ButtonRow("about") {
-                $0.title = "About"
-                $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return AboutViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
-            } <<< ButtonRow("editProfile") {
+            <<< ButtonRow("editProfile") {
                 $0.title = "Edit Profile"
                 $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return EditProfileViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
         }
+        
+        form +++ Section("Advanced")
+            <<< ButtonRow("clearCache") {
+                $0.title = "Clear Cache"
+                }.cellSetup { cell, row in
+                    cell.textLabel?.textAlignment = .Left
+                }.onCellSelection { cell, row in
+                    Shared.imageCache.removeAll()
+                    Shared.dataCache.removeAll()
+                    Shared.JSONCache.removeAll()
+                    Shared.stringCache.removeAll()
+        }
+        
         form +++ Section("")
             <<< ButtonRow("signOut") {
                 $0.title = "Sign Out"
                 }.cellSetup { cell, row in
-                    cell.tintColor = Constants.Color.secondary
+                    cell.tintColor = UIColor.redColor()
                     cell.textLabel?.textAlignment = .Left
                 }.onCellSelection { cell, row in
-                    self.signOut(true)
+                    self.signOut(true) }
+            <<< ButtonRow("about") {
+                    $0.title = "About"
+                    $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return AboutViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
         }
         
     }

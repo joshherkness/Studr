@@ -17,16 +17,18 @@ class MyFriendsTableViewController : UITableViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationItem.title = "Friends"
         
         // Remove the hairline between the cells
         self.tableView.separatorStyle = .None
         
-        // Register cell for table
-        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
-    
+        // Register the table view's cells
+        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        tableView.registerClass(FriendshipCell.self, forCellReuseIdentifier: "FriendshipCell")
+        
+        // Finally we load the dataset
         loadFriends()
     }
     
@@ -66,7 +68,7 @@ class MyFriendsTableViewController : UITableViewController {
     // Mark - TableViewDelegate
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return Constants.friendTableViewCellHeight
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -88,14 +90,14 @@ class MyFriendsTableViewController : UITableViewController {
         
         let user : PFUser = friends[indexPath.section][indexPath.row] 
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         
         // Set the cell's user
         cell.setUser(user)
         
         // Change the selected background view
         let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = Constants.Color.secondary.colorWithAlphaComponent(0.03)
+        selectedBackgroundView.backgroundColor = Constants.Color.primary.colorWithAlphaComponent(0.03)
         cell.selectedBackgroundView = selectedBackgroundView
         
         return cell

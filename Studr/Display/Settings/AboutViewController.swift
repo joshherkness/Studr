@@ -16,7 +16,7 @@ class AboutViewController: FormViewController {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.title = "About"
         
@@ -27,7 +27,7 @@ class AboutViewController: FormViewController {
         
         // Modify default TextRow apearence
         TextRow.defaultCellUpdate = {cell, row in
-            cell.tintColor = Constants.Color.secondary
+            cell.tintColor = Constants.Color.primary
             cell.textField.textAlignment = .Left
         }
         

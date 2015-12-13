@@ -16,9 +16,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         delegate = self
         
-        tabBar.barTintColor = UIColor(hexString: "F5F5F5")
-        tabBar.tintColor = Constants.Color.secondary
-        
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        UITabBar.appearance().barTintColor = UIColor(hexString: "#191919")
+        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor(hexString: "#252525"), size: CGSizeMake(tabBar.frame.width/5, tabBar.frame.height))
         var controllerArray: [UIViewController] = []
         
         let groupNavigationController = UINavigationController(rootViewController: GroupsViewController())
@@ -44,6 +44,12 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         settingsTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         settingsNavigationController.tabBarItem = settingsTabBarItem
         controllerArray.append(settingsNavigationController)
+        
+        let settingsNavigationController2 = UINavigationController(rootViewController: SettingsViewController())
+        let settingsTabBarItem2 = UITabBarItem(title: nil, image: UIImage(named: "ic_settings"), selectedImage: nil)
+        settingsTabBarItem2.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        settingsNavigationController2.tabBarItem = settingsTabBarItem2
+        controllerArray.append(settingsNavigationController2)
         
         self.viewControllers = controllerArray
     }
@@ -71,4 +77,25 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
+}
+
+extension UIImage {
+    func makeImageWithColorAndSize(color: UIColor, size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(CGRectMake(0, 0, size.width, size.height))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+extension UITabBar {
+    
+    override public func sizeThatFits(size: CGSize) -> CGSize {
+        super.sizeThatFits(size)
+        var sizeThatFits = super.sizeThatFits(size)
+        sizeThatFits.height = 50
+        return sizeThatFits
+    }
 }

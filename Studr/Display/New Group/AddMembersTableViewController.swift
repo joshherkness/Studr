@@ -41,7 +41,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
         super.viewDidLoad()
         
         // Register cell for table
-        tableView.registerNib(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendTableViewCell")
+        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
         placeholderImage = UIImage(named: "placeholder_profile_male")
         imageKey = "profileImage"
@@ -84,7 +84,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // To be called when a cell is seclected
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? UserCell
         let object = self.objectAtIndexPath(indexPath)!
         
         selectedFriends.append(object)
@@ -94,7 +94,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     
     public override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as? FriendTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? UserCell
         let object = self.objectAtIndexPath(indexPath)!
         
         let filteredSelectedFriends: [PFObject] = selectedFriends.filter({ $0.objectId == object.objectId })
@@ -131,7 +131,7 @@ public class AddMembersTableViewController: PFQueryTableViewController , UISearc
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let user = object as? PFUser
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("FriendTableViewCell", forIndexPath: indexPath) as! FriendTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         
         // If the user exists, set the cell's user
         if let user = user{

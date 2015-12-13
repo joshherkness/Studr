@@ -10,13 +10,13 @@
 import Foundation
 import UIKit
 
-class FriendViewController : UIViewController {
+class FriendViewController : UIViewController, CAPSPageMenuDelegate {
     
     var pageMenu : CAPSPageMenu?
     
     override func viewDidLoad() {
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.hidesNavigationBarHairline = true;
         self.navigationController?.navigationBar.topItem?.title = "Friends"
@@ -35,9 +35,9 @@ class FriendViewController : UIViewController {
         
         // Customize the page menu
         let parameters: [CAPSPageMenuOption] = [
-            .ScrollMenuBackgroundColor(Constants.Color.secondary.darkenByPercentage(0.04)),
-            .ViewBackgroundColor(Constants.Color.secondary.darkenByPercentage(0.04)),
-            .UnselectedMenuItemLabelColor(UIColor.whiteColor().colorWithAlphaComponent(0.2)),
+            .ScrollMenuBackgroundColor(Constants.Color.primaryDark),
+            .ViewBackgroundColor(UIColor.whiteColor()),
+            .UnselectedMenuItemLabelColor(UIColor.whiteColor().colorWithAlphaComponent(0.5)),
             .MenuItemSeparatorWidth(0),
             .UseMenuLikeSegmentedControl(true),
             .AddBottomMenuHairline(false),
@@ -49,6 +49,7 @@ class FriendViewController : UIViewController {
         
         // Initialize page menu with controller array, frame, and optional parameters
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 0.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
+        pageMenu?.delegate = self
         
         // Add the page menu as a subview of the base view controller's view
         self.view.addSubview(pageMenu!.view)

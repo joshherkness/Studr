@@ -14,13 +14,13 @@ import Parse
 class LibrarriesViewController: FormViewController {
     
     // List of libraries
-    var libraries = ["Parse","ParseUI", "Eureka", "..."]
+    var libraries = ["Parse", "Eureka", "Heneke", "Crypto Swift", "Chameleon Framework", "CAPSPageMenu"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.secondary
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.title = "Libraries"
         
