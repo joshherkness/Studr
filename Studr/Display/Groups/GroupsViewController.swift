@@ -13,30 +13,40 @@ import CoreLocation
 
 class GroupsViewController : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
+    // MARK: Instance Variables
+    
     var mapView: MKMapView = MKMapView()
     let locationManager = CLLocationManager()
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        // Change the view controllers background color
+        view.backgroundColor = UIColor.whiteColor()
         
-        // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.topItem?.title = "Groups"
+        // Change the navigation bar appearance
+        navigationController?.navigationBar.barTintColor = Constants.Color.primary
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.hidesNavigationBarHairline = true;
+        navigationController?.navigationBar.topItem?.title = "Groups"
         
+        // Setup the location manager
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        // Setup the map view
         mapView = MKMapView(frame: self.view.frame)
         mapView.showsUserLocation = true
         mapView.tintColor = Constants.Color.primary
         mapView.showsBuildings = true
         mapView.showsScale = false
-        self.view.addSubview(mapView)
+        
+        // Add the mapview to the view controller
+        view.addSubview(mapView)
     
     }
     
@@ -44,7 +54,7 @@ class GroupsViewController : UIViewController, MKMapViewDelegate, CLLocationMana
         return false
     }
     
-    // Mark: - Location Manager Delegate
+    // MARK: Location Manager Delegate
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {

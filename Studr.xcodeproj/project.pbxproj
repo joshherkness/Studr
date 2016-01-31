@@ -25,12 +25,12 @@
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
 		03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */; };
 		03CB77801BF92249007C21AA /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB777F1BF92249007C21AA /* CustomCells.swift */; };
-		03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03DB962C1BE8215A00B64E0C /* FontAwesome.otf */; };
 		03EBCB331BE6B64500993FA4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */; };
 		7C13158B1C15063B00C45854 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13158A1C15063B00C45854 /* CAPSPageMenu.swift */; };
 		7C13158F1C154B9100C45854 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13158E1C154B9100C45854 /* FriendViewController.swift */; };
 		7C1315911C166F1E00C45854 /* AddFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1315901C166F1E00C45854 /* AddFriendsTableViewController.swift */; };
 		7C1315931C17369100C45854 /* FriendshipStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1315921C17369000C45854 /* FriendshipStatus.swift */; };
+		7C20B4A91C56DBDE00D35D4C /* MyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C20B4A81C56DBDE00D35D4C /* MyGroupsViewController.swift */; };
 		7C37BC6E1BEC02C80056BA12 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */; };
 		7C37BC701BEC35970056BA12 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C37BC6F1BEC35970056BA12 /* TextField.swift */; };
 		7C4F440B1C1BCE45007C627F /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F440A1C1BCE45007C627F /* CircularImageView.swift */; };
@@ -82,7 +82,7 @@
 		03434F061BE5653D001E34D5 /* StudrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudrUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03434F0A1BE5653D001E34D5 /* StudrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudrUITests.swift; sourceTree = "<group>"; };
 		03434F0C1BE5653D001E34D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		035C93201C15112D00E2050D /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = ../MainTabBarController.swift; sourceTree = "<group>"; };
+		035C93201C15112D00E2050D /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		03927DE01BEBB321004C35DD /* NotificationLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLabel.swift; sourceTree = "<group>"; };
 		039D82FC1C08D97E00C9D46A /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		03A73B2A1C0A7E1B0033C779 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +93,6 @@
 		03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ne-UINavigationControllerExtension.swift"; sourceTree = "<group>"; };
 		03CB777F1BF92249007C21AA /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
-		03DB962C1BE8215A00B64E0C /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		5BEFD51F893236256B903473 /* Pods-Studr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig"; sourceTree = "<group>"; };
 		7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +100,7 @@
 		7C13158E1C154B9100C45854 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7C1315901C166F1E00C45854 /* AddFriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewController.swift; sourceTree = "<group>"; };
 		7C1315921C17369000C45854 /* FriendshipStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendshipStatus.swift; sourceTree = "<group>"; };
+		7C20B4A81C56DBDE00D35D4C /* MyGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupsViewController.swift; sourceTree = "<group>"; };
 		7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		7C37BC6F1BEC35970056BA12 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		7C4F440A1C1BCE45007C627F /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
@@ -161,10 +161,10 @@
 		03434EDE1BE5653D001E34D5 = {
 			isa = PBXGroup;
 			children = (
-				03434EE91BE5653D001E34D5 /* Studr */,
+				C7831B265682928FB6D34252 /* Frameworks */,
 				F7F88BD524691B47B83004AA /* Pods */,
 				03434EE81BE5653D001E34D5 /* Products */,
-				C7831B265682928FB6D34252 /* Frameworks */,
+				03434EE91BE5653D001E34D5 /* Studr */,
 				03434EFE1BE5653D001E34D5 /* StudrTests */,
 				03434F091BE5653D001E34D5 /* StudrUITests */,
 			);
@@ -185,14 +185,12 @@
 			children = (
 				03B21EE11BE579A70052B0AD /* Database */,
 				03B21EE21BE579BA0052B0AD /* Display */,
-				03DB962B1BE8213100B64E0C /* Fonts */,
 				03CB777C1BF1930F007C21AA /* Middleware */,
 				03434EEA1BE5653D001E34D5 /* AppDelegate.swift */,
 				03434EF11BE5653D001E34D5 /* Assets.xcassets */,
 				03434EF61BE5653D001E34D5 /* Info.plist */,
 				03434EF31BE5653D001E34D5 /* LaunchScreen.storyboard */,
 				03434EEE1BE5653D001E34D5 /* Main.storyboard */,
-				7C13158A1C15063B00C45854 /* CAPSPageMenu.swift */,
 			);
 			path = Studr;
 			sourceTree = "<group>";
@@ -215,12 +213,12 @@
 			path = StudrUITests;
 			sourceTree = "<group>";
 		};
-		035C93221C151CED00E2050D /* Bottom Menu */ = {
+		035C93221C151CED00E2050D /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				035C93201C15112D00E2050D /* MainTabBarController.swift */,
 			);
-			name = "Bottom Menu";
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		03927DE21BED9057004C35DD /* Authentication */ = {
@@ -246,15 +244,14 @@
 		03B21EE21BE579BA0052B0AD /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				035C93221C151CED00E2050D /* Bottom Menu */,
-				7C5142A21C0A494900954937 /* Friends */,
 				03927DE21BED9057004C35DD /* Authentication */,
 				03CB77781BF19271007C21AA /* Custom Cells */,
 				03CB77761BF183B5007C21AA /* Custom Controls */,
 				03CB77751BF1809C007C21AA /* Custom Segues */,
 				03CB777A1BF192AC007C21AA /* Groups */,
-				03CB77771BF18949007C21AA /* New Group */,
 				0314ED841C0A3C70007F6342 /* Settings */,
+				7C5142A21C0A494900954937 /* Social */,
+				035C93221C151CED00E2050D /* TabBar */,
 			);
 			path = Display;
 			sourceTree = "<group>";
@@ -280,22 +277,12 @@
 			path = "Custom Controls";
 			sourceTree = "<group>";
 		};
-		03CB77771BF18949007C21AA /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */,
-				7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */,
-				03CB777F1BF92249007C21AA /* CustomCells.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		03CB77781BF19271007C21AA /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7C4F440C1C1BD29B007C627F /* FriendshipCell.swift */,
 				CCDB5C751BEFB9FD00ABA1E7 /* UserCell.swift */,
 				039D82FC1C08D97E00C9D46A /* UserCell.xib */,
-				7C4F440C1C1BD29B007C627F /* FriendshipCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -303,6 +290,7 @@
 		03CB77791BF19289007C21AA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7C4F440A1C1BCE45007C627F /* CircularImageView.swift */,
 				03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */,
 			);
 			path = Extensions;
@@ -311,7 +299,11 @@
 		03CB777A1BF192AC007C21AA /* Groups */ = {
 			isa = PBXGroup;
 			children = (
+				CCDB5C731BEFB7C900ABA1E7 /* AddMembersTableViewController.swift */,
+				7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */,
+				03CB777F1BF92249007C21AA /* CustomCells.swift */,
 				03A73B321C0A8D080033C779 /* GroupsViewController.swift */,
+				7C20B4A81C56DBDE00D35D4C /* MyGroupsViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -320,30 +312,22 @@
 			isa = PBXGroup;
 			children = (
 				03CB77791BF19289007C21AA /* Extensions */,
-				7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */,
+				7C13158A1C15063B00C45854 /* CAPSPageMenu.swift */,
 				7C852CDA1C14A1CB00BFEC85 /* Constants.swift */,
-				7C4F440A1C1BCE45007C627F /* CircularImageView.swift */,
+				7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
 		};
-		03DB962B1BE8213100B64E0C /* Fonts */ = {
+		7C5142A21C0A494900954937 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				03DB962C1BE8215A00B64E0C /* FontAwesome.otf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		7C5142A21C0A494900954937 /* Friends */ = {
-			isa = PBXGroup;
-			children = (
-				7C5142A31C0A496200954937 /* MyFriendsTableViewController.swift */,
-				7C13158E1C154B9100C45854 /* FriendViewController.swift */,
 				7C1315901C166F1E00C45854 /* AddFriendsTableViewController.swift */,
+				7C13158E1C154B9100C45854 /* FriendViewController.swift */,
 				7C1315921C17369000C45854 /* FriendshipStatus.swift */,
+				7C5142A31C0A496200954937 /* MyFriendsTableViewController.swift */,
 			);
-			name = Friends;
+			path = Social;
 			sourceTree = "<group>";
 		};
 		C7831B265682928FB6D34252 /* Frameworks */ = {
@@ -435,6 +419,7 @@
 				TargetAttributes = {
 					03434EE61BE5653D001E34D5 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = E4G42QH9GH;
 					};
 					03434EFA1BE5653D001E34D5 = {
 						CreatedOnToolsVersion = 7.1;
@@ -472,7 +457,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				039D82FD1C08D97E00C9D46A /* UserCell.xib in Resources */,
-				03DB962D1BE821F000B64E0C /* FontAwesome.otf in Resources */,
 				03434EF51BE5653D001E34D5 /* LaunchScreen.storyboard in Resources */,
 				03434EF21BE5653D001E34D5 /* Assets.xcassets in Resources */,
 				03434EF01BE5653D001E34D5 /* Main.storyboard in Resources */,
@@ -590,6 +574,7 @@
 				7C96BC9D1C096EB700D4D83F /* ProfileImageHelper.swift in Sources */,
 				7C4F440D1C1BD29B007C627F /* FriendshipCell.swift in Sources */,
 				CCDB5C761BEFB9FD00ABA1E7 /* UserCell.swift in Sources */,
+				7C20B4A91C56DBDE00D35D4C /* MyGroupsViewController.swift in Sources */,
 				03A73B311C0A7F070033C779 /* LibrariesViewController.swift in Sources */,
 				7C37BC6E1BEC02C80056BA12 /* CreateGroupViewController.swift in Sources */,
 				0314ED881C0A3D50007F6342 /* SettingsViewController.swift in Sources */,
@@ -740,11 +725,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Studr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jjr.Studr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -754,11 +741,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Studr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jjr.Studr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

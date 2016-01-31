@@ -5,12 +5,12 @@
 <img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS" />
 <a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat" alt="Swift 2 compatible" /></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible" /></a>
-<a href="https://cocoapods.org/pods/Eureka"><img src="https://img.shields.io/badge/pod-1.2.0-blue.svg" alt="CocoaPods compatible" /></a>
+<a href="https://cocoapods.org/pods/Eureka"><img src="https://img.shields.io/badge/pod-1.3.1-blue.svg" alt="CocoaPods compatible" /></a>
 <a href="https://raw.githubusercontent.com/xmartlabs/Eureka/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT" /></a>
 </p>
 
 By [XMARTLABS](http://xmartlabs.com).
-This is the re-creation of [XLForm] in Swift 2. If you have been using it then many terms will result familiar to you.
+This is the re-creation of [XLForm] in Swift 2.
 
 * [Introduction]
 * [Requirements]
@@ -25,6 +25,7 @@ This is the re-creation of [XLForm] in Swift 2. If you have been using it then m
 * [Extensibility]
   + [How to create custom rows and cells]
   + [How to create custom inline rows]
+  + [Implementing a custom Presenter row]
   + [Custom rows catalog]
 * [Installation]
 * [FAQ]
@@ -32,6 +33,8 @@ This is the re-creation of [XLForm] in Swift 2. If you have been using it then m
 ## Introduction
 
 **Eureka!** is a library to create dynamic table-view forms from a [DSL] specification in Swift. This DSL basically consists of *Rows*, *Sections* and *Forms*. A *Form* is a collection of *Sections* and a *Section* is a collection of *Rows*.
+
+If you have been using `XLForm` then many terms will result familiar to you.
 
 Both `Form` and `Section` classes conform to `MutableCollectionType` and `RangeReplaceableCollectionType` protocols. This makes a whole bunch of functions available to be executed on them.
 
@@ -46,7 +49,7 @@ Both `Form` and `Section` classes conform to `MutableCollectionType` and `RangeR
 ## Getting involved
 * If you **want to contribute** please feel free to **submit pull requests**.
 * If you **have a feature request** please **open an issue**.
-* If you **found a bug** or **need help** please **check older issues or threads on [StackOverflow] (tag 'eureka') before submitting an issue**.
+* If you **found a bug** or **need help** please **check older issues or threads on [StackOverflow] before submitting an issue**.
 
 If you use **Eureka** in your app We would love to hear about it! Drop us a line on [twitter].
 
@@ -294,7 +297,41 @@ Now it would look like this:
 
 ### Section Header and Footer
 
-*work in progress...*
+The UITableView accepts two ways of setting the headers and footers for its sections, one is by using `tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?` where you have to return a view and the other is `tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?` where you return a String. Eureka works the same way, you can set a String or a view as header or footer for a `Section`.
+
+The easiest way of setting a header or a footer is by setting them as a String. This can be done using the following Section initializers:
+```
+init(_ header: String, @noescape _ initializer: Section -> () = { _ in })
+init(header: String, footer: String, @noescape _ initializer: Section -> () = { _ in })
+init(footer: String, @noescape _ initializer: Section -> () = { _ in })
+```
+
+Using this you can instantiate a Section like `Section("Title")` or `Section(header: "Title", footer: "Footnote")` for example.
+
+You can also set the header or footer using a custom view. This is best done by setting the `header` or `footer` variable of the section. This variables must conform the `HeaderFooterViewRepresentable` protocol. This can be done by using the `HeaderFooterView` class. An example follows:
+
+```
+Section() { section in
+	var header = HeaderFooterView<MyHeaderNibFile>(.NibFile(name: "MyHeaderNibFile", bundle: nil))        
+	header.onSetupView = { view, _, _ in
+    	 // customize header
+	 }
+	header.height = { 100 }
+
+	section.header = header
+}
+```
+
+The `HeaderFooterView` is a `StringLiteralConvertible` and requires a String or a `HeaderFooterProvider` that will generate the view to show. There are 3 ways a HeaderFooterProvider can create a view: from a nibfile (like in the example), from a class (it will just instantiate that class) or from a block (you can pass a block to the HeaderFooterProvider that returns the view).
+
+```
+public enum HeaderFooterProvider<ViewType: UIView> {
+	case Class
+	case Callback(()->ViewType)
+	case NibFile(name: String, bundle: NSBundle?)
+}
+```
+
 
 ### How to dynamically hide and show rows (or sections)  <a name="hide-show-rows"></a>
 
@@ -368,6 +405,44 @@ To disable rows, each row has an `disabled` variable which is also an optional C
 
 Note that if you want to disable a row permanently you can also set `disabled` variable to `true`.
 
+### List sections
+It happens quite often when developing apps you want the user to choose among a list of options. Therefore we created a special section that accomplishes this.
+These sections are called `SelectableSection`.
+When instancing a SelectableSection you have to pass the type of row you will use in the section as well as the type of that row. These sections have a variable called `selectionStyle` that defines if multiple selection is allowed. `selectionStyle` is an enum which can be either `MultipleSelection` or `SingleSelection(enableDeselection: Bool)` where the enableDeselection paramter determines if the selected rows can be deselected or not.
+
+This sections can be created, as it is done in the Examples project, like this:
+
+```
+let oceans = ["Arctic", "Atlantic", "Indian", "Pacific", "Southern"]
+
+form +++= SelectableSection<ImageCheckRow<String>, String>("And which of the following oceans have you taken a bath in?", selectionType: .MultipleSelection)
+
+for option in oceans {
+    form.last! <<< ImageCheckRow<String>(option){ lrow in
+        lrow.title = option
+        lrow.selectableValue = option
+        lrow.value = nil
+    }.cellSetup { cell, _ in
+        cell.trueImage = UIImage(named: "selectedRectangle")!
+        cell.falseImage = UIImage(named: "unselectedRectangle")!
+    }
+}
+```
+
+##### What kind of rows can be used?
+To create such a Section you have to create a row that conforms the `SelectableRowType` protocol.
+```
+public protocol SelectableRowType : RowType {
+    var selectableValue : Value? { get set }
+}
+```
+This `selectableValue` is where the value of the row will be permanently stored. The `value` variable will be used to determine if the row is selected or not, being 'selectableValue' if selected or nil otherwise.
+
+Eureka includes the `ListCheckRow` which is used for example in the SelectorViewController. In the custom rows of the Examples project you can also find the `ImageCheckRow`
+
+##### Helpers
+To easily get the selected row of a `SelectableSection` there are two methods: `selectedRow()` and `selectedRows()` which can be called to get the selected row in case it is a `SingleSelection` section or all the selected rows if it is a `MultipleSelection` section.
+
 ## Extensibility
 
 ### How to create custom rows and cells  <a name="custom-rows"></a>
@@ -422,7 +497,7 @@ The setup and update methods are similar to the cellSetup and cellUpdate callbac
 
 Note: ValueType and CellType are illustrative. You have to replace them with the type your value will have and the type of your cell (like Bool and SwitchCell in this example)
 
-## How to create custom inline rows
+### How to create custom inline rows
 
 A inline row is a specific type of row that shows dynamically a row below it, normally an inline row changes between a expand and collapse mode whenever the row is tapped.
 
@@ -446,6 +521,41 @@ public override func customDidSelect() {
 }
 ```
 
+### Implementing a custom Presenter row (SelectorRow, PushRow, ImageRow, etc) <a name="custom-presenter-row"></a>
+
+**Note:** *A Presenter row is a row that presents a new UIViewController.*
+
+To create a custom Presenter row you must create a class that conforms the `PresenterRowType` protocol. It is highly recommended to subclass `SelectorRow` as it does conform to that protocol and adds other useful functionality.
+
+The PresenterRowType protocol is defined as followes:
+```
+public protocol PresenterRowType: TypedRowType {
+    typealias ProviderType : UIViewController, TypedRowControllerType
+    var presentationMode: PresentationMode<ProviderType>? { get set }
+    var onPresentCallback: ((FormViewController, ProviderType)->())? { get set }
+}
+```
+
+The onPresentCallback will be called when the row is about to present another view controller. This is done in the `SelectorRow` so if you do not sublass it you will have to call it yourself.
+
+The `presentationMode` is what defines how the controller is presented and which controller is presented. This presentation can be using a Segue identifier, a segue class, presenting a controller modally or pushing to a specific view controller. For example a CustomPushRow can be defined like this:
+
+```
+public final class CustomPushRow<T: Equatable> : SelectorRow<T, SelectorViewController<T>>, RowType {
+
+    public required init(tag: String?) {
+        super.init(tag: tag)
+        presentationMode = .Show(controllerProvider: ControllerProvider.Callback {
+        	return SelectorViewController<T>(){ _ in }
+        }, completionCallback: { vc in
+        	vc.navigationController?.popViewControllerAnimated(true)
+        })
+    }
+}
+```
+
+You can place your own UIViewController instead of SelectorViewController<T>.
+
 ### Custom rows catalog
 
 Have you created a custom row, theme, etc?
@@ -464,7 +574,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Eureka', '~> 1.2'
+pod 'Eureka', '~> 1.3'
 ```
 
 Then run the following command:
@@ -502,9 +612,13 @@ $ git submodule add https://github.com/xmartlabs/Eureka.git
 ## Authors
 
 * [Martin Barreto](https://github.com/mtnBarreto) ([@mtnBarreto](https://twitter.com/mtnBarreto))
-* [Mathias Claassen](https://github.com/mats-claassen)
+* [Mathias Claassen](https://github.com/mats-claassen) ([@mClaassen26](https://twitter.com/mClaassen26))
 
 ## FAQ
+
+#### How to get the value of a row?
+
+The value of a row can be obtained with `row.value`. The type of this value is the type of the row (i.e. the value of a `PickerRow<String>` is of type `String`).
 
 #### How to change the bottom navigation accessory view?
 
@@ -574,6 +688,16 @@ The value type of a row must match with the value type of the corresponding dict
 
 If the form was already displayed we have to reload the visible rows either by reloading the table view `tableView.reloadData()` or invoking `updateCell()` to each visible row.
 
+#### Row does not update after changing hidden or disabled condition
+
+After setting a condition, this condition is not automatically evaluated. If you want it to do so immediately you can call `.evaluateHidden()` or `.evaluateDisabled()`.
+
+This functions are just called when a row is added to the form and when a row it depends on changes. If the condition is changed when the row is being displayed then it must be reevaluated manually.
+
+#### onCellUnHighlight doesn't get called unless onCellHighlight is also defined
+
+Look at this [issue](https://github.com/xmartlabs/Eureka/issues/96).
+
 <!--- In file -->
 [Introduction]: #introduction
 [Requirements]: #requirements
@@ -589,6 +713,7 @@ If the form was already displayed we have to reload the visible rows either by r
 [How to create custom inline rows]: #how-to-create-custom-inline-rows
 [Custom rows catalog]: #custom-rows-catalog
 [How to dynamically hide and show rows (or sections)]: #hide-show-rows
+[Implementing a custom Presenter row]: #custom-presenter-row
 [Extensibility]: #extensibility
 [Installation]: #installation
 [FAQ]: #faq
@@ -607,14 +732,4 @@ If the form was already displayed we have to reload the visible rows either by r
 
 # Change Log
 
-### 1.2.0
-
- * Added PickerRow.
- * Added PickerInlineRow.
- * Added ZipCodeRow.
- * Fix bug when inserting hidden row in midst of a section.
- * Example project: Added ability to set up a formatter to FloatLabelRow.
- * `rowValueHasBeenChanged` signature has been changed to `override func rowValueHasBeenChanged(row: BaseRow, oldValue: Any?, newValue: Any?)`.
- * Added `@noescape` attribute to initializer closures.
- * Fixed issue with tableView's bottom inset when keyboard was dismissed.
- * Changed NameRow keyboardType to make autocapitalization works.
+This can be found in the [CHANGELOG.md](CHANGELOG.md) file.

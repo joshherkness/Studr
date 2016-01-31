@@ -18,16 +18,15 @@ import Haneke
  - parameter onSuccess: The completion block that is called when we have the image
  */
 func getProfileImageForUser(user: PFUser, onSuccess: (image: UIImage) -> ()){
+    
     // Reference to the cache where the profile images are stored
     let cache = Shared.imageCache
     
     // Check the cache
     cache.fetch(key: user.objectId!, failure: { (error) -> () in
-        let gravitar: UIImage? = getGravitarImageForEmail(user.email!)
-        if(gravitar != nil){
-            cache.set(value: gravitar!, key: user.objectId!)
-            onSuccess(image: gravitar!)
-            
+        if let gravitar = getGravitarImageForEmail(user.email!){
+            cache.set(value: gravitar, key: user.objectId!)
+            onSuccess(image: gravitar)
         }else{
             let image = placeholderImageForUser(user)
             cache.set(value: image, key: user.objectId!)
@@ -38,7 +37,7 @@ func getProfileImageForUser(user: PFUser, onSuccess: (image: UIImage) -> ()){
     }
 }
 
-func getGravitarImageForEmail(email : String) -> UIImage? {
+func getGravitarImageForEmail(email: String) -> UIImage? {
     let urlString : String = "https://gravatar.com/avatar/" + email.md5() + "?d=404"
     if let imageURL = NSURL(string: urlString), let data = NSData(contentsOfURL: imageURL), let image = UIImage(data: data) {
         return image
@@ -46,7 +45,7 @@ func getGravitarImageForEmail(email : String) -> UIImage? {
     return nil
 }
 
-func identiconFromString(string : String, size : CGSize) -> UIImage{
+func identiconFromString(string: String, size: CGSize) -> UIImage{
     let hash = string.md5()
     var pixels = [[false,false,false,false,false],
                 [false,false,false,false,false],
@@ -97,7 +96,7 @@ func identiconFromString(string : String, size : CGSize) -> UIImage{
     return image;
 }
 
-func placeholderImageForUser(user : PFUser) -> UIImage{
+func placeholderImageForUser(user: PFUser) -> UIImage{
     let hash = user.email?.md5()
     let size = CGSize(width: 80, height: 80)
     let color = UIColor(hexString: "#DEDEDE")

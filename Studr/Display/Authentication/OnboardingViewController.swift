@@ -10,6 +10,13 @@ import UIKit
 
 class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
+    // MARK: Outlets
+    
+    @IBOutlet weak var signUpBtn: RoundedButton!
+    @IBOutlet weak var signInBtn: RoundedButton!
+    
+    // MARK: Instance Variables
+    
     var pageViewController : UIPageViewController!
     var pageTitles : [String]!
     
@@ -17,7 +24,17 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Change the background color
+        view.backgroundColor = Constants.Color.primary
         
+        // Change colors
+        signUpBtn.backgroundColor = UIColor.whiteColor()
+        signUpBtn.tintColor = Constants.Color.primary
+        
+        signInBtn.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.1)
+        signInBtn.tintColor = Constants.Color.primary
+        
+        // Declare page titles
         pageTitles = ["Page 1", "Page 2", "Page 3"]
         
         //Instantiate the PageViewController and add it to the OnboardingViewController
@@ -77,8 +94,6 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
         return self.viewControllerAtIndex(index)
     }
     
-    
-    
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         let vc = viewController as! ContentViewController
@@ -95,7 +110,6 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
         }
         return self.viewControllerAtIndex(index)
     }
-
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 3
@@ -104,6 +118,8 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
+    
+    // MARK: Actions
 
     @IBAction func unwindToOnboarding(unwindSegue: UIStoryboardSegue) {}
 }

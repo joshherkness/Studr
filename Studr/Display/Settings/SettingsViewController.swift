@@ -2,7 +2,7 @@
 //  SettingsViewController.swift
 //  Studr
 //
-//  Created by Joshua Herkness on 11/28/15.
+//  Created by Joseph Herkness on 11/28/15.
 //  Copyright © 2015 JJR. All rights reserved.
 //
 
@@ -17,43 +17,59 @@ class SettingsViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationItem.title = "Settings"
+        // Change the navigation bar appearance
+        navigationController?.navigationBar.barTintColor = Constants.Color.primary
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.hidesNavigationBarHairline = true;
+        navigationController?.navigationBar.topItem?.title = "Settings"
         
-        // Create Form
+        // Create the form
         form +++ Section("")
             <<< ButtonRow("editProfile") {
                 $0.title = "Edit Profile"
                 $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return EditProfileViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
-        }
+                }
         
-        form +++ Section("Advanced")
+        form +++ Section("ADVANCED")
+            <<< SwitchRow("pushNotificationSwitch"){
+                $0.title = "Push Notifications"
+                }.onChange{ row in
+                    // TODO: Toggle notifications here
+                }
+            <<< SwitchRow("appBadgeSwitch"){
+                $0.title = "App Bagde"
+                }.onChange{ row in
+                    // TODO: Toggle app badge here
+                }
             <<< ButtonRow("clearCache") {
                 $0.title = "Clear Cache"
                 }.cellSetup { cell, row in
+                    cell.tintColor = Constants.Color.primary
+                }.cellUpdate{ cell, row in
                     cell.textLabel?.textAlignment = .Left
                 }.onCellSelection { cell, row in
                     Shared.imageCache.removeAll()
                     Shared.dataCache.removeAll()
                     Shared.JSONCache.removeAll()
                     Shared.stringCache.removeAll()
-        }
+                }
         
-        form +++ Section("")
-            <<< ButtonRow("signOut") {
-                $0.title = "Sign Out"
-                }.cellSetup { cell, row in
-                    cell.tintColor = UIColor.redColor()
-                    cell.textLabel?.textAlignment = .Left
-                }.onCellSelection { cell, row in
-                    self.signOut(true) }
+        form +++ Section("OTHER GREAT STUFF")
             <<< ButtonRow("about") {
                     $0.title = "About"
                     $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return AboutViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
-        }
+                    }
         
+        form +++ Section("STUD BUD")
+            <<< ButtonRow("signOut") {
+                $0.title = "Log Out"
+                }.cellSetup { cell, row in
+                    cell.tintColor = Constants.Color.primary
+                }.cellUpdate{ cell, row in
+                    cell.textLabel?.textAlignment = .Left
+                }.onCellSelection { cell, row in
+                    self.signOut(true)
+                }
     }
     
     // MARK: Functions

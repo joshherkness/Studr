@@ -2,7 +2,7 @@
 //  LibrariesViewController.swift
 //  Studr
 //
-//  Created by Joshua Herkness on 11/28/15.
+//  Created by Joseph Herkness on 11/28/15.
 //  Copyright © 2015 JJR. All rights reserved.
 //
 
@@ -13,16 +13,19 @@ import Parse
 
 class LibrarriesViewController: FormViewController {
     
-    // List of libraries
+    // MARK: Instance Variables
+    
     var libraries = ["Parse", "Eureka", "Heneke", "Crypto Swift", "Chameleon Framework", "CAPSPageMenu"]
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Edit navigation bar apearence
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.title = "Libraries"
+        // Change the navigation bar appearance
+        navigationController?.navigationBar.barTintColor = Constants.Color.primary
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.hidesNavigationBarHairline = true;
         
         // Add back button
         let image = UIImage(named: "ic_chevron_left")

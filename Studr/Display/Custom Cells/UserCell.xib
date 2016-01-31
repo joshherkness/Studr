@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,7 +19,6 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yme-2j-wuS" customClass="CircularImageView" customModule="Studr" customModuleProvider="target">
                         <rect key="frame" x="8" y="9" width="45" height="45"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="yme-2j-wuS" secondAttribute="height" multiplier="1:1" id="Fk1-TU-ojw"/>
                             <constraint firstAttribute="width" constant="45" id="LY7-cV-A29"/>
@@ -34,27 +34,78 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umz-wK-pTl">
                                 <rect key="frame" x="0.0" y="0.0" width="73" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-q9-Upl">
                                 <rect key="frame" x="0.0" y="21" width="64" height="17"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <animations/>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-z3-1fL">
+                        <rect key="frame" x="261" y="13" width="134" height="38"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCA-vn-UtR" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                <color key="backgroundColor" red="0.27843137254901962" green="0.47058823529411764" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yCA-vn-UtR" secondAttribute="height" multiplier="1:1" id="oTA-35-sPU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="tintColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="ic_direction"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-BK-ZRW" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                <rect key="frame" x="48" y="0.0" width="38" height="38"/>
+                                <color key="backgroundColor" red="0.27843137254901962" green="0.47058823529411764" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rd4-BK-ZRW" secondAttribute="height" multiplier="1:1" id="OXu-BZ-pwa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="tintColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="ic_done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPB-2e-SqU" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                <rect key="frame" x="96" y="0.0" width="38" height="38"/>
+                                <color key="backgroundColor" red="0.92549019607843142" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DPB-2e-SqU" secondAttribute="height" multiplier="1:1" id="Zeq-Hw-tVY"/>
+                                </constraints>
+                                <color key="tintColor" red="0.97254901960784312" green="0.98039215686274506" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="ic_add"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rd4-BK-ZRW" firstAttribute="width" secondItem="rd4-BK-ZRW" secondAttribute="height" multiplier="1:1" id="L8E-kU-yfJ"/>
+                        </constraints>
                     </stackView>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="Xdj-7c-h4r" firstAttribute="leading" secondItem="yme-2j-wuS" secondAttribute="trailing" constant="12" id="CAZ-Qw-ZyS"/>
                     <constraint firstItem="Xdj-7c-h4r" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="Ji2-j5-lHd"/>
+                    <constraint firstItem="ziA-z3-1fL" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="KW8-9C-j7L"/>
+                    <constraint firstItem="ziA-z3-1fL" firstAttribute="height" secondItem="yme-2j-wuS" secondAttribute="height" multiplier="5:6" id="KgJ-uc-VSf"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" constant="1" id="QeL-D9-rkN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ziA-z3-1fL" secondAttribute="trailing" id="QoY-Rv-RIo"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" constant="1" id="Rih-qu-qD9"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" id="Ucb-Ll-Tax"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yme-2j-wuS" secondAttribute="bottom" constant="1" id="Voq-qC-d6E"/>
@@ -72,13 +123,20 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <animations/>
             <connections>
+                <outlet property="acceptButton" destination="rd4-BK-ZRW" id="XBO-R6-q4x"/>
+                <outlet property="addFriendButton" destination="DPB-2e-SqU" id="Wvt-9n-XEM"/>
                 <outlet property="nameLabel" destination="Umz-wK-pTl" id="2bY-ZM-wE9"/>
                 <outlet property="profileImageView" destination="yme-2j-wuS" id="tmg-IJ-VW2"/>
+                <outlet property="sentButton" destination="yCA-vn-UtR" id="RSO-Ot-ELL"/>
                 <outlet property="usernameLabel" destination="vvF-q9-Upl" id="XEo-uS-0C7"/>
             </connections>
             <point key="canvasLocation" x="281.5" y="167.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_add" width="24" height="24"/>
+        <image name="ic_direction" width="24" height="24"/>
+        <image name="ic_done" width="24" height="17"/>
+    </resources>
 </document>

@@ -11,38 +11,47 @@ import Parse
 import NVActivityIndicatorView
 import ChameleonFramework
 
-class SignUpViewController : UIViewController, UITextFieldDelegate{
+class SignUpViewController : UIViewController{
+    
+    // MARK: Outlets
     
     @IBOutlet weak var firstNameField: TextField!
     @IBOutlet weak var lastNameField: TextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var signUpBtn: RoundedButton!
+    
+    // MARK: Instance Variables
     
     var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColor(hexString: "63d297"))
     
     
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        // Change the navigation bar appearance
+        navigationController?.navigationBar.barTintColor = Constants.Color.primary
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.hidesNavigationBarHairline = true;
+        navigationController?.navigationBar.topItem?.title = "Sign Up"
         
-        // Text view tint colors
+        // Change interface element colors
         firstNameField.tintColor = Constants.Color.primary
         lastNameField.tintColor = Constants.Color.primary
         emailField.tintColor = Constants.Color.primary
         usernameField.tintColor = Constants.Color.primary
         passwordField.tintColor = Constants.Color.primary
+        signUpBtn.backgroundColor = Constants.Color.primary
         
         // Create activity indicator
-        self.activityIndicator.center = self.view.center
-        self.activityIndicator.userInteractionEnabled = false
+        activityIndicator.center = self.view.center
+        activityIndicator.userInteractionEnabled = false
         
-        // Add activity indicator
+        // Add the activity indicator
         view.addSubview(self.activityIndicator)
         
         // Update the status bar
@@ -50,6 +59,9 @@ class SignUpViewController : UIViewController, UITextFieldDelegate{
         
     }
     
+    /**
+     Resigns the keyboard when the user touches the view
+     */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }

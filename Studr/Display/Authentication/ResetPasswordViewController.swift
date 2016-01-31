@@ -11,21 +11,26 @@ import Parse
 import NVActivityIndicatorView
 import ChameleonFramework
 
-class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
+class ResetPasswordViewController: UIViewController {
+    
+    // MARK: Outlets
     
     @IBOutlet weak var emailField: UITextField!
+    
+    // MARK: Instance Variables
     
     var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColor(hexString: "63d297"))
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        // Change the navigation bar appearance
+        navigationController?.navigationBar.barTintColor = Constants.Color.primary
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.hidesNavigationBarHairline = true;
+        navigationController?.navigationBar.topItem?.title = "Reset Password"
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
@@ -33,13 +38,14 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         
         // Add activity indicator
         view.addSubview(self.activityIndicator)
-        
-        emailField.delegate = self
-        
+    
         setNeedsStatusBarAppearanceUpdate()
 
     }
     
+    /**
+     Resigns the keyboard when the user touches the view
+     */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }

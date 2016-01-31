@@ -2,22 +2,25 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_done.png",
+      "filename" : "checkmark-24-0.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_done_2x.png",
+      "filename" : "checkmark-36-0.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ic_done_3x.png",
+      "filename" : "checkmark-64-0.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

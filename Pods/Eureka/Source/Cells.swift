@@ -178,8 +178,8 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
     
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if let obj = object, let keyPathValue = keyPath, let changeType = change?[NSKeyValueChangeKindKey] where ((obj === titleLabel && keyPathValue == "text") || (obj === imageView && keyPathValue == "image")) && changeType.unsignedLongValue == NSKeyValueChange.Setting.rawValue {
-            contentView.setNeedsUpdateConstraints()
-            contentView.updateConstraintsIfNeeded()
+            setNeedsUpdateConstraints()
+            updateConstraintsIfNeeded()
         }
     }
     
@@ -256,6 +256,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
     
     public func textFieldDidBeginEditing(textField: UITextField) {
         formViewController()?.beginEditing(self)
+        formViewController()?.textInputDidBeginEditing(textField, cell: self)
         if let fieldRowConformance = (row as? FieldRowConformance), let _ = fieldRowConformance.formatter where !fieldRowConformance.useFormatterDuringInput {
                 textField.text = row.displayValueFor?(row.value)
         }
@@ -263,10 +264,34 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
     
     public func textFieldDidEndEditing(textField: UITextField) {
         formViewController()?.endEditing(self)
+        formViewController()?.textInputDidEndEditing(textField, cell: self)
+        textFieldDidChange(textField)
         if let fieldRowConformance = (row as? FieldRowConformance), let _ = fieldRowConformance.formatter where !fieldRowConformance.useFormatterDuringInput {
             textField.text = row.displayValueFor?(row.value)
         }
     }
+    
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return formViewController()?.textInputShouldReturn(textField, cell: self) ?? true
+    }
+    
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        return formViewController()?.textInput(textField, shouldChangeCharactersInRange:range, replacementString:string, cell: self) ?? true
+    }
+    
+    public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return formViewController()?.textInputShouldBeginEditing(textField, cell: self) ?? true
+    }
+    
+    public func textFieldShouldClear(textField: UITextField) -> Bool {
+        return formViewController()?.textInputShouldClear(textField, cell: self) ?? true
+    }
+    
+    public func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        return formViewController()?.textInputShouldEndEditing(textField, cell: self) ?? true
+    }
+    
+    
 }
 
 public class TextCell : _FieldCell<String>, CellType {
@@ -361,6 +386,7 @@ public class DecimalCell : _FieldCell<Float>, CellType {
     
     public override func setup() {
         super.setup()
+        textField.autocorrectionType = .No
         textField.keyboardType = .DecimalPad
     }
 }
@@ -373,6 +399,8 @@ public class URLCell : _FieldCell<NSURL>, CellType {
     
     public override func setup() {
         super.setup()
+        textField.autocorrectionType = .No
+        textField.autocapitalizationType = .None
         textField.keyboardType = .URL
     }
 }
@@ -415,7 +443,7 @@ public class ZipCodeCell : _FieldCell<String>, CellType {
         super.update()
         textField.autocorrectionType = .No
         textField.autocapitalizationType = .AllCharacters
-        textField.keyboardType = .ASCIICapable
+        textField.keyboardType = .NumbersAndPunctuation
     }
 }
 
@@ -653,16 +681,16 @@ public class _TextAreaCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T
         textView.keyboardType = .Default
         textView.delegate = self
         textView.font = .preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.textContainer.lineFragmentPadding = 0
+        textView.textContainerInset = UIEdgeInsetsZero
         placeholderLabel.font = textView.font
         selectionStyle = .None
         contentView.addSubview(textView)
         contentView.addSubview(placeholderLabel)
         
         let views : [String: AnyObject] =  ["textView": textView, "label": placeholderLabel]
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-8-[label]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[textView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        contentView.addConstraint(NSLayoutConstraint(item: textView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 0))
-        contentView.addConstraint(NSLayoutConstraint(item: textView, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: 0))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[label]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[textView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[textView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
     }
@@ -693,6 +721,7 @@ public class _TextAreaCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T
     
     public func textViewDidBeginEditing(textView: UITextView) {
         formViewController()?.beginEditing(self)
+        formViewController()?.textInputDidBeginEditing(textView, cell: self)
         if let textAreaConformance = (row as? TextAreaConformance), let _ = textAreaConformance.formatter where !textAreaConformance.useFormatterDuringInput {
             textView.text = row.displayValueFor?(row.value)
         }
@@ -700,6 +729,8 @@ public class _TextAreaCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T
     
     public func textViewDidEndEditing(textView: UITextView) {
         formViewController()?.endEditing(self)
+        formViewController()?.textInputDidEndEditing(textView, cell: self)
+        textViewDidChange(textView)
         if let textAreaConformance = (row as? TextAreaConformance), let _ = textAreaConformance.formatter where !textAreaConformance.useFormatterDuringInput {
             textView.text = row.displayValueFor?(row.value)
         }
@@ -738,6 +769,17 @@ public class _TextAreaCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T
         row.value = newValue
     }
     
+    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        return formViewController()?.textInput(textView, shouldChangeCharactersInRange: range, replacementString: text, cell: self) ?? true
+    }
+    
+    public func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        return formViewController()?.textInputShouldBeginEditing(textView, cell: self) ?? true
+    }
+    
+    public func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        return formViewController()?.textInputShouldEndEditing(textView, cell: self) ?? true
+    }
 }
 
 public class TextAreaCell : _TextAreaCell<String>, CellType {
@@ -777,6 +819,42 @@ public class CheckCell : Cell<Bool>, CellType {
     
     public override func didSelect() {
         row.value = row.value ?? false ? false : true
+        formViewController()?.tableView?.deselectRowAtIndexPath(row.indexPath()!, animated: true)
+        row.updateCell()
+    }
+    
+}
+
+
+public class ListCheckCell<T: Equatable> : Cell<T>, CellType {
+    
+    required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    public override func update() {
+        super.update()
+        accessoryType = row.value != nil ? .Checkmark : .None
+        editingAccessoryType = accessoryType
+        selectionStyle = .Default
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        tintColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        if row.isDisabled {
+            tintColor = UIColor(red: red, green: green, blue: blue, alpha: 0.3)
+            selectionStyle = .None
+        }
+        else {
+            tintColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+        }
+    }
+    
+    public override func setup() {
+        super.setup()
+        accessoryType =  .Checkmark
+        editingAccessoryType = accessoryType
+    }
+    
+    public override func didSelect() {
         formViewController()?.tableView?.deselectRowAtIndexPath(row.indexPath()!, animated: true)
         row.updateCell()
     }
@@ -833,6 +911,7 @@ public class SegmentedCell<T: Equatable> : Cell<T>, CellType {
     
     deinit {
         titleLabel?.removeObserver(self, forKeyPath: "text")
+        imageView?.removeObserver(self, forKeyPath: "image")
     }
     
     public override func setup() {
@@ -841,6 +920,7 @@ public class SegmentedCell<T: Equatable> : Cell<T>, CellType {
         contentView.addSubview(titleLabel!)
         contentView.addSubview(segmentedControl)
         titleLabel?.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.Old.union(.New), context: nil)
+        imageView?.addObserver(self, forKeyPath: "image", options: NSKeyValueObservingOptions.Old.union(.New), context: nil)
         segmentedControl.addTarget(self, action: "valueChanged", forControlEvents: .ValueChanged)
         contentView.addConstraint(NSLayoutConstraint(item: segmentedControl, attribute: .CenterY, relatedBy: .Equal, toItem: contentView, attribute: .CenterY, multiplier: 1, constant: 0))
     }
@@ -859,8 +939,9 @@ public class SegmentedCell<T: Equatable> : Cell<T>, CellType {
     }
     
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if let obj = object, let changeType = change, let _ = keyPath where obj === titleLabel && keyPath == "text" && changeType[NSKeyValueChangeKindKey]?.unsignedLongValue == NSKeyValueChange.Setting.rawValue{
-            contentView.setNeedsUpdateConstraints()
+        if let obj = object, let changeType = change, let _ = keyPath where ((obj === titleLabel && keyPath == "text") || (obj === imageView && keyPath == "image")) && changeType[NSKeyValueChangeKindKey]?.unsignedLongValue == NSKeyValueChange.Setting.rawValue{
+            setNeedsUpdateConstraints()
+            updateConstraintsIfNeeded()
         }
     }
     
@@ -875,14 +956,36 @@ public class SegmentedCell<T: Equatable> : Cell<T>, CellType {
         contentView.removeConstraints(dynamicConstraints)
         dynamicConstraints = []
         var views : [String: AnyObject] =  ["segmentedControl": segmentedControl]
-        if (titleLabel?.text?.isEmpty == false) {
+        
+        var hasImageView = false
+        var hasTitleLabel = false
+        
+        if let imageView = imageView, let _ = imageView.image {
+            views["imageView"] = imageView
+            hasImageView = true
+        }
+        
+        if let titleLabel = titleLabel, text = titleLabel.text where !text.isEmpty {
             views["titleLabel"] = titleLabel
+            hasTitleLabel = true
+        }
+        
+        if hasImageView && hasTitleLabel {
+            dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("H:[imageView]-[titleLabel]-[segmentedControl]-|", options: NSLayoutFormatOptions(), metrics: nil, views: views)
+            dynamicConstraints.append(NSLayoutConstraint(item: segmentedControl, attribute: .Width, relatedBy: (row as? FieldRowConformance)?.textFieldPercentage != nil ? .Equal : .GreaterThanOrEqual, toItem: contentView, attribute: .Width, multiplier: (row as? FieldRowConformance)?.textFieldPercentage ?? 0.3, constant: 0.0))
+            dynamicConstraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-12-[titleLabel]-12-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        }
+        else if hasImageView && !hasTitleLabel {
+            dynamicConstraints += NSLayoutConstraint.constraintsWithVisualFormat("H:[imageView]-[segmentedControl]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        }
+        else if !hasImageView && hasTitleLabel {
             dynamicConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[titleLabel]-16-[segmentedControl]-|", options: .AlignAllCenterY, metrics: nil, views: views)
             dynamicConstraints.appendContentsOf(NSLayoutConstraint.constraintsWithVisualFormat("V:|-12-[titleLabel]-12-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         }
-        else{
+        else {
             dynamicConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[segmentedControl]-|", options: .AlignAllCenterY, metrics: nil, views: views)
         }
+        
         contentView.addConstraints(dynamicConstraints)
         super.updateConstraints()
     }

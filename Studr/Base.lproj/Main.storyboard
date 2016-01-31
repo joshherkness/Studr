@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z0i-tw-NaW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z0i-tw-NaW">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pET-pX-fBj" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="309" y="530" width="271" height="50"/>
-                                <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.029999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lCV-x9-7du"/>
@@ -43,8 +42,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-ao-lQg" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="20" y="530" width="272" height="50"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.20783999559999999" green="0.25097998980000003" blue="0.52941000459999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41960784313725491" green="0.4392156862745098" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Hj0-kB-dXU"/>
                                 </constraints>
@@ -62,8 +60,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" red="0.086274509803921567" green="0.12156862745098039" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.039215686274509803" green="0.25490196078431371" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="pET-pX-fBj" secondAttribute="trailing" id="SZz-Hh-nOS"/>
                             <constraint firstItem="tIJ-HC-LA5" firstAttribute="top" secondItem="pET-pX-fBj" secondAttribute="bottom" constant="20" id="fFI-yy-MwH"/>
@@ -74,6 +71,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="UEa-Rp-Fsd"/>
+                    <connections>
+                        <outlet property="signInBtn" destination="pET-pX-fBj" id="r9b-zv-2A6"/>
+                        <outlet property="signUpBtn" destination="mWe-ao-lQg" id="7z5-1A-Egb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdL-AX-0dY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,7 +100,6 @@
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNy-3g-VOE" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="KgI-O6-sQR"/>
                                                 </constraints>
@@ -116,7 +116,6 @@
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P7h-jf-U37" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                                 <rect key="frame" x="285" y="0.0" width="275" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cov-SE-qZR"/>
                                                 </constraints>
@@ -132,14 +131,12 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstItem="NNy-3g-VOE" firstAttribute="width" secondItem="P7h-jf-U37" secondAttribute="width" id="J3T-Vg-z14"/>
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bB2-7r-KIR" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="60" width="560" height="50"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="bQi-F4-h4Z"/>
                                         </constraints>
@@ -156,7 +153,6 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xYU-VA-y3R" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="120" width="560" height="50"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="yeR-hY-kLv"/>
                                         </constraints>
@@ -173,7 +169,6 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPw-DJ-QxO" customClass="PasswordTextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="180" width="560" height="50"/>
-                                        <animations/>
                                         <color key="tintColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="BMg-5q-zNG"/>
@@ -193,8 +188,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjq-et-uag" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="240" width="560" height="50"/>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.20784313725490194" green="0.25098039215686274" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.027450980392156862" green="0.3529411764705882" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7GJ-Pa-aHH"/>
                                         </constraints>
@@ -212,7 +206,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="xYU-VA-y3R" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="Gb6-yt-S2b"/>
                                     <constraint firstItem="zjq-et-uag" firstAttribute="width" secondItem="Orp-HA-vOV" secondAttribute="width" id="ObL-Hi-Fkf"/>
@@ -225,7 +218,6 @@
                                 </variation>
                             </stackView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Orp-HA-vOV" firstAttribute="top" secondItem="2Md-rx-JCY" secondAttribute="bottom" constant="20" id="Cnj-Pk-0VR"/>
@@ -252,6 +244,7 @@
                         <outlet property="firstNameField" destination="NNy-3g-VOE" id="Vym-kh-Ndg"/>
                         <outlet property="lastNameField" destination="P7h-jf-U37" id="69G-Bt-lRt"/>
                         <outlet property="passwordField" destination="DPw-DJ-QxO" id="7m2-Cy-6MZ"/>
+                        <outlet property="signUpBtn" destination="zjq-et-uag" id="MCs-Vv-2ZD"/>
                         <outlet property="usernameField" destination="xYU-VA-y3R" id="xBx-kd-t61"/>
                     </connections>
                 </viewController>
@@ -277,7 +270,6 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoL-wk-Uvg" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tNz-Fu-vig"/>
                                         </constraints>
@@ -294,7 +286,6 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etd-fn-rRe" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="560" height="50"/>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.89411997799999998" green="0.29804000260000002" blue="0.37255001069999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1Da-20-ayw"/>
@@ -313,10 +304,8 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <animations/>
                             </stackView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BRA-c4-buw" firstAttribute="top" secondItem="fXe-7C-RqN" secondAttribute="bottom" constant="22" id="3HD-a8-m9A"/>
@@ -356,7 +345,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rTQ-hm-GrH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -375,7 +363,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ouq-FX-zRl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -403,7 +390,6 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lH6-cT-gaV" customClass="TextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="50"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Bpv-Dm-wIB"/>
                                         </constraints>
@@ -420,7 +406,6 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJj-nb-UDo" customClass="PasswordTextField" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="560" height="50"/>
-                                        <animations/>
                                         <color key="tintColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="WHJ-rL-l8o"/>
@@ -440,8 +425,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dF9-Kd-S3Y" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="560" height="50"/>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.20784313725490194" green="0.25098039215686274" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.027450980392156862" green="0.3529411764705882" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vSH-sW-Kwu"/>
                                         </constraints>
@@ -459,7 +443,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <animations/>
                                 <constraints>
                                     <constraint firstItem="lH6-cT-gaV" firstAttribute="width" secondItem="5yq-bk-s2L" secondAttribute="width" id="EEB-rI-U2T"/>
                                     <constraint firstItem="EJj-nb-UDo" firstAttribute="width" secondItem="5yq-bk-s2L" secondAttribute="width" id="SCT-zt-SOt"/>
@@ -468,13 +451,11 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LZ-mk-Ujl">
                                 <rect key="frame" x="222" y="550" width="157" height="30"/>
-                                <animations/>
                                 <state key="normal" title="Forgot your password?">
                                     <color key="titleColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="5yq-bk-s2L" firstAttribute="top" secondItem="5iA-Z4-gb2" secondAttribute="bottom" constant="20" id="K3B-ZF-S6r"/>
@@ -507,6 +488,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="passwordField" destination="EJj-nb-UDo" id="Qgb-eC-06t"/>
+                        <outlet property="signInBtn" destination="dF9-Kd-S3Y" id="9Ny-97-jJn"/>
                         <outlet property="usernameField" destination="lH6-cT-gaV" id="Pbd-Un-SvQ"/>
                     </connections>
                 </viewController>
@@ -523,7 +505,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="izk-kM-7Sj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -548,13 +529,11 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Ij-px9">
                                 <rect key="frame" x="0.0" y="289" width="600" height="21"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <animations/>
                         <constraints>
                             <constraint firstItem="fvS-Ij-px9" firstAttribute="width" secondItem="uF8-I8-cDv" secondAttribute="width" id="IpS-DK-g40"/>
                             <constraint firstItem="fvS-Ij-px9" firstAttribute="centerY" secondItem="uF8-I8-cDv" secondAttribute="centerY" id="NgP-Fo-zcN"/>

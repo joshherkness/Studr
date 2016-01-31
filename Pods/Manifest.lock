@@ -4,7 +4,7 @@ PODS:
   - ChameleonFramework/Swift (2.0.4):
     - ChameleonFramework/Default
   - CryptoSwift (0.1.1)
-  - Eureka (1.2.0)
+  - Eureka (1.3.1)
   - HanekeSwift (0.10.0)
   - NVActivityIndicatorView (2.1)
   - Parse (1.9.1):
@@ -16,7 +16,7 @@ PODS:
 DEPENDENCIES:
   - ChameleonFramework/Swift
   - CryptoSwift
-  - Eureka (~> 1.2)
+  - Eureka (~> 1.3.1)
   - HanekeSwift
   - NVActivityIndicatorView
   - Parse
@@ -26,7 +26,7 @@ SPEC CHECKSUMS:
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
   CryptoSwift: c11640d3d66107efc8333e4131a5173f072b1d61
-  Eureka: aa7059d2a30e1b206a581f0aabfcf903ece6beae
+  Eureka: 10df73e578ed8ec1f30c8fda5b4ffc8739786b74
   HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   NVActivityIndicatorView: 84aa48f7ec1efbfd0645e9f469097d94c6f65417
   Parse: 54a965c8c19a6dde90284ab654dbcc77ef8c001b

@@ -11,10 +11,15 @@ import Parse
 import NVActivityIndicatorView
 import ChameleonFramework
 
-class SignInViewController : UIViewController, UITextFieldDelegate {
+class SignInViewController : UIViewController {
+    
+    // MARK: Outlets
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var signInBtn: RoundedButton!
+    
+    // MARK: Instance Variables
     
     var activityIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150), type: NVActivityIndicatorType.BallPulseSync, color: UIColor(hexString: "63d297"))
     
@@ -24,13 +29,16 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
         
-        // Navigation bar color
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.primary
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        // Change the navigation bar appearance
+        navigationController?.navigationBar.barTintColor = Constants.Color.primary
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.hidesNavigationBarHairline = true;
+        navigationController?.navigationBar.topItem?.title = "Sign In"
         
-        // Text view tint colors
+        // Change colors
         usernameField.tintColor = Constants.Color.primary
         passwordField.tintColor = Constants.Color.primary
+        signInBtn.backgroundColor = Constants.Color.primary
         
         // Create activity indicator
         self.activityIndicator.center = self.view.center
@@ -42,6 +50,9 @@ class SignInViewController : UIViewController, UITextFieldDelegate {
         setNeedsStatusBarAppearanceUpdate()
     }
     
+    /**
+     Resigns the keyboard when the user touches the view
+     */
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
