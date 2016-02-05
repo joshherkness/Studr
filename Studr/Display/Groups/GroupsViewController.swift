@@ -47,6 +47,7 @@ class GroupsViewController : UIViewController, MKMapViewDelegate, CLLocationMana
         
         // Add the mapview to the view controller
         view.addSubview(mapView)
+        
     
     }
     

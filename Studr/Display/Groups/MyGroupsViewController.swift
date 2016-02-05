@@ -10,6 +10,10 @@ import UIKit
 
 class MyGroupsViewController: UIViewController {
     
+    // MARK: Instance Variables
+    
+    private var createButton: UIBarButtonItem = UIBarButtonItem()
+    
     // MARK: UIViewController
     
     override func viewDidLoad() {
@@ -22,6 +26,15 @@ class MyGroupsViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = Constants.Color.primary
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationController?.hidesNavigationBarHairline = true;
-        navigationController?.navigationBar.topItem?.title = "My Groups"
+        navigationController?.navigationBar.topItem?.title = "Groups"
+        
+        // Add create button
+        createButton = UIBarButtonItem(title: "Create", style: .Plain, target: self, action: "create")
+        navigationItem.setRightBarButtonItem(createButton, animated: false)
+    }
+    
+    func create(){
+        let createGroupNavigationController = UINavigationController(rootViewController: CreateGroupViewController())
+        presentViewController(createGroupNavigationController, animated: true, completion: nil)
     }
 }

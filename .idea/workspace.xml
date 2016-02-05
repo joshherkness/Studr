@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7cabbfb6-1117-4465-b838-ea3c1c884022" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/add_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/add_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/add_72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/close_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/close_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/close_72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/send_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/send_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/send_72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/check_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/check_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/check_72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/friend_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/friend_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/friend_72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/friend_32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/friend_64.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/friend_96.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/settings_24.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/settings_48.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/settings_72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Studr/Display/Custom Cells/UserCellType.swift" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/plus-24.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/plus-36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/plus-64.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/ic_clear.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/ic_clear_2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/ic_clear_3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/direction-24-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/direction-36-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/direction-64-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/checkmark-24-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/checkmark-36-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/checkmark-64-0.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/ic_group.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/ic_group_2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/ic_group_3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/ic_person.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/ic_person_2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/ic_person_3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/gear-24.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/gear-36.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/gear-64.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Database/Database.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Studr/Display/Custom Cells/FriendshipCell.swift" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr-acknowledgements.markdown" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr-acknowledgements.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr-acknowledgements.plist" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr-acknowledgements.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr-frameworks.sh" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr-frameworks.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr.release.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Studr/Pods-Studr.release.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Studr.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/AppDelegate.swift" afterPath="$PROJECT_DIR$/Studr/AppDelegate.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/Contents.json" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_add.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/Contents.json" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_clear.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/Contents.json" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_direction.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/Contents.json" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_done.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/Contents.json" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_group.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/Contents.json" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_person.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/Contents.json" afterPath="$PROJECT_DIR$/Studr/Assets.xcassets/ic_settings.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/Studr/Base.lproj/Main.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Authentication/OnboardingViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Authentication/OnboardingViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Authentication/SignInViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Authentication/SignInViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Authentication/SignUpViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Authentication/SignUpViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Custom Cells/UserCell.swift" afterPath="$PROJECT_DIR$/Studr/Display/Custom Cells/UserCell.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Custom Cells/UserCell.xib" afterPath="$PROJECT_DIR$/Studr/Display/Custom Cells/UserCell.xib" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Groups/AddMembersTableViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Groups/AddMembersTableViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Settings/SettingsViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Settings/SettingsViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Social/AddFriendsTableViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Social/AddFriendsTableViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Social/FriendViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Social/FriendViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Social/FriendshipStatus.swift" afterPath="$PROJECT_DIR$/Studr/Display/Social/FriendshipStatus.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Display/Social/MyFriendsTableViewController.swift" afterPath="$PROJECT_DIR$/Studr/Display/Social/MyFriendsTableViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Middleware/Constants.swift" afterPath="$PROJECT_DIR$/Studr/Middleware/Constants.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Studr/Middleware/ProfileImageHelper.swift" afterPath="$PROJECT_DIR$/Studr/Middleware/ProfileImageHelper.swift" />
+    </list>
+    <ignored path="Studr.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Studr" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="MyFriendsTableViewController.swift" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Studr/Display/Social/MyFriendsTableViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.3216996">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1260" />
+    <option name="height" value="756" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Studr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Studr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Studr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Studr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Studr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Display" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Studr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Studr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Display" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Social" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Cidr.FilesView" />
+    </panes>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7cabbfb6-1117-4465-b838-ea3c1c884022" name="Default" comment="" />
+      <created>1454539997963</created>
+      <option name="number" value="Default" />
+      <updated>1454539997963</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="10" y="20" width="1260" height="756" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Studr/Display/Social/MyFriendsTableViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3216996">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -54,7 +54,7 @@ class FriendViewController : UIViewController, CAPSPageMenuDelegate {
             .MenuHeight(40),
             .EnableHorizontalBounce(false),
             .SelectionIndicatorHeight(4),
-            .SelectionIndicatorColor(Constants.Color.red)
+            .SelectionIndicatorColor(Constants.Color.lightGrey)
         ]
         
         // Initialize page menu with controller array, frame, and optional parameters

@@ -25,14 +25,14 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Change the background color
-        view.backgroundColor = Constants.Color.primary
+        view.backgroundColor = UIColor(hexString: "#0A4162")
         
         // Change colors
         signUpBtn.backgroundColor = UIColor.whiteColor()
-        signUpBtn.tintColor = Constants.Color.primary
+        signUpBtn.tintColor = UIColor(hexString: "#0A4162")
         
-        signInBtn.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.1)
-        signInBtn.tintColor = Constants.Color.primary
+        signInBtn.backgroundColor = UIColor(hexString: "#205373")
+        signInBtn.tintColor = UIColor(hexString: "#0A4162")
         
         // Declare page titles
         pageTitles = ["Page 1", "Page 2", "Page 3"]

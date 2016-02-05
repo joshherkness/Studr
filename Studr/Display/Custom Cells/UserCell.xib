@@ -29,34 +29,34 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-7c-h4r">
-                        <rect key="frame" x="61" y="13" width="73" height="38"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-7c-h4r">
+                        <rect key="frame" x="65" y="13" width="72.5" height="37.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umz-wK-pTl">
-                                <rect key="frame" x="0.0" y="0.0" width="73" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="72.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <color key="textColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.23921568627450979" green="0.25882352941176467" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-q9-Upl">
-                                <rect key="frame" x="0.0" y="21" width="64" height="17"/>
+                                <rect key="frame" x="0.0" y="20" width="64" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.61568627450980395" green="0.6470588235294118" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-z3-1fL">
-                        <rect key="frame" x="261" y="13" width="134" height="38"/>
+                        <rect key="frame" x="213" y="13" width="182" height="38"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCA-vn-UtR" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
-                                <color key="backgroundColor" red="0.27843137254901962" green="0.47058823529411764" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.26782718120805371" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yCA-vn-UtR" secondAttribute="height" multiplier="1:1" id="oTA-35-sPU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="tintColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_direction"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -66,12 +66,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-BK-ZRW" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="48" y="0.0" width="38" height="38"/>
-                                <color key="backgroundColor" red="0.27843137254901962" green="0.47058823529411764" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.58823529411764708" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rd4-BK-ZRW" secondAttribute="height" multiplier="1:1" id="OXu-BZ-pwa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="tintColor" red="0.97227032229999999" green="0.97920274169999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -79,13 +79,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPB-2e-SqU" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPB-2e-SqU" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
                                 <rect key="frame" x="96" y="0.0" width="38" height="38"/>
-                                <color key="backgroundColor" red="0.92549019607843142" green="0.93333333333333335" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.87058823529411766" green="0.8784313725490196" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DPB-2e-SqU" secondAttribute="height" multiplier="1:1" id="Zeq-Hw-tVY"/>
                                 </constraints>
-                                <color key="tintColor" red="0.97254901960784312" green="0.98039215686274506" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_add"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -93,9 +93,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8F-Un-RBI" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                                <rect key="frame" x="144" y="0.0" width="38" height="38"/>
+                                <color key="backgroundColor" red="0.87058823529999996" green="0.87843137250000003" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="T8F-Un-RBI" secondAttribute="height" multiplier="1:1" id="B0z-oT-KA7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ic_clear"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="rd4-BK-ZRW" firstAttribute="width" secondItem="rd4-BK-ZRW" secondAttribute="height" multiplier="1:1" id="L8E-kU-yfJ"/>
+                            <constraint firstItem="T8F-Un-RBI" firstAttribute="width" secondItem="T8F-Un-RBI" secondAttribute="height" multiplier="1:1" id="OnH-RR-7KF"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -125,9 +144,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="acceptButton" destination="rd4-BK-ZRW" id="XBO-R6-q4x"/>
-                <outlet property="addFriendButton" destination="DPB-2e-SqU" id="Wvt-9n-XEM"/>
+                <outlet property="addButton" destination="DPB-2e-SqU" id="vBZ-gM-kHq"/>
                 <outlet property="nameLabel" destination="Umz-wK-pTl" id="2bY-ZM-wE9"/>
                 <outlet property="profileImageView" destination="yme-2j-wuS" id="tmg-IJ-VW2"/>
+                <outlet property="rejectButton" destination="T8F-Un-RBI" id="YAp-Ae-clc"/>
                 <outlet property="sentButton" destination="yCA-vn-UtR" id="RSO-Ot-ELL"/>
                 <outlet property="usernameLabel" destination="vvF-q9-Upl" id="XEo-uS-0C7"/>
             </connections>
@@ -136,7 +156,8 @@
     </objects>
     <resources>
         <image name="ic_add" width="24" height="24"/>
+        <image name="ic_clear" width="24" height="24"/>
         <image name="ic_direction" width="24" height="24"/>
-        <image name="ic_done" width="24" height="17"/>
+        <image name="ic_done" width="24" height="24"/>
     </resources>
 </document>

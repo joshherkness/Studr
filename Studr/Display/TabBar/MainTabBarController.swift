@@ -16,17 +16,15 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         delegate = self
         
-        UITabBar.appearance().tintColor = UIColor.whiteColor()
-        UITabBar.appearance().barTintColor = Constants.Color.primaryTabBar
-        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(Constants.Color.secondaryTabBar, size: CGSizeMake(tabBar.frame.width/5, tabBar.frame.height))
         var controllerArray: [UIViewController] = []
-        
         
         // Lets the user see the groups that they are a part of
         let myGroupsNavigationController = UINavigationController(rootViewController: MyGroupsViewController())
-        let myGroupTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_dashboard"), selectedImage: nil)
-        myGroupTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        myGroupsNavigationController.tabBarItem = myGroupTabBarItem
+        let myGroupsTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_dashboard"), selectedImage: nil)
+        myGroupsTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        myGroupsTabBarItem.selectedImage = myGroupsTabBarItem.image?.imageWithColor(Constants.Color.selectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
+        myGroupsTabBarItem.image = myGroupsTabBarItem.image?.imageWithColor(Constants.Color.deselectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
+        myGroupsNavigationController.tabBarItem = myGroupsTabBarItem
         controllerArray.append(myGroupsNavigationController)
         
         
@@ -34,22 +32,18 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let groupNavigationController = UINavigationController(rootViewController: GroupsViewController())
         let groupTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_event"), selectedImage: nil)
         groupTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        groupTabBarItem.selectedImage = groupTabBarItem.image?.imageWithColor(Constants.Color.selectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
+        groupTabBarItem.image = groupTabBarItem.image?.imageWithColor(Constants.Color.deselectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
         groupNavigationController.tabBarItem = groupTabBarItem
         controllerArray.append(groupNavigationController)
-        
-        
-        // Lets the user to create their own groups
-        let createGroupNavigationController = UINavigationController(rootViewController: CreateGroupViewController())
-        let createTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_add"), selectedImage: nil)
-        createTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        createGroupNavigationController.tabBarItem = createTabBarItem
-        controllerArray.append(createGroupNavigationController)
-        
+    
         
         // Lets the user see and add friends
         let friendNavigationController = UINavigationController(rootViewController: FriendViewController())
         let friendTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_group"), selectedImage: nil)
         friendTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        friendTabBarItem.selectedImage = friendTabBarItem.image?.imageWithColor(Constants.Color.selectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
+        friendTabBarItem.image = friendTabBarItem.image?.imageWithColor(Constants.Color.deselectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
         friendNavigationController.tabBarItem = friendTabBarItem
         controllerArray.append(friendNavigationController)
         
@@ -58,6 +52,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let settingsNavigationController = UINavigationController(rootViewController: SettingsViewController())
         let settingsTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_settings"), selectedImage: nil)
         settingsTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        settingsTabBarItem.selectedImage = settingsTabBarItem.image?.imageWithColor(Constants.Color.selectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
+        settingsTabBarItem.image = settingsTabBarItem.image?.imageWithColor(Constants.Color.deselectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
         settingsNavigationController.tabBarItem = settingsTabBarItem
         controllerArray.append(settingsNavigationController)
         
@@ -65,38 +61,32 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        
-        if let navigationController = viewController as? UINavigationController {
-            if let _ = navigationController.viewControllers.first as? CreateGroupViewController {
-                let actualNav = UINavigationController(rootViewController: CreateGroupViewController())
-                presentViewController(actualNav, animated: true, completion: nil)
-                return false
-            }
-        }
-        
         return true
     }
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        
-        if let navigationController = viewController as? UINavigationController {
-            if let _ = navigationController.viewControllers.first as? CreateGroupViewController {
-                let actualNav = UINavigationController(rootViewController: CreateGroupViewController())
-                presentViewController(actualNav, animated: true, completion: nil)
-            }
-        }
     }
     
 }
 
 extension UIImage {
-    func makeImageWithColorAndSize(color: UIColor, size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
-        UIRectFill(CGRectMake(0, 0, size.width, size.height))
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+    func imageWithColor(color1: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        color1.setFill()
+        
+        let context = UIGraphicsGetCurrentContext()! as CGContextRef
+        CGContextTranslateCTM(context, 0, self.size.height)
+        CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        
+        let rect = CGRectMake(0, 0, self.size.width, self.size.height) as CGRect
+        CGContextClipToMask(context, rect, self.CGImage)
+        CGContextFillRect(context, rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext() as UIImage
         UIGraphicsEndImageContext()
-        return image
+        
+        return newImage
     }
 }
 

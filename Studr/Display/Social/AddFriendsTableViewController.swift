@@ -7,16 +7,17 @@
 //
 
 import UIKit
-import Parse
+import Firebase
 
 class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate{
     
     // MARK: Instance Variables
     
-    private var query: PFQuery?
-    private var users: [PFUser] = []
+    private var users: [String] = []
     private var friends: [String:FriendshipStatus] = [:]
     var searchBar = UISearchBar()
+    private var searchRequestQuery: FQuery = FQuery()
+    private var friendshipRemovedHandle: FirebaseHandle = UInt()
     
     // MARK: UIViewController
     
@@ -58,36 +59,35 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     }
     
     func loadFriendships(){
-        Database.getFriendshipsForUser(PFUser.currentUser()!) { (friendships, error) -> Void in
-            for friendship in friendships! {
-                
-                // Determine the friend
-                let fromUser = friendship["from"] as! PFUser
-                let toUser = friendship["to"] as! PFUser
-                var friend: PFUser
-                if(fromUser.objectId == PFUser.currentUser()?.objectId){
-                    friend = toUser
-                }else{
-                    friend = fromUser
-                }
-                
-                // Determine the status of the friendship
-                switch friendship["status"] as! String {
-                case FriendshipStatus.Accepted.rawValue:
-                    self.friends.updateValue(FriendshipStatus.Accepted, forKey: friend.objectId!)
-                    break
-                case FriendshipStatus.Pending.rawValue:
-                    self.friends.updateValue(FriendshipStatus.Pending, forKey: friend.objectId!)
-                    break
-                case FriendshipStatus.Rejected.rawValue:
-                    self.friends.updateValue(FriendshipStatus.Rejected, forKey: friend.objectId!)
-                    break
-                default: break
-                    
-                }
-            }
+        let uid = Constants.ref.authData!.uid
+        let myFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(uid)")
+        
+        // Query for all friendships where the current user and other user are members
+        myFriendshipsRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
+            let theirId = snapshot.key
+            let status = snapshot.value as! String
+            self.friends.updateValue(FriendshipStatus(rawValue: status)!, forKey: theirId)
+            
             self.tableView.reloadData()
-        }
+        })
+        
+        // Query for all friendships where the current user is the sender or receiver
+        myFriendshipsRef.queryOrderedByKey().observeEventType(.ChildChanged, withBlock: { snapshot in
+            let theirId = snapshot.key
+            let status = snapshot.value as! String
+            self.friends.updateValue(FriendshipStatus(rawValue: status)!, forKey: theirId)
+            
+            self.tableView.reloadData()
+        })
+        
+        // Create listener and store handle
+        friendshipRemovedHandle = myFriendshipsRef.observeEventType(.ChildRemoved, withBlock: { snapshot in
+            let theirId = snapshot.key
+            self.friends.removeValueForKey(theirId)
+            
+            self.tableView.reloadData()
+        })
+        
     }
     
     // Used to hash the index path so we can distinguish between cells
@@ -104,52 +104,52 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     
     // MARK: Selectors
     
-    func addFriend(button: UIButton){
-        
-        // Get the index of the user
+    func addFriendship(button: UIButton){
         let indexPath = getIndexPathFromTag(button.tag)
+        let user = users[indexPath.row]
+    
+        // First we decide where to add the friendship
+        let uid = Constants.ref.authData!.uid
+        let myFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(uid)")
+        let theirFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(user)")
         
-        // Add the friendship
-        let otherUser = users[indexPath.row]
-        let currentUser = PFUser.currentUser()
-        
-        let predicate = NSPredicate(format: "(from = %@ AND to = %@) OR (from = %@ AND to = %@)", currentUser!, otherUser, otherUser, currentUser!)
-        let query = PFQuery(className: "Friendship", predicate: predicate)
-        query.getFirstObjectInBackgroundWithBlock { (friendship, error) -> Void in
-            if(error == nil){
-                let status = friendship!["status"] as! String
-                if(status == FriendshipStatus.Pending.rawValue){
-                    friendship?.setValue(FriendshipStatus.Accepted.rawValue, forKey: "status")
-                    friendship?.saveInBackgroundWithBlock({ (saved, error) -> Void in
-                        if(saved){
-                            // Friendship was accepted
-                            self.friends.updateValue(FriendshipStatus.Accepted, forKey: otherUser.objectId!)
-                            self.tableView.reloadData()
-                        }else{
-                            print(error)
-                        }
-                    })
-                }
-            }else if(error?.code == 101){
-                PFCloud.callFunctionInBackground("addFriendship", withParameters: ["from": (currentUser?.objectId)!, "to": otherUser.objectId!], block: { (id, error) -> Void in
-                    if(error == nil){
-                        //Friendship was sent
-                        self.friends.updateValue(FriendshipStatus.Pending, forKey: otherUser.objectId!)
-                        self.tableView.reloadData()
-                    }else{
-                        print(error)
-                    }
-                })
-            }else{
-                print(error)
-            }
-        }
+        // Now we create the friendship and add it to the database
+        myFriendshipsRef.childByAppendingPath(user).setValue(FriendshipStatus.PendingSent.rawValue)
+        theirFriendshipsRef.childByAppendingPath(uid).setValue(FriendshipStatus.PendingReceived.rawValue)
     }
 
+    func acceptFriendship(button: UIButton){
+        let indexPath = getIndexPathFromTag(button.tag)
+        let user = users[indexPath.row]
+        
+        // First we decide where to add the friendship
+        let uid = Constants.ref.authData!.uid
+        let myFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(uid)")
+        let theirFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(user)")
+        
+        myFriendshipsRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            for child in snapshot.children.allObjects as! [FDataSnapshot] {
+                let u = child.key
+                if(u == user){
+                    child.ref.setValue(FriendshipStatus.Accepted.rawValue)
+                }
+            }
+        })
+        
+        theirFriendshipsRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            for child in snapshot.children.allObjects as! [FDataSnapshot] {
+                let u = child.key
+                if(u == uid){
+                    child.ref.setValue(FriendshipStatus.Accepted.rawValue)
+                }
+            }
+        })
+    }
+    
     // MARK: TableViewDatasource
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return Constants.friendTableViewCellHeight
+        return Constants.userCellHeight
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -175,33 +175,26 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let user = users[indexPath.row]
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
-        cell.accessoryType = .DisclosureIndicator
         cell.setUser(user)
-        cell.addFriendButton.tag = getTagFromIndexPath(indexPath)
-        cell.addFriendButton.addTarget(self, action: "addFriend:", forControlEvents: .TouchUpInside)
+        cell.addButton.tag = getTagFromIndexPath(indexPath)
+        cell.addButton.addTarget(self, action: "addFriendship:", forControlEvents: .TouchUpInside)
         cell.acceptButton.tag = getTagFromIndexPath(indexPath)
-        cell.acceptButton.addTarget(self, action: "addFriend:", forControlEvents: .TouchUpInside)
+        cell.acceptButton.addTarget(self, action: "acceptFriendship:", forControlEvents: .TouchUpInside)
         
-        // Changes what kind of cell should be displayed
-        let index = friends.indexForKey(user.objectId!)
-        if(index != nil){
-            if(friends.values[index!] == FriendshipStatus.Accepted){
-                cell.type = .None
-            }else if(friends.values[index!] == FriendshipStatus.Pending){
-                cell.type = .Sent
-            }else if(friends.values[index!] == FriendshipStatus.Rejected){
-                cell.type = .Rejected
+        // Determine and set the cells type
+        if let index = friends.indexForKey(user){
+            switch friends.values[index] {
+            case .PendingReceived: cell.setType(.PendingReceived); break
+            case .PendingSent: cell.setType(.PendingSent); break
+            case .Accepted: cell.setType(.Accepted); break
+            case .Rejected: cell.setType(.Rejected); break
+            default: cell.setType(.None); break
             }
         }else{
-            cell.type = .Send
+            cell.setType(.Send)
         }
         
-        // Change the selected background view
-        let selectedBackgroundView: UIView = UIView()
-        selectedBackgroundView.backgroundColor = Constants.Color.grey.colorWithAlphaComponent(0.5)
-        cell.selectedBackgroundView = selectedBackgroundView
         
         return cell
     }
@@ -209,10 +202,6 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     // Mark: - SearchBarDelegate
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        // First we start by canceling the previous query
-        query?.cancel()
-        
         // Next we empty the array of users if no text has been entered
         if(searchText.isEmpty){
             users.removeAll()
@@ -221,31 +210,48 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         }
         
         // If there is to much text, we are not going to bother querying for users
-        if(searchText.characters.count > 25){
+        if(searchText.characters.count > 15){
             return
         }
         
-        //We then begin our query for the users that match the entered text
-        let searchTextArray = searchText.componentsSeparatedByString(" ")
-        var predicate: NSPredicate?
-        if(searchTextArray.count > 1){
-            predicate = NSPredicate(format: "objectId != %@ AND (username BEGINSWITH %@ OR firstName BEGINSWITH %@ OR lastName BEGINSWITH %@ OR lastname BEGINSWITH %@)", PFUser.currentUser()!.objectId!, searchText.lowercaseString, searchTextArray[0], searchTextArray[0], searchTextArray[1])
-        }else{
-            predicate = NSPredicate(format: "objectId != %@ AND (username BEGINSWITH %@ OR username BEGINSWITH %@ OR firstName BEGINSWITH %@ OR lastName BEGINSWITH %@)", PFUser.currentUser()!.objectId!, searchText.lowercaseString, searchTextArray[0], searchTextArray[0], searchTextArray[0])
-        }
-        query = PFUser.queryWithPredicate(predicate)!
-        query?.findObjectsInBackgroundWithBlock { (users, error) -> Void in
-            if(error == nil){
-                self.users = users as! [PFUser]
-                self.tableView.reloadData()
-            }else{
-                print(error)
+        // Now we look for users matching this text
+        let usersRef = Constants.ref.childByAppendingPath("users")
+        usersRef.queryOrderedByKey().observeEventType(.Value, withBlock: { snapshot in
+            self.users.removeAll()
+            for user in snapshot.children.allObjects as! [FDataSnapshot]{
+                // If the user is the current user, do not add them
+                if(user.key == Constants.ref.authData.uid){
+                    continue
+                }
+                
+                let firstName = user.value.valueForKey("first_name")!.lowercaseString as String
+                let lastName = user.value.valueForKey("last_name")!.lowercaseString as String
+                let username = user.value.valueForKey("username")!.lowercaseString as String
+                
+                if firstName.hasPrefix(searchText.lowercaseString){
+                    self.users.append(user.key)
+                }else if(lastName.hasPrefix(searchText.lowercaseString)){
+                    self.users.append(user.key)
+                }else if(username.hasPrefix(searchText.lowercaseString)){
+                    self.users.append(user.key)
+                }
             }
-        }
+            
+            self.tableView.reloadData()
+        })
     }
     
     // MARK: TableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // TODO: Display a popup with information about the selected user
+        let user = users[indexPath.row]
+        let alertController = UIAlertController(title: user, message:
+            "Here it will display a popup with information about the selected user", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

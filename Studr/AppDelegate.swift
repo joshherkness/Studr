@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,67 +15,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Parse Application ID
-        Parse.setApplicationId("SiUI7l8keFbkruaPeGJGFysV1QRvFh8doFEIDn46", clientKey: "uIRt8lWTeyYLRUXUoWdZHoIQEN289OripAM6ucRh")
-        
-        // Register for Push Notitications
-        if application.applicationState != UIApplicationState.Background {
-            // Track an app open here if we launch with a push, unless
-            // "content_available" was used to trigger a background push (introduced in iOS 7).
-            // In that case, we skip tracking here to avoid double counting the app-open.
-            
-            let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
-            let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
-            var pushPayload = false
-            if let options = launchOptions {
-                pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
-            }
-            if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
-                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-            }
-        }
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-        } else {
-            application.registerForRemoteNotifications()
-        }
-        
-        // Google Maps API Key
-        //GMSServices.provideAPIKey("AIzaSyBNOeTdFtSuG1DjZ6j5WUv-a2KOD-elG_g")
-        
-        //authenticatedUser: check from NSUserDefaults User credential if its present then set your navigation flow accordingly
-        
-        //UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         UITextField.appearance().keyboardAppearance = .Light
         UILabel.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).textColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-        
         UITabBar.appearance().translucent = false
         UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().backgroundImage = UIImage()
-
-        // Determine wether to authenticate the user
-        var rootViewController: UIViewController?
-        if let _ = PFUser.currentUser() {
-            
-            rootViewController = MainTabBarController()
-            
-        } else {
-            // Authenticate the user
-            rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
-        }
+        //UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().barTintColor = Constants.Color.barTintColor
         
-        // Display the root view controller
-        if let window = self.window {
-            if let rootViewController = rootViewController {
-                window.rootViewController? = rootViewController
+        var rootViewController: UIViewController?
+        
+        Constants.ref.observeAuthEventWithBlock({ authData in
+            if authData != nil {
+                print(authData)
+                rootViewController = MainTabBarController()
+            } else {
+                // No user is signed in
+                print("No one authenticated")
+                rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
             }
-            window.makeKeyAndVisible()
-        }
+            
+            //Testing
+            //let nc = UINavigationController(rootViewController: RequestEmailViewController())
+            //rootViewController = nc
+            
+            
+            if let window = self.window {
+                if let rootViewController = rootViewController {
+                    window.rootViewController? = rootViewController
+                }
+                window.makeKeyAndVisible()
+            }
+        })
         
         return true
     }
@@ -103,28 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    //Mark - Notification
-    
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = PFInstallation.currentInstallation()
-        installation.setDeviceTokenFromData(deviceToken)
-        installation.saveInBackground()
-    }
-    
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        if error.code == 3010 {
-            print("Push notifications are not supported in the iOS Simulator.")
-        } else {
-            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
-        }
-    }
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-        if application.applicationState == UIApplicationState.Inactive {
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-        }
-    }
+    // MARK: Notifications
 
 }
 

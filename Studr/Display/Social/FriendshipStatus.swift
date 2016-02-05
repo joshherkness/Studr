@@ -7,7 +7,9 @@
 //
 
 enum FriendshipStatus: String {
-    case Pending = "pending"
     case Accepted = "accepted"
+    case PendingSent = "pending_sent"
+    case PendingReceived = "pending_received"
     case Rejected = "rejected"
+    case None
 }

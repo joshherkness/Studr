@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+import Firebase
 import NVActivityIndicatorView
 import ChameleonFramework
 
@@ -73,62 +73,51 @@ class SignUpViewController : UIViewController{
     // Mark: Actions
     
     @IBAction func signUpAction(sender: AnyObject) {
+
+        let username = usernameField.text!
+        let password = passwordField.text!
+        let email = emailField.text!
+        let firstName = firstNameField.text!
+        let lastName = lastNameField.text!
         
-        let username = self.usernameField.text!
-        let password = self.passwordField.text!
-        let email = self.emailField.text!
+        // TODO: Check for errors with the users input
         
-        if username.utf16.count < 4 || password.utf16.count < 5 {
-            
-            // Invalid noification
-            let invalidAlert = UIAlertController(title: "Invalid", message: "Your username must be greater than 4, and your password greater than 5", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            invalidAlert.addAction(OKAction)
-            self.presentViewController(invalidAlert, animated: true, completion: nil)
-            
-        } else if (email.utf16.count < 8) {
-            
-            // Invalid notification
-            let invalidAlert = UIAlertController(title: "Invalid", message: "Please enter a valid email", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            invalidAlert.addAction(OKAction)
-            self.presentViewController(invalidAlert, animated: true, completion: nil)
-            
-        } else {
-            
-            // Begin activity indicator
-            self.activityIndicator.startAnimation()
-            
-            // Create a new parse user
-            let newUser = PFUser()
-            newUser.username = username
-            newUser.password = password
-            newUser.email = email
-            newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
+        //Create the user
+        Constants.ref.createUser(email, password: password,
+            withValueCompletionBlock: { error, result in
                 
-                // Stop activity indicator
-                self.activityIndicator.stopAnimation()
-                
-                if ((error) != nil) {
-                    
-                    // Error notification
-                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    errorAlert.addAction(OKAction)
-                    self.presentViewController(errorAlert, animated: true, completion: nil)
-                    
+                if error != nil {
+                    // There was an error creating the account
+                    print(error)
                 } else {
+                    let uid = result["uid"] as? String
+                    print("Successfully created user account with uid: \(uid)")
                     
-                    // Launch user into main view controller as a navigation view controller
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    // Now we save the users information to the database under the uid
+                    let usersRef = Constants.ref.childByAppendingPath("users").childByAppendingPath(uid)
+                    let user = ["username": username, "first_name": firstName, "last_name": lastName, "email": email]
+                    usersRef.setValue(user)
                     
-                    let mainTabBarController = MainTabBarController()
-                    self.presentViewController(mainTabBarController, animated: true, completion: {
-                        appDelegate.window?.rootViewController = mainTabBarController
-                    })
-                    
+                    Constants.ref.authUser(email, password: password) { (error, data) -> Void in
+                        if(error == nil){
+                            
+                            // Launch user into main application
+                            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                            let mainTabBarController = MainTabBarController()
+                            self.presentViewController(mainTabBarController, animated: true, completion: {
+                                appDelegate.window?.rootViewController = mainTabBarController
+                            })
+                            
+                        }else{
+                            print(error.description)
+                            let alertController = UIAlertController(title: "Authentication Error", message:
+                                error.description, preferredStyle: UIAlertControllerStyle.Alert)
+                            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                            self.presentViewController(alertController, animated: true, completion: nil)
+                        }
+                    }
                 }
-            })
-        }
+        })
+    
     }
 }

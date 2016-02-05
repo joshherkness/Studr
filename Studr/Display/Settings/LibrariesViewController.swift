@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 import Eureka
-import Parse
 
 class LibrarriesViewController: FormViewController {
     
     // MARK: Instance Variables
     
-    var libraries = ["Parse", "Eureka", "Heneke", "Crypto Swift", "Chameleon Framework", "CAPSPageMenu"]
+    var libraries = ["Firebase", "Eureka", "Heneke", "Crypto Swift", "Chameleon Framework", "CAPSPageMenu"]
     
     // MARK: UIViewController
     

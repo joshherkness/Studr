@@ -12,8 +12,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'Studr' do
-pod 'Parse' # Dependencies include 'Bolts'
-pod 'ParseUI' # Parse User Interface Elements
+pod 'Firebase', '>= 2.5.0'
 pod 'NVActivityIndicatorView' # Better activity indicator
 pod 'ChameleonFramework/Swift'
 pod 'Eureka', '~> 1.3.1'

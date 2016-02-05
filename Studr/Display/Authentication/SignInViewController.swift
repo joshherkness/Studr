@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import NVActivityIndicatorView
 import ChameleonFramework
 
@@ -15,7 +14,7 @@ class SignInViewController : UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: TextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signInBtn: RoundedButton!
     
@@ -36,7 +35,7 @@ class SignInViewController : UIViewController {
         navigationController?.navigationBar.topItem?.title = "Sign In"
         
         // Change colors
-        usernameField.tintColor = Constants.Color.primary
+        emailField.tintColor = Constants.Color.primary
         passwordField.tintColor = Constants.Color.primary
         signInBtn.backgroundColor = Constants.Color.primary
         
@@ -65,71 +64,54 @@ class SignInViewController : UIViewController {
 
     @IBAction func signInAction(sender: AnyObject) {
         
-        let username = self.usernameField.text!
-        let password = self.passwordField.text!
+        let email = emailField.text!
+        let password = passwordField.text!
         
-        if username.utf16.count < 4 || password.utf16.count < 5 {
-            
-            // Invalid notification
-            let invalidAlert = UIAlertController(title: "Invalid", message: "Username must be greater than 4 and password must be greater than 5", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            invalidAlert.addAction(OKAction)
-            self.presentViewController(invalidAlert, animated: true, completion: nil)
-    
-        } else {
-            
-            // Begin activity indicator
-            self.activityIndicator.startAnimation()
-            
-            // SignIn user
-            PFUser.logInWithUsernameInBackground(username, password: password, block: { (user, error) -> Void in
+        Constants.ref.authUser(email, password: password) { (error, data) -> Void in
+            if(error == nil){
                 
-                // Stop activity indicator
-                self.activityIndicator.stopAnimation()
-                
-                if ((user) != nil) {
-                    
-                    // Launch user into main view controller as a navigation view controller
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    
-                    let mainTabBarController = MainTabBarController()
-                    self.presentViewController(mainTabBarController, animated: true, completion: {
-                        appDelegate.window?.rootViewController = mainTabBarController
-                    })
-                    
-                } else {
-                    
-                    // Error notification
-                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    errorAlert.addAction(OKAction)
-                    self.presentViewController(errorAlert, animated: true, completion: nil)
-                    
-                }
-            })
-        }
-    }
-    
-    @IBAction func authenticateTestUser(sender: AnyObject) {
-        // Sign in user
-        PFUser.logInWithUsernameInBackground("testUser", password: "password", block: { (user, error) -> Void in
-            
-            // Stop activity indicator
-            self.activityIndicator.stopAnimation()
-            
-            if ((user) != nil) {
-                
-                // Launch user into main view controller as a navigation view controller
+                // Launch user into main application
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                
                 let mainTabBarController = MainTabBarController()
                 self.presentViewController(mainTabBarController, animated: true, completion: {
                     appDelegate.window?.rootViewController = mainTabBarController
                 })
                 
+            }else{
+                print(error)
+                print(error.description)
+                let alertController = UIAlertController(title: "Authentication Error", message:
+                    error.description, preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
-        })
-
+        }
+    }
+    
+    @IBAction func authenticateTestUser(sender: AnyObject) {
+        
+        let email = "test@gmail.com"
+        let password = "password"
+        
+        Constants.ref.authUser(email, password: password) { (error, data) -> Void in
+            if(error == nil){
+                
+                // Launch user into main application
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let mainTabBarController = MainTabBarController()
+                self.presentViewController(mainTabBarController, animated: true, completion: {
+                    appDelegate.window?.rootViewController = mainTabBarController
+                })
+                
+            }else{
+                print(error)
+                print(error.description)
+                let alertController = UIAlertController(title: "Authentication Error", message:
+                    error.description, preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func unwindToSignIn(unwindSegue: UIStoryboardSegue) {

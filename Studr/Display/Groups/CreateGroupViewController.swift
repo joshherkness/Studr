@@ -9,9 +9,18 @@
 import Foundation
 import UIKit
 import Eureka
-import Parse
 
 class CreateGroupViewController : FormViewController {
+    
+    // MARK: Instance Variables
+    
+    private var createButton: UIBarButtonItem = UIBarButtonItem()
+    private var cancelButton: UIBarButtonItem = UIBarButtonItem()
+    
+    private var name: String = ""
+    private var members: [String] = []
+    
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,51 +31,66 @@ class CreateGroupViewController : FormViewController {
         navigationController?.hidesNavigationBarHairline = true;
         navigationController?.navigationBar.topItem?.title = "Create"
         
-        // Add dismiss button
-        let closeImage = UIImage(named: "ic_clear")
-        let dismissButton = UIBarButtonItem(image: closeImage, style: .Plain, target: self, action: "dismiss:")
-        navigationItem.leftBarButtonItem = dismissButton
+        // Add Cancel button
+        cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancel")
+        navigationItem.setLeftBarButtonItem(cancelButton, animated: false)
         
-        // Add completion button
-        let doneImage = UIImage(named: "ic_done")
-        let completeButton = UIBarButtonItem(image: doneImage, style: .Plain, target: self, action: "complete:")
-        navigationItem.rightBarButtonItem = completeButton
+        // Add Create button
+        createButton = UIBarButtonItem(title: "Create", style: .Plain, target: self, action: "create")
+        createButton.enabled = false
+        navigationItem.setRightBarButtonItem(createButton, animated: false)
         
         // Create Form
-        TextRow.defaultCellUpdate = {cell, row in
-            cell.tintColor = Constants.Color.primary
-            cell.textField.textAlignment = .Left
-        }
         
-        form +++ Section("What should we call it?")
-            <<< TextRow("title"){
-                $0.placeholder = "Title"}
-        form +++ Section(""){
-                $0.hidden = "$title == nil"
-            }
-            <<< TextAreaRow("description"){
-                $0.placeholder = "Description"
-                $0.hidden = .Function(["title"], { form -> Bool in
-                    let row: RowOf<String>! = form.rowByTag("title")
-                    return row.value == nil
-                })}
-            <<< PFUserSelectorRow("inviteFriends"){
+        form +++ Section("")
+            <<< TextRow("name"){
+                $0.placeholder = "Name your group"}.onChange({ row in
+                    if let _ = row.value {
+                        self.name = row.value! as String
+                    }else{
+                        self.name = ""
+                    }
+                    self.validate()
+                })
+            <<< MembersSelectorRow("addMembers"){
                 $0.value = []
-                $0.title = "Invite Friends"}
-            <<< SwitchRow("shareOnFacebook"){
-                $0.title = "Share on Facebook"
-                $0.value = false}
+                $0.title = "Add Members"}.onChange({ row in
+                    self.members = Array(row.value!)
+                    self.validate()
+                })
     }
     
-    func dismiss(sender: UIBarButtonItem){
-        // Dismiss view controller
+    func cancel(){
+        // Dismiss the view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func complete(sender: UIBarButtonItem){
-        // Perform database storage here
+    // Checks to make sure all the inputs are valid
+    func validate(){
+        if(!name.isEmpty){
+            createButton.enabled = true
+        }else{
+            createButton.enabled = false
+        }
+    }
+    
+    func create(){
+        // Add the appropriate information to the database
+        let groupRef = Constants.ref.childByAppendingPath("groups").childByAutoId()
+        let groupNameRef = groupRef.childByAppendingPath("name")
+        let groupMembersRef = groupRef.childByAppendingPath("members")
         
-        // Dismiss view controller
+        groupNameRef.setValue(name)
+        
+        for member in members {
+            let groupId = groupRef.key
+            let membershipsRef = Constants.ref.childByAppendingPath("memberships").childByAppendingPath(member)
+            
+            groupMembersRef.childByAppendingPath(member).setValue(MembershipStatus.PendingSent.rawValue)
+            membershipsRef.childByAppendingPath(groupId).setValue(MembershipStatus.PendingReceived.rawValue)
+        }
+        
+        // Dismiss the view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

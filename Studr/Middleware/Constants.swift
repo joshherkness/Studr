@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 struct Constants {
     
@@ -17,17 +18,22 @@ struct Constants {
         static let green = UIColor(hexString: "40B771")
         static let blue = UIColor(hexString: "3F4E98")
         static let purple = UIColor(hexString: "C02942")
-        static let grey = UIColor(hexString: "EFEFF4")
-        static let greyDark = UIColor(hexString: "353535")
+        static let lightGrey = UIColor(hexString: "EFEFF4")
+        static let grey = UIColor(hexString: "DEE0E4")
+        static let darkGrey = UIColor(hexString: "353535")
         
-        // Theme colors 3F4E98
-        static let primary = red
-        static let primaryDark = UIColor(hexString: "07549d")
+        // Theme colors
+        static let primary = UIColor(hexString: "2288DC")
         
-        static let primaryTabBar = UIColor(hexString: "131920")
-        static let secondaryTabBar = UIColor(hexString: "282B30")
+        // Tab colors
+        static let barTintColor = UIColor(hexString: "F6F8FA")
+        static let selectedTabColor = UIColor(hexString: "2288DC")
+        static let deselectedTabColor = UIColor(hexString: "8B9399")
     }
     
-    static let friendTableViewCellHeight: CGFloat = 56.0
+    static let userCellHeight: CGFloat = 56.0
     
+    // MARK: Firebase
+    // Create a reference to the root firebase location
+    static let ref = Firebase(url: "https://studr.firebaseio.com")
 }

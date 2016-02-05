@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import Eureka
-import Parse
 import Haneke
 
 class SettingsViewController: FormViewController {
@@ -30,16 +29,11 @@ class SettingsViewController: FormViewController {
                 $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return EditProfileViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
                 }
         
-        form +++ Section("ADVANCED")
-            <<< SwitchRow("pushNotificationSwitch"){
-                $0.title = "Push Notifications"
+        form +++ Section("")
+            <<< SwitchRow("notificationSwitch"){
+                $0.title = "Notifications"
                 }.onChange{ row in
                     // TODO: Toggle notifications here
-                }
-            <<< SwitchRow("appBadgeSwitch"){
-                $0.title = "App Bagde"
-                }.onChange{ row in
-                    // TODO: Toggle app badge here
                 }
             <<< ButtonRow("clearCache") {
                 $0.title = "Clear Cache"
@@ -54,17 +48,28 @@ class SettingsViewController: FormViewController {
                     Shared.stringCache.removeAll()
                 }
         
-        form +++ Section("OTHER GREAT STUFF")
+        form +++ Section("")
             <<< ButtonRow("about") {
                     $0.title = "About"
                     $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return AboutViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
                     }
+            <<< ButtonRow("help") {
+                $0.title = "Help"
+                $0.presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return AboutViewController() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
+                    }
+            <<< ButtonRow("recommend") {
+                $0.title = "Recommend Studr"
+                }.cellSetup({ cell, row in
+                    cell.tintColor = Constants.Color.primary
+                }).cellUpdate{ cell, row in
+                    cell.textLabel?.textAlignment = .Left
+        }
         
-        form +++ Section("STUD BUD")
+        form +++ Section("")
             <<< ButtonRow("signOut") {
                 $0.title = "Log Out"
                 }.cellSetup { cell, row in
-                    cell.tintColor = Constants.Color.primary
+                    cell.tintColor = Constants.Color.red
                 }.cellUpdate{ cell, row in
                     cell.textLabel?.textAlignment = .Left
                 }.onCellSelection { cell, row in
@@ -72,48 +77,21 @@ class SettingsViewController: FormViewController {
                 }
     }
     
-    // MARK: Functions
+    // MARK: Authentication Methods
     
     private func signOut(requireVerification: Bool = false){
         
-        // Sign out handler
-        func signOut(alert: UIAlertAction!) {
+        // Unauthenticate the current user
+        Constants.ref.unauth()
             
-            PFUser.logOutInBackgroundWithBlock { (error) -> Void in
-                
-                // Check if sign out is successfull
-                if (error == nil) {
-                    
-                    // Return user to sign in view
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                    
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                    let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("OnboardingViewController")
-                    
-                    self.presentViewController(logInViewController, animated: true, completion: {
-                        appDelegate.window?.rootViewController = logInViewController
-                    })
-                    
-                } else {
-                    
-                    // Error notification
-                    let errorAlert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    errorAlert.addAction(OKAction)
-                    self.presentViewController(errorAlert, animated: true, completion: nil)
-                    
-                }
-            }
-        }
-        
-        if (requireVerification) {
-            // Error notification
-            let verificationAlert = UIAlertController(title: "Sign Out", message: "Are you would like to sign out of Studr?", preferredStyle: .Alert)
-            verificationAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
-            verificationAlert.addAction(UIAlertAction(title: "Sign Out", style: .Destructive, handler: signOut))
-            presentViewController(verificationAlert, animated: true, completion: nil)
-        } else {
-            signOut(nil)
-        }
+        // Return them to the sign in screen
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("OnboardingViewController")
+            
+        self.presentViewController(logInViewController, animated: true, completion: {
+            appDelegate.window?.rootViewController = logInViewController
+        })
     }
 }
