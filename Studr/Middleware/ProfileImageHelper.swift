@@ -1,5 +1,5 @@
 //
-//  Gravitar.swift
+//  ProfileImageHelper.swift
 //  Studr
 //
 //  Created by Joseph Herkness on 11/28/15.

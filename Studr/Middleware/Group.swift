@@ -11,10 +11,9 @@ import Firebase
 
 class Group {
     
-    private var ref: Firebase!
-    private var key: String!
-    
-    private var name: String!
+    var ref: Firebase!
+    var key: String!
+    var name: String!
     
     init(key: String, dictionary: Dictionary<String, AnyObject>) {
         

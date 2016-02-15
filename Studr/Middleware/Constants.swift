@@ -23,7 +23,7 @@ struct Constants {
         static let darkGrey = UIColor(hexString: "353535")
         
         // Theme colors
-        static let primary = UIColor(hexString: "2297F4")
+        static let primary = UIColor(hexString: "4A90E3")
         static let lightGreyBackground = UIColor(hexString: "ECEEEF")
         // Tab colors
         static let barTintColor = UIColor(hexString: "F6F8FA")

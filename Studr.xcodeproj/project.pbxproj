@@ -27,6 +27,7 @@
 		03CB77801BF92249007C21AA /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB777F1BF92249007C21AA /* CustomCells.swift */; };
 		03EBCB331BE6B64500993FA4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */; };
 		7C0B1EC61C628680002C4431 /* UserCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B1EC51C628680002C4431 /* UserCellType.swift */; };
+		7C12DCB11C7256680009E063 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C12DCB01C7256680009E063 /* GroupViewController.swift */; };
 		7C13158B1C15063B00C45854 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13158A1C15063B00C45854 /* CAPSPageMenu.swift */; };
 		7C13158F1C154B9100C45854 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C13158E1C154B9100C45854 /* FriendViewController.swift */; };
 		7C1315911C166F1E00C45854 /* AddFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1315901C166F1E00C45854 /* AddFriendsTableViewController.swift */; };
@@ -46,6 +47,8 @@
 		7C852CDB1C14A1CB00BFEC85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C852CDA1C14A1CB00BFEC85 /* Constants.swift */; };
 		7C8AFE601BF65EFA00EBE224 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */; };
 		7C96BC9D1C096EB700D4D83F /* ProfileImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */; };
+		7CCC4F0C1C717D9700302EF3 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC4F0B1C717D9700302EF3 /* GroupCell.swift */; };
+		7CCC4F0E1C71915000302EF3 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC4F0D1C71915000302EF3 /* GroupCell.xib */; };
 		7CE253281C712A550007C585 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE253271C712A550007C585 /* User.swift */; };
 		7CE2532C1C7130CB0007C585 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2532B1C7130CB0007C585 /* Database.swift */; };
 		7CE2532E1C71326F0007C585 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE2532D1C71326F0007C585 /* Group.swift */; };
@@ -101,6 +104,7 @@
 		5BEFD51F893236256B903473 /* Pods-Studr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studr/Pods-Studr.debug.xcconfig"; sourceTree = "<group>"; };
 		7BB003DA95E1815EA77A42C6 /* Pods_Studr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0B1EC51C628680002C4431 /* UserCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellType.swift; sourceTree = "<group>"; };
+		7C12DCB01C7256680009E063 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		7C13158A1C15063B00C45854 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		7C13158E1C154B9100C45854 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		7C1315901C166F1E00C45854 /* AddFriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 		7C852CDA1C14A1CB00BFEC85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageHelper.swift; sourceTree = "<group>"; };
+		7CCC4F0B1C717D9700302EF3 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		7CCC4F0D1C71915000302EF3 /* GroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 		7CE253271C712A550007C585 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7CE2532B1C7130CB0007C585 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		7CE2532D1C71326F0007C585 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -234,10 +240,10 @@
 			children = (
 				7C8AFE5F1BF65EFA00EBE224 /* ContentViewController.swift */,
 				7CECFD8D1BF1C99000F81D47 /* OnboardingViewController.swift */,
+				7C5389661C642A6600F8E120 /* RequestEmailViewController.swift */,
 				03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */,
 				03B21EE31BE585F70052B0AD /* SignInViewController.swift */,
 				03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */,
-				7C5389661C642A6600F8E120 /* RequestEmailViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -292,6 +298,8 @@
 				CCDB5C751BEFB9FD00ABA1E7 /* UserCell.swift */,
 				039D82FC1C08D97E00C9D46A /* UserCell.xib */,
 				7C0B1EC51C628680002C4431 /* UserCellType.swift */,
+				7CCC4F0B1C717D9700302EF3 /* GroupCell.swift */,
+				7CCC4F0D1C71915000302EF3 /* GroupCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -312,8 +320,9 @@
 				7C37BC6D1BEC02C80056BA12 /* CreateGroupViewController.swift */,
 				03CB777F1BF92249007C21AA /* CustomCells.swift */,
 				03A73B321C0A8D080033C779 /* GroupsViewController.swift */,
-				7C20B4A81C56DBDE00D35D4C /* MyGroupsViewController.swift */,
 				7C5389681C64567500F8E120 /* MembershipStatus.swift */,
+				7C20B4A81C56DBDE00D35D4C /* MyGroupsViewController.swift */,
+				7C12DCB01C7256680009E063 /* GroupViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -324,9 +333,9 @@
 				03CB77791BF19289007C21AA /* Extensions */,
 				7C13158A1C15063B00C45854 /* CAPSPageMenu.swift */,
 				7C852CDA1C14A1CB00BFEC85 /* Constants.swift */,
+				7CE2532D1C71326F0007C585 /* Group.swift */,
 				7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */,
 				7CE253271C712A550007C585 /* User.swift */,
-				7CE2532D1C71326F0007C585 /* Group.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -471,6 +480,7 @@
 				039D82FD1C08D97E00C9D46A /* UserCell.xib in Resources */,
 				03434EF51BE5653D001E34D5 /* LaunchScreen.storyboard in Resources */,
 				03434EF21BE5653D001E34D5 /* Assets.xcassets in Resources */,
+				7CCC4F0E1C71915000302EF3 /* GroupCell.xib in Resources */,
 				03434EF01BE5653D001E34D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +573,7 @@
 				7C37BC701BEC35970056BA12 /* TextField.swift in Sources */,
 				7C5142A41C0A496200954937 /* MyFriendsTableViewController.swift in Sources */,
 				7C8AFE601BF65EFA00EBE224 /* ContentViewController.swift in Sources */,
+				7C12DCB11C7256680009E063 /* GroupViewController.swift in Sources */,
 				7CE2532E1C71326F0007C585 /* Group.swift in Sources */,
 				7C7AC9B11BE7E84500E2197C /* RoundedButton.swift in Sources */,
 				7C13158B1C15063B00C45854 /* CAPSPageMenu.swift in Sources */,
@@ -572,6 +583,7 @@
 				03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */,
 				7C852CDB1C14A1CB00BFEC85 /* Constants.swift in Sources */,
 				03CB77801BF92249007C21AA /* CustomCells.swift in Sources */,
+				7CCC4F0C1C717D9700302EF3 /* GroupCell.swift in Sources */,
 				7C0B1EC61C628680002C4431 /* UserCellType.swift in Sources */,
 				7C557FEA1BEF037C00612EA8 /* PushDownSegue.swift in Sources */,
 				03434EEB1BE5653D001E34D5 /* AppDelegate.swift in Sources */,

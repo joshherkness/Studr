@@ -27,4 +27,15 @@ class Database {
             completion(user: user)
         })
     }
+    
+    static func groupFromKey(key: String, completion: (group: Group) -> Void){
+        let userRef = Database.GROUP_REF.childByAppendingPath(key)
+        
+        userRef.observeEventType(.Value, withBlock: { snapshot in
+            let key = snapshot.key
+            let dictionary = snapshot.value as! [String: AnyObject]
+            let group = Group(key: key, dictionary: dictionary)
+            completion(group: group)
+        })
+    }
 }

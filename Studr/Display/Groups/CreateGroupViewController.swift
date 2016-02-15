@@ -77,13 +77,20 @@ class CreateGroupViewController : FormViewController {
     func create(){
         // Add the appropriate information to the database
         let groupRef = Database.GROUP_REF.childByAutoId()
-        let groupNameRef = groupRef.childByAppendingPath("name")
         let groupMembersRef = groupRef.childByAppendingPath("members")
+        let groupId = groupRef.key
         
-        groupNameRef.setValue(name)
+        // Set the name of the group
+        groupRef.childByAppendingPath("name").setValue(name)
         
+        // Add the current user to the group as the creator
+        let myId = Database.BASE_REF.authData.uid
+        let myMembershipsRef = Database.MEMBERSHIP_REF.childByAppendingPath(myId)
+        groupMembersRef.childByAppendingPath(myId).setValue(MembershipStatus.Created.rawValue)
+        myMembershipsRef.childByAppendingPath(groupId).setValue(MembershipStatus.Created.rawValue)
+        
+        // Add each member to the group
         for member in members {
-            let groupId = groupRef.key
             let membershipsRef = Database.MEMBERSHIP_REF.childByAppendingPath(member)
             
             groupMembersRef.childByAppendingPath(member).setValue(MembershipStatus.PendingSent.rawValue)

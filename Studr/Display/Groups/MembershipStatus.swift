@@ -8,6 +8,7 @@
 
 
 enum MembershipStatus: String {
+    case Created = "created"
     case Accepted = "accepted"
     case PendingSent = "pending_sent"
     case PendingReceived = "pending_received"
