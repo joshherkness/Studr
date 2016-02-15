@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircularImageView: UIImageView {
+class RoundedImageView: UIImageView {
     
     // MARK: UIView
     

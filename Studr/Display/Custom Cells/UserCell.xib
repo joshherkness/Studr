@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="403" height="62.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yme-2j-wuS" customClass="CircularImageView" customModule="Studr" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yme-2j-wuS" customClass="RoundedImageView" customModule="Studr" customModuleProvider="target">
                         <rect key="frame" x="8" y="9" width="45" height="45"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="yme-2j-wuS" secondAttribute="height" multiplier="1:1" id="Fk1-TU-ojw"/>
@@ -30,7 +30,7 @@
                         </variation>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-7c-h4r">
-                        <rect key="frame" x="65" y="13" width="72.5" height="37.5"/>
+                        <rect key="frame" x="65" y="12.5" width="72.5" height="37.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umz-wK-pTl">
                                 <rect key="frame" x="0.0" y="0.0" width="72.5" height="20.5"/>
@@ -46,89 +46,89 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-z3-1fL">
-                        <rect key="frame" x="213" y="13" width="182" height="38"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCA-vn-UtR" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
-                                <color key="backgroundColor" red="0.98624199628829956" green="0.7796865701675415" blue="0.26782718120805371" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="yCA-vn-UtR" secondAttribute="height" multiplier="1:1" id="oTA-35-sPU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_direction"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-BK-ZRW" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                <rect key="frame" x="48" y="0.0" width="38" height="38"/>
-                                <color key="backgroundColor" red="0.15686274509803921" green="0.58823529411764708" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="rd4-BK-ZRW" secondAttribute="height" multiplier="1:1" id="OXu-BZ-pwa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_done"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPB-2e-SqU" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                <rect key="frame" x="96" y="0.0" width="38" height="38"/>
-                                <color key="backgroundColor" red="0.87058823529411766" green="0.8784313725490196" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="DPB-2e-SqU" secondAttribute="height" multiplier="1:1" id="Zeq-Hw-tVY"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_add"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8F-Un-RBI" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
-                                <rect key="frame" x="144" y="0.0" width="38" height="38"/>
-                                <color key="backgroundColor" red="0.87058823529999996" green="0.87843137250000003" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="T8F-Un-RBI" secondAttribute="height" multiplier="1:1" id="B0z-oT-KA7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_clear"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                        </subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8F-Un-RBI" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                        <rect key="frame" x="357" y="13" width="38" height="38"/>
+                        <color key="backgroundColor" red="0.87058823529999996" green="0.87843137250000003" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rd4-BK-ZRW" firstAttribute="width" secondItem="rd4-BK-ZRW" secondAttribute="height" multiplier="1:1" id="L8E-kU-yfJ"/>
-                            <constraint firstItem="T8F-Un-RBI" firstAttribute="width" secondItem="T8F-Un-RBI" secondAttribute="height" multiplier="1:1" id="OnH-RR-7KF"/>
+                            <constraint firstAttribute="width" secondItem="T8F-Un-RBI" secondAttribute="height" multiplier="1:1" id="B0z-oT-KA7"/>
                         </constraints>
-                    </stackView>
+                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal" image="ic_clear"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPB-2e-SqU" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                        <rect key="frame" x="357" y="12" width="38" height="38"/>
+                        <color key="backgroundColor" red="0.87058823529411766" green="0.8784313725490196" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="DPB-2e-SqU" secondAttribute="height" multiplier="1:1" id="Zeq-Hw-tVY"/>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal" image="ic_add"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCA-vn-UtR" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                        <rect key="frame" x="357" y="12" width="38" height="38"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.59215686274509804" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="yCA-vn-UtR" secondAttribute="height" multiplier="1:1" id="oTA-35-sPU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal" image="ic_direction"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd4-BK-ZRW" customClass="RoundedButton" customModule="Studr" customModuleProvider="target">
+                        <rect key="frame" x="311" y="12" width="38" height="38"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.59215686274509804" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="rd4-BK-ZRW" secondAttribute="height" multiplier="1:1" id="OXu-BZ-pwa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal" image="ic_done"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Xdj-7c-h4r" firstAttribute="leading" secondItem="yme-2j-wuS" secondAttribute="trailing" constant="12" id="CAZ-Qw-ZyS"/>
+                    <constraint firstItem="T8F-Un-RBI" firstAttribute="leading" secondItem="rd4-BK-ZRW" secondAttribute="trailing" constant="8" id="CVe-OH-DVl"/>
+                    <constraint firstItem="T8F-Un-RBI" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="D4P-lj-YDY"/>
                     <constraint firstItem="Xdj-7c-h4r" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="Ji2-j5-lHd"/>
-                    <constraint firstItem="ziA-z3-1fL" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="KW8-9C-j7L"/>
-                    <constraint firstItem="ziA-z3-1fL" firstAttribute="height" secondItem="yme-2j-wuS" secondAttribute="height" multiplier="5:6" id="KgJ-uc-VSf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="T8F-Un-RBI" secondAttribute="trailing" id="K2i-7T-k6e"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" constant="1" id="QeL-D9-rkN"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ziA-z3-1fL" secondAttribute="trailing" id="QoY-Rv-RIo"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" constant="1" id="Rih-qu-qD9"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="top" secondItem="mj6-q4-zXb" secondAttribute="topMargin" id="Ucb-Ll-Tax"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yme-2j-wuS" secondAttribute="bottom" constant="1" id="Voq-qC-d6E"/>
+                    <constraint firstItem="rd4-BK-ZRW" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="XHi-pF-h7P"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DPB-2e-SqU" secondAttribute="trailing" id="abo-9z-ZLC"/>
+                    <constraint firstItem="DPB-2e-SqU" firstAttribute="width" secondItem="yme-2j-wuS" secondAttribute="width" multiplier="5:6" id="bMa-8A-Alk"/>
+                    <constraint firstItem="T8F-Un-RBI" firstAttribute="width" secondItem="DPB-2e-SqU" secondAttribute="width" id="fWI-hG-3G8"/>
+                    <constraint firstItem="yCA-vn-UtR" firstAttribute="width" secondItem="DPB-2e-SqU" secondAttribute="width" id="k5C-TN-MTL"/>
+                    <constraint firstItem="rd4-BK-ZRW" firstAttribute="width" secondItem="DPB-2e-SqU" secondAttribute="width" id="nWV-Gx-jL5"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="oMt-LX-bP1"/>
+                    <constraint firstItem="yCA-vn-UtR" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="pvn-P0-Wks"/>
+                    <constraint firstItem="DPB-2e-SqU" firstAttribute="centerY" secondItem="mj6-q4-zXb" secondAttribute="centerY" id="pwU-pW-SPL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yCA-vn-UtR" secondAttribute="trailing" id="skp-nh-O4x"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="bottom" secondItem="mj6-q4-zXb" secondAttribute="bottomMargin" id="sxb-P5-qU1"/>
                     <constraint firstAttribute="leadingMargin" secondItem="yme-2j-wuS" secondAttribute="leading" id="u39-Bp-kz3"/>
                     <constraint firstItem="yme-2j-wuS" firstAttribute="leading" secondItem="mj6-q4-zXb" secondAttribute="leadingMargin" id="yvB-nL-CBN"/>

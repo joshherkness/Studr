@@ -20,7 +20,7 @@ class MyGroupsViewController: UIViewController {
         super.viewDidLoad()
         
         // Change the view controllers background color
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = Constants.Color.lightGreyBackground
         
         // Change the navigation bar appearance
         navigationController?.navigationBar.barTintColor = Constants.Color.primary

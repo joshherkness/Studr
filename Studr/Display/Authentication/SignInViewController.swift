@@ -67,7 +67,7 @@ class SignInViewController : UIViewController {
         let email = emailField.text!
         let password = passwordField.text!
         
-        Constants.ref.authUser(email, password: password) { (error, data) -> Void in
+        Database.BASE_REF.authUser(email, password: password) { (error, data) -> Void in
             if(error == nil){
                 
                 // Launch user into main application
@@ -93,7 +93,7 @@ class SignInViewController : UIViewController {
         let email = "test@gmail.com"
         let password = "password"
         
-        Constants.ref.authUser(email, password: password) { (error, data) -> Void in
+        Database.BASE_REF.authUser(email, password: password) { (error, data) -> Void in
             if(error == nil){
                 
                 // Launch user into main application

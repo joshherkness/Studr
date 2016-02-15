@@ -20,20 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         UITextField.appearance().keyboardAppearance = .Light
         UILabel.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).textColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-        UITabBar.appearance().translucent = false
-        UITabBar.appearance().shadowImage = UIImage()
-        //UITabBar.appearance().backgroundImage = UIImage()
-        UITabBar.appearance().barTintColor = Constants.Color.barTintColor
         
         var rootViewController: UIViewController?
         
-        Constants.ref.observeAuthEventWithBlock({ authData in
+        // Todo: Move authentication changes to a better location
+        
+        Database.BASE_REF.observeAuthEventWithBlock({ authData in
             if authData != nil {
                 print(authData)
                 rootViewController = MainTabBarController()
             } else {
                 // No user is signed in
-                print("No one authenticated")
+                print("No AuthData")
                 rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
             }
             
@@ -74,8 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-    // MARK: Notifications
 
 }
 

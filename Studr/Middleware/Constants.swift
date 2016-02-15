@@ -23,8 +23,8 @@ struct Constants {
         static let darkGrey = UIColor(hexString: "353535")
         
         // Theme colors
-        static let primary = UIColor(hexString: "2288DC")
-        
+        static let primary = UIColor(hexString: "2297F4")
+        static let lightGreyBackground = UIColor(hexString: "ECEEEF")
         // Tab colors
         static let barTintColor = UIColor(hexString: "F6F8FA")
         static let selectedTabColor = UIColor(hexString: "2288DC")
@@ -32,8 +32,4 @@ struct Constants {
     }
     
     static let userCellHeight: CGFloat = 56.0
-    
-    // MARK: Firebase
-    // Create a reference to the root firebase location
-    static let ref = Firebase(url: "https://studr.firebaseio.com")
 }

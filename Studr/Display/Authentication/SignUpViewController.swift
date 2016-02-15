@@ -83,7 +83,7 @@ class SignUpViewController : UIViewController{
         // TODO: Check for errors with the users input
         
         //Create the user
-        Constants.ref.createUser(email, password: password,
+        Database.BASE_REF.createUser(email, password: password,
             withValueCompletionBlock: { error, result in
                 
                 if error != nil {
@@ -94,11 +94,11 @@ class SignUpViewController : UIViewController{
                     print("Successfully created user account with uid: \(uid)")
                     
                     // Now we save the users information to the database under the uid
-                    let usersRef = Constants.ref.childByAppendingPath("users").childByAppendingPath(uid)
+                    let usersRef = Database.USER_REF.childByAppendingPath(uid)
                     let user = ["username": username, "first_name": firstName, "last_name": lastName, "email": email]
                     usersRef.setValue(user)
                     
-                    Constants.ref.authUser(email, password: password) { (error, data) -> Void in
+                    Database.BASE_REF.authUser(email, password: password) { (error, data) -> Void in
                         if(error == nil){
                             
                             // Launch user into main application

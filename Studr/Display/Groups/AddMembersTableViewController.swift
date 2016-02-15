@@ -58,9 +58,9 @@ public class AddMembersTableViewController: UITableViewController, TypedRowContr
     }
     
     public override func viewDidDisappear(animated: Bool) {
-        Constants.ref.removeAuthEventObserverWithHandle(friendshipAddedHandle)
-        Constants.ref.removeAuthEventObserverWithHandle(friendshipChangedHandle)
-        Constants.ref.removeAuthEventObserverWithHandle(friendshipRemovedHandle)
+        Database.BASE_REF.removeAuthEventObserverWithHandle(friendshipAddedHandle)
+        Database.BASE_REF.removeAuthEventObserverWithHandle(friendshipChangedHandle)
+        Database.BASE_REF.removeAuthEventObserverWithHandle(friendshipRemovedHandle)
     }
     
     func beginListening(){
@@ -68,8 +68,8 @@ public class AddMembersTableViewController: UITableViewController, TypedRowContr
         // Clear the list of perspective members
         perspectiveMembers.removeAll()
         
-        let uid = Constants.ref.authData!.uid
-        let myFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(uid)")
+        let myId = Database.BASE_REF.authData!.uid
+        let myFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(myId)
         
         // Create listener and store handle
         friendshipAddedHandle = myFriendshipsRef.observeEventType(.ChildAdded, withBlock: { snapshot in

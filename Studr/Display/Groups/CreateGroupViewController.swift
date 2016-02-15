@@ -76,7 +76,7 @@ class CreateGroupViewController : FormViewController {
     
     func create(){
         // Add the appropriate information to the database
-        let groupRef = Constants.ref.childByAppendingPath("groups").childByAutoId()
+        let groupRef = Database.GROUP_REF.childByAutoId()
         let groupNameRef = groupRef.childByAppendingPath("name")
         let groupMembersRef = groupRef.childByAppendingPath("members")
         
@@ -84,7 +84,7 @@ class CreateGroupViewController : FormViewController {
         
         for member in members {
             let groupId = groupRef.key
-            let membershipsRef = Constants.ref.childByAppendingPath("memberships").childByAppendingPath(member)
+            let membershipsRef = Database.MEMBERSHIP_REF.childByAppendingPath(member)
             
             groupMembersRef.childByAppendingPath(member).setValue(MembershipStatus.PendingSent.rawValue)
             membershipsRef.childByAppendingPath(groupId).setValue(MembershipStatus.PendingReceived.rawValue)

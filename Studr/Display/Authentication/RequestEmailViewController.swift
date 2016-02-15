@@ -77,7 +77,7 @@ class RequestEmailViewController : FormViewController {
     }
     
     func login(){
-        Constants.ref.authUser(email, password: password) { (error, data) -> Void in
+        Database.BASE_REF.authUser(email, password: password) { (error, data) -> Void in
             if(error == nil){
                 
                 // Launch user into main application

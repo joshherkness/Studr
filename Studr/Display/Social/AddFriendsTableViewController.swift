@@ -13,11 +13,11 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     
     // MARK: Instance Variables
     
-    private var users: [String] = []
-    private var friends: [String:FriendshipStatus] = [:]
+    private var users = [User]()
+    private var friends = [String:FriendshipStatus]()
     var searchBar = UISearchBar()
-    private var searchRequestQuery: FQuery = FQuery()
-    private var friendshipRemovedHandle: FirebaseHandle = UInt()
+    private var searchRequestQuery = FQuery()
+    private var friendshipRemovedHandle = FirebaseHandle()
     
     // MARK: UIViewController
     
@@ -36,7 +36,7 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         tableView.tableHeaderView = searchBar
         searchBar.searchBarStyle = .Minimal
         
-        // Remove the hairline between the cells
+        // Setup the table view
         tableView.separatorStyle = .None
         
         // Register cell for table
@@ -59,8 +59,8 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     }
     
     func loadFriendships(){
-        let uid = Constants.ref.authData!.uid
-        let myFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(uid)")
+        let myId = Database.BASE_REF.authData!.uid
+        let myFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(myId)
         
         // Query for all friendships where the current user and other user are members
         myFriendshipsRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
@@ -106,31 +106,31 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
     
     func addFriendship(button: UIButton){
         let indexPath = getIndexPathFromTag(button.tag)
-        let user = users[indexPath.row]
+        let theirId = users[indexPath.row].key
     
         // First we decide where to add the friendship
-        let uid = Constants.ref.authData!.uid
-        let myFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(uid)")
-        let theirFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(user)")
+        let myId = Database.BASE_REF.authData!.uid
+        let myFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(myId)
+        let theirFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(theirId)
         
-        // Now we create the friendship and add it to the database
-        myFriendshipsRef.childByAppendingPath(user).setValue(FriendshipStatus.PendingSent.rawValue)
-        theirFriendshipsRef.childByAppendingPath(uid).setValue(FriendshipStatus.PendingReceived.rawValue)
+        // Now we add the appropriate friendship for each user
+        myFriendshipsRef.childByAppendingPath(theirId).setValue(FriendshipStatus.PendingSent.rawValue)
+        theirFriendshipsRef.childByAppendingPath(myId).setValue(FriendshipStatus.PendingReceived.rawValue)
     }
 
     func acceptFriendship(button: UIButton){
         let indexPath = getIndexPathFromTag(button.tag)
-        let user = users[indexPath.row]
+        let theirId = users[indexPath.row].key
         
         // First we decide where to add the friendship
-        let uid = Constants.ref.authData!.uid
-        let myFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(uid)")
-        let theirFriendshipsRef = Constants.ref.childByAppendingPath("friendships/\(user)")
+        let myId = Database.BASE_REF.authData!.uid
+        let myFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(myId)
+        let theirFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(theirId)
         
         myFriendshipsRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             for child in snapshot.children.allObjects as! [FDataSnapshot] {
                 let u = child.key
-                if(u == user){
+                if(u == theirId){
                     child.ref.setValue(FriendshipStatus.Accepted.rawValue)
                 }
             }
@@ -139,7 +139,7 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         theirFriendshipsRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             for child in snapshot.children.allObjects as! [FDataSnapshot] {
                 let u = child.key
-                if(u == uid){
+                if(u == myId){
                     child.ref.setValue(FriendshipStatus.Accepted.rawValue)
                 }
             }
@@ -176,14 +176,14 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         
         let user = users[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
-        cell.setUser(user)
+        cell.configureCell(user)
         cell.addButton.tag = getTagFromIndexPath(indexPath)
         cell.addButton.addTarget(self, action: "addFriendship:", forControlEvents: .TouchUpInside)
         cell.acceptButton.tag = getTagFromIndexPath(indexPath)
         cell.acceptButton.addTarget(self, action: "acceptFriendship:", forControlEvents: .TouchUpInside)
         
         // Determine and set the cells type
-        if let index = friends.indexForKey(user){
+        if let index = friends.indexForKey(user.key){
             switch friends.values[index] {
             case .PendingReceived: cell.setType(.PendingReceived); break
             case .PendingSent: cell.setType(.PendingSent); break
@@ -195,8 +195,21 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
             cell.setType(.Send)
         }
         
-        
         return cell
+    }
+    
+    // MARK: TableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // TODO: Display a popup with information about the selected user
+        let user = users[indexPath.row]
+        let alertController = UIAlertController(title: user.username, message:
+            "Here it will display a popup with information about the selected user", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     // Mark: - SearchBarDelegate
@@ -215,43 +228,28 @@ class AddFriendsTableViewController : UITableViewController, UISearchBarDelegate
         }
         
         // Now we look for users matching this text
-        let usersRef = Constants.ref.childByAppendingPath("users")
-        usersRef.queryOrderedByKey().observeEventType(.Value, withBlock: { snapshot in
+        Database.USER_REF.queryLimitedToFirst(25).observeEventType(.Value, withBlock: { snapshot in
             self.users.removeAll()
-            for user in snapshot.children.allObjects as! [FDataSnapshot]{
+            for snap in snapshot.children.allObjects as! [FDataSnapshot]{
+                let key = snap.key
+                let dictionary = snap.value as! [String: AnyObject]
+                let user = User(key: key, dictionary: dictionary)
+                
                 // If the user is the current user, do not add them
-                if(user.key == Constants.ref.authData.uid){
+                if(user.key == Database.BASE_REF.authData.uid){
                     continue
                 }
-                
-                let firstName = user.value.valueForKey("first_name")!.lowercaseString as String
-                let lastName = user.value.valueForKey("last_name")!.lowercaseString as String
-                let username = user.value.valueForKey("username")!.lowercaseString as String
-                
-                if firstName.hasPrefix(searchText.lowercaseString){
-                    self.users.append(user.key)
-                }else if(lastName.hasPrefix(searchText.lowercaseString)){
-                    self.users.append(user.key)
-                }else if(username.hasPrefix(searchText.lowercaseString)){
-                    self.users.append(user.key)
+                if user.firstname.lowercaseString.hasPrefix(searchText.lowercaseString){
+                    self.users.append(user)
+                }else if(user.lastname.lowercaseString.hasPrefix(searchText.lowercaseString)){
+                    self.users.append(user)
+                }else if(user.username.lowercaseString.hasPrefix(searchText.lowercaseString)){
+                    self.users.append(user)
                 }
             }
             
+            self.users.sortInPlace({ $0.lastname > $1.lastname })
             self.tableView.reloadData()
         })
-    }
-    
-    // MARK: TableViewDelegate
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: Display a popup with information about the selected user
-        let user = users[indexPath.row]
-        let alertController = UIAlertController(title: user, message:
-            "Here it will display a popup with information about the selected user", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
-        
-        
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

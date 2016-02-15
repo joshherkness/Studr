@@ -12,11 +12,18 @@ import ChameleonFramework
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
+    // MARK: Instance Variables
+    
+    private var controllerArray: [UIViewController] = []
+    
+    // MARK: UIViewController
+    
     override func viewDidLoad() {
         
         delegate = self
         
-        var controllerArray: [UIViewController] = []
+        UITabBar.appearance().translucent = false
+        UITabBar.appearance().barTintColor = Constants.Color.barTintColor
         
         // Lets the user see the groups that they are a part of
         let myGroupsNavigationController = UINavigationController(rootViewController: MyGroupsViewController())

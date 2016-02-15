@@ -96,3 +96,70 @@ public final class MembersSelectorRow : SelectorRow<Set<String>, AddMembersTable
         }
     }
 }
+
+/*
+
+public class MultipleMemberSelectorRow<T: Hashable, VCType: TypedRowControllerType where VCType: UIViewController,  VCType.RowValue == Set<T>>: Row<Set<T>, PushSelectorCell<Set<T>>>, PresenterRowType {
+    
+    /// Defines how the view controller will be presented, pushed, etc.
+    public var presentationMode: PresentationMode<VCType>?
+    
+    /// Will be called before the presentation occurs.
+    public var onPresentCallback : ((FormViewController, VCType)->())?
+    
+    /// Title to be displayed for the options
+    public var selectorTitle: String?
+    
+    required public init(tag: String?) {
+        super.init(tag: tag)
+        presentationMode = .Show(controllerProvider: ControllerProvider.Callback { return VCType() }, completionCallback: { vc in vc.navigationController?.popViewControllerAnimated(true) })
+    }
+    
+    public required convenience init(_ tag: String, @noescape _ initializer: (MultipleMemberSelectorRow<T, VCType> -> ()) = { _ in }) {
+        self.init(tag:tag)
+        RowDefaults.rowInitialization["\(self.dynamicType)"]?(self)
+        initializer(self)
+    }
+    
+    /**
+     Extends `didSelect` method
+     */
+    public override func customDidSelect() {
+        super.customDidSelect()
+        if !isDisabled {
+            if let presentationMode = presentationMode {
+                if let controller = presentationMode.createController(){
+                    controller.row = self
+                    if let title = selectorTitle {
+                        controller.title = title
+                    }
+                    onPresentCallback?(cell.formViewController()!, controller)
+                    presentationMode.presentViewController(controller, row: self, presentingViewController: self.cell.formViewController()!)
+                }
+                else{
+                    presentationMode.presentViewController(nil, row: self, presentingViewController: self.cell.formViewController()!)
+                }
+            }
+        }
+    }
+    
+    /**
+     Prepares the pushed row setting its title and completion callback.
+     */
+    public override func prepareForSegue(segue: UIStoryboardSegue) {
+        super.prepareForSegue(segue)
+        guard let rowVC = segue.destinationViewController as? VCType else {
+            return
+        }
+        if let title = selectorTitle {
+            rowVC.title = title
+        }
+        if let callback = self.presentationMode?.completionHandler{
+            rowVC.completionCallback = callback
+        }
+        onPresentCallback?(cell.formViewController()!, rowVC)
+        rowVC.row = self
+        
+    }
+}
+*/

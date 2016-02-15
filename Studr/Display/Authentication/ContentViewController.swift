@@ -13,9 +13,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     var pageIndex : Int!
-    var titleText : String!
     
     override func viewDidLoad() {
-        self.titleLabel.text = titleText
     }
 }

@@ -82,7 +82,7 @@ class SettingsViewController: FormViewController {
     private func signOut(requireVerification: Bool = false){
         
         // Unauthenticate the current user
-        Constants.ref.unauth()
+        Database.BASE_REF.unauth()
             
         // Return them to the sign in screen
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

@@ -74,7 +74,6 @@ class OnboardingViewController: UIViewController, UIPageViewControllerDelegate, 
         }
         
         let vc = storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ContentViewController
-        vc.titleText = self.pageTitles[index]
         vc.pageIndex = index
         
         return vc

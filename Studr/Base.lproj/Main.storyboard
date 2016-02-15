@@ -526,24 +526,7 @@
                     <view key="view" contentMode="scaleToFill" id="uF8-I8-cDv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Ij-px9">
-                                <rect key="frame" x="0.0" y="289" width="600" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="fvS-Ij-px9" firstAttribute="width" secondItem="uF8-I8-cDv" secondAttribute="width" id="IpS-DK-g40"/>
-                            <constraint firstItem="fvS-Ij-px9" firstAttribute="centerY" secondItem="uF8-I8-cDv" secondAttribute="centerY" id="NgP-Fo-zcN"/>
-                            <constraint firstItem="fvS-Ij-px9" firstAttribute="top" secondItem="Wzo-Sn-dZY" secondAttribute="bottom" constant="269" id="Tjj-yg-WsV"/>
-                            <constraint firstItem="fvS-Ij-px9" firstAttribute="centerX" secondItem="uF8-I8-cDv" secondAttribute="centerX" id="mgV-xz-2i9"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="titleLabel" destination="fvS-Ij-px9" id="zHU-Fg-sdt"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qmu-DD-zvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
