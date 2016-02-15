@@ -64,6 +64,10 @@ class MyGroupsViewController: UIViewController, UICollectionViewDataSource, UICo
         let myId = Database.BASE_REF.authData.uid
         let myMembershipsRef = Database.MEMBERSHIP_REF.childByAppendingPath(myId)
         
+        let alertController = UIAlertController(title: myId, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
         membershipAddedHandle = myMembershipsRef.observeEventType(.ChildAdded, withBlock:{ snapshot in
             let key = snapshot.key
             Database.groupFromKey(key) { group in
