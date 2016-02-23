@@ -13,8 +13,7 @@ class GroupViewController: UIViewController {
     
     // MARK: Instance Variables
     
-    private var group: Group!
-    private var backButton: UIBarButtonItem!
+    private var group: Group?
     
     // MARK: UIViewController
     
@@ -30,17 +29,15 @@ class GroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Change the view controllers background color
+        // Change the background color
         view.backgroundColor = Constants.Color.lightGreyBackground
         
         // Change the navigation bar appearance
         navigationController?.navigationBar.barTintColor = Constants.Color.primary
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationController?.hidesNavigationBarHairline = true;
-        navigationItem.title = group.name
+        navigationItem.title = group?.name
         
     }
-    
-    // MARK: Selectors
-    
+
 }

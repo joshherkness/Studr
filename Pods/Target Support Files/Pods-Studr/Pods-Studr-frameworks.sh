@@ -90,6 +90,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Studr/Firebase.framework"
   install_framework "Pods-Studr/Haneke.framework"
   install_framework "Pods-Studr/NVActivityIndicatorView.framework"
+  install_framework "Pods-Studr/SnapKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Studr/ChameleonFramework.framework"
@@ -98,4 +99,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Studr/Firebase.framework"
   install_framework "Pods-Studr/Haneke.framework"
   install_framework "Pods-Studr/NVActivityIndicatorView.framework"
+  install_framework "Pods-Studr/SnapKit.framework"
 fi

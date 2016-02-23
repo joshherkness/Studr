@@ -7,6 +7,7 @@ PODS:
   - Firebase (2.5.0)
   - HanekeSwift (0.10.0)
   - NVActivityIndicatorView (2.1)
+  - SnapKit (0.15.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Firebase (>= 2.5.0)
   - HanekeSwift
   - NVActivityIndicatorView
+  - SnapKit (~> 0.15.0)
 
 SPEC CHECKSUMS:
   ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
@@ -23,5 +25,6 @@ SPEC CHECKSUMS:
   Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
   HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   NVActivityIndicatorView: 84aa48f7ec1efbfd0645e9f469097d94c6f65417
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
 
 COCOAPODS: 0.39.0

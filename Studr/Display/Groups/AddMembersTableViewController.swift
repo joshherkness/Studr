@@ -14,14 +14,18 @@ import Eureka
 public class AddMembersTableViewController: UITableViewController, TypedRowControllerType {
     
     // MARK: Instance Variables
-    public var row: RowOf<Set<String>>!
-    public var completionCallback : ((UIViewController) -> ())?
-    private var members: [String] = []
-    private var perspectiveMembers: [String] = []
     
-    private var friendshipAddedHandle: FirebaseHandle = FirebaseHandle()
-    private var friendshipChangedHandle: FirebaseHandle = FirebaseHandle()
-    private var friendshipRemovedHandle: FirebaseHandle = FirebaseHandle()
+    public var row: RowOf<Set<User>>!
+    public var completionCallback : ((UIViewController) -> ())?
+    private var members: [User] = []
+    private var perspectiveMembers: [User] = []
+    
+    private var myFriendshipsRef: Firebase?
+    private var friendshipAddedHandle: FirebaseHandle?
+    private var friendshipChangedHandle: FirebaseHandle?
+    private var friendshipRemovedHandle: FirebaseHandle?
+    
+    // MARK: Initializers
     
     convenience public init(_ callback: (UIViewController) -> ()){
         self.init(nibName: nil, bundle: nil)
@@ -33,14 +37,14 @@ public class AddMembersTableViewController: UITableViewController, TypedRowContr
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Register cell for table
-        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        // Change the title
+        navigationItem.title = "Friends"
         
-        // Allows selection of multiple cells in tableview
+        // Setup tableview
         tableView.allowsMultipleSelection = true
-        
-        // Remove the hairline between the cells
         tableView.separatorStyle = .None
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.registerClass(UserCell.self, forCellReuseIdentifier: "UserCell")
         
         // Preserve selection between presentations
         clearsSelectionOnViewWillAppear = false
@@ -53,65 +57,67 @@ public class AddMembersTableViewController: UITableViewController, TypedRowContr
         // Load the existing selected users into the array
         members = Array(row.value!)
         
+        // Firebase
+        if let authData = Database.BASE_REF.authData {
+            myFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(authData.uid)
+            myFriendshipsRef?.keepSynced(true)
+        }
+    }
+    
+    public override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Begin listening to the database
-        beginListening()
+        beginObserving()
     }
-    
     public override func viewDidDisappear(animated: Bool) {
-        Database.BASE_REF.removeAuthEventObserverWithHandle(friendshipAddedHandle)
-        Database.BASE_REF.removeAuthEventObserverWithHandle(friendshipChangedHandle)
-        Database.BASE_REF.removeAuthEventObserverWithHandle(friendshipRemovedHandle)
+        myFriendshipsRef?.removeAuthEventObserverWithHandle(friendshipAddedHandle!)
+        myFriendshipsRef?.removeAuthEventObserverWithHandle(friendshipChangedHandle!)
+        myFriendshipsRef?.removeAuthEventObserverWithHandle(friendshipRemovedHandle!)
     }
     
-    func beginListening(){
+    func beginObserving(){
         
-        // Clear the list of perspective members
         perspectiveMembers.removeAll()
-        
-        let myId = Database.BASE_REF.authData!.uid
-        let myFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(myId)
-        
-        // Create listener and store handle
-        friendshipAddedHandle = myFriendshipsRef.observeEventType(.ChildAdded, withBlock: { snapshot in
+    
+        friendshipAddedHandle = myFriendshipsRef?.observeEventType(.ChildAdded, withBlock: { snapshot in
             let theirId = snapshot.key
             let status = snapshot.value as! String
             
             // This determines what should happen based on the status
             if(status == FriendshipStatus.Accepted.rawValue){
-                self.perspectiveMembers.append(theirId)
+                Database.getUser(theirId, completion: { user in
+                    self.perspectiveMembers.append(user)
+                    self.tableView.reloadData()
+                })
             }
-            
-            self.tableView.reloadData()
         })
         
-        // Create listener and store handle
-        friendshipChangedHandle = myFriendshipsRef.observeEventType(.ChildChanged, withBlock: { snapshot in
+        friendshipChangedHandle = myFriendshipsRef?.observeEventType(.ChildChanged, withBlock: { snapshot in
             let theirId = snapshot.key
             let status = snapshot.value as! String
             
-            // This determines what should happen based on the status
-            if(status == FriendshipStatus.Accepted.rawValue && !self.perspectiveMembers.contains(theirId)){
-                self.perspectiveMembers.append(theirId)
-            }
-            
-            self.tableView.reloadData()
+            Database.getUser(theirId, completion: { user in
+                if(status == FriendshipStatus.Accepted.rawValue && !self.perspectiveMembers.contains(user)){
+                    self.tableView.reloadData()
+                }
+            })
         })
         
-        // Create listener and store handle
-        friendshipRemovedHandle = myFriendshipsRef.observeEventType(.ChildRemoved, withBlock: { snapshot in
+        friendshipRemovedHandle = myFriendshipsRef?.observeEventType(.ChildRemoved, withBlock: { snapshot in
             let theirId = snapshot .key
             
             // Remove the user from any array in friends
-            self.perspectiveMembers = self.perspectiveMembers.filter({ $0 != theirId })
+            self.perspectiveMembers = self.perspectiveMembers.filter({ $0.uid != theirId })
             
             self.tableView.reloadData()
         })
     }
     
     func tappedDone(sender: UIButton){
-        
+    
         // Add each member to a set
-        var membersSet = Set<String>()
+        var membersSet = Set<User>()
         for member in members {
             membersSet.insert(member)
         }
@@ -126,18 +132,15 @@ public class AddMembersTableViewController: UITableViewController, TypedRowContr
     //MARK: UITableViewDelegate
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // To be called when a cell is seclected
-        
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? UserCell
         cell?.accessoryType = .Checkmark
         members.append(perspectiveMembers[indexPath.row])
     }
     
     public override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? UserCell
         cell?.accessoryType = .None
-        members = self.perspectiveMembers.filter({ $0 != perspectiveMembers[indexPath.row] })
+        members = members.filter({ $0.uid != perspectiveMembers[indexPath.row].uid })
     }
     
     
@@ -145,28 +148,8 @@ public class AddMembersTableViewController: UITableViewController, TypedRowContr
         return Constants.userCellHeight
     }
     
-    public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    public override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    public override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return super.tableView(tableView, viewForHeaderInSection: section)
-    }
-    
-    public override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return super.tableView(tableView, viewForFooterInSection: section)
-    }
-    
     public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return perspectiveMembers.count
-    }
-    
-    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
     }
     
     //MARK: UITableViewDataSource
@@ -174,8 +157,9 @@ public class AddMembersTableViewController: UITableViewController, TypedRowContr
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let user = perspectiveMembers[indexPath.row]
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
-        cell.setUser(user)
+        cell.configureCell(user)
         cell.setType(.None)
         
         let selectedBackgroundView: UIView = UIView()

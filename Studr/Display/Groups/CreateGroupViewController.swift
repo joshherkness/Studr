@@ -14,11 +14,11 @@ class CreateGroupViewController : FormViewController {
     
     // MARK: Instance Variables
     
-    private var createButton: UIBarButtonItem = UIBarButtonItem()
-    private var cancelButton: UIBarButtonItem = UIBarButtonItem()
+    private var createButton: UIBarButtonItem?
+    private var cancelButton: UIBarButtonItem?
     
-    private var name: String = ""
-    private var members: [String] = []
+    private var name = String()
+    private var members = [User]()
     
     // MARK: UIViewController
     
@@ -36,8 +36,8 @@ class CreateGroupViewController : FormViewController {
         navigationItem.setLeftBarButtonItem(cancelButton, animated: false)
         
         // Add Create button
-        createButton = UIBarButtonItem(title: "Create", style: .Plain, target: self, action: "create")
-        createButton.enabled = false
+        createButton = UIBarButtonItem(title: "Create", style: .Plain, target: self, action: "createGroup")
+        createButton?.enabled = false
         navigationItem.setRightBarButtonItem(createButton, animated: false)
         
         // Create Form
@@ -68,13 +68,13 @@ class CreateGroupViewController : FormViewController {
     // Checks to make sure all the inputs are valid
     func validate(){
         if(!name.isEmpty){
-            createButton.enabled = true
+            createButton?.enabled = true
         }else{
-            createButton.enabled = false
+            createButton?.enabled = false
         }
     }
     
-    func create(){
+    func createGroup(){
         // Add the appropriate information to the database
         let groupRef = Database.GROUP_REF.childByAutoId()
         let groupMembersRef = groupRef.childByAppendingPath("members")
@@ -91,9 +91,9 @@ class CreateGroupViewController : FormViewController {
         
         // Add each member to the group
         for member in members {
-            let membershipsRef = Database.MEMBERSHIP_REF.childByAppendingPath(member)
+            let membershipsRef = Database.MEMBERSHIP_REF.childByAppendingPath(member.uid)
             
-            groupMembersRef.childByAppendingPath(member).setValue(MembershipStatus.PendingSent.rawValue)
+            groupMembersRef.childByAppendingPath(member.uid).setValue(MembershipStatus.PendingSent.rawValue)
             membershipsRef.childByAppendingPath(groupId).setValue(MembershipStatus.PendingReceived.rawValue)
         }
         

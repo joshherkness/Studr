@@ -35,18 +35,6 @@ class SettingsViewController: FormViewController {
                 }.onChange{ row in
                     // TODO: Toggle notifications here
                 }
-            <<< ButtonRow("clearCache") {
-                $0.title = "Clear Cache"
-                }.cellSetup { cell, row in
-                    cell.tintColor = Constants.Color.primary
-                }.cellUpdate{ cell, row in
-                    cell.textLabel?.textAlignment = .Left
-                }.onCellSelection { cell, row in
-                    Shared.imageCache.removeAll()
-                    Shared.dataCache.removeAll()
-                    Shared.JSONCache.removeAll()
-                    Shared.stringCache.removeAll()
-                }
         
         form +++ Section("")
             <<< ButtonRow("about") {
@@ -83,15 +71,5 @@ class SettingsViewController: FormViewController {
         
         // Unauthenticate the current user
         Database.BASE_REF.unauth()
-            
-        // Return them to the sign in screen
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let logInViewController: UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("OnboardingViewController")
-            
-        self.presentViewController(logInViewController, animated: true, completion: {
-            appDelegate.window?.rootViewController = logInViewController
-        })
     }
 }

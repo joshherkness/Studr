@@ -17,25 +17,29 @@ class Database {
     static var MEMBERSHIP_REF = Firebase(url: "https://studr.firebaseio.com/memberships")
     static var GROUP_REF = Firebase(url: "https://studr.firebaseio.com/groups")
 
-    static func userFromId(id: String, completion: (user: User) -> Void){
-        let userRef = Database.USER_REF.childByAppendingPath(id)
+    static func getUser(id: String, completion: (user: User) -> Void){
         
-        userRef.observeEventType(.Value, withBlock: { snapshot in
-            let key = snapshot.key
-            let dictionary = snapshot.value as! [String: AnyObject]
-            let user = User(key: key, dictionary: dictionary)
-            completion(user: user)
+        let userRef = Database.USER_REF.childByAppendingPath(id)
+        userRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if snapshot != nil{
+                let dictionary = snapshot.value as! [String: AnyObject]
+                let key = snapshot.key
+                let user = User(uid: key, dictionary: dictionary)
+                completion(user: user)
+            }
         })
     }
     
-    static func groupFromKey(key: String, completion: (group: Group) -> Void){
-        let userRef = Database.GROUP_REF.childByAppendingPath(key)
+    static func getGroup(key: String, completion: (group: Group) -> Void){
         
-        userRef.observeEventType(.Value, withBlock: { snapshot in
-            let key = snapshot.key
-            let dictionary = snapshot.value as! [String: AnyObject]
-            let group = Group(key: key, dictionary: dictionary)
-            completion(group: group)
+        let groupRef = Database.GROUP_REF.childByAppendingPath(key)
+        groupRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if snapshot.value != nil {
+                let dictionary = snapshot.value as! [String: AnyObject]
+                let key = snapshot.key
+                let group = Group(key: key, dictionary: dictionary)
+                completion(group: group)
+            }
         })
     }
 }

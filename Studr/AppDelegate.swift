@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,37 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // MARK: Firebase
+        
+        // Enables Firebase Disk Persistency
+        Firebase.defaultConfig().persistenceEnabled = true
+        
+        // MARK: Application Defaults
+        
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UITextField.appearance().keyboardAppearance = .Light
         UILabel.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).textColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
         
-        var rootViewController: UIViewController?
+        // MARK: Initial View Controller
         
-        // Todo: Move authentication changes to a better location
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let initialViewController = MainTabBarController()
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+        
         
         Database.BASE_REF.observeAuthEventWithBlock({ authData in
+            var vc: UIViewController!
             if authData != nil {
-                print(authData)
-                rootViewController = MainTabBarController()
+                vc = MainTabBarController()
             } else {
                 // No user is signed in
-                print("No AuthData")
-                rootViewController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
+                vc = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("OnboardingViewController")
             }
-            
-            //Testing
-            //let nc = UINavigationController(rootViewController: RequestEmailViewController())
-            //rootViewController = nc
-            
-            
-            if let window = self.window {
-                if let rootViewController = rootViewController {
-                    window.rootViewController? = rootViewController
-                }
-                window.makeKeyAndVisible()
-            }
+            self.window?.rootViewController? = vc
+            self.window?.makeKeyAndVisible()
         })
         
         return true

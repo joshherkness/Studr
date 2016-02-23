@@ -26,7 +26,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         UITabBar.appearance().barTintColor = Constants.Color.barTintColor
         
         // Lets the user see the groups that they are a part of
-        let myGroupsNavigationController = UINavigationController(rootViewController: MyGroupsViewController())
+        let myGroupsNavigationController = UINavigationController(rootViewController: GroupsViewController())
         let myGroupsTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_dashboard"), selectedImage: nil)
         myGroupsTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         myGroupsTabBarItem.selectedImage = myGroupsTabBarItem.image?.imageWithColor(Constants.Color.selectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
@@ -36,7 +36,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         
         // Lets the user to find groups around their university
-        let groupNavigationController = UINavigationController(rootViewController: GroupsViewController())
+        let groupNavigationController = UINavigationController(rootViewController: MapViewController())
         let groupTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_event"), selectedImage: nil)
         groupTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         groupTabBarItem.selectedImage = groupTabBarItem.image?.imageWithColor(Constants.Color.selectedTabColor).imageWithRenderingMode(.AlwaysOriginal)
@@ -46,7 +46,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
         
         // Lets the user see and add friends
-        let friendNavigationController = UINavigationController(rootViewController: FriendViewController())
+        let friendNavigationController = UINavigationController(rootViewController: FriendsViewController())
         let friendTabBarItem = UITabBarItem(title: nil, image: UIImage(named: "ic_group"), selectedImage: nil)
         friendTabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         friendTabBarItem.selectedImage = friendTabBarItem.image?.imageWithColor(Constants.Color.selectedTabColor).imageWithRenderingMode(.AlwaysOriginal)

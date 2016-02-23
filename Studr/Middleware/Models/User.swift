@@ -9,18 +9,28 @@
 import Foundation
 import Firebase
 
-class User {
+public class User: Hashable{
+    
+    // MARK: Instance Variables
+    
     var ref: Firebase!
-    var key: String!
+    var uid: String!
+    var firstname = String()
+    var lastname = String()
+    var username = String()
+    var email = String()
     
-    var firstname: String!
-    var lastname: String!
-    var username: String!
-    var email: String!
+    // MARK: Hashable
     
-    init(key: String, dictionary: Dictionary<String, AnyObject>) {
+    public var hashValue: Int {
+        return self.uid.hashValue
+    }
+    
+    // MARK: Constructors
+    
+    init(uid: String, dictionary: Dictionary<String, AnyObject>) {
         
-        self.key = key
+        self.uid = uid
         
         if let firstname = dictionary["first_name"] as? String {
             self.firstname = firstname
@@ -38,7 +48,12 @@ class User {
             self.email = email
         }
         
-        ref = Database.USER_REF.childByAppendingPath(key)
+        ref = Database.USER_REF.childByAppendingPath(uid)
     }
-    
+}
+
+// MARK: Equatable
+
+public func ==(lhs: User, rhs: User) -> Bool {
+    return lhs.uid == rhs.uid
 }
