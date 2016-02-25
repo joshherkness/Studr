@@ -19,6 +19,7 @@ pod 'Eureka', '~> 1.3.1'
 pod 'CryptoSwift' #Used for MD5/Gravitar
 pod 'HanekeSwift' #caching
 pod 'SnapKit', '~> 0.15.0'
+pod 'DGRunkeeperSwitch', '~> 1.1'
 end
 
 target 'StudrTests' do
