@@ -40,11 +40,10 @@ class GroupCell: UICollectionViewCell {
         nameLabel.font = UIFont.systemFontOfSize(17)
         addSubview(nameLabel)
         
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
-        layout.itemSize = CGSizeMake(40, 40)
-        layout.scrollDirection = .Horizontal
+        // Setup the selected background view
+        let view: UIView = UIView()
+        view.backgroundColor = UIColor(hexString: "F4F5F6")
+        selectedBackgroundView = view
         
         updateConstraints()
     }

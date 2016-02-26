@@ -77,7 +77,8 @@ class GroupsViewController: UIViewController, UICollectionViewDataSource, UIColl
     // MARK: Firebase
     
     func beginObserving(){
-        groups.removeAll()
+        
+        groups.removeAll() // First empty the dataset
         
         myMembershipsRef?.observeEventType(.ChildAdded, withBlock:{ snapshot in
             let key = snapshot.key
@@ -117,20 +118,6 @@ class GroupsViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     // MARK: UICollectionViewControllerDelegate
-    
-    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GroupCell
-        cell.backgroundColor = UIColor(hexString: "F4F5F6")
-        
-    }
-    
-    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! GroupCell
-        cell.backgroundColor = UIColor.whiteColor()
-        
-    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         

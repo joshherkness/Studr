@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-class FriendsViewController: UITableViewController, UISearchControllerDelegate {
+class FriendsViewController: UITableViewController, UISearchControllerDelegate, UserCellDelegate {
     
     // MARK: Instance Variables
     
@@ -148,61 +148,46 @@ class FriendsViewController: UITableViewController, UISearchControllerDelegate {
         }
     }
     
-    // Used to hash the index path so we can distinguish between cells
-    func getTagFromIndexPath(indexPath: NSIndexPath) -> Int {
-        return indexPath.row + 500 * indexPath.section
-    }
+    // MARK: UserCellDelegate
     
-    // Used to get a index path from a cell's tag
-    func getIndexPathFromTag(tag: Int) -> NSIndexPath {
-        let row = tag % 500
-        let section = tag / 500
-        return NSIndexPath(forRow: row, inSection: section)
-    }
-    
-    // MARK: Selectors
-    
-    func addFriendship(button: UIButton){
-        let indexPath = getIndexPathFromTag(button.tag)
+    func userCellDidSelectAdd(cell: UserCell, sender: AnyObject) {
+        let indexPath = tableView.indexPathForCell(cell)
         
-        let myId = myFriendshipsRef?.key
-        let theirId = friends[indexPath.section][indexPath.row].uid
-        
-        // First we decide where to add the friendship
-        let theirFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(theirId)
-        
-        // Now we add the appropriate friendship for each user
-        myFriendshipsRef?.childByAppendingPath(theirId).setValue(FriendshipStatus.PendingSent.rawValue)
-        theirFriendshipsRef.childByAppendingPath(myId).setValue(FriendshipStatus.PendingReceived.rawValue)
-    }
-    
-    func acceptFriendship(button: UIButton){
-        let indexPath = getIndexPathFromTag(button.tag)
-        
-        let myId = myFriendshipsRef?.key
-        let theirId = friends[indexPath.section][indexPath.row].uid
-        
-        if let theirId = theirId{
-            
+        if let indexPath = indexPath {
+             // TODO: Use current user to find myId
+            let myId = myFriendshipsRef?.key
+            let theirId = results[indexPath.row].uid
             let theirFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(theirId)
             
-            // Set the status to rejected
+            myFriendshipsRef?.childByAppendingPath(theirId).setValue(FriendshipStatus.PendingSent.rawValue)
+            theirFriendshipsRef.childByAppendingPath(myId).setValue(FriendshipStatus.PendingReceived.rawValue)
+        }
+    }
+    
+    func userCellDidSelectAccept(cell: UserCell, sender: AnyObject) {
+        let indexPath = tableView.indexPathForCell(cell)
+        
+        if let indexPath = indexPath {
+            let myId = myFriendshipsRef?.key
+            let theirId = results[indexPath.row].uid
+            let theirFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(theirId)
+            
             myFriendshipsRef?.childByAppendingPath(theirId).setValue(FriendshipStatus.Accepted.rawValue)
             theirFriendshipsRef.childByAppendingPath(myId).setValue(FriendshipStatus.Accepted.rawValue)
         }
     }
     
-    func rejectFriendship(button: UIButton){
-        let indexPath = getIndexPathFromTag(button.tag)
+    func userCellDidSelectReject(cell: UserCell, sender: AnyObject) {
+        let indexPath = tableView.indexPathForCell(cell)
         
-        // Identify each users friendship reference
-        let myId = myFriendshipsRef?.key
-        let theirId = friends[indexPath.section][indexPath.row].uid
-        let theirFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(theirId)
-        
-        // Set the status to rejected
-        myFriendshipsRef?.childByAppendingPath(theirId).setValue(FriendshipStatus.Rejected.rawValue)
-        theirFriendshipsRef.childByAppendingPath(myId).setValue(FriendshipStatus.Rejected.rawValue)
+        if let indexPath = indexPath {
+            let myId = myFriendshipsRef?.key
+            let theirId = results[indexPath.row].uid
+            let theirFriendshipsRef = Database.FRIENDSHIP_REF.childByAppendingPath(theirId)
+            
+            myFriendshipsRef?.childByAppendingPath(theirId).setValue(FriendshipStatus.Rejected.rawValue)
+            theirFriendshipsRef.childByAppendingPath(myId).setValue(FriendshipStatus.Rejected.rawValue)
+        }
     }
     
     // MARK: TableViewDatasource
@@ -235,6 +220,7 @@ class FriendsViewController: UITableViewController, UISearchControllerDelegate {
 
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         cell.configureCell(user)
+        cell.delegate = self
         
         // Determine the type of cell that should be displayed
         myFriendshipsRef?.childByAppendingPath(user.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -250,13 +236,6 @@ class FriendsViewController: UITableViewController, UISearchControllerDelegate {
                 cell.setType(.Send)
             }
         })
-        
-        cell.addButton.tag = getTagFromIndexPath(indexPath)
-        cell.addButton.addTarget(self, action: "addFriendship:", forControlEvents: .TouchUpInside)
-        cell.acceptButton.tag = getTagFromIndexPath(indexPath)
-        cell.acceptButton.addTarget(self, action: "acceptFriendship:", forControlEvents: .TouchUpInside)
-        cell.rejectButton.tag = getTagFromIndexPath(indexPath)
-        cell.rejectButton.addTarget(self, action: "rejectFriendship:", forControlEvents: .TouchUpInside)
         
         return cell
     }

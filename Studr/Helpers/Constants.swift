@@ -21,4 +21,5 @@ struct Color {
     
 struct Config {
     static let userCellHeight: CGFloat = 56.0
+    static let cornerRadius: CGFloat = 5.0
 }

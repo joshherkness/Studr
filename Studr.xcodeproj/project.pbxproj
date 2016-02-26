@@ -22,7 +22,7 @@
 		03B21EE41BE585F70052B0AD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE31BE585F70052B0AD /* SignInViewController.swift */; };
 		03B21EE61BE5B0940052B0AD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */; };
 		03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */; };
-		03CB77801BF92249007C21AA /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB777F1BF92249007C21AA /* CustomCells.swift */; };
+		03CB77801BF92249007C21AA /* CustomEurekaCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB777F1BF92249007C21AA /* CustomEurekaCells.swift */; };
 		03EBCB331BE6B64500993FA4 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */; };
 		3DA9051FBAD4BF424E7C785D /* Pods_StudrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88CD898677E6330404F0CF8 /* Pods_StudrUITests.framework */; };
 		444E2AD5BD65ED85C31EA843 /* Pods_StudrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A04EAF62855FB98B509DBC /* Pods_StudrTests.framework */; };
@@ -37,6 +37,7 @@
 		7C5156961C7E7F0D0052E564 /* TimeVoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5156951C7E7F0C0052E564 /* TimeVoteCell.swift */; };
 		7C5156981C7E84B90052E564 /* TimeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5156971C7E84B90052E564 /* TimeSelectionViewController.swift */; };
 		7C51569A1C7F68B20052E564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C5156991C7F68B20052E564 /* Localizable.strings */; };
+		7C51569C1C80B4300052E564 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C51569B1C80B4300052E564 /* ProfileImageView.swift */; };
 		7C5389671C642A6600F8E120 /* RequestEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5389661C642A6600F8E120 /* RequestEmailViewController.swift */; };
 		7C5389691C64567500F8E120 /* MembershipStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5389681C64567500F8E120 /* MembershipStatus.swift */; };
 		7C557FE81BEEFC8500612EA8 /* PushUpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C557FE71BEEFC8500612EA8 /* PushUpSegue.swift */; };
@@ -99,7 +100,7 @@
 		03B21EE31BE585F70052B0AD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		03B21EE51BE5B0940052B0AD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ne-UINavigationControllerExtension.swift"; sourceTree = "<group>"; };
-		03CB777F1BF92249007C21AA /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
+		03CB777F1BF92249007C21AA /* CustomEurekaCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEurekaCells.swift; sourceTree = "<group>"; };
 		03EBCB321BE6B64500993FA4 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		44A04EAF62855FB98B509DBC /* Pods_StudrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		490F9DE689D75D999C329B06 /* Pods-StudrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudrUITests/Pods-StudrUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		7C5156951C7E7F0C0052E564 /* TimeVoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeVoteCell.swift; sourceTree = "<group>"; };
 		7C5156971C7E84B90052E564 /* TimeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewController.swift; sourceTree = "<group>"; };
 		7C5156991C7F68B20052E564 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		7C51569B1C80B4300052E564 /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		7C5389661C642A6600F8E120 /* RequestEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEmailViewController.swift; sourceTree = "<group>"; };
 		7C5389681C64567500F8E120 /* MembershipStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipStatus.swift; sourceTree = "<group>"; };
 		7C557FE71BEEFC8500612EA8 /* PushUpSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushUpSegue.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				7CCC4F0B1C717D9700302EF3 /* GroupCell.swift */,
 				7C8097821C7A9475007ABAF4 /* HeaderView.swift */,
 				7C5156931C7E08550052E564 /* ProfileImageCollectionView.swift */,
+				7C51569B1C80B4300052E564 /* ProfileImageView.swift */,
 				7C7AC9B01BE7E84500E2197C /* RoundedButton.swift */,
 				7C4F440A1C1BCE45007C627F /* RoundedImageView.swift */,
 				7C37BC6F1BEC35970056BA12 /* TextField.swift */,
@@ -318,7 +321,7 @@
 			children = (
 				03CB77751BF1809C007C21AA /* Custom Segues */,
 				7C852CDA1C14A1CB00BFEC85 /* Constants.swift */,
-				03CB777F1BF92249007C21AA /* CustomCells.swift */,
+				03CB777F1BF92249007C21AA /* CustomEurekaCells.swift */,
 				7C5156991C7F68B20052E564 /* Localizable.strings */,
 				7C96BC9C1C096EB700D4D83F /* ProfileImageHelper.swift */,
 				03CB77701BEFD074007C21AA /* ne-UINavigationControllerExtension.swift */,
@@ -659,7 +662,8 @@
 				7C557FEC1BEF057B00612EA8 /* PushUpSegueUnwind.swift in Sources */,
 				03CB77711BEFD074007C21AA /* ne-UINavigationControllerExtension.swift in Sources */,
 				7C852CDB1C14A1CB00BFEC85 /* Constants.swift in Sources */,
-				03CB77801BF92249007C21AA /* CustomCells.swift in Sources */,
+				7C51569C1C80B4300052E564 /* ProfileImageView.swift in Sources */,
+				03CB77801BF92249007C21AA /* CustomEurekaCells.swift in Sources */,
 				7C8097881C7BFBC1007ABAF4 /* SelectMembersCell.swift in Sources */,
 				7CCC4F0C1C717D9700302EF3 /* GroupCell.swift in Sources */,
 				7C8097831C7A9475007ABAF4 /* HeaderView.swift in Sources */,

@@ -47,4 +47,12 @@ class Database {
             }
         })
     }
+    
+    static func addFriendship(sender: User, reciever: User){
+        
+    }
+    
+    static func getProfileImageForUser(user: User, completionHandler: (image: UIImage) -> Void){
+        
+    }
 }

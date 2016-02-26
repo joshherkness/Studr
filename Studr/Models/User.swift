@@ -11,10 +11,8 @@ import Firebase
 
 public class User: Hashable{
     
-    // MARK: Instance Variables
-    
     var ref: Firebase!
-    var uid: String!
+    var uid = String()
     var firstname = String()
     var lastname = String()
     var username = String()
@@ -31,26 +29,12 @@ public class User: Hashable{
     init(){}
     
     init(uid: String, dictionary: Dictionary<String, AnyObject>) {
-        
         self.uid = uid
-        
-        if let firstname = dictionary["first_name"] as? String {
-            self.firstname = firstname
-        }
-        
-        if let lastname = dictionary["last_name"] as? String {
-            self.lastname = lastname
-        }
-        
-        if let username = dictionary["username"] as? String {
-            self.username = username
-        }
-        
-        if let email = dictionary["email"] as? String {
-            self.email = email
-        }
-        
         ref = Database.USER_REF.childByAppendingPath(uid)
+        firstname = dictionary["first_name"] as? String ?? ""
+        lastname = dictionary["last_name"] as? String ?? ""
+        username = dictionary["username"] as? String ?? ""
+        email = dictionary["email"] as? String ?? ""
     }
 }
 
@@ -58,4 +42,8 @@ public class User: Hashable{
 
 public func ==(lhs: User, rhs: User) -> Bool {
     return lhs.uid == rhs.uid
+    && lhs.email == rhs.email
+    && lhs.firstname == rhs.firstname
+    && lhs.lastname == rhs.lastname
+    && lhs.username == rhs.username
 }

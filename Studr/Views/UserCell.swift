@@ -19,20 +19,28 @@ enum UserCellType {
     case Rejected
 }
 
+protocol UserCellDelegate {
+    func userCellDidSelectAdd(cell: UserCell, sender: AnyObject)
+    func userCellDidSelectAccept(cell: UserCell, sender: AnyObject)
+    func userCellDidSelectReject(cell: UserCell, sender:AnyObject)
+}
+
 class UserCell: UITableViewCell {
     
     // MARK: Instance Variables
     
-    var profileImageView: RoundedImageView!
+    var profileImageView: ProfileImageView!
     var nameLabel: UILabel!
     var usernameLabel: UILabel!
-    var addButton: RoundedButton!
-    var rejectButton: RoundedButton!
-    var sentButton: RoundedButton!
-    var acceptButton: RoundedButton!
+    var addButton: UIButton!
+    var rejectButton: UIButton!
+    var sentButton: UIButton!
+    var acceptButton: UIButton!
     
     var labelContainer: UIView!
     var buttonContainer: UIView!
+    
+    var delegate: UserCellDelegate?
     
     // MARK: UITableViewCell
     
@@ -52,7 +60,7 @@ class UserCell: UITableViewCell {
     func setupCell(){
         
         // Setup Image View
-        profileImageView = RoundedImageView()
+        profileImageView = ProfileImageView()
         addSubview(profileImageView)
         
         // Setup Labels
@@ -73,44 +81,46 @@ class UserCell: UITableViewCell {
         buttonContainer = UIView()
         addSubview(buttonContainer)
         
-        addButton = RoundedButton()
+        addButton = UIButton()
         addButton.setImage(UIImage(named: "ic_add"), forState: .Normal)
         addButton.backgroundColor = Color.lightGreyBackground
         addButton.tintColor = UIColor.whiteColor()
-        addButton.cornerRadius = 5.0
+        addButton.layer.cornerRadius = Config.cornerRadius
         buttonContainer.addSubview(addButton)
         
-        rejectButton = RoundedButton()
+        rejectButton = UIButton()
         rejectButton.setImage(UIImage(named: "ic_clear"), forState: .Normal)
         rejectButton.backgroundColor = Color.lightGreyBackground
         rejectButton.tintColor = UIColor.whiteColor()
-        rejectButton.cornerRadius = 5.0
+        rejectButton.layer.cornerRadius = Config.cornerRadius
         buttonContainer.addSubview(rejectButton)
         
-        sentButton = RoundedButton()
+        sentButton = UIButton()
         sentButton.setImage(UIImage(named: "ic_direction"), forState: .Normal)
         sentButton.backgroundColor = Color.primary
         sentButton.tintColor = UIColor.whiteColor()
-        sentButton.cornerRadius = 5.0
+        sentButton.layer.cornerRadius = Config.cornerRadius
         buttonContainer.addSubview(sentButton)
         
-        acceptButton = RoundedButton()
+        acceptButton = UIButton()
         acceptButton.setImage(UIImage(named: "ic_done"), forState: .Normal)
-        acceptButton.backgroundColor = Color.primary
+        acceptButton.backgroundColor = UIColor(hexString: "#4ACB98")
         acceptButton.tintColor = UIColor.whiteColor()
-        acceptButton.cornerRadius = 5.0
+        acceptButton.layer.cornerRadius = Config.cornerRadius
         buttonContainer.addSubview(acceptButton)
         
-        // Change the selected background view
+        // Setup the selected background view
         let view: UIView = UIView()
         view.backgroundColor = UIColor(hexString: "F4F5F6")
         selectedBackgroundView = view
         
-        // Hide all the buttons
-        addButton.hidden = true
-        acceptButton.hidden = true
-        sentButton.hidden = true
-        rejectButton.hidden = true
+        // Setup selectors
+        addButton.addTarget(self, action: "addFriend", forControlEvents: .TouchUpInside)
+        acceptButton.addTarget(self, action: "acceptFriend", forControlEvents: .TouchUpInside)
+        rejectButton.addTarget(self, action: "rejectFriend", forControlEvents: .TouchUpInside)
+        
+        // Default cell type
+        setType(.None)
         
         updateConstraints()
     }
@@ -177,11 +187,7 @@ class UserCell: UITableViewCell {
     func configureCell(user: User){
         nameLabel.text = user.firstname + " " + user.lastname
         usernameLabel.text = user.username
-        
-        profileImageView.image = nil
-        getProfileImageForUser(user.uid, email: user.email, onSuccess: { image in
-            self.profileImageView.image = image
-        })
+        profileImageView.setUser(user)
     }
     
     func setType(type: UserCellType){
@@ -238,4 +244,19 @@ class UserCell: UITableViewCell {
             acceptButton.backgroundColor = acceptButtonBackgroundColor
         }
     }
+    
+    // MARK: Selectors
+    
+    func addFriend(){
+        delegate?.userCellDidSelectAdd(self, sender: self)
+    }
+    
+    func acceptFriend(){
+        delegate?.userCellDidSelectAccept(self, sender: self)
+    }
+    
+    func rejectFriend(){
+        delegate?.userCellDidSelectReject(self, sender: self)
+    }
+    
 }
